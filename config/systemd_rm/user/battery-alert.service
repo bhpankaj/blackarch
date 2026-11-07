@@ -1,7 +1,0 @@
-[Unit]
-Description=Battery alert
-
-[Service]
-Type=oneshot
-ExecStart=/opt/blackarch/bin/blackarch-battery-monitor
-

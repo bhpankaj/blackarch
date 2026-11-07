@@ -17,3 +17,4 @@ dashboard/hooks/logs/*
 bin/__pycache__
 default/skills/
 blackarch_modules/__pycache__
+bin/camera-relay-monitor

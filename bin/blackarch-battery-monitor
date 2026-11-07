@@ -1,33 +1,82 @@
-#!/bin/bash
+#!/usr/bin/env python3
+"""blackarch:summary=Battery monitor: low-battery alerts and smartthings switch control"""
 
-# Designed to be run by systemd timer every 30 seconds and alerts if battery is low
+import os
+import re
+import subprocess
+import sys
 
-BATTERY_THRESHOLD_UPPER=96
-BATTERY_THRESHOLD=25
-NOTIFICATION_FLAG="/run/user/$UID/blackarch_battery_notified"
-BATTERY_LEVEL=$(blackarch-battery-remaining)
-BATTERY_STATE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state" | awk '{print $2}')
 
-send_notification() {
-  if [[ $2 -eq 1 ]]; then
-    notify-send -u critical "󱐋 Time to recharge!" "Battery is down to ${1}%" -i battery-caution -t 30000
-  elif [[ $2 -eq 0 ]]; then
-    notify-send -u normal "󱐋 Battery recharge done!" "Battery is up to ${1}%" -i battery-caution -t 30000
-  fi
-}
+def run(cmd, shell=True, timeout=30):
+    try:
+        r = subprocess.run(cmd, shell=shell, capture_output=True, text=True, timeout=timeout)
+        return r.returncode, (r.stdout + r.stderr).strip()
+    except Exception as e:
+        return -1, str(e)
 
-if [[ -n "$BATTERY_LEVEL" && "$BATTERY_LEVEL" =~ ^[0-9]+$ ]]; then
-  if [[ $BATTERY_STATE == "discharging" && $BATTERY_LEVEL -le $BATTERY_THRESHOLD ]]; then
-    smartthings devices:commands "4e715c22-7aa0-4bd6-9425-b694b26e325d" switch:on
-    if [[ ! -f $NOTIFICATION_FLAG ]]; then
-      send_notification $BATTERY_LEVEL 1
-      touch $NOTIFICATION_FLAG
-    fi
-  elif [[ $BATTERY_STATE == "charging" && $BATTERY_LEVEL -ge $BATTERY_THRESHOLD_UPPER ]]; then
-    send_notification $BATTERY_LEVEL 0
-    smartthings devices:commands "4e715c22-7aa0-4bd6-9425-b694b26e325d" switch:off
-    rm -f $NOTIFICATION_FLAG
-  else
-    rm -f $NOTIFICATION_FLAG
-  fi
-fi
+
+BATTERY_THRESHOLD_UPPER = 96
+BATTERY_THRESHOLD = 25
+uid = os.getuid()
+NOTIFICATION_FLAG = f"/run/user/{uid}/blackarch_battery_notified"
+DEVICE_ID = "4e715c22-7aa0-4bd6-9425-b694b26e325d"
+
+
+def battery_level():
+    rc, out = run("blackarch-battery-remaining")
+    if rc == 0 and out.isdigit():
+        return int(out)
+    return None
+
+
+def battery_state():
+    rc, out = run("upower -e | grep 'BAT'")
+    if rc != 0 or not out:
+        return ""
+    dev = out.splitlines()[0].strip()
+    rc, out = run(f"upower -i {dev}")
+    m = re.search(r"^\s*state:\s*(\S+)", out, re.MULTILINE)
+    return m.group(1) if m else ""
+
+
+def send_notification(level, mode):
+    if mode == 1:
+        cmd = [
+            "notify-send", "-u", "critical", "󱐋 Time to recharge!",
+            f"Battery is down to {level}%", "-i", "battery-caution", "-t", "30000",
+        ]
+    else:
+        cmd = [
+            "notify-send", "-u", "normal", "󱐋 Battery recharge done!",
+            f"Battery is up to {level}%", "-i", "battery-caution", "-t", "30000",
+        ]
+    subprocess.run(cmd, check=False)
+
+
+def main():
+    level = battery_level()
+    if level is None:
+        return
+    state = battery_state()
+
+    if state == "discharging" and level <= BATTERY_THRESHOLD:
+        subprocess.run(["smartthings", "devices:commands", DEVICE_ID, "switch:on"], check=False)
+        if not os.path.isfile(NOTIFICATION_FLAG):
+            send_notification(level, 1)
+            open(NOTIFICATION_FLAG, "w").close()
+    elif state == "charging" and level >= BATTERY_THRESHOLD_UPPER:
+        send_notification(level, 0)
+        subprocess.run(["smartthings", "devices:commands", DEVICE_ID, "switch:off"], check=False)
+        try:
+            os.remove(NOTIFICATION_FLAG)
+        except FileNotFoundError:
+            pass
+    else:
+        try:
+            os.remove(NOTIFICATION_FLAG)
+        except FileNotFoundError:
+            pass
+
+
+if __name__ == "__main__":
+    main()

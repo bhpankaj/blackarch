@@ -23,7 +23,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PATCH="$HERE/camera-relay-monitor-flicker-fix.patch"
 PATCHED_C="$HERE/camera-relay-monitor.c.patched"
-MONITOR=/opt/blackarch/bin/camera-relay-monitor
+MONITOR=/usr/local/bin/camera-relay-monitor
 UPSTREAM_RAW="https://raw.githubusercontent.com/Andycodeman/samsung-galaxy-book-linux-fixes/main/camera-relay/camera-relay-monitor.c"
 
 # systemd user drop-in dir (the desktop user's ~/.config/systemd is a symlink

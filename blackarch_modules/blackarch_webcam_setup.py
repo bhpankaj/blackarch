@@ -1256,10 +1256,10 @@ def install_camera_relay() -> None:
             user_service("stop", "camera-relay.service")
             quiet(["pkill", "-x", "camera-relay-monitor"])
             time.sleep(1)
-        shutil.copy2(tmp_monitor, "/opt/blackarch/bin/camera-relay-monitor")
-        os.chmod("/opt/blackarch/bin/camera-relay-monitor", 0o755)
+        shutil.copy2(tmp_monitor, "/usr/local/bin/camera-relay-monitor")
+        os.chmod("/usr/local/bin/camera-relay-monitor", 0o755)
         tmp_monitor.unlink(missing_ok=True)
-        info("Installed /opt/blackarch/bin/camera-relay-monitor (on-demand watcher)")
+        info("Installed /usr/local/bin/camera-relay-monitor (on-demand watcher)")
     else:
         warn("Failed to build the on-demand monitor (gcc required)")
 
@@ -2116,7 +2116,7 @@ def uninstall() -> None:
                  "/usr/share/libcamera/ipa/simple/ov02c10.yaml",
                  "/usr/local/share/libcamera/ipa/simple/ov02c10.yaml",
                  "/usr/local/bin/camera-relay",
-                 "/opt/blackarch/bin/camera-relay-monitor",
+                 "/usr/local/bin/camera-relay-monitor",
                  "/usr/local/bin/camera-relay-gst",
                  "/usr/local/bin/chromium-pipewire-camera",
                  "/usr/share/applications/camera-relay-systray.desktop",

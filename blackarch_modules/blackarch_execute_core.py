@@ -1077,7 +1077,7 @@ def setup_tpm(extra: list[str] | None = None) -> None:
                 l for l in _fstab.splitlines() if f"/dev/mapper/luks-{_u}" not in l
             ]
             _lines.append(
-                f"/dev/mapper/luks-{_u}  /run/media/black/luks-{_u}  auto  noauto,user,nofail  0  0"
+                f"/dev/mapper/luks-{_u}  /run/media/black/luks-{_u}  auto  rw,X-mount.mkdir,user,nofail  0  0"
             )
             sudo_write("/etc/fstab", "\n".join(_lines) + "\n")
         return

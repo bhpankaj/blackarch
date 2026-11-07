@@ -281,7 +281,14 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty6 ]]; then
     # chvt 1 
 fi
 
-eval "$(mise activate zsh)"
+# Keep mise shims on PATH without full activation
+case ":$PATH:" in *":$HOME/.local/share/mise/shims:"*) ;; *) export PATH="$HOME/.local/share/mise/shims:$PATH" ;; esac
+# Lazy-load mise: defer activation until first use
+mise() {
+  unfunction mise 2>/dev/null
+  eval "$(command mise activate zsh)"
+  mise "$@"
+}
 
 # SSH agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

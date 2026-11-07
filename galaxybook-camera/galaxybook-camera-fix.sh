@@ -637,9 +637,9 @@ EOF
             pkill -x camera-relay-monitor 2>/dev/null || true
             sleep 1
         }
-        install -m 755 /tmp/camera-relay-monitor /opt/blackarch/bin/camera-relay-monitor
+        install -m 755 /tmp/camera-relay-monitor /usr/local/bin/camera-relay-monitor
         rm -f /tmp/camera-relay-monitor
-        info "Installed /opt/blackarch/bin/camera-relay-monitor (on-demand watcher)"
+        info "Installed /usr/local/bin/camera-relay-monitor (on-demand watcher)"
     else
         warn "Failed to build the on-demand monitor (gcc required)"
     fi
@@ -723,7 +723,7 @@ uninstall() {
           /usr/share/libcamera/ipa/simple/ov02c10.yaml \
           /usr/local/share/libcamera/ipa/simple/ov02c10.yaml
 
-    rm -f /usr/local/bin/camera-relay /opt/blackarch/bin/camera-relay-monitor \
+    rm -f /usr/local/bin/camera-relay /usr/local/bin/camera-relay-monitor \
           /usr/local/bin/camera-relay-gst /usr/local/bin/chromium-pipewire-camera
     rm -rf /usr/local/share/camera-relay /var/cache/camera-relay
     rm -f /usr/share/applications/camera-relay-systray.desktop \

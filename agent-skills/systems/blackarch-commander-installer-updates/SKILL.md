@@ -18,6 +18,7 @@ Updating blackarch installer for root dotfile deployment, zshrc portability, non
 ## Pitfalls / Always-On Rules
 - Never rely on `return homes or ["/root"]` as the only root coverage; always append `/root` before returning so multi-user sources don't drop root.
 - `.zshrc` portability: any path that assumes `black` user (`/home/black`) breaks when `.zshrc` is deployed to `/root`. Use `~` for all home-relative references.
+- Lazy-load heavy shell activations: `eval "$(mise activate zsh)"` costs ~40 ms per launch; wrap it in a self-unfunctioning `mise()` function that activates on first use, while keeping `$HOME/.local/share/mise/shims` on PATH statically so mise-managed binaries resolve before activation.
 - Non-interactive shell setup: `BASH_ENV` and `ENV` must point to the same `/etc/profile.d/blackarch.sh` file that interactive shells source, otherwise SSH/non-login sessions miss `PATH`, `BLACKARCH_PATH`, and `waylandsudo`.
 References:
 - references/efi-entry-without-bootloader.md

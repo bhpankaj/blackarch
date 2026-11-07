@@ -18,6 +18,7 @@ Runs checks and auto-fixes snapper, Ulaa flatpak, Galaxy Book webcam, Kodachi, L
 - Webcam: auto-detect IPU6/IPU7; run galaxybook-camera-fix.sh + reapply-flicker-fix.sh
 - Kodachi: blackarch setup kodachi if dashboard missing
 - LUKS SD card: report missing crypttab/fstab entries
+- Battery alert: deploy ~/.config/systemd/user/battery-alert.service + .timer from defaults and enable timer
 
 ## LUKS SD card (TPM2)
 

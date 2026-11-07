@@ -1199,19 +1199,16 @@ def setup_dotfiles() -> None:
     ]
 
     systemd_target = Path.home() / ".config/systemd"
-    if not systemd_target.exists():
-        os.symlink(f"{DEFAULTS_DIR}/config/systemd", str(systemd_target))
-    else:
-        user_dir = systemd_target / "user"
-        user_dir.mkdir(parents=True, exist_ok=True)
-        for item in (Path(DEFAULTS_DIR) / "config/systemd/user").glob("*"):
-            if not (user_dir / item.name).exists():
-                shutil.copy2(item, user_dir / item.name)
+    user_dir = systemd_target / "user"
+    user_dir.mkdir(parents=True, exist_ok=True)
+    for item in (Path(DEFAULTS_DIR) / "config/systemd/user").glob("*"):
+        if not (user_dir / item.name).exists():
+            shutil.copy2(item, user_dir / item.name)
 
     brave = Path.home() / ".config/BraveSoftware"
     if not brave.exists():
         brave.mkdir(parents=True, exist_ok=True)
-        os.symlink(str(Path.home() / ".config/Zoho/Ulaa"), str(brave / "Brave-Browser"))
+        os.symlink(str(Path.home() / ".var/app/com.ulaa.Ulaa/cache/Zoho/Ulaa"), str(brave / "Brave-Browser"))
 
     print("--- Deploying profile Configs ---")
     link_configs(f"{DEFAULTS_DIR}/home", str(Path.home()), profile_apps)
@@ -1224,6 +1221,13 @@ def setup_dotfiles() -> None:
         f"{DEFAULTS_DIR}/share", str(Path.home() / ".local/share"), shared_apps
     )
 
+    user_systemd = Path.home() / ".config/systemd/user"
+    user_systemd.mkdir(parents=True, exist_ok=True)
+    for _unit in ("battery-alert.service", "battery-alert.timer"):
+        _src = Path(DEFAULTS_DIR) / "config/systemd/user" / _unit
+        _dst = user_systemd / _unit
+        if _src.exists() and not _dst.exists():
+            shutil.copy2(_src, _dst)
     run(["systemctl", "--user", "daemon-reexec"])
     run(["systemctl", "--user", "enable", "--now", "battery-alert.timer"])
 

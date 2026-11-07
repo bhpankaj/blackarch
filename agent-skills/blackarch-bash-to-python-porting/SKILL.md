@@ -15,6 +15,7 @@ Porting a `blackarch-*` bash script to Python while preserving dispatcher compat
 6. Verify with `python3 -m py_compile` and a `--help`/smoke run.
 
 ## Pitfalls
+- When the script already lives in `/opt/blackarch/bin` (not `old_repo/bin`), port it in place: overwrite the file with a Python shebang and keep the same basename; do not create a separate module+wrapper.
 - Module main signatures vary (some take argv, some take none); wrappers should try `main(argv)`, then `main()`.
 - Bash scripts that are thin launchers should delegate to the real Python module rather than reimplement logic.
 - Do not remove exec bits from Python wrappers if Hyprland/Quickshell configs invoke them by name on PATH.

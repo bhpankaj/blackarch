@@ -1208,6 +1208,13 @@ def setup_dotfiles() -> None:
         f"{DEFAULTS_DIR}/share", str(Path.home() / ".local/share"), shared_apps
     )
 
+    user_systemd = Path.home() / ".config/systemd/user"
+    user_systemd.mkdir(parents=True, exist_ok=True)
+    for _unit in ("battery-alert.service", "battery-alert.timer"):
+        _src = Path(DEFAULTS_DIR) / "config/systemd/user" / _unit
+        _dst = user_systemd / _unit
+        if _src.exists() and not _dst.exists():
+            shutil.copy2(_src, _dst)
     run(["systemctl", "--user", "daemon-reexec"])
     run(["systemctl", "--user", "enable", "--now", "battery-alert.timer"])
 

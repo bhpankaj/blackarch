@@ -2987,9 +2987,6 @@ def install_limine_bootloader(esp_part: str = "") -> None:
     # /boot in the clone must exist for the vmlinuz lookup.
     os.makedirs(os.path.join(ROOT_MNT, "boot"), exist_ok=True)
 
-    # The loader binary is laid out, but NO NVRAM entry is written here:
-    # EFI boot entries must be created only by --efi-entry (efibootmgr),
-    # never by the bootloader installation itself.
     # Inside the chroot ESP_PATH must name a path that exists THERE.
     chroot_env = {**os.environ, "ESP_PATH": CHROOT_ESP}
     run(["arch-chroot", ROOT_MNT, "/usr/bin/limine-mkinitcpio"], env=chroot_env)
@@ -3181,8 +3178,6 @@ def install_systemd_boot() -> None:
         # copy the binaries and the firmware would never find them.
         try_run(["mount", "-t", "efivarfs", "efivarfs", "/sys/firmware/efi/efivars"])
 
-    # NO NVRAM entry is written by bootctl here: EFI boot entries must
-    # be created only by --efi-entry (efibootmgr), never by the loader install.
     run(
         [
             "bootctl",
@@ -3190,7 +3185,7 @@ def install_systemd_boot() -> None:
             "install",
         ]
     )
-    ok("systemd-boot installed (no NVRAM entry — use --efi-entry for that)")
+    ok("systemd-boot installed (no NVRAM entry — use efibootmgr for that)")
 
     # The UKIs are already in <ESP>/EFI/Linux; name them in loader/entries/.
     kernels = clone_kernels()
@@ -3572,12 +3567,6 @@ on it: nothing is reformatted and nothing is encrypted.
         "installing one would also write an NVRAM entry to your ESP. there is no "
         "prompt for this -- the flag is the only way to choose. ignored on the "
         "clone path, which keeps the loader the running system's own ESP carries",
-    )
-    ap.add_argument(
-        "--efi-entry",
-        action="store_true",
-        help="create an EFI boot entry via efibootmgr without requiring --bootloader. "
-        "useful when the loader will be installed separately or is handled manually",
     )
     ap.add_argument(
         "--hostname",
@@ -4133,16 +4122,15 @@ def main(args=None) -> int:
         # Explicitly NOT build_initramfs(): nothing can boot this root yet, so
         # the image would be built against a kernel tree the user may never use
         # and then rebuilt the moment they install their loader.
-        info("no bootloader selected: leaving the new ESP without a loader")
-    # --efi-entry creates an NVRAM boot entry without requiring a full bootloader install.
-    if args.efi_entry:
+        warn("no bootloader selected: leaving the new ESP without a loader; install a bootloader later before rebooting")
+    if BOOTLOADER:
         if not esp_part:
-            warn("--efi-entry requires an ESP; skipping efibootmgr entry")
+            warn("--bootloader requires an ESP; skipping efibootmgr entry")
         else:
             # If --bootloader is set, use its loader path; otherwise ask.
             entry_bl = BOOTLOADER
             if not entry_bl:
-                info("--efi-entry: which bootloader is this EFI entry for?")
+                info("--bootloader: which bootloader is this EFI entry for?")
                 choice = ask_choice(
                     "Bootloader for EFI entry",
                     (
@@ -4179,7 +4167,7 @@ def main(args=None) -> int:
                 run(cmd, check=False)
                 ok(f"EFI boot entry created via efibootmgr: {label} ({loader_path})")
             except SystemExit:
-                warn("efibootmgr entry creation failed (check --efi-entry conditions)")
+                warn("efibootmgr entry creation failed (check --bootloader conditions)")
     if BOOTLOADER == "limine":
         # Limine's Linux protocol loads vmlinuz + initramfs as two modules, so
         # no UKI is built; build_initramfs() already put both on the ESP.

@@ -169,8 +169,9 @@ tuning file; stable exposure is the only lever.
   `sudo` fails with "a terminal is required to read the password".
 - **AUR `libcamera-ipu6` / `libcamera-ipu6-ipa` conflict with the distro `libcamera` / `libcamera-ipa` packages.** The user's preference is `pacman` over AUR (`yay`/`paru`): in the Python port, replace `_git_pkg()` with `_pacman_add()` for the AUR package list. If an AUR path must be kept, remove the conflicting distro packages (`libcamera`, `libcamera-ipa`, `libcamera-tools`, `gst-plugin-libcamera`) with `pacman -Rdn --noconfirm` before calling the AUR helper; `yay -S --overwrite *` handles file conflicts but not package-level conflicts.
 - **New bash script** `/home/black/webcam-setup-current.sh` provides the open libcamera source-build path (26 MHz DKMS, IVSC, relay) using only `pacman` packages — no proprietary AUR stack. Use it when the user asks for a bash-based webcam install.
+- **`v4l2-relayd -i` takes a GStreamer pipeline string, not a keyword.** `-i libcamera` does not select the libcamera source; it is parsed as a (broken) pipeline and the relay produces no frames. Use the provided `camera-relay` wrapper (`camera-relay start`, `camera-relay enable-persistent --yes`) which builds the correct `libcamerasrc ! videoconvert` pipeline and manages the loopback device. If a legacy app sees no frames, check `camera-relay status` / `camera-relay doctor` before debugging the sensor.
 - **Lens-cover state is readable** via the `Samsung Galaxy Book Camera Lens Cover` input
-  device (SW_CAMERA_LENS_COVER, bit 23) if a black frame needs ruling out.
+   device (SW_CAMERA_LENS_COVER, bit 23) if a black frame needs ruling out.
 
 ## System-level relay for TTY unlock (howdy / hyprlock PAM)
 
@@ -199,17 +200,17 @@ reinstall, verify the installed binary before trusting the service:
 
 ```bash
 # 1. The binary must contain the patch markers
-strings /opt/blackarch/bin/camera-relay-monitor | grep -c \
+strings /usr/local/bin/camera-relay-monitor | grep -c \
   'RELAY_GRACE_SECONDS\|RELAY_WARMUP_FRAMES\|Warmup hold complete'
 
 # 2. The build time must be newer than the upstream download (not the original install)
-stat -c '%y' /opt/blackarch/bin/camera-relay-monitor
+stat -c '%y' /usr/local/bin/camera-relay-monitor
 
 # 3. If either check fails, rebuild from the patched source directly:
 sudo bash ~/Work/galaxybook-camera/reapply-flicker-fix.sh
 ```
 
-- **After clone/reinstall (`blackarch installer`), the relay shows black frames and the camera LED (`OVTI02C1_00::privacy_led`) stays off.** The clone preserves the user service (`camera-relay.service`) but the upstream installer rebuilds `/opt/blackarch/bin/camera-relay-monitor` from unpatched upstream source, which tears down the pipeline instantly (no grace period / warmup hold). The open libcamera stack (not the proprietary `--ipu6` AUR stack) relies on the user relay (`v4l2loopback` device label `Camera Relay`, `video*` node); `v4l2-relayd.service` (system) is only for the AUR `--ipu6` path. Recovery: `sudo bash ~/Work/galaxybook-camera/reapply-flicker-fix.sh`. Verify with: `systemctl --user status camera-relay.service`, `cat /sys/devices/virtual/video4linux/video0/name` = `Camera Relay`, `lsmod | grep v4l2loopback`. Never hardcode the LED device (`/sys/class/leds/*kbd*`); discover at runtime.
+- **After clone/reinstall (`blackarch installer`), the relay shows black frames and the camera LED (`OVTI02C1_00::privacy_led`) stays off.** The clone preserves the user service (`camera-relay.service`) but the upstream installer rebuilds `/usr/local/bin/camera-relay-monitor` from unpatched upstream source, which tears down the pipeline instantly (no grace period / warmup hold). The open libcamera stack (not the proprietary `--ipu6` AUR stack) relies on the user relay (`v4l2loopback` device label `Camera Relay`, `video*` node); `v4l2-relayd.service` (system) is only for the AUR `--ipu6` path. Recovery: `sudo bash ~/Work/galaxybook-camera/reapply-flicker-fix.sh`. Verify with: `systemctl --user status camera-relay.service`, `cat /sys/devices/virtual/video4linux/video0/name` = `Camera Relay`, `lsmod | grep v4l2loopback`. Never hardcode the LED device (`/sys/class/leds/*kbd*`); discover at runtime.
 - **The 26 MHz ov02c10 DKMS module is per-kernel.** `/usr/src/ov02c10-1.0` builds for one kernel at a time; after booting a different kernel (e.g. hardened vs offensive), `cam -l` reports `No sensor found` even though the module is installed for the other kernel. Install it for the running kernel with `sudo dkms install ov02c10/1.0 -k $(uname -r)`, then `sudo modprobe -r ov02c10 && sudo modprobe ov02c10` and re-check `sudo dmesg | grep ov02c10`. Do not assume one install covers both kernels.
 - **`reapply-flicker-fix.sh` is idempotent: it builds from `camera-relay-monitor.c.patched`,
 removes any `always-on.conf`, writes `10-flicker-fix.conf`, and restarts the user

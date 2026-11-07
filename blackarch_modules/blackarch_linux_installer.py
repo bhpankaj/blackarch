@@ -3967,12 +3967,6 @@ on it: nothing is reformatted and nothing is encrypted.
         "clone path, which keeps the loader the running system's own ESP carries",
     )
     ap.add_argument(
-        "--efi-entry",
-        action="store_true",
-        help="create an EFI boot entry via efibootmgr without requiring --bootloader. "
-        "useful when the loader will be installed separately or is handled manually",
-    )
-    ap.add_argument(
         "--webcam-setup",
         action="store_true",
         help="run the Galaxy Book webcam setup (blackarch-webcam-setup) after "
@@ -4565,9 +4559,9 @@ def main(args=None) -> int:
         # Explicitly NOT build_initramfs(): nothing can boot this root yet, so
         # the image would be built against a kernel tree the user may never use
         # and then rebuilt the moment they install their loader.
-        info("no bootloader selected: leaving the new ESP without a loader")
+        warn("no bootloader selected: leaving the new ESP without a loader; install a bootloader later before rebooting")
     # --efi-entry creates an NVRAM boot entry without requiring a full bootloader install.
-    if args.efi_entry:
+    if BOOTLOADER:
         if not esp_part:
             warn("--efi-entry requires an ESP; skipping efibootmgr entry")
         else:

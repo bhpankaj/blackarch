@@ -737,7 +737,16 @@ uninstall() {
     udevadm control --reload-rules 2>/dev/null || true
 
     depmod -a "$(uname -r)" 2>/dev/null || true
-    command -v mkinitcpio >/dev/null 2>&1 && mkinitcpio -P
+    if command -v limine-mkinitcpio >/dev/null 2>&1; then
+        limine-mkinitcpio
+    elif [[ -n "$(ls /etc/mkinitcpio.d/*.preset 2>/dev/null)" ]]; then
+        mkinitcpio -P
+    elif command -v mkinitcpio >/dev/null 2>&1; then
+        for kver in /usr/lib/modules/*/; do
+            [[ -f "$kver/modules.builtin" ]] || continue
+            mkinitcpio --kernel "${kver%/}" --generate "/boot/initramfs-${kver##*/}.img" 2>/dev/null || true
+        done
+    fi
 
     warn "Group memberships (video/kvm) and the camera-relay group were left in place"
     info "Uninstalled — reboot to return to the stock drivers"
@@ -855,7 +864,16 @@ install_ov02c10_dkms
 
 if [[ "$MODE" == "sensor-only" ]]; then
     step "Sensor-only mode — skipping the userspace stack"
-    command -v mkinitcpio >/dev/null 2>&1 && mkinitcpio -P
+    if command -v limine-mkinitcpio >/dev/null 2>&1; then
+        limine-mkinitcpio
+    elif [[ -n "$(ls /etc/mkinitcpio.d/*.preset 2>/dev/null)" ]]; then
+        mkinitcpio -P
+    elif command -v mkinitcpio >/dev/null 2>&1; then
+        for kver in /usr/lib/modules/*/; do
+            [[ -f "$kver/modules.builtin" ]] || continue
+            mkinitcpio --kernel "${kver%/}" --generate "/boot/initramfs-${kver##*/}.img" 2>/dev/null || true
+        done
+    fi
     verify
     exit 0
 fi
@@ -868,8 +886,17 @@ install_camera_relay
 
 # initramfs once, now that both DKMS modules are in place
 step "Rebuilding initramfs"
-if command -v mkinitcpio >/dev/null 2>&1; then
+if command -v limine-mkinitcpio >/dev/null 2>&1; then
+    limine-mkinitcpio && info "initramfs rebuilt"
+elif [[ -n "$(ls /etc/mkinitcpio.d/*.preset 2>/dev/null)" ]]; then
     mkinitcpio -P && info "initramfs rebuilt"
+elif command -v mkinitcpio >/dev/null 2>&1; then
+    rebuilt=false
+    for kver in /usr/lib/modules/*/; do
+        [[ -f "$kver/modules.builtin" ]] || continue
+        mkinitcpio --kernel "${kver%/}" --generate "/boot/initramfs-${kver##*/}.img" && rebuilt=true
+    done
+    $rebuilt && info "initramfs rebuilt"
 elif command -v dracut >/dev/null 2>&1; then
     dracut --force && info "initramfs rebuilt"
 else

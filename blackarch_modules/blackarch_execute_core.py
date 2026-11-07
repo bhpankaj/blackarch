@@ -1111,12 +1111,14 @@ def setup_tpm(extra: list[str] | None = None) -> None:
 
 @log_all
 def setup_post_config() -> None:
-    setup_tpm(None)
+    # setup_tpm(None)
     blackarch_flatpak_ulaa()
     desktop = Path("/usr/share/applications/blackarch-webapp.desktop")
-    desktop.write_text(
-        "[Desktop Entry]\nType=Application\nName=Blackarch WebApp\nExec=blackarch webapp %u\nMimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;\n",
-        encoding="utf-8",
+    sudo_write(
+        desktop,
+        "[Desktop Entry]\nType=Application\nName=Blackarch WebApp\n"
+        "Exec=blackarch webapp %u\n"
+        "MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;\n",
     )
     run(
         [
@@ -1128,13 +1130,7 @@ def setup_post_config() -> None:
         ]
     )
     run(["xdg-settings", "set", "default-web-browser", BROWSER])
-
-    run_shell(
-        "curl -sSL https://kodachi.cloud/apps/os/install/kodachi-deps-install.sh | sudo bash"
-    )
-    run_shell(
-        "curl -sSL https://kodachi.cloud/apps/os/install/kodachi-binary-install.sh | bash"
-    )
+    setup_kodachi()
 
     # smartthings installation
     if not have("smartthings"):
@@ -1143,8 +1139,8 @@ def setup_post_config() -> None:
     # webcam setup if IPU6 device present
     if Path("/dev/video0").exists():
         # run(["/opt/blackarch/bin/blackarch-webcam-setup", "--ipu6"])
-        run(["/opt/blackarch/galaxybook-camera/galaxybook-camera-fix.sh"])
-        run(["/opt/blackarch/galaxybook-camera/reapply-flicker-fix.sh"])
+        sudo_run(["/opt/blackarch/galaxybook-camera/galaxybook-camera-fix.sh"])
+        sudo_run(["/opt/blackarch/galaxybook-camera/reapply-flicker-fix.sh"])
     sudo_write(
         "/etc/NetworkManager/conf.d/NetworkManager.conf",
         "[device]\n  wifi.backend=iwd\n",
@@ -1208,7 +1204,10 @@ def setup_dotfiles() -> None:
     brave = Path.home() / ".config/BraveSoftware"
     if not brave.exists():
         brave.mkdir(parents=True, exist_ok=True)
-        os.symlink(str(Path.home() / ".var/app/com.ulaa.Ulaa/cache/Zoho/Ulaa"), str(brave / "Brave-Browser"))
+        os.symlink(
+            str(Path.home() / ".var/app/com.ulaa.Ulaa/cache/Zoho/Ulaa"),
+            str(brave / "Brave-Browser"),
+        )
 
     print("--- Deploying profile Configs ---")
     link_configs(f"{DEFAULTS_DIR}/home", str(Path.home()), profile_apps)
@@ -1307,6 +1306,28 @@ def install_smartthings() -> None:
 
 
 @log_all
+def setup_kodachi() -> None:
+    sudo_run(
+        [
+            "curl",
+            "-sSL",
+            "https://kodachi.cloud/apps/os/install/kodachi-deps-install.sh",
+            "|",
+            "bash",
+        ]
+    )
+    sudo_run(
+        [
+            "curl",
+            "-sSL",
+            "https://kodachi.cloud/apps/os/install/kodachi-binary-install.sh",
+            "|",
+            "bash",
+        ]
+    )
+
+
+@log_all
 def setup_hermes(conf):
     logger.info("setup_hermes: called", extra={"command": "setup_hermes"})
     match conf:
@@ -1326,7 +1347,7 @@ def setup_hermes(conf):
 def print_help_setup() -> None:
     print("Usage: blackarch setup <subcommand>")
     print(
-        "Subcommands: keyrings, sudo, tpm, mount, profile, dotfiles, virtualbox, kvm, ollama, hermes, kodachi, xdg-mime, aur, hyprland, cyber, post, smartthings, lukscrypt, battery-threshold, install, setup"
+        "Subcommands: keyrings, sudo, tpm, mount, profile, dotfiles, virtualbox, kvm, ollama, hermes, kodachi, xdg-mime, aur, hyprland, cyber, post, smartthings, lukscrypt, battery-threshold, install"
     )
 
 
@@ -1365,12 +1386,7 @@ def setup_dispatch(argv: Sequence[str]) -> int:
     elif sub == "hermes":
         setup_hermes(sys.argv[2:])
     elif sub == "kodachi":
-        run_shell(
-            "curl -sSL https://kodachi.cloud/apps/os/install/kodachi-deps-install.sh | sudo bash"
-        )
-        run_shell(
-            "curl -sSL https://kodachi.cloud/apps/os/install/kodachi-binary-install.sh | bash"
-        )
+        setup_kodachi()
     elif sub == "lukscrypt" or sub == "luks":
         lukscrypt_param = len(argv) > 1 and argv[1] in (
             "lukscrypt",

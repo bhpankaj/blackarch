@@ -110,7 +110,6 @@ GROUP_DESCRIPTIONS: dict[str, str] = {
     "remove": "Removal workflows",
     "restart": "Restart Blackarch components",
     "setup": "Interactive setup wizards",
-    "setup-post": "Post-install setup verification and auto-fix",
     "shell": "Blackarch shell IPC helpers",
     "screensaver": "Screensaver branding and animation",
     "snapshot": "System snapshots",
@@ -914,8 +913,11 @@ def main(argv: list[str]) -> int:
     if argv and argv[0] == "installer":
         sys.path.insert(0, BLACKARCH_BIN_DIR)
         import blackarch_modules.blackarch_installer_core as _inst
+
         if "--complete" in argv[1:]:
-            print("--disk --scheme --esp-size --install --existing --no-encrypt --bootloader --hostname --cache-dir --skip-pacstrap --no-copy-home --copy-home --skip-home-dir --skip-home-ext --skip-vm --efi-part --root-part --luks-part --skip-network --skip-timezone --keep-mounted")
+            print(
+                "--disk --scheme --esp-size --install --existing --no-encrypt --bootloader --hostname --cache-dir --skip-pacstrap --no-copy-home --copy-home --skip-home-dir --skip-home-ext --skip-vm --efi-part --root-part --luks-part --skip-network --skip-timezone --keep-mounted"
+            )
             return 0
         args = _inst.parse_args(argv[1:])
         return _inst.main(args=args)

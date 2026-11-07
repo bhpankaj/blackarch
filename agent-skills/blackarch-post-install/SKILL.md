@@ -7,7 +7,7 @@ description: "Use when running blackarch setup-post on a fresh install."
 
 ## Command
 
-    blackarch setup-post
+    blackarch setup post
 
 Runs checks and auto-fixes snapper, Ulaa flatpak, Galaxy Book webcam, Kodachi, LUKS SD-card crypttab/fstab.
 
@@ -19,6 +19,7 @@ Runs checks and auto-fixes snapper, Ulaa flatpak, Galaxy Book webcam, Kodachi, L
 - Kodachi: blackarch setup kodachi if dashboard missing
 - LUKS SD card: report missing crypttab/fstab entries
 - Battery alert: deploy ~/.config/systemd/user/battery-alert.service + .timer from defaults and enable timer
+- System-path writes in setup_post (e.g. /usr/share/applications) must use sudo_write, not Path.write_text, or setup-post fails with PermissionError when run as the user.
 
 ## LUKS SD card (TPM2)
 

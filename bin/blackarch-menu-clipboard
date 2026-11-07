@@ -1,0 +1,6 @@
+#!/bin/bash
+# blackarch:summary=Launch the clipboard manager
+# blackarch:group=menu
+# blackarch:examples=blackarch menu clipboard
+
+blackarch-shell shell toggle blackarch.clipboard

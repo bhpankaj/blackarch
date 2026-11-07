@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Detect ASUS ExpertBook B9406 series laptops on Intel Panther Lake.
+
+blackarch-hw-match "B9406" && blackarch-hw-intel-ptl

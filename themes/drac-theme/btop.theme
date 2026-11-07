@@ -1,0 +1,57 @@
+# Background
+theme[main_bg]="#101428"        # Base black
+theme[main_fg]="#FFFFFF"        # Bright white text
+
+# Titles and highlights
+theme[title]="#1E90FF"          # Blue titles (main identity)
+theme[hi_fg]="#8BE9FD"          # Cyan highlight
+
+# Selection
+theme[selected_bg]="#1A7ACC"    # Deep blue selection
+theme[selected_fg]="#FFFFFF"    # White text
+
+# Inactive text
+theme[inactive_fg]="#AAAAAA"    # Dim white
+
+# Processes misc text
+theme[proc_misc]="#FF79C6"      # Pink/magenta accent
+
+# Boxes (rainbow around the dashboard, but blue stays main in CPU/Net)
+theme[cpu_box]="#1E90FF"        # Blue
+theme[mem_box]="#50FA7B"        # Green
+theme[net_box]="#FFB86C"        # Orange
+theme[proc_box]="#9370DB"       # Purple
+theme[div_line]="#63B3FF"       # Brighter blue divider
+
+# Gradients per resource
+theme[temp_start]="#1A7ACC"     # Blue → Cyan
+theme[temp_mid]="#63B3FF"
+theme[temp_end]="#8BE9FD"
+
+theme[cpu_start]="#1A7ACC"      # Blue gradient (dominant)
+theme[cpu_mid]="#1E90FF"
+theme[cpu_end]="#63B3FF"
+
+theme[free_start]="#3CC968"     # Green → Cyan
+theme[free_mid]="#50FA7B"
+theme[free_end]="#8BE9FD"
+
+theme[cached_start]="#FFB86C"   # Orange → Yellow
+theme[cached_mid]="#FFD191"
+theme[cached_end]="#F1FA8C"
+
+theme[available_start]="#9370DB" # Purple → Cyan
+theme[available_mid]="#BA55D3"
+theme[available_end]="#8BE9FD"
+
+theme[used_start]="#FF5555"     # Red → Pink
+theme[used_mid]="#FF6E6E"
+theme[used_end]="#FF79C6"
+
+theme[download_start]="#1E90FF" # Blue (network stays blueish)
+theme[download_mid]="#63B3FF"
+theme[download_end]="#8BE9FD"
+
+theme[upload_start]="#FF79C6"   # Pink → Purple
+theme[upload_mid]="#9370DB"
+theme[upload_end]="#1E90FF"

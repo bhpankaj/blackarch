@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# blackarch:summary=Apply the current theme keyboard color to supported keyboards
+# blackarch:hidden=true
+
+blackarch-theme-set-keyboard-asus-rog
+blackarch-theme-set-keyboard-f16

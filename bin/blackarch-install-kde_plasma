@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+echo "--- Updating System ---"
+sudo pacman -Syu --noconfirm
+
+echo "--- Installing Intel Graphics Drivers (Galaxy Book 3) ---"
+# Includes Vulkan and 32-bit support for compatibility
+sudo pacman -S --needed --noconfirm \
+    mesa lib32-mesa \
+    vulkan-intel lib32-vulkan-intel \
+    intel-media-driver libva-intel-driver
+
+echo "--- Installing KDE Plasma & Core Utilities ---"
+# plasma-meta provides the full desktop experience
+# kde-applications is optional but recommended for a complete suite
+sudo pacman -S --needed --noconfirm \
+    plasma-meta \
+    konsole \
+    dolphin \
+    ark \
+    gwenview
+
+echo "--- Setting up Display Manager (SDDM) ---"
+sudo pacman -S --needed --noconfirm sddm
+sudo systemctl enable sddm
+
+echo "--- Enabling Network Management ---"
+sudo pacman -S --needed --noconfirm networkmanager
+# sudo systemctl enable NetworkManager
+
+echo "--- Installation Complete! ---"
+echo "You can now reboot. Use the session menu in SDDM to switch between Plasma, Hyprland, and i3."

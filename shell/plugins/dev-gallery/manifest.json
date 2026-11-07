@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "blackarch.dev-gallery",
+  "name": "Dev gallery",
+  "version": "1.0.0",
+  "author": "Blackarch",
+  "description": "Visual reference for blackarch-shell common UI components. Summon with: blackarch-shell shell summon blackarch.dev-gallery '{}' (or run: blackarch dev ui-preview).",
+  "kinds": [
+    "panel"
+  ],
+  "entryPoints": {
+    "panel": "GalleryPanel.qml"
+  }
+}

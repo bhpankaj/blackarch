@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Show the current time and date notification
+
+blackarch-notification-send -g  -u low "$(date +"%A %H:%M  ·  %d %B %Y  ·  Week %V")"

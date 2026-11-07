@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# blackarch:summary=Remove the Xbox Cloud Gaming web app.
+
+set -e
+
+blackarch-webapp-remove "Xbox Cloud Gaming"

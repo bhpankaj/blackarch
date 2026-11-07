@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+sudo pacman-key --init
+
+echo "Populating Arch Linux keys..."
+sudo pacman-key --populate archlinux blackarch athena
+
+# 1. Receive the key from the keyservers
+sudo pacman-key --recv-keys F0134EE680CAC571
+
+# 2. Verify the fingerprint (optional, but recommended to ensure security)
+sudo pacman-key --finger F0134EE680CAC571
+
+# 3. Locally sign the key so pacman trusts it for package/database verification
+sudo pacman-key --lsign-key F0134EE680CAC571
+
+echo "Refreshing the Arch Linux keyring package..."
+pacman -Sy --needed --noconfirm archlinux-keyring athena-keyring blackarch-keyring blackarch-keyring

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Check for active VPN interface
+if ip addr show | grep -q "tun0"; then
+  echo '{"text": " ", "class": "connected"}'
+elif ip addr show | grep -q "wg0"; then
+  echo '{"text": " ", "class": "connected"}'
+# else
+#   echo '{"text": " ", "class": "disconnected"}'
+# fi
+
+else
+  # WIRED_IFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -oE '(e|usb)\w+' | xargs -I{} sh -c 'cat /sys/class/net/{}/operstate' | grep -q "up" && echo "wired")
+  SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
+  WIRED_IFACE=$(nmcli -t -f DEVICE,STATE,TYPE dev | grep ':connected:ethernet' | cut -d: -f3)
+  if [ "$WIRED_IFACE" == "ethernet" ]; then
+    echo "{\"text\": \"󰈀\", \"class\": \"wired\", \"tooltip\": \"Wired/USB Tethering Connected\"}"
+  elif [ -n "$SSID" ]; then
+    echo "{\"text\": \" \", \"class\": \"wifi\", \"tooltip\": \"Connected to $SSID\"}"
+  else
+    echo "{\"text\": \"󰈀\", \"class\": \"eth\", \"tooltip\": \"Ethernet or Offline\"}"
+  fi
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# blackarch:summary=Toggle microphone mute. Drives the hardware mic-mute LED on laptops that expose one.
+
+wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle >/dev/null
+
+if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED; then
+  blackarch-brightness-keyboard-mute on
+  blackarch-osd -i microphone-muted -m "Microphone muted"
+else
+  blackarch-brightness-keyboard-mute off
+  blackarch-osd -i microphone -m "Microphone on"
+fi

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+for pkg in "$@"; do
+  case "$(lsb_release -sd | tr [A-Z] [a-z])" in
+  *arch* | *blackarch* | *blackarch* | *garuda*)
+    if ! pacman -Q "$pkg" &>/dev/null && ! yay -Si "$pkg" &>/dev/null; then
+      exit 0
+    fi
+    ;;
+  *kali* | *debian* | *ubuntu*)
+    if ! dpkg -l "$pkg" &>/dev/null; then
+      exit 0
+    fi
+    ;;
+  esac
+done
+
+exit 1

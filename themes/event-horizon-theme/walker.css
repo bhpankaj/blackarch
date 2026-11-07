@@ -1,0 +1,62 @@
+/*
+*      dMMMMMP dMP dMP dMMMMMP dMMMMb dMMMMMMP            
+*     dMP     dMP dMP dMP     dMP dMP   dMP               
+*    dMMMP   dMP dMP dMMMP   dMP dMP   dMP                
+*   dMP      YMvAP" dMP     dMP dMP   dMP                 
+*  dMMMMMP    VP"  dMMMMMP dMP dMP   dMP                  
+*                                                         
+*      dMP dMP .aMMMb  dMMMMb  dMP dMMMMMP .aMMMb  dMMMMb 
+*     dMP dMP dMP"dMP dMP.dMP amr   .dMP" dMP"dMP dMP dMP 
+*    dMMMMMP dMP dMP dMMMMK" dMP  .dMP"  dMP dMP dMP dMP  
+*   dMP dMP dMP.aMP dMP"AMF dMP .dMP"   dMP.aMP dMP dMP   
+*  dMP dMP  VMMMP" dMP dMP dMP dMMMMMP  VMMMP" dMP dMP    
+*                                                         
+*/
+
+
+@define-color selected-text #26BBD9;
+@define-color text #CBCED0;
+@define-color base #1C1E26;
+@define-color border #26BBD9;
+@define-color foreground #CBCED0;
+@define-color background #1C1E26;
+
+window {
+  background-color: transparent;
+  color: @text;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Walker Window Border */
+window .box-wrapper {
+  border-radius: 16px;
+  border: 3px solid alpha(@border, 0.9);
+  padding: 18px 22px;
+  background: alpha(@base, 0.8);
+  background-clip: padding-box;
+  box-shadow: 2px 2px 18px rgba(0, 0, 0, 1);
+}
+
+/*
+* _______/\\\\\_______/\\\\\\____________/\\\__                                                  
+*   _____/\\\///\\\____\////\\\___________\/\\\__                                                 
+*    ___/\\\/__\///\\\_____\/\\\___________\/\\\__                                                
+*     __/\\\______\//\\\____\/\\\___________\/\\\__                                               
+*      _\/\\\_______\/\\\____\/\\\______/\\\\\\\\\__                                              
+*       _\//\\\______/\\\_____\/\\\_____/\\\////\\\__                                             
+*        __\///\\\__/\\\_______\/\\\____\/\\\__\/\\\__                                            
+*         ____\///\\\\\/______/\\\\\\\\\_\//\\\\\\\/\\_                                           
+*          ______\/////_______\/////////___\///////\//__                                          
+*  ______/\\\\\\\\\\\________________/\\\_______________________/\\\______________________        
+*   _____\/////\\\///________________\/\\\______________________\/\\\______________________       
+*    _________\/\\\___________________\/\\\______________________\/\\\______________________      
+*     _________\/\\\_________/\\\\\____\/\\\____________/\\\\\____\/\\\____________/\\\\\____     
+*      _________\/\\\_______/\\\///\\\__\/\\\\\\\\\____/\\\///\\\__\/\\\\\\\\\____/\\\///\\\__    
+*       _________\/\\\______/\\\__\//\\\_\/\\\////\\\__/\\\__\//\\\_\/\\\////\\\__/\\\__\//\\\_   
+*        __/\\\___\/\\\_____\//\\\__/\\\__\/\\\__\/\\\_\//\\\__/\\\__\/\\\__\/\\\_\//\\\__/\\\__  
+*         _\//\\\\\\\\\_______\///\\\\\/___\/\\\\\\\\\___\///\\\\\/___\/\\\\\\\\\___\///\\\\\/___ 
+*          __\/////////__________\/////_____\/////////______\/////_____\/////////______\/////_____
+*  
+*/

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# blackarch:summary=Install Zed Editor and configure it with the current Blackarch theme
+
+echo "Installing Zed Editor..."
+blackarch-pkg-add zed omazed
+
+# Apply Blackarch theme to Zed
+omazed setup
+
+setsid uwsm-app -- gtk-launch dev.zed.Zed >/dev/null 2>&1 &

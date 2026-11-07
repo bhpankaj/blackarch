@@ -1,0 +1,1 @@
+blackarch-pkg-add autotiling i3-wm i3lock i3status blackarch-config-i3 blackarch-config-x11 i3-gaps picom feh polybar rofi xclip playerctl brightnessctl xorg-server xorg-xinit xorg-xsetroot xf86-video-intel xdotool rofi-greenclip polybar

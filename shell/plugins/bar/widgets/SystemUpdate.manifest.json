@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "blackarch.system-update",
+  "name": "Blackarch update",
+  "version": "1.0.0",
+  "author": "Blackarch",
+  "description": "Indicates available Blackarch updates",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "SystemUpdate.qml"
+  },
+  "barWidget": {
+    "displayName": "Blackarch update",
+    "description": "Indicates available Blackarch updates",
+    "category": "System",
+    "allowMultiple": false
+  }
+}

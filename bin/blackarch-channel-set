@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# blackarch:summary=Set the Blackarch package channel.
+# blackarch:args=<stable|rc|edge|dev>
+# blackarch:requires-sudo=true
+
+set -euo pipefail
+
+usage() { echo "Usage: blackarch-channel-set [stable|rc|edge|dev]"; }
+fail() { echo "Error: $*" >&2; exit 1; }
+
+confirm_dev() {
+  cat <<'WARNING'
+
+The dev channel links Blackarch directly to a checkout of the source in ~/blackarch.
+It's exclusively intended for developers working on Blackarch itself.
+
+WARNING
+
+  gum confirm --default=false "Switch to dev channel?"
+}
+
+validate_dev_checkout() {
+  local checkout="$1"
+
+  if [[ -e $checkout && ! -d $checkout/.git ]]; then
+    fail "$checkout already exists and is not a git checkout."
+  fi
+
+  if [[ -d $checkout/.git && ( ! -d $checkout/bin || ! -d $checkout/default || ! -d $checkout/shell ) ]]; then
+    fail "$checkout is a git checkout, but it does not look like Blackarch."
+  fi
+}
+
+link_dev_checkout() {
+  local checkout="$1"
+  [[ -d $checkout/.git ]] || git clone https://github.com/basecamp/blackarch.git "$checkout"
+
+  blackarch-dev-link "$checkout" --no-reboot
+}
+
+(( $# > 0 )) || { usage; exit 1; }
+
+dev_checkout=""
+channel="$1"
+leaving_dev=0
+
+case "$channel" in
+  stable)
+    pacman_channel=stable
+    packages=(blackarch blackarch-settings)
+    ;;
+  rc)
+    pacman_channel=rc
+    packages=(blackarch blackarch-settings)
+    ;;
+  edge)
+    pacman_channel=edge
+    packages=(blackarch-dev blackarch-settings-dev)
+    ;;
+  dev)
+    confirm_dev || { echo "Cancelled."; exit 0; }
+    dev_checkout="$HOME/blackarch"
+    validate_dev_checkout "$dev_checkout"
+    pacman_channel=edge
+    packages=(blackarch-dev blackarch-settings-dev)
+    ;;
+  *)
+    echo "Unknown channel: $channel" >&2
+    usage >&2
+    exit 1
+    ;;
+esac
+
+if [[ -z $dev_checkout && $BLACKARCH_PATH != "/usr/share/blackarch" ]]; then
+  leaving_dev=1
+fi
+
+if [[ -n $dev_checkout ]]; then
+  link_dev_checkout "$dev_checkout"
+  export BLACKARCH_PATH="$dev_checkout"
+  export PATH="$BLACKARCH_PATH/bin:$PATH"
+  blackarch-state set reboot-required
+fi
+
+blackarch-refresh-pacman "$pacman_channel"
+# --ask 4 accepts blackarch <-> blackarch-dev replacement prompts without file overwrites.
+sudo env BLACKARCH_UPDATE_PACMAN=1 pacman -S --needed --noconfirm --ask 4 "${packages[@]}"
+
+if [[ -z $dev_checkout ]]; then
+  blackarch-dev-unlink --no-reboot
+  export BLACKARCH_PATH=/usr/share/blackarch
+
+  if (( leaving_dev )); then
+    blackarch-state set reboot-required
+  fi
+fi
+
+blackarch-update -y

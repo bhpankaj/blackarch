@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# blackarch:summary=Refresh the shell update status
+# blackarch:hidden=true
+
+set -e
+
+if blackarch-update-available >/dev/null; then
+  blackarch-shell -q blackarch.system-update refresh
+else
+  blackarch-shell -q blackarch.system-update clear
+fi

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Toggle the current weather panel
+
+blackarch-shell shell toggle blackarch.weather

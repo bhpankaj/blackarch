@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+if blackarch-done ensure voxtype-install-invitation; then
+  blackarch-notification-send -u critical -g  "Install Dictation with Voxtype" \
+    "Click to install voice dictation for Blackarch." \
+    --exec blackarch-launch-floating-terminal-with-presentation blackarch-voxtype-install
+fi

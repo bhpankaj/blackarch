@@ -1,0 +1,8 @@
+{
+  "name": "Blackarch",
+  "version": "1.0.0",
+  "minAppVersion": "0.16.0",
+  "description": "Automatically syncs with your current Blackarch system theme colors and fonts",
+  "author": "Blackarch",
+  "authorUrl": "https://blackarch.org"
+}

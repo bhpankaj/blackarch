@@ -1,0 +1,46 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+# The primary colors for the terminal window
+background = '#101428'
+foreground = '#f2f4f8'
+
+[colors.cursor]
+text = '#111111'
+cursor = '#1E90FF'
+
+[colors.normal]
+# Normal colors used by applications
+black = '#1B1D21'
+red = '#FF5555'
+green = '#1E90FF'
+blue = '#50FA7B'
+magenta = '#FF79C6'
+cyan = '#8BE9FD'
+white = '#BBBBBB'
+yellow = '#F1FA8C'
+
+[colors.bright]
+# Bright colors used for emphasis
+black = '#555555'
+red = '#FF6E6E'
+green = '#63B3FF'
+yellow = '#FFFFA5'
+blue = '#69FF94'
+magenta = '#FF92DF'
+cyan = '#A4FFFF'
+white = '#FFFFFF'
+
+[window]
+opacity = 0.92
+
+[font]
+size = 18.0
+normal = { family = "RobotoMono Nerd Font Mono", style = "Regular" }
+
+[cursor]
+style = {shape = "Block", blinking = "On"}
+blink_interval = 800
+blink_timeout = 15
+unfocused_hollow = true

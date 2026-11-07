@@ -1,0 +1,337 @@
+{
+  "smartthings.a144e48a-4c50-4a19-8931-d0e155c8037a": {
+    "icon": "󰭎",
+    "label": "Akanksha's M33",
+    "action": "blackarch execute smartthings a144e48a-4c50-4a19-8931-d0e155c8037a"
+  },
+  "smartthings.560abf78-0d78-4b9b-a6c5-737abeff5829": {
+    "icon": "󰭎",
+    "label": "Aquaguard",
+    "action": "blackarch execute smartthings 560abf78-0d78-4b9b-a6c5-737abeff5829"
+  },
+  "smartthings.522d203c-8320-46c8-9b1d-f177b048b7be": {
+    "icon": "󰭎",
+    "label": "Bedroom Allout",
+    "action": "blackarch execute smartthings 522d203c-8320-46c8-9b1d-f177b048b7be"
+  },
+  "smartthings.94db9ce7-5b95-4744-b5b5-a31ef363f748": {
+    "icon": "󰭎",
+    "label": "Bedroom Exhaust",
+    "action": "blackarch execute smartthings 94db9ce7-5b95-4744-b5b5-a31ef363f748"
+  },
+  "smartthings.aa4c8271-30bd-41e2-9ca5-20b1a9aaea4e": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan off",
+    "action": "blackarch execute smartthings aa4c8271-30bd-41e2-9ca5-20b1a9aaea4e"
+  },
+  "smartthings.57e02864-6650-407c-8559-0334350187cb": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan Speed 1",
+    "action": "blackarch execute smartthings 57e02864-6650-407c-8559-0334350187cb"
+  },
+  "smartthings.cbd22e95-7d6a-4707-8ac5-9f64290b272a": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan Speed 2",
+    "action": "blackarch execute smartthings cbd22e95-7d6a-4707-8ac5-9f64290b272a"
+  },
+  "smartthings.3707ce2c-f623-463d-aed4-40d79fae0bd4": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan Speed 3",
+    "action": "blackarch execute smartthings 3707ce2c-f623-463d-aed4-40d79fae0bd4"
+  },
+  "smartthings.ee60702f-a62d-43c4-ad4f-dc2c12838f27": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan Speed 4",
+    "action": "blackarch execute smartthings ee60702f-a62d-43c4-ad4f-dc2c12838f27"
+  },
+  "smartthings.c3346a0f-5614-4d3b-9213-412bcc80ca22": {
+    "icon": "󰭎",
+    "label": "Bedroom Fan Speed 5",
+    "action": "blackarch execute smartthings c3346a0f-5614-4d3b-9213-412bcc80ca22"
+  },
+  "smartthings.e3a5944f-594c-4b63-8caa-43442d7f752f": {
+    "icon": "󰭎",
+    "label": "Bedroom Goodnight",
+    "action": "blackarch execute smartthings e3a5944f-594c-4b63-8caa-43442d7f752f"
+  },
+  "smartthings.36ed8f31-0028-446c-aab0-e4a0f357558a": {
+    "icon": "󰭎",
+    "label": "Bedroom Heater",
+    "action": "blackarch execute smartthings 36ed8f31-0028-446c-aab0-e4a0f357558a"
+  },
+  "smartthings.a68d632c-0196-4edd-9dc8-3609b1dcaf32": {
+    "icon": "󰭎",
+    "label": "Bedroom Light",
+    "action": "blackarch execute smartthings a68d632c-0196-4edd-9dc8-3609b1dcaf32"
+  },
+  "smartthings.b3ab4a46-e0fc-4de9-b864-cd7486a77549": {
+    "icon": "󰭎",
+    "label": "Bedroom Light Smart",
+    "action": "blackarch execute smartthings b3ab4a46-e0fc-4de9-b864-cd7486a77549"
+  },
+  "smartthings.755f41db-ca37-4879-86b2-ad9f61a0790b": {
+    "icon": "󰭎",
+    "label": "Bedroom Socket",
+    "action": "blackarch execute smartthings 755f41db-ca37-4879-86b2-ad9f61a0790b"
+  },
+  "smartthings.a792fd89-47a8-4455-a7ac-08fc0fb22492": {
+    "icon": "󰭎",
+    "label": "Charger Mobile Akanksha",
+    "action": "blackarch execute smartthings a792fd89-47a8-4455-a7ac-08fc0fb22492"
+  },
+  "smartthings.3e601a1b-91c3-4eb6-ab06-a7180a391fe3": {
+    "icon": "󰭎",
+    "label": "Charger Mobile Pankaj",
+    "action": "blackarch execute smartthings 3e601a1b-91c3-4eb6-ab06-a7180a391fe3"
+  },
+  "smartthings.d203bee7-6ef2-4288-9d9e-20289eaca0c7": {
+    "icon": "󰭎",
+    "label": "Chimney",
+    "action": "blackarch execute smartthings d203bee7-6ef2-4288-9d9e-20289eaca0c7"
+  },
+  "smartthings.dee10100-eb14-4a9a-91c2-e3556b3a43a6": {
+    "icon": "󰭎",
+    "label": "Fan with full speed",
+    "action": "blackarch execute smartthings dee10100-eb14-4a9a-91c2-e3556b3a43a6"
+  },
+  "smartthings.8e99bc60-3cef-4d54-8d56-c3bc35b6bb61": {
+    "icon": "󰭎",
+    "label": "Goodnight go out",
+    "action": "blackarch execute smartthings 8e99bc60-3cef-4d54-8d56-c3bc35b6bb61"
+  },
+  "smartthings.b0690e26-1cca-41c8-97fc-88cb6cf61518": {
+    "icon": "󰭎",
+    "label": "Induction",
+    "action": "blackarch execute smartthings b0690e26-1cca-41c8-97fc-88cb6cf61518"
+  },
+  "smartthings.81077e39-79f7-4e7f-a9e6-325c000ba2e7": {
+    "icon": "󰭎",
+    "label": "Kitchen Automation 2",
+    "action": "blackarch execute smartthings 81077e39-79f7-4e7f-a9e6-325c000ba2e7"
+  },
+  "smartthings.77479cc7-523d-4940-9e0f-d9b16e2f6c65": {
+    "icon": "󰭎",
+    "label": "Kitchen Automation 3",
+    "action": "blackarch execute smartthings 77479cc7-523d-4940-9e0f-d9b16e2f6c65"
+  },
+  "smartthings.7840200b-1fdc-4da5-85e0-c61492cee237": {
+    "icon": "󰭎",
+    "label": "Kitchen Exhaust",
+    "action": "blackarch execute smartthings 7840200b-1fdc-4da5-85e0-c61492cee237"
+  },
+  "smartthings.e1fdc18b-0d55-4fc4-aa0c-a91f96de806b": {
+    "icon": "󰭎",
+    "label": "Kitchen Light",
+    "action": "blackarch execute smartthings e1fdc18b-0d55-4fc4-aa0c-a91f96de806b"
+  },
+  "smartthings.4b5927fc-3b5d-4380-a052-4f4804b0f9ad": {
+    "icon": "󰭎",
+    "label": "Kitchen Off",
+    "action": "blackarch execute smartthings 4b5927fc-3b5d-4380-a052-4f4804b0f9ad"
+  },
+  "smartthings.51597af0-014b-46db-92c8-52a2839103d6": {
+    "icon": "󰭎",
+    "label": "Laptop charger off",
+    "action": "blackarch execute smartthings 51597af0-014b-46db-92c8-52a2839103d6"
+  },
+  "smartthings.a7d8dada-6c80-43a8-b81e-b1d16bf10698": {
+    "icon": "󰭎",
+    "label": "Laptop Charger on",
+    "action": "blackarch execute smartthings a7d8dada-6c80-43a8-b81e-b1d16bf10698"
+  },
+  "smartthings.37b6b8ef-ce55-4077-b0af-f6ad88db7d3e": {
+    "icon": "󰭎",
+    "label": "Laptop Socket",
+    "action": "blackarch execute smartthings 37b6b8ef-ce55-4077-b0af-f6ad88db7d3e"
+  },
+  "smartthings.0431fcbc-34f1-4e63-83cd-2fab137d756a": {
+    "icon": "󰭎",
+    "label": "LED 1",
+    "action": "blackarch execute smartthings 0431fcbc-34f1-4e63-83cd-2fab137d756a"
+  },
+  "smartthings.9eed87d9-e015-4ddd-a00e-ef9c812b693c": {
+    "icon": "󰭎",
+    "label": "LED 2",
+    "action": "blackarch execute smartthings 9eed87d9-e015-4ddd-a00e-ef9c812b693c"
+  },
+  "smartthings.995e4868-49d7-436a-b35a-79c9cfba3e91": {
+    "icon": "󰭎",
+    "label": "Light Sensor - Samsung Television",
+    "action": "blackarch execute smartthings 995e4868-49d7-436a-b35a-79c9cfba3e91"
+  },
+  "smartthings.817a0436-cbab-4f7b-a099-ba9d8aebcced": {
+    "icon": "󰭎",
+    "label": "Living Alexa",
+    "action": "blackarch execute smartthings 817a0436-cbab-4f7b-a099-ba9d8aebcced"
+  },
+  "smartthings.18c741f5-0363-4857-85ff-dfbc781a808a": {
+    "icon": "󰭎",
+    "label": "Living GoodNight",
+    "action": "blackarch execute smartthings 18c741f5-0363-4857-85ff-dfbc781a808a"
+  },
+  "smartthings.112894cd-5583-4105-ba22-2afb68c22008": {
+    "icon": "󰭎",
+    "label": "Living light",
+    "action": "blackarch execute smartthings 112894cd-5583-4105-ba22-2afb68c22008"
+  },
+  "smartthings.405be179-cd06-4088-9460-4c4fd300da47": {
+    "icon": "󰭎",
+    "label": "Living Socket 1",
+    "action": "blackarch execute smartthings 405be179-cd06-4088-9460-4c4fd300da47"
+  },
+  "smartthings.3102e555-dae7-4500-ad65-8c67a5333252": {
+    "icon": "󰭎",
+    "label": "Living Socket 2",
+    "action": "blackarch execute smartthings 3102e555-dae7-4500-ad65-8c67a5333252"
+  },
+  "smartthings.34d10ba3-48a1-4d2e-b5f6-b33a2a0dbdbf": {
+    "icon": "󰭎",
+    "label": "Living Socket 3",
+    "action": "blackarch execute smartthings 34d10ba3-48a1-4d2e-b5f6-b33a2a0dbdbf"
+  },
+  "smartthings.97229bcb-7757-476e-b4e4-1dcb22688d9e": {
+    "icon": "󰭎",
+    "label": "Living Socket 4",
+    "action": "blackarch execute smartthings 97229bcb-7757-476e-b4e4-1dcb22688d9e"
+  },
+  "smartthings.d4e613c4-d17d-4b6b-b11b-dcc78aabc286": {
+    "icon": "󰭎",
+    "label": "Living Socket 6",
+    "action": "blackarch execute smartthings d4e613c4-d17d-4b6b-b11b-dcc78aabc286"
+  },
+  "smartthings.3ec7f029-01c5-4120-97fe-1d836c16835a": {
+    "icon": "󰭎",
+    "label": "Location Akanksha",
+    "action": "blackarch execute smartthings 3ec7f029-01c5-4120-97fe-1d836c16835a"
+  },
+  "smartthings.09b162fe-6f6a-4790-ab41-e2e6793edc00": {
+    "icon": "󰭎",
+    "label": "Location Pankaj",
+    "action": "blackarch execute smartthings 09b162fe-6f6a-4790-ab41-e2e6793edc00"
+  },
+  "smartthings.ccf07502-c2fd-48c7-86cb-d2dd1303d098": {
+    "icon": "󰭎",
+    "label": "Master Goodnight",
+    "action": "blackarch execute smartthings ccf07502-c2fd-48c7-86cb-d2dd1303d098"
+  },
+  "smartthings.39af4783-42cb-4b04-b8da-0dca9b60fbef": {
+    "icon": "󰭎",
+    "label": "Master GoodNight",
+    "action": "blackarch execute smartthings 39af4783-42cb-4b04-b8da-0dca9b60fbef"
+  },
+  "smartthings.e3a01433-2ee3-4dba-934b-254fca8c0780": {
+    "icon": "󰭎",
+    "label": "Master Light",
+    "action": "blackarch execute smartthings e3a01433-2ee3-4dba-934b-254fca8c0780"
+  },
+  "smartthings.1e2b0e91-068c-42d0-a961-7b3cc0205687": {
+    "icon": "󰭎",
+    "label": "Master Light Smart",
+    "action": "blackarch execute smartthings 1e2b0e91-068c-42d0-a961-7b3cc0205687"
+  },
+  "smartthings.52b78ef1-590c-470d-acfa-2482c3c6d2c6": {
+    "icon": "󰭎",
+    "label": "Master Socket",
+    "action": "blackarch execute smartthings 52b78ef1-590c-470d-acfa-2482c3c6d2c6"
+  },
+  "smartthings.28101503-1805-4ae9-a6fb-1054731a5d76": {
+    "icon": "󰭎",
+    "label": "Mobile Charger",
+    "action": "blackarch execute smartthings 28101503-1805-4ae9-a6fb-1054731a5d76"
+  },
+  "smartthings.42be203b-6562-4f8c-825e-cd287fb734aa": {
+    "icon": "󰭎",
+    "label": "Mobile charger off",
+    "action": "blackarch execute smartthings 42be203b-6562-4f8c-825e-cd287fb734aa"
+  },
+  "smartthings.69669c1a-dd56-4a29-8463-9e68eee984ce": {
+    "icon": "󰭎",
+    "label": "Mobile charger on",
+    "action": "blackarch execute smartthings 69669c1a-dd56-4a29-8463-9e68eee984ce"
+  },
+  "smartthings.1ac6e983-3b23-4abd-b7bd-6bef4d6ad286": {
+    "icon": "󰭎",
+    "label": "Ola Socket",
+    "action": "blackarch execute smartthings 1ac6e983-3b23-4abd-b7bd-6bef4d6ad286"
+  },
+  "smartthings.11edf6fa-f453-42fd-a94a-8e8303c8e7ef": {
+    "icon": "󰭎",
+    "label": "Parking Light",
+    "action": "blackarch execute smartthings 11edf6fa-f453-42fd-a94a-8e8303c8e7ef"
+  },
+  "smartthings.9e2f39ef-407d-4834-aa52-43367376b8a1": {
+    "icon": "󰭎",
+    "label": "Printer",
+    "action": "blackarch execute smartthings 9e2f39ef-407d-4834-aa52-43367376b8a1"
+  },
+  "smartthings.080e1289-322a-4741-a70f-bca561a25d94": {
+    "icon": "󰭎",
+    "label": "PSBKitchen",
+    "action": "blackarch execute smartthings 080e1289-322a-4741-a70f-bca561a25d94"
+  },
+  "smartthings.77ca96f3-322b-4aa3-8f41-73cc0d93dafe": {
+    "icon": "󰭎",
+    "label": "REDMI Note 15 Pro 5G",
+    "action": "blackarch execute smartthings 77ca96f3-322b-4aa3-8f41-73cc0d93dafe"
+  },
+  "smartthings.903c7b37-a673-5865-a04e-cc11649dd83a": {
+    "icon": "󰭎",
+    "label": "Samsung Television",
+    "action": "blackarch execute smartthings 903c7b37-a673-5865-a04e-cc11649dd83a"
+  },
+  "smartthings.87241a3e-d634-42e5-9d9a-78d669fa92d2": {
+    "icon": "󰭎",
+    "label": "SmartTag for OLA",
+    "action": "blackarch execute smartthings 87241a3e-d634-42e5-9d9a-78d669fa92d2"
+  },
+  "smartthings.f18dc53a-1fe6-418f-be61-d3fa656b122f": {
+    "icon": "󰭎",
+    "label": "Status Bedroom Socket",
+    "action": "blackarch execute smartthings f18dc53a-1fe6-418f-be61-d3fa656b122f"
+  },
+  "smartthings.4e715c22-7aa0-4bd6-9425-b694b26e325d": {
+    "icon": "󰭎",
+    "label": "Status Laptop",
+    "action": "blackarch execute smartthings 4e715c22-7aa0-4bd6-9425-b694b26e325d"
+  },
+  "smartthings.d4030ed6-d5e5-4006-bb10-736656b3dbee": {
+    "icon": "󰭎",
+    "label": "Status Living Socket",
+    "action": "blackarch execute smartthings d4030ed6-d5e5-4006-bb10-736656b3dbee"
+  },
+  "smartthings.bdd146ee-ad10-45c5-8302-df21a508017e": {
+    "icon": "󰭎",
+    "label": "Status Master Socket",
+    "action": "blackarch execute smartthings bdd146ee-ad10-45c5-8302-df21a508017e"
+  },
+  "smartthings.34d15b39-e019-43e1-be78-e2a8b0a9e75c": {
+    "icon": "󰭎",
+    "label": "Television",
+    "action": "blackarch execute smartthings 34d15b39-e019-43e1-be78-e2a8b0a9e75c"
+  },
+  "smartthings.dc549b0e-aff4-4014-af47-0a15b6e72ac8": {
+    "icon": "󰭎",
+    "label": "Television Socket",
+    "action": "blackarch execute smartthings dc549b0e-aff4-4014-af47-0a15b6e72ac8"
+  },
+  "smartthings.44fbf2e3-d552-4a5d-a178-c59d9ff0aba3": {
+    "icon": "󰭎",
+    "label": "TelevisionAutomation",
+    "action": "blackarch execute smartthings 44fbf2e3-d552-4a5d-a178-c59d9ff0aba3"
+  },
+  "smartthings.c7d8ce74-d4d9-4dec-8f5d-ca12ef477f63": {
+    "icon": "󰭎",
+    "label": "Temple Light",
+    "action": "blackarch execute smartthings c7d8ce74-d4d9-4dec-8f5d-ca12ef477f63"
+  },
+  "smartthings.ef41c66e-8aea-435c-a04a-4096af648ac6": {
+    "icon": "󰭎",
+    "label": "Utility Light",
+    "action": "blackarch execute smartthings ef41c66e-8aea-435c-a04a-4096af648ac6"
+  },
+  "smartthings.22d524e1-64e3-435d-a3ec-3a1f78fdccb2": {
+    "icon": "󰭎",
+    "label": "Washroom Light",
+    "action": "blackarch execute smartthings 22d524e1-64e3-435d-a3ec-3a1f78fdccb2"
+  }
+}

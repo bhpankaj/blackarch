@@ -1,0 +1,62 @@
+[
+  {
+    "type": "text",
+    "text": "~/.local/state/blackarch/"
+  },
+  {
+    "type": "text",
+    "text": "/etc/NetworkManager/conf.d/blackarch-wifi-powersave.conf"
+  },
+  {
+    "type": "text",
+    "text": "/etc/sudoers.d/99-blackarch-nopasswd-*"
+  },
+  {
+    "type": "text",
+    "text": "/etc/tmpfiles.d/blackarch-nopasswd-sudo.conf"
+  },
+  {
+    "type": "text",
+    "text": " systemd-cat -t blackarch-shell "
+  },
+  {
+    "type": "text",
+    "text": "QS_DISABLE_FILE_WATCHER=1 QS_NO_RELOAD_POPUP=1 \\\n    systemd-cat -t blackarch-shell -- quickshell -n -p \"$BLACKARCH_PATH/shell\" &\n  shell_pid=$!"
+  },
+  {
+    "type": "text",
+    "text": "/usr/share/blackarch/bin/blackarch-launch-shell"
+  },
+  {
+    "type": "text",
+    "text": "/home/black/packages.list"
+  },
+  {
+    "type": "text",
+    "text": " cp -avHP /home/black/.config/hypr /mnt/blackarch/config/blackarch/"
+  },
+  {
+    "type": "text",
+    "text": "cp -avHP ~/.config/hypr /mnt/blackarch/config/blackarch/"
+  },
+  {
+    "type": "text",
+    "text": "cp -avHP ~/.config/hypr"
+  },
+  {
+    "type": "text",
+    "text": "cryptsetup  luksOpen /dev/nvme0n1p5 blackarchdata"
+  },
+  {
+    "type": "text",
+    "text": "blackarch-hibernation-available"
+  },
+  {
+    "type": "text",
+    "text": "blackarch-screensaver"
+  },
+  {
+    "type": "text",
+    "text": ":/usr/share/blackarch/bin:"
+  }
+]

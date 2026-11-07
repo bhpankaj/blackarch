@@ -1,0 +1,30 @@
+[Unit]
+Description=Camera Relay (on-demand libcamera to v4l2loopback)
+After=pipewire.service wireplumber.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/camera-relay start --on-demand
+# WirePlumber probed the loopback at login, before the monitor pinned its
+# format (this unit is After=wireplumber.service), so it cached v4l2loopback's
+# generic catch-all format range. WebRTC's PipeWire camera path cannot parse a
+# range and ends up with a camera that has no resolutions — Chrome finds the
+# node and still offers no device. Re-probe, but only when the formats really
+# do disagree. See nudge_wireplumber in this script.
+#
+# Leading '-': advisory. A camera that works for every V4L2 app is worth more
+# than this correction, so nothing here may take the relay down — including the
+# case where this unit was regenerated but /usr/local/bin/camera-relay is still
+# an older copy that does not know the subcommand.
+ExecStartPost=-/usr/local/bin/camera-relay nudge-wireplumber
+ExecStop=/usr/local/bin/camera-relay stop
+Restart=on-failure
+RestartSec=5
+Environment=LIBCAMERA_IPA_MODULE_PATH=/usr/local/lib/libcamera
+Environment=GST_PLUGIN_PATH=/usr/local/lib/gstreamer-1.0
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+
+
+
+[Install]
+WantedBy=default.target

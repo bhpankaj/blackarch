@@ -1,0 +1,174 @@
+--- /tmp/camera-relay-monitor.c.orig	2026-10-08 22:59:13.934822446 +0530
++++ camera-relay-monitor.c	2026-10-08 22:56:24.962447224 +0530
+@@ -513,6 +513,52 @@
+ 	int pipe_fd = -1;
+ 	int rapid_fails = 0;  /* pipeline failures without success */
+ 	int reader_streaming = 0;
++	int grace_ticks = 0;   /* remaining grace period (seconds) */
++	int in_grace = 0;      /* currently in grace period */
++
++	/*
++	 * Grace period (seconds) to keep the pipeline warm after the last
++	 * client disconnects. libcamera's simple IPA AGC has no startup-frame
++	 * skip: every pipeline start replays the auto-exposure ramp
++	 * (measured 16 -> 43 -> 66 -> 71 luma over ~5 frames), which is the
++	 * visible "light flicker" on connect. Keeping one pipeline alive
++	 * across a brief disconnect avoids paying that ramp again for app
++	 * restarts, browser tab refreshes and mute/unmute cycles, while still
++	 * letting the camera fall idle (LED off, ~0% CPU) when genuinely
++	 * unused. 0 disables the grace period (stop as soon as clients leave).
++	 */
++	int grace_seconds = 30;
++	{
++		const char *gs = getenv("RELAY_GRACE_SECONDS");
++		if (gs && *gs) {
++			int v = atoi(gs);
++			if (v >= 0 && v <= 3600)
++				grace_seconds = v;
++		}
++	}
++
++	/*
++	 * Warmup hold: number of leading pipeline frames to swallow and
++	 * replace with black before showing real picture. libcamera's simple
++	 * IPA AGC has no startup-frame skip, so the first frames of every
++	 * cold pipeline start are under-exposed and brighten over ~5-15
++	 * frames (measured 16 -> 43 -> 66 -> 71 luma). A client that
++	 * connects during that window sees a visible flash. Holding black
++	 * through the ramp means the first real frame a client ever sees is
++	 * already settled. Costs warmup_frames/30 s of extra black on a cold
++	 * start only — a warm reconnect (within the grace period) skips it
++	 * entirely. 0 disables the hold.
++	 */
++	int warmup_frames = 15;
++	{
++		const char *wf = getenv("RELAY_WARMUP_FRAMES");
++		if (wf && *wf) {
++			int v = atoi(wf);
++			if (v >= 0 && v <= 600)
++				warmup_frames = v;
++		}
++	}
++	int frames_seen = 0;
+ 
+ 	if (use_events) {
+ 		/* Drain initial event (non-blocking — may not exist) */
+@@ -632,6 +678,7 @@
+ 				}
+ 				relay_active = 1;
+ 				prev_clients = 0;
++				frames_seen = 0;
+ 				printf("START\n");
+ 			}
+ 		} else {
+@@ -656,8 +703,25 @@
+ 			int n = read_full(pipe_fd, frame_buf,
+ 					  frame_size, fd, black_frame);
+ 			if (n == frame_size) {
+-				(void)!write(fd, frame_buf,
+-					     frame_size);
++				/*
++				 * Warmup hold: swallow the leading frames of
++				 * a cold pipeline start and keep writing black
++				 * until the AGC has settled. Otherwise the
++				 * first frame a client sees is the bottom of
++				 * the ramp and the picture visibly brightens.
++				 */
++				if (frames_seen < warmup_frames) {
++					frames_seen++;
++					if (frames_seen == warmup_frames)
++						fprintf(stderr,
++							"[monitor] Warmup hold complete (%d frames) — showing picture\n",
++							warmup_frames);
++					(void)!write(fd, black_frame,
++						     frame_size);
++				} else {
++					(void)!write(fd, frame_buf,
++						     frame_size);
++				}
+ 				rapid_fails = 0;
+ 			} else {
+ 				fprintf(stderr,
+@@ -679,13 +743,21 @@
+ 			if (!need_stop && ++check_tick % 30 == 0) {
+ 				if (use_events)
+ 					drain_usage_events(fd,
+-						&reader_streaming);
++							&reader_streaming);
+ 				int clients = count_other_openers(
+-					dev_stat.st_rdev, our_pid,
+-					child_pid) + reader_streaming;
++						dev_stat.st_rdev, our_pid,
++						child_pid) + reader_streaming;
+ 
+-				if (clients > 0)
++				if (clients > 0) {
+ 					had_clients = 1;
++					/* New client during grace: cancel grace */
++					if (in_grace) {
++						in_grace = 0;
++						grace_ticks = 0;
++						fprintf(stderr,
++							"[monitor] Client reconnected during grace — canceling\n");
++					}
++				}
+ 
+ 				if (clients <= 0)
+ 					idle_ticks++;
+@@ -698,10 +770,36 @@
+ 				 *   for 3+ seconds
+ 				 * - Never saw any clients after 10
+ 				 *   seconds (false start from scan)
++				 *
++				 * Grace period: after clients drop to zero, wait
++				 * an additional grace_ticks seconds before stopping.
++				 * This prevents the AGC ramp flicker on quick
++				 * reconnects (e.g. app restarts, browser tab
++				 * refresh) while still allowing the camera to
++				 * go idle when truly not in use.
+ 				 */
+ 				if ((had_clients && idle_ticks >= 3) ||
+-				    (!had_clients && idle_ticks >= 10))
+-					need_stop = 1;
++				    (!had_clients && idle_ticks >= 10)) {
++					if (!in_grace && grace_ticks == 0) {
++						/* Start grace period */
++						if (grace_seconds <= 0) {
++							need_stop = 1;
++						} else {
++							in_grace = 1;
++							grace_ticks = grace_seconds;
++							fprintf(stderr,
++								"[monitor] All clients gone — grace period %ds\n",
++								grace_ticks);
++						}
++					} else if (in_grace) {
++						grace_ticks--;
++						if (grace_ticks <= 0) {
++							fprintf(stderr,
++								"[monitor] Grace period expired — stopping pipeline\n");
++							need_stop = 1;
++						}
++					}
++				}
+ 			}
+ 
+ 			if (need_stop) {
+@@ -720,6 +818,9 @@
+ 				idle_ticks = 0;
+ 				had_clients = 0;
+ 				prev_clients = 0;
++				in_grace = 0;
++				grace_ticks = 0;
++				frames_seen = 0;
+ 				printf("STOP\n");
+ 
+ 				/*
+@@ -801,6 +902,7 @@
+ 						&child_pid);
+ 					if (pipe_fd >= 0) {
+ 						relay_active = 1;
++						frames_seen = 0;
+ 						printf("START\n");
+ 					}
+ 				} else if (rapid_fails >= 3) {

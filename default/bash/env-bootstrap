@@ -1,0 +1,41 @@
+# Single source of truth for BLACKARCH_PATH + PATH adjustments. Sourced by:
+#   /etc/profile.d/blackarch.sh                 (system login shells)
+#   /etc/skel/.bashrc                         (interactive shells)
+#   /usr/share/uwsm/env.d/10-blackarch          (Hyprland session via uwsm)
+#   /usr/share/blackarch/default/bash/envs      (bash rc chain; SSH/non-login)
+
+# /etc/blackarch.conf is written by blackarch-dev-link and reset by
+# blackarch-dev-unlink. When absent, force the packaged default instead of
+# preserving a stale inherited value.
+if [ -f /etc/blackarch.conf ]; then
+  . /etc/blackarch.conf
+  : "${BLACKARCH_PATH:=/usr/share/blackarch}"
+else
+  BLACKARCH_PATH=/usr/share/blackarch
+fi
+export BLACKARCH_PATH
+
+# Only prepend in dev-link mode. On a production install, the binaries are
+# already on PATH as /usr/bin/blackarch-* via the blackarch package — prepending
+# /usr/share/blackarch/bin would just be noise.
+if [ "$BLACKARCH_PATH" != /usr/share/blackarch ]; then
+  case ":$PATH:" in
+    *":${BLACKARCH_PATH%/}/bin:"*) ;;
+    *) PATH="${BLACKARCH_PATH%/}/bin${PATH:+:$PATH}" ;;
+  esac
+fi
+
+# User-level tool paths, appended so system binaries keep precedence. This is
+# what lets login shells (ssh, bash -lc) and the uwsm session find mise-managed
+# tools without an interactive rc. Keep these directories in sync with the PAM
+# PATH line from install/config/ssh-command-path.sh, which covers SSH commands
+# that run no shell setup at all.
+case ":$PATH:" in
+  *":$HOME/.local/share/mise/shims:"*) ;;
+  *) PATH="${PATH:+$PATH:}$HOME/.local/share/mise/shims" ;;
+esac
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) PATH="${PATH:+$PATH:}$HOME/.local/bin" ;;
+esac
+export PATH

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Restore display and keyboard backlight after system sleep. The matching dim
+# happens in blackarch-lock-on-suspend.service, which is ordered before
+# systemd-suspend.service; this hook only has to undo it on the way out.
+#
+# Only the post phase is handled: brightnessctl writes to sysfs directly, so
+# nothing here needs the session environment or a live user manager.
+#
+# The pre phase is deliberately absent rather than duplicated from the unit --
+# `systemd-sleep suspend` invoked directly bypasses suspend.target and therefore
+# the unit, but the lock screen is then left alone rather than fought over by
+# two callers.
+
+WORK_SCREEN=200
+WORK_KBD=3
+
+kbd_device() {
+  brightnessctl --list 2>/dev/null | grep -i kbd | head -n1 | cut -d"'" -f2
+}
+
+case "$1" in
+  post)
+    brightnessctl set "$WORK_SCREEN" >/dev/null 2>&1 || true
+    kbd=$(kbd_device)
+    [[ -n ${kbd:-} ]] && brightnessctl --device="$kbd" set "$WORK_KBD" >/dev/null 2>&1 || true
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,13 @@
+[Unit]
+Description=Lock the session and dim the backlight before system sleep
+Documentation=man:systemd.special(7)
+DefaultDependencies=no
+Before=systemd-suspend.service systemd-hybrid-sleep.service systemd-suspend-then-hibernate.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/blackarch-suspend-lock
+TimeoutStartSec=4
+
+[Install]
+WantedBy=suspend.target hybrid-sleep.target suspend-then-hibernate.target

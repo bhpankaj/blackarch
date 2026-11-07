@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# blackarch:summary=Cycle to the next media source and transfer playback when the current source is playing
+# blackarch:args=[next|previous]
+# blackarch:examples=blackarch audio source switch | blackarch-audio-source-switch previous
+
+direction="${1:-next}"
+
+case "$direction" in
+  next)
+    blackarch-shell media sourceSwitch
+    ;;
+  previous)
+    blackarch-shell media sourceSwitchPrevious
+    ;;
+  *)
+    echo "Usage: blackarch-audio-source-switch [next|previous]" >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# blackarch:summary=Edit, set, or reset screensaver branding
+# blackarch:group=branding
+# blackarch:name=screensaver
+# blackarch:args=<image|text|reset>
+# blackarch:examples=blackarch branding screensaver image | blackarch branding screensaver text | blackarch branding screensaver reset
+
+set -euo pipefail
+
+case "${1:-}" in
+image)
+  image=$(blackarch-file-select --title "Pick PNG or SVG for screensaver" --extensions "png svg")
+  if blackarch-transcode-ascii "$image" ~/.config/blackarch/branding/screensaver.txt; then
+    blackarch-launch-screensaver force >/dev/null 2>&1
+  fi
+  ;;
+text)
+  blackarch-launch-editor ~/.config/blackarch/branding/screensaver.txt >/dev/null 2>&1 && blackarch-launch-screensaver force >/dev/null 2>&1
+  ;;
+reset)
+  cp "$BLACKARCH_PATH/logo.txt" ~/.config/blackarch/branding/screensaver.txt && blackarch-launch-screensaver force >/dev/null 2>&1
+  ;;
+*)
+  echo "Usage: blackarch-branding-screensaver <image|text|reset>" >&2
+  exit 1
+  ;;
+esac

@@ -1,0 +1,252 @@
+#!/usr/bin/env bash
+# blackarch:summary=Universal GTFO Bin checker for all Linux distros, incl. NixOS
+# blackarch:args=[--no-color] [pattern...]
+# blackarch:examples=blackarch attacker gtfobins | blackarch attacker gtfobins sudo
+
+# Universal GTFO Bin Checker - Works on all Linux distros including NixOS
+
+# Create temp file for package list
+PKG_LIST=$(mktemp)
+GTFO_LIST=$(mktemp)
+RISK_LIST=$(mktemp)
+
+# Function to get installed packages based on distro
+get_installed_packages() {
+    local distro=$(detect_distro)
+    
+    case "$distro" in
+        debian|ubuntu|linuxmint|pop|elementary|zorin|raspbian)
+            echo "Detected: Debian/Ubuntu-based" >&2
+            dpkg-query -f '${Package} ${Version}\n' -W 2>/dev/null | \
+                sed 's/://g' | awk '{print $1" "$2}' | \
+                sed 's/ /  /' > "$PKG_LIST"
+            ;;
+            
+        rhel|centos|fedora|rocky|almalinux|amzn)
+            echo "Detected: RHEL/Fedora-based" >&2
+            if command -v dnf &>/dev/null; then
+                dnf list installed 2>/dev/null | awk 'NR>1 {print $1" "$2}' | \
+                    sed 's/\.noarch//;s/\.x86_64//;s/:/ /g' > "$PKG_LIST"
+            else
+                rpm -qa --queryformat '%{NAME} %{VERSION}\n' 2>/dev/null > "$PKG_LIST"
+            fi
+            ;;
+            
+        arch|manjaro|endeavouros|artix|athenaos|blackarch)
+            echo "Detected: Arch-based" >&2
+            pacman -Q 2>/dev/null | awk '{print $1" "$2}' > "$PKG_LIST"
+            ;;
+            
+        suse|opensuse)
+            echo "Detected: SUSE-based" >&2
+            rpm -qa --queryformat '%{NAME} %{VERSION}\n' 2>/dev/null > "$PKG_LIST"
+            ;;
+            
+        alpine)
+            echo "Detected: Alpine Linux" >&2
+            apk list -I 2>/dev/null | awk -F' ' '{print $1" "$2}' | \
+                sed 's/-[0-9].*$//' > "$PKG_LIST"
+            ;;
+            
+        nixos)
+            echo "Detected: NixOS" >&2
+            # Get all packages from nix profile
+            if command -v nix &>/dev/null; then
+                nix profile list 2>/dev/null | \
+                    awk -F' ' '{print $4}' | \
+                    sed 's/^.*\.//;s/-[0-9].*$//' | \
+                    sort -u > "$PKG_LIST"
+                # Also check system packages
+                if [ -f /run/current-system/sw/bin/ls ]; then
+                    ls /run/current-system/sw/bin/ 2>/dev/null | \
+                        while read pkg; do
+                            echo "$pkg" >> "$PKG_LIST"
+                        done
+                fi
+            fi
+            ;;
+            
+        gentoo|calculate)
+            echo "Detected: Gentoo-based" >&2
+            equery list -F '$name' 2>/dev/null > "$PKG_LIST" || \
+                qlist -I 2>/dev/null > "$PKG_LIST"
+            ;;
+            
+        void)
+            echo "Detected: Void Linux" >&2
+            xbps-query -l 2>/dev/null | awk '{print $2}' | \
+                sed 's/-[0-9].*$//' > "$PKG_LIST"
+            ;;
+            
+        *)
+            echo "Unsupported or unknown distro, using fallback method..." >&2
+            # Fallback: check common package managers
+            fallback_get_packages
+            ;;
+    esac
+}
+
+# Fallback function for unknown distros
+fallback_get_packages() {
+    # Try multiple package managers
+    if command -v dpkg &>/dev/null; then
+        dpkg-query -f '${Package} ${Version}\n' -W 2>/dev/null | \
+            sed 's/://g' | awk '{print $1" "$2}' > "$PKG_LIST"
+    elif command -v rpm &>/dev/null; then
+        rpm -qa --queryformat '%{NAME} %{VERSION}\n' 2>/dev/null > "$PKG_LIST"
+    elif command -v pacman &>/dev/null; then
+        pacman -Q 2>/dev/null | awk '{print $1" "$2}' > "$PKG_LIST"
+    elif command -v apk &>/dev/null; then
+        apk list -I 2>/dev/null | awk -F' ' '{print $1" "$2}' > "$PKG_LIST"
+    else
+        echo "ERROR: No supported package manager found!" >&2
+        exit 1
+    fi
+}
+
+# Detect Linux distribution
+detect_distro() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        echo "$ID"
+    elif [ -f /etc/nixos/configuration.nix ]; then
+        echo "nixos"
+    elif [ -f /etc/gentoo-release ]; then
+        echo "gentoo"
+    elif [ -f /etc/void-release ]; then
+        echo "void"
+    elif [ -f /etc/alpine-release ]; then
+        echo "alpine"
+    elif command -v lsb_release &>/dev/null; then
+        lsb_release -si | tr '[:upper:]' '[:lower:]'
+    else
+        # Try to detect from package manager
+        if command -v dpkg &>/dev/null; then
+            echo "debian"
+        elif command -v rpm &>/dev/null; then
+            echo "rhel"
+        elif command -v pacman &>/dev/null; then
+            echo "arch"
+        elif command -v apk &>/dev/null; then
+            echo "alpine"
+        else
+            echo "unknown"
+        fi
+    fi
+}
+
+# Clean up GTFO binaries list
+clean_gtfo_list() {
+    # Remove version numbers, architectures, etc.
+    sed -i 's/[-_][0-9].*$//g; s/\.x86_64//g; s/\.noarch//g' "$PKG_LIST"
+    # Keep only package names
+    awk '{print $1}' "$PKG_LIST" | sort -u > "${PKG_LIST}.tmp"
+    mv "${PKG_LIST}.tmp" "$PKG_LIST"
+}
+
+# Main execution
+main() {
+    echo "🔍 Scanning for GTFO binaries..."
+    echo "=================================="
+    
+    get_installed_packages
+    clean_gtfo_list
+    
+    # Check if we have a valid package list
+    if [ ! -s "$PKG_LIST" ]; then
+        echo "❌ Error: Could not retrieve package list" >&2
+        rm -f "$PKG_LIST"
+        exit 1
+    fi
+    
+    echo "📦 Found $(wc -l < "$PKG_LIST") packages installed"
+    echo "🔎 Checking against GTFOBins..."
+    echo "=================================="
+    
+    # Download and parse GTFObins JSON
+    GTFO_LIST=$(mktemp)
+    curl -s https://gtfobins.org/api.json | jq -r '.executables | keys[]' > "$GTFO_LIST"
+    
+    # Check each GTFO binary against installed packages
+    FOUND=0
+
+    echo "🔍 Scanning for GTFO binaries with risk assessment..."
+    echo "=================================="
+
+    while read -r binary; do
+        if grep -qi "^${binary}$" "$PKG_LIST"; then
+            # Find the binary path
+            BIN_PATH=$(which "$binary" 2>/dev/null | head -1)
+            
+            if [ -n "$BIN_PATH" ]; then
+                RISK_LEVEL="LOW"
+                REASON="Installed but no special permissions"
+                
+                # Check SUID/SGID
+                if [ -u "$BIN_PATH" ]; then
+                    RISK_LEVEL="HIGH"
+                    REASON="SUID bit set"
+                elif [ -g "$BIN_PATH" ]; then
+                    RISK_LEVEL="HIGH"
+                    REASON="SGID bit set"
+                fi
+                
+                # Check sudo permissions
+                if sudo -l 2>/dev/null | grep -qi "$binary"; then
+                    if [ "$RISK_LEVEL" = "LOW" ]; then
+                        RISK_LEVEL="MEDIUM"
+                        REASON="Sudo access available"
+                    else
+                        RISK_LEVEL="CRITICAL"
+                        REASON="SUID/SGID + Sudo access!"
+                    fi
+                fi
+                
+                echo "⚠️  $binary - RISK: $RISK_LEVEL ($REASON)"
+                echo "   Path: $BIN_PATH"
+                echo "   Permissions: $(ls -l "$BIN_PATH" | cut -d' ' -f1)"
+                
+                # Save high-risk findings
+                if [ "$RISK_LEVEL" = "HIGH" ] || [ "$RISK_LEVEL" = "CRITICAL" ]; then
+                    echo "$binary" >> "$RISK_LIST"
+                fi
+            fi
+        fi
+
+        # if grep -qi "^${binary}$" "$PKG_LIST"; then
+        #     echo "⚠️  CHECK: $binary is installed (GTFO bin)"
+        #     ((FOUND++))
+        # fi
+    done < "$GTFO_LIST"
+
+    echo "=================================="
+    
+    # if [ $FOUND -eq 0 ]; then
+    #     echo "✅ No GTFO binaries found in installed packages"
+    # else
+    #     echo "=================================="
+    #     echo "⚠️  Found $FOUND potential GTFO binaries"
+    #     echo "💡 Check https://gtfobins.github.io/ for exploitation techniques"
+    # fi
+
+    if [ -s "$RISK_LIST" ]; then
+        echo "🚨 HIGH RISK binaries found:"
+        cat "$RISK_LIST"
+        echo "💡 Check https://gtfobins.github.io/ for exploitation methods"
+    else
+        echo "✅ No high-risk GTFO binaries detected"
+fi
+    
+    # Clean up temp files
+    rm -f "$PKG_LIST" "$GTFO_LIST"
+}
+
+# for i in $(curl -s https://gtfobins.org/api.json | jq -r '.executables | keys[]'); do if grep -q "$i" installed_pkgs.list; then echo "Check for GTFO: $i";fi; done
+# Handle errors gracefully
+set -e
+trap 'rm -f "$PKG_LIST" 2>/dev/null; exit' INT TERM EXIT
+
+# Run main function
+main "$@"
+
+

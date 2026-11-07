@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# blackarch:summary=Lock the session and dim the backlight before system sleep
+# blackarch:group=system
+# blackarch:hidden=true
+
+# Ordered Before=systemd-suspend.service, so this runs before the machine sleeps
+# whichever way sleep was requested (systemctl suspend, the system menu, a lid
+# close, hypridle). Brightness is restored after wake by the system-sleep post
+# hook; the lock is released by the user, never by this script.
+#
+# Deliberately does NOT call `systemctl suspend` the way
+# `blackarch-commander brightness suspend` does -- that would recurse, since the
+# commander's own suspend request comes back through this unit.
+#
+# A system unit inherits none of the session environment, and the shell IPC needs
+# it, so recover WAYLAND_DISPLAY / XDG_RUNTIME_DIR / the session bus from the
+# running compositor rather than guessing them.
+
+set -u
+
+# Whole-script budget. Overrunning it is the failure this exists to prevent:
+# logind honours its delay inhibitor only for InhibitDelayMaxUSec (5s by
+# default), so the wait below has to finish well inside that window.
+budget_ms=3500
+poll_interval=0.2
+
+DIM_SCREEN=20
+DIM_KBD=1
+WORK_SCREEN=200
+WORK_KBD=3
+
+# Resolve the distro tree from the installed entry point so BLACKARCH_PATH does
+# not have to be guessed.
+self=$(readlink -f "${BASH_SOURCE[0]}")
+export BLACKARCH_PATH=${BLACKARCH_PATH:-$(cd "$(dirname "$self")/.." && pwd)}
+export PATH="/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
+load_session_env() {
+  local pid env name value
+  pid=$(pgrep -x Hyprland | head -n1)
+  [[ -n ${pid:-} ]] || return 1
+  env=$(tr '\0' '\n' < "/proc/$pid/environ" 2>/dev/null) || return 1
+  [[ -n $env ]] || return 1
+
+  for name in WAYLAND_DISPLAY XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS; do
+    value=$(printf '%s\n' "$env" | sed -n "s/^${name}=//p" | head -n1)
+    [[ -n $value ]] && export "$name=$value"
+  done
+}
+
+kbd_device() {
+  brightnessctl --list 2>/dev/null | grep -i kbd | head -n1 | cut -d"'" -f2
+}
+
+dim() {
+  brightnessctl set "$DIM_SCREEN" >/dev/null 2>&1 || true
+  local kbd
+  kbd=$(kbd_device)
+  [[ -n ${kbd:-} ]] && brightnessctl --device="$kbd" set "$DIM_KBD" >/dev/null 2>&1 || true
+  logger -t blackarch-suspend-lock \
+    "dimmed backlight to $(brightnessctl g 2>/dev/null) (kbd ${kbd:-none})"
+}
+
+now_ms() { echo $((10#${EPOCHREALTIME//[!0-9]/} / 1000)); }
+
+lock_state() {
+  blackarch-shell lock status 2>/dev/null |
+    jq -r 'if .secure == true then "secure"
+           elif .requested == true then "locking"
+           else "idle" end' 2>/dev/null
+}
+
+# Dim first: if the lock path stalls, the machine still sleeps with the screen
+# dark rather than showing the session it failed to cover.
+smartthings devices:commands 4e715c22-7aa0-4bd6-9425-b694b26e325d switch:off
+dim
+
+load_session_env || exit 0
+
+# No lock screen configured is a setup problem, not a sleep problem. Say so
+# loudly and let the suspend continue rather than blocking sleep forever.
+if [[ $(blackarch-shell lock lock 2>/dev/null) == missing-pam ]]; then
+  blackarch-notification-send -u critical -g 󰌾 \
+    "Screen will not lock before suspend" \
+    "Run 'sudo blackarch-apply-lock' to configure the lock screen." >/dev/null 2>&1 || true
+  exit 0
+fi
+
+deadline=$(( $(now_ms) + budget_ms ))
+while (( $(now_ms) < deadline )); do
+  case $(lock_state) in
+    secure)
+      logger -t blackarch-suspend-lock "session secure after $(( budget_ms - deadline + $(now_ms) ))ms"
+      exit 0
+      ;;
+    locking) ;;
+    *) blackarch-shell lock lock >/dev/null 2>&1 || true ;;
+  esac
+  sleep "$poll_interval"
+done
+
+logger -t blackarch-suspend-lock "budget of ${budget_ms}ms elapsed without a secure lock"
+
+exit 0

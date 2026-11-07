@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Thin launcher so `blackarch-hyprland-monitor-scaling` keeps working after the command family was ported
+# from bash to Python. The real implementation is blackarch-hyprland.py next to
+# this file. Usage and behaviour are unchanged; the Python version needs no
+# hyprctl, jq, awk, sed, socat or flock.
+# blackarch:summary=Show, set, or adjust focused Hyprland monitor scaling
+# blackarch:args=[up|down|SCALE]
+# blackarch:examples=blackarch hyprland monitor scaling | blackarch hyprland monitor scaling 1.6 | blackarch hyprland monitor scaling up | blackarch hyprland monitor scaling down
+set -euo pipefail
+
+# readlink -f: these commands are symlinked into /usr/sbin, which precedes this
+# directory on PATH, so the symlink's own directory must not be used.
+here="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+exec "$here/blackarch-hyprland" monitor-scaling "$@"

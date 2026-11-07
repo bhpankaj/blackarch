@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Reload hyprland configuration (used by the Blackarch theme switching).
+
+hyprctl reload >/dev/null

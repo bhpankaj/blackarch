@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ test -z "$WIN_MAX_SLOTS" && export WIN_MAX_SLOTS=2 
+ export WIN_BASE_FILE='/tmp/win_addr'  
+ blackarch-open-url $1

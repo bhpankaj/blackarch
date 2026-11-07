@@ -1,0 +1,1 @@
+for i in `grep blackarch-pkg-add ${1}|head -1 |sed -e 's/blackarch-pkg-add//'`;do echo "${i}";done |sort|uniq

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# blackarch:summary=Refresh the current theme from its templates.
+
+THEME_NAME_PATH="$HOME/.local/state/blackarch/current/theme.name"
+
+if [[ -f $THEME_NAME_PATH ]]; then
+  BLACKARCH_THEME_SKIP_BACKGROUND=1 blackarch-theme-set "$(cat $THEME_NAME_PATH)"
+fi

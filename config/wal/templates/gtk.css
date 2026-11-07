@@ -1,0 +1,470 @@
+/* Pywal GTK Theme Template */
+@keyframes ripple {
+  to {
+    background-size: 1000% 1000%;
+  }
+}
+
+@keyframes ripple-on-slider {
+  to {
+    background-size: auto, 1000% 1000%;
+  }
+}
+
+@keyframes ripple-on-headerbar {
+  from {
+    background-image: radial-gradient(circle, {color2} 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, {color2} 100%, transparent 100%);
+  }
+}
+
+/***************
+ * Base States *
+ ***************/
+.background {
+  background-color: {background};
+  color: {foreground};
+}
+
+#desktopwindow.background {
+  background-color: transparent;
+}
+
+dnd {
+  color: {foreground};
+}
+
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+.aboutdialog .large-icons {
+  -gtk-icon-size: 128px;
+}
+
+spinner:disabled,
+arrow:disabled,
+scrollbar:disabled,
+check:disabled,
+radio:disabled,
+treeview.expander:disabled {
+  -gtk-icon-filter: opacity(0.5);
+}
+
+iconview,
+.view {
+  background-color: alpha({foreground}, 0.04);
+  color: {foreground};
+}
+
+iconview:disabled,
+.view:disabled {
+  color: alpha({foreground}, 0.5);
+}
+
+iconview:selected,
+.view:selected {
+  color: {foreground};
+}
+
+textview text {
+  background-color: {color0};
+}
+
+textview border {
+  background-color: {color8};
+  color: alpha({foreground}, 0.7);
+}
+
+iconview:hover, iconview:selected {
+  border-radius: 6px;
+}
+
+rubberband, .content-view rubberband, .content-view columnview.view > rubberband,
+.content-view treeview.view > rubberband,
+.content-view .rubberband, columnview.view > rubberband,
+.content-view columnview.view > .rubberband,
+treeview.view > rubberband,
+.content-view treeview.view > .rubberband, gridview > rubberband, flowbox > rubberband {
+  border: 1px solid {color2};
+  background-color: alpha({color2}, 0.3);
+}
+
+flowbox > flowboxchild {
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.content-view .tile:selected {
+  background-color: transparent;
+}
+
+gridview > child {
+  padding: 3px;
+}
+
+gridview > child:selected {
+  outline-color: alpha(currentColor, 0.06);
+}
+
+gridview > child box {
+  border-spacing: 8px;
+  margin: 12px;
+}
+
+coverflow cover {
+  color: {foreground};
+  background-color: {color0};
+  border: 1px solid black;
+}
+
+label.separator {
+  color: alpha({foreground}, 0.7);
+}
+
+label:disabled {
+  opacity: 1;
+  color: alpha({foreground}, 0.5);
+}
+
+headerbar label:disabled, tab label:disabled, button label:disabled {
+  color: inherit;
+  opacity: 1;
+}
+
+label.osd {
+  border-radius: 12px;
+  background-color: rgba(12, 18, 28, 0.9);
+  color: {foreground};
+}
+
+.dim-label,
+row.expander image.expander-row-arrow,
+row.property > box.header > box.title > .title,
+row label.subtitle {
+  color: alpha({foreground}, 0.7);
+  opacity: 1;
+}
+
+.accent {
+  color: {color2};
+}
+
+.success {
+  color: {color2};
+}
+
+.warning {
+  color: {color3};
+}
+
+.error {
+  color: {color1};
+}
+
+.large-title {
+  font-weight: 300;
+  font-size: 24pt;
+}
+
+.title-1 {
+  font-weight: 800;
+  font-size: 20pt;
+}
+
+.title-2 {
+  font-weight: 800;
+  font-size: 15pt;
+}
+
+.title-3 {
+  font-weight: 700;
+  font-size: 15pt;
+}
+
+.title-4 {
+  font-weight: 700;
+  font-size: 13pt;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 11pt;
+}
+
+.body {
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.caption, row.property > box.header > box.title > .title {
+  font-weight: 400;
+  font-size: 9pt;
+}
+
+.caption-heading {
+  font-weight: 700;
+  font-size: 9pt;
+}
+
+window.assistant .sidebar {
+  padding: 4px 0;
+}
+
+window.assistant .sidebar label {
+  min-height: 34px;
+  padding: 0 12px;
+  color: alpha({foreground}, 0.5);
+  font-weight: 500;
+}
+
+window.assistant .sidebar label.highlight {
+  color: {foreground};
+}
+
+.osd .scale-popup > arrow,
+.osd .scale-popup > contents, .osd popover > arrow,
+.osd popover > contents, popover.touch-selection > arrow,
+popover.touch-selection > contents, popover.magnifier > arrow,
+popover.magnifier > contents, .osd {
+  color: {foreground};
+  background-color: {color0};
+  background-clip: padding-box;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px alpha({foreground}, 0.1);
+}
+
+.osd {
+  padding: 6px;
+  margin: 6px;
+}
+
+.osd.circular {
+  border-radius: 9999px;
+}
+
+/*********************
+ * Spinner Animation *
+ *********************/
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+spinner {
+  background: none;
+  opacity: 0;
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+}
+
+spinner:checked {
+  opacity: 1;
+  animation: spin 1s linear infinite;
+}
+
+spinner:checked:disabled {
+  opacity: 0.5;
+}
+
+/****************
+ * Text Entries *
+ ****************/
+entry headerbar popover.background entry,
+headerbar popover.background entry entry,
+entry {
+  min-height: 34px;
+  padding: 0 8px;
+  border-spacing: 6px;
+  border-radius: 12px;
+  caret-color: currentColor;
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 2px transparent;
+  background-color: alpha({foreground}, 0.08);
+  color: {foreground};
+}
+
+entry headerbar popover.background entry:focus-within,
+headerbar popover.background entry entry:focus-within,
+entry:focus-within {
+  background-color: alpha({foreground}, 0.08);
+  box-shadow: inset 0 0 0 2px {color2};
+}
+
+entry headerbar popover.background entry:drop(active),
+headerbar popover.background entry entry:drop(active),
+entry headerbar popover.background entry:hover:not(:focus-within),
+headerbar popover.background entry entry:hover:not(:focus-within),
+entry:drop(active),
+entry:hover:not(:focus-within) {
+  background-color: alpha(currentColor, 0.08);
+  box-shadow: inset 0 0 0 2px alpha(currentColor, 0.08);
+}
+
+entry headerbar popover.background entry:disabled,
+headerbar popover.background entry entry:disabled,
+entry:disabled {
+  box-shadow: inset 0 0 0 2px transparent;
+  background-color: alpha({foreground}, 0.08);
+  color: alpha({foreground}, 0.5);
+}
+
+entry headerbar popover.background entry > text > placeholder,
+headerbar popover.background entry entry > text > placeholder,
+entry > text > placeholder {
+  color: alpha({foreground}, 0.5);
+}
+
+entry headerbar popover.background entry > text > block-cursor,
+headerbar popover.background entry entry > text > block-cursor,
+entry > text > block-cursor {
+  color: alpha({foreground}, 0.04);
+  background-color: {foreground};
+}
+
+entry > progress,
+entry progress > trough > progress {
+  margin: 0 -4px;
+  border-bottom: 2px solid {color2};
+  background-color: transparent;
+}
+
+.osd entry > progress > trough > progress {
+  border-color: alpha({foreground}, 0.04);
+}
+
+entry button.image-button {
+  min-height: 24px;
+  min-width: 24px;
+  padding: 0;
+}
+
+treeview entry.flat, treeview entry {
+  background-color: {color0};
+}
+
+.entry-tag {
+  margin: 2px;
+  border-radius: 9999px;
+  box-shadow: none;
+  background-color: alpha({foreground}, 0.12);
+  color: {foreground};
+}
+
+/***********
+ * Buttons *
+ ***********/
+button {
+  background-color: alpha({foreground}, 0.08);
+  color: {foreground};
+  border: none;
+  box-shadow: none;
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+button:hover {
+  background-color: alpha(currentColor, 0.08);
+  color: {foreground};
+}
+
+button:checked {
+  background-color: {color2};
+  color: alpha({background}, 0.87);
+}
+
+button:checked:hover {
+  background-color: {color10};
+  color: alpha({background}, 0.87);
+}
+
+/*********
+ * Links *
+ *********/
+link {
+  color: {color4};
+}
+
+link:visited {
+  color: {color5};
+}
+
+/*****************
+ * GtkSpinButton *
+ *****************/
+spinbutton {
+  border-radius: 9px;
+  padding: 0;
+  border-spacing: 0;
+  background-color: alpha({foreground}, 0.08);
+  color: {foreground};
+}
+
+spinbutton:focus-within {
+  box-shadow: inset 0 0 0 2px {color2};
+}
+
+/************
+ * Toolbars *
+ ************/
+.toolbar {
+  padding: 6px;
+  border-spacing: 6px;
+}
+
+.app-notification, .toolbar.osd {
+  padding: 6px;
+  border-radius: 18px;
+  background-color: {color0};
+  color: {foreground};
+}
+
+/***************
+ * Header bars *
+ ***************/
+headerbar {
+  background-color: transparent;
+  color: {foreground};
+  min-height: 46px;
+}
+
+headerbar:backdrop {
+  background-color: {background};
+  color: alpha({foreground}, 0.7);
+}
+
+headerbar.selection-mode {
+  background-color: {color2};
+  color: alpha({background}, 0.87);
+}
+
+/*********
+ * Menus *
+ *********/
+menubar {
+  padding: 0;
+  background-color: {background};
+  color: {foreground};
+}
+
+popover > arrow,
+popover > contents {
+  padding: 6px;
+  background-color: {color8};
+  border-radius: 12px;
+  color: {foreground};
+}
+
+/*************
+ * Notebooks *
+ *************/
+notebook, notebook.frame {
+  background-color: {color0};
+  border-radius: 15px;
+}

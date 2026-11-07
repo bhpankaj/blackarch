@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "blackarch.polkit",
+  "name": "Polkit Agent",
+  "version": "1.0.0",
+  "author": "Blackarch",
+  "description": "Theme-aware authentication dialog for privileged actions.",
+  "blackarch": {
+    "capabilities": [
+      "authentication"
+    ]
+  },
+  "kinds": [
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "PolkitAgent.qml"
+  }
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Valent KDE Connect Protocol Daemon
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/valent
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

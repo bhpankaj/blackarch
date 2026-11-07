@@ -1,0 +1,101 @@
+-- Blackarch Quattro native presentation, mirrored in hyprland.conf for 3.8.
+
+local activeBorderColor = {
+	colors = { "rgb(59E1E3)", "rgb(59E1E3)", "rgb(26BBD9)", "rgb(26BBD9)", "rgb(29D398)", "rgb(29D398)" },
+	angle = 45,
+}
+local inactiveBorderColor = "rgba(59E1E355)"
+
+hl.config({
+	general = {
+		col = {
+			active_border = activeBorderColor,
+			inactive_border = inactiveBorderColor,
+		},
+		border_size = 3,
+		gaps_in = 6,
+		gaps_out = 12,
+	},
+	group = {
+		col = {
+			border_active = activeBorderColor,
+			border_inactive = inactiveBorderColor,
+		},
+	},
+	decoration = {
+		rounding = 12,
+		rounding_power = 2,
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 4,
+			noise = 0.02,
+			contrast = 0.85,
+			brightness = 0.3,
+			vibrancy = 0.06,
+			vibrancy_darkness = 0.70,
+			ignore_opacity = true,
+		},
+		shadow = {
+			enabled = true,
+			scale = 2.0,
+			range = 24,
+			render_power = 4,
+		},
+	},
+	animations = {
+		enabled = true,
+	},
+})
+
+hl.curve("smoothFlow", { type = "bezier", points = { { 0.25, 0.46 }, { 0.45, 0.94 } } })
+hl.curve("liquidSnap", { type = "bezier", points = { { 0.68, -0.55 }, { 0.265, 1.55 } } })
+hl.curve("appleSilk", { type = "bezier", points = { { 0.34, 1.56 }, { 0.64, 1 } } })
+hl.curve("elasticPop", { type = "bezier", points = { { 0.175, 0.885 }, { 0.32, 1.275 } } })
+
+hl.animation({
+	leaf = "windows",
+	enabled = true,
+	speed = 2.0,
+	bezier = "smoothFlow",
+	style = "slide",
+})
+hl.animation({
+	leaf = "windowsOut",
+	enabled = true,
+	speed = 2.0,
+	bezier = "smoothFlow",
+	style = "popin 80%",
+})
+hl.animation({
+	leaf = "windowsIn",
+	enabled = true,
+	speed = 2.0,
+	bezier = "smoothFlow",
+	style = "slide",
+})
+hl.animation({
+	leaf = "border",
+	enabled = true,
+	speed = 2.5,
+	bezier = "smoothFlow",
+})
+hl.animation({
+	leaf = "workspaces",
+	enabled = true,
+	speed = 2.2,
+	bezier = "smoothFlow",
+	style = "slidevert",
+})
+hl.animation({
+	leaf = "fade",
+	enabled = true,
+	speed = 1.5,
+	bezier = "smoothFlow",
+})
+hl.animation({
+	leaf = "layers",
+	enabled = true,
+	speed = 2,
+	bezier = "elasticPop",
+})

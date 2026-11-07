@@ -1,0 +1,25 @@
+[[keymaps]]
+key = "o"
+command = "xdg-open %f"
+
+[opener.jpg]
+key = "p"
+command = "hyprwall"
+args = ["%f"]
+block = false
+
+[opener.epub]
+command = "zathura"
+args = ["%f"]
+block = false
+
+[opener.pdf]
+command = "zathura"
+args = ["%f"]
+block = false
+
+[opener.mp3]
+command = "mpv"
+args = ["%f"]
+block = false
+

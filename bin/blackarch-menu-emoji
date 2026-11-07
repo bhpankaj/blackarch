@@ -1,0 +1,6 @@
+#!/bin/bash
+# blackarch:summary=Launch emojis
+# blackarch:group=menu
+# blackarch:examples=blackarch menu emoji
+
+blackarch-shell shell toggle blackarch.emojis

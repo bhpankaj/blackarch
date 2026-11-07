@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+# blackarch:summary=List webcam devices that support video capture
+# blackarch:hidden=true
+
+import subprocess, sys
+
+def capture_capable(device):
+    out = subprocess.run(["v4l2-ctl", "--device", device, "--info"], capture_output=True, text=True)
+    inspect = False
+    found = False
+    for line in out.stdout.splitlines():
+        if "Device Caps" in line and ":" in line:
+            inspect = True
+            continue
+        if inspect and "Video Capture" in line:
+            found = True
+    return found
+
+def main():
+    out = subprocess.run(["v4l2-ctl", "--list-devices"], capture_output=True, text=True)
+    name = ""
+    emitted = False
+    for line in out.stdout.splitlines():
+        if line.strip() and not line.startswith((" ", "\t")):
+            name = line.strip()
+            emitted = False
+        elif not emitted:
+            device = line.strip()
+            if device.startswith("/dev/video") and capture_capable(device):
+                emitted = True
+                print(f"{device}  {name}")
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

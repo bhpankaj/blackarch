@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# blackarch:summary=Cache background switcher thumbnails for the current theme
+
+theme_name=$(cat "$HOME/.local/state/blackarch/current/theme.name" 2>/dev/null)
+
+blackarch-menu-images \
+  --cache-only \
+  "$HOME/.local/state/blackarch/current/theme/backgrounds" \
+  "$HOME/.config/blackarch/backgrounds/$theme_name"

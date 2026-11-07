@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Check whether a webcam is available
+
+[[ -n $(blackarch-capture-webcam-list) ]]

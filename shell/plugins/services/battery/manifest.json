@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "blackarch.battery",
+  "name": "Battery",
+  "version": "1.0.0",
+  "author": "Blackarch",
+  "description": "Low battery warning service",
+  "kinds": [
+    "service"
+  ],
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}

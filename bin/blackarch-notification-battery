@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# blackarch:summary=Show the current battery status notification
+
+blackarch-notification-send -g 󰁹 -u low "$(blackarch-battery-status)"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Description: Quick reference script containing all suggested Rust & security resources
+
+declare -A RESOURCES=(
+    ["The Rust Programming Language (\"The Book\")"]="https://doc.rust-lang.org/book/"
+    ["Comprehensive Rust (Google)"]="https://google.github.io/comprehensive-rust/"
+    ["The Rustonomicon (Unsafe Rust)"]="https://doc.rust-lang.org/nomicon/"
+    ["Rust for Malware Development (GitHub)"]="https://github.com/CrackerCat/Whitecat18-Rust-for-Malware-Development"
+    ["RUSTVERSARY (GitHub)"]="https://github.com/Suredials/RUSTVERSARY"
+    ["Rust Malware Gallery (GitHub)"]="https://github.com/decoderloop/rust-malware-gallery"
+)
+
+echo "=== Athena OS / Arch Rust & Security Resources ==="
+echo ""
+
+for name in "${!RESOURCES[@]}"; do
+    echo -e "\033[1m[+] $name\033[0m"
+    echo "    URL: ${RESOURCES[$name]}"
+    echo ""
+done
+

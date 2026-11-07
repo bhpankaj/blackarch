@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# blackarch:summary=List available themes
+# blackarch:examples=blackarch theme list | blackarch theme set "Tokyo Night"
+
+{
+  find ~/.config/blackarch/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
+  find "$BLACKARCH_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
+} | sort -u | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g'

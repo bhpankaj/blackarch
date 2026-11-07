@@ -1,0 +1,38 @@
+---
+name: blackarch installer-updates
+description: Update installer for root dotfiles, portable zshrc, non-interactive shell setup, and independent EFI boot entry creation.
+---
+
+## When to Use
+Updating blackarch installer for root dotfile deployment, zshrc portability, non-interactive shell environment setup, or EFI boot entry creation without a full bootloader install.
+
+## Procedure
+1. `dotfile_homes()` must include `/root` explicitly (not only as a fallback when no uid>=1000 users exist). Verify: `grep -n 'homes.append' /opt/blackarch/bin/blackarch installer`.
+2. `.zshrc` must use `~` / `$HOME` (never hardcoded `/home/user` paths) and must source `/etc/profile.d/blackarch.sh` for non-interactive shells.
+3. `.profile` must export `BASH_ENV=/etc/profile.d/blackarch.sh` and `ENV=/etc/profile.d/blackarch.sh`, and must source the profile.d file itself. `.bash_profile` must source `.profile`. `.zprofile` must also exist and source the same file for zsh login shells (no `/home` hardcoding).
+4. `--efi-entry` CLI flag creates an `efibootmgr` entry without requiring `--bootloader`. The entry asks (if `BOOTLOADER` empty) whether it is for `limine` or `systemd-boot`, then uses `\EFI\limine\limine_x64.efi` or `\EFI\systemd\systemd-bootx64.efi`. Verify syntax with `python3 -m py_compile`.
+5. `--webcam-setup`: detects IPU generation (`IPU6`/`IPU7`) from PCI (`0x0480` class, `8086` vendor) and loaded modules (`/sys/module/intel_ipu6` / `intel_ipu7`). Checks `dmesg`/`journalctl` for `"external clock 26000000 is not supported"` to decide `--sensor-only` (26 MHz frequency patch). Runs `/opt/blackarch/bin/blackarch-webcam-setup` with `--ipu6`/`--ipu7` + `--sensor-only` only when needed.
+- `--kodachi-setup`: runs `/opt/blackarch/bin/blackarch execute setup kodachi` inside the new root via `arch-chroot`, streaming output live; warns on failure without aborting the install.
+- Post-install: provide `blackarch setup-post` (runs `/opt/blackarch/bin/blackarch-setup-post`) to verify and auto-fix post-install items (snapper config/baseline, Ulaa flatpak). It installs Ulaa via `flatpak install flathub com.ulaa.Ulaa` if missing and creates snapper root config + baseline snapshot. Snapper config creation can fail if `/.snapshots` already exists as a directory; remove it first (`sudo rmdir /.snapshots`) before `sudo snapper -c root create-config /`.
+
+## Pitfalls / Always-On Rules
+- Never rely on `return homes or ["/root"]` as the only root coverage; always append `/root` before returning so multi-user sources don't drop root.
+- `.zshrc` portability: any path that assumes `black` user (`/home/black`) breaks when `.zshrc` is deployed to `/root`. Use `~` for all home-relative references.
+- Non-interactive shell setup: `BASH_ENV` and `ENV` must point to the same `/etc/profile.d/blackarch.sh` file that interactive shells source, otherwise SSH/non-login sessions miss `PATH`, `BLACKARCH_PATH`, and `waylandsudo`.
+References:
+- references/efi-entry-without-bootloader.md
+- references/webcam-setup-flag.md
+- references/webcam-setup-logging.md
+
+- `--efi-entry` is independent of `BOOTLOADER`. Its `efibootmgr -c` call must not be nested inside the bootloader `if/elif/else` chain; place it after the `BOOTLOADER` check but outside it, so it runs whether `BOOTLOADER` is `limine`, `systemd-boot`, or empty.
+- When deriving disk/part from `esp_part` for `efibootmgr`, use `parent_disk()` and `partition_node()` helpers (never hardcode `/dev/nvme0n1p1`), matching the installer's standing convention.
+- Webcam setup (`--webcam-setup`): never pass `--ipu6`/`--ipu7` blindly. Derive generation from PCI (`0x0480` multimedia class, `8086` vendor) and loaded modules (`/sys/module/intel_ipu6` / `intel_ipu7`) — wrong module = broken camera node. Only add `--sensor-only` (26 MHz DKMS fix) when `dmesg`/`journalctl` contains `"external clock 26000000 is not supported"`; adding it unnecessarily rebuilds DKMS and delays boot.
+- When invoking webcam-setup inside `arch-chroot` (e.g. `--webcam-setup` during install), stream output live: use `subprocess.run(..., capture_output=False)` instead of `capture_output=True`. Hiding stdout/stderr makes AUR/DKMS failures invisible (only exit 1 is reported), so the backend build output must be visible in the terminal and mirrored to `/var/log/usb2disk/install.log`.
+- AUR install (`_git_pkg` in `blackarch-webcam-setup`) must drop to user 1000 (`TARGET_USER`) when running as root/sudo: wrap `paru`/`yay` with `sudo -u TARGET_USER -E -H --` and set `HOME` to `TARGET_HOME`. AUR helpers refuse root execution; running as the desktop user is required for the AUR build inside chroot.
+- After preserving credentials, the user with UID 1000 must receive sudo privileges: add `/etc/sudoers.d/uid-1000` giving `user_1000 ALL=(ALL) NOPASSWD:ALL` so the desktop user retains escalation after install.
+- `--keep-mounted` flag: when set (`args.keep_mounted`), `cleanup_mounts()` must skip all `umount -R` and `cryptsetup close` operations. Leave the new root ESP, home bind, and LUKS mapper open for post-install inspection or further chroot work.
+- AUR install (`_git_pkg`) must never hang waiting for a terminal input: force `stdin=sp.DEVNULL`, set `env["TERM"] = "dumb"`, and use a generous timeout (`timeout=1800`). Even with `--noconfirm`, `yay`/`paru` can block when stdin is a terminal (`/dev/pts/0`) inside `arch-chroot`; `DEVNULL` eliminates the hang.
+- Logging mechanism: `blackarch-webcam-setup` must initialize `logging.getLogger("webcam_setup")` with a file handler (`/var/log/webcam-setup.log`, `DEBUG`) and a console handler (`INFO`), called via `setup_logging()` at the start of `main()`. The `run()` helper must log every command (`logger.info`) and capture stdout/stderr (`logger.debug`) so AUR/DKMS progress is auditable even inside a silent chroot. Without persistent file logging, a 10-20 minute AUR build produces no recoverable trace after a timeout or crash.
+- Log directories created during install (e.g. `/var/log/blackarch/`, `/var/log/webcam-setup.log`) are created as root and stay root-owned, so a later user-session tool (blackarch commander, webcam-setup) gets `Permission denied` writing there. `blackarch_logging.setup_logging()` already degrades gracefully (prints a warning, skips the file handler), but to keep logs actually written, the installer must `chown -R <target_user>:<target_group>` those paths (or make the directory group-writable for the target user's group) before finishing. Verify with `sudo -u black python3 -c 'import blackarch_modules.blackarch_logging...'` or by tailing the log after a run.
+
+- `blackarch setup-post` (`/opt/blackarch/bin/blackarch-setup-post`) is the post-install verifier/auto-fixer. It must: verify root/home subvols, sudo, sd-encrypt hook, EFI entry, text-scaling, webcam device, Ulaa flatpak (install via `flatpak install flathub com.ulaa.Ulaa` if missing), snapper root config+baseline (rmdir `/.snapshots` first if it blocks `create-config`), Kodachi dashboard (run `blackarch setup kodachi` if missing), and dynamically detect a LUKS SD card (blkid UUID `04244121-...`) requiring both crypttab and fstab entries. Webcam step must auto-detect IPU gen via `ipu_generation()` and run the Galaxy Book camera fix scripts (`galaxybook-camera-fix.sh`, `reapply-flicker-fix.sh`) plus the open-libcamera default webcam setup (not `--ipu6` AUR stack). For the LUKS SD card, fstab must use `noauto,user,nofail` (manual mount, black can mount without sudo) and crypttab must use `tpm2-device=auto`. TPM2 enrollment for that device is done via `blackarch setup tpm /dev/sdb` (or UUID), not in post-setup.

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "blackarch.smartthings",
+  "name": "SmartThings",
+  "version": "1.0.0",
+  "author": "black",
+  "license": "MIT",
+  "description": "SmartThings switch and dimmer control in the Blackarch bar.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "Widget.qml"
+  },
+  "barWidget": {
+    "displayName": "SmartThings",
+    "description": "Live switch state and dimmer levels for all SmartThings devices, with toggles and level control.",
+    "category": "Home",
+    "allowMultiple": false,
+    "defaultSection": "center",
+    "defaults": {
+      "refreshIntervalSec": 30,
+      "showLevels": true,
+      "menuFile": ""
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalSec",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 5,
+        "max": 3600,
+        "step": 5,
+        "defaultValue": 30
+      },
+      {
+        "key": "showLevels",
+        "type": "boolean",
+        "label": "Show dimmer levels",
+        "defaultValue": true
+      }
+    ]
+  }
+}

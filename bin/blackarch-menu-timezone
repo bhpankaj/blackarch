@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# blackarch:summary=Select and set the system timezone
+# blackarch:group=menu
+# blackarch:name=timezone
+
+set -e
+
+timezone=$(timedatectl list-timezones | blackarch-menu-select "Set timezone" -- --width 520 --maxheight 520) || exit 1
+sudo timedatectl set-timezone "$timezone"
+blackarch-shell -q blackarch.clock refresh
+blackarch-notification-send "Timezone is now set to $timezone"

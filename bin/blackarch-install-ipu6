@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+cd $HOME
+git clone https://github.com/BlackarchHacker/archlinux-ipu6-webcam.git
+#https://github.com/stefanpartheym/archlinux-ipu6-webcam.git
+cd archlinux-ipu6-webcam
+./install.sh

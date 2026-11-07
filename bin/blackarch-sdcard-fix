@@ -1,0 +1,286 @@
+#!/bin/bash
+# SD Card Reader Fix Script for BlackArch/Linux
+# Diagnoses and fixes common SD card reader issues
+
+set -e
+
+echo "=== SD Card Reader Diagnostic and Fix Script ==="
+echo "Date: $(date)"
+echo
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+# Check if running as root or with sudo
+check_root() {
+    if [[ $EUID -ne 0 ]]; then
+        log_warn "This script requires root privileges for some operations"
+    fi
+}
+
+# Detect SD card reader hardware
+detect_hardware() {
+    echo "=== Step 1: Detecting SD Card Reader Hardware ==="
+    
+    # Check USB card readers
+    echo "USB Devices:"
+    lsusb | grep -i -E "(card|sd|mmc|etu|lightuning|egis)" || log_warn "No obvious USB card reader found"
+    
+    # Check PCI card readers
+    echo -e "\nPCI Devices:"
+    lspci -v | grep -i -E "mmc|sdhci|card reader" -A 3 || echo "No PCI card reader found"
+    
+    # Check for EGIS devices specifically
+    echo -e "\nChecking for EGIS Touch Technologies devices (common SD card readers):"
+    if lsusb | grep -q "1c7a:05a1"; then
+        log_info "Found ETU905A80-E USB device at $(lsusb | grep '1c7a:05a1')"
+    fi
+    
+    echo
+}
+
+# Check kernel modules
+check_kernel_modules() {
+    echo "=== Step 2: Checking Kernel Modules ==="
+    
+    local required_modules=("mmc_core" "mmc_block" "sdhci")
+    local missing=()
+    
+    for mod in "${required_modules[@]}"; do
+        if lsmod | grep -q "^$mod"; then
+            log_info "Module $mod is loaded"
+        else
+            log_warn "Module $mod is NOT loaded"
+            missing+=("$mod")
+        fi
+    done
+    
+    if [[ ${#missing[@]} -gt 0 ]]; then
+        echo -e "\nAttempting to load missing modules..."
+        for mod in "${missing[@]}"; do
+            if modprobe "$mod" 2>/dev/null; then
+                log_info "Successfully loaded $mod"
+            else
+                log_error "Failed to load $mod"
+            fi
+        done
+    fi
+    
+    # Check for sdhci-pci or sdhci-acpi (platform specific)
+    if ! lsmod | grep -q "sdhci"; then
+        log_info "Loading sdhci core module..."
+        modprobe sdhci 2>/dev/null || true
+    fi
+    
+    # Try platform-specific modules
+    if lsmod | grep -q "intel_pmc"; then
+        modprobe sdhci-pci 2>/dev/null || true
+    fi
+    
+    if lsmod | grep -q "acpi"; then
+        modprobe sdhci-acpi 2>/dev/null || true
+    fi
+    
+    echo
+}
+
+# Reload USB subsystem for the card reader
+reload_usb() {
+    echo "=== Step 3: Reloading USB Subsystem ==="
+    
+    # Find the SD card reader's USB device
+    local device_bus=$(lsusb | grep "1c7a:05a1" | awk '{print $2}' | cut -d: -f1)
+    
+    if [[ -n "$device_bus" ]]; then
+        log_info "Found card reader on USB bus: $device_bus"
+        
+        # Reset the device (requires proper permissions)
+        if [[ $EUID -eq 0 ]]; then
+            echo -n "$device_bus" > /sys/bus/usb/devices/usb$device_bus/authorized 2>/dev/null || true
+            sleep 1
+            echo "$device_bus" > /sys/bus/usb/devices/usb$device_bus/authorized 2>/dev/null || true
+            log_info "Reset USB device on bus $device_bus"
+        else
+            log_warn "Cannot reset USB device - run as root for full functionality"
+        fi
+    else
+        log_warn "Could not find EGIS USB card reader device"
+    fi
+    
+    # Reset USB subsystem
+    echo -e "\nResetting USB subsystem..."
+    if [[ $EUID -eq 0 ]]; then
+        modprobe -r usbhid 2>/dev/null || true
+        modprobe -r xhci_hcd 2>/dev/null || true
+        sleep 2
+        modprobe xhci_hcd 2>/dev/null || true
+        modprobe usbhid 2>/dev/null || true
+        log_info "USB subsystem reset complete"
+    else
+        log_warn "Skipping USB reset (run as root)"
+    fi
+    
+    echo
+}
+
+# Check and fix firmware issues
+check_firmware() {
+    echo "=== Step 4: Checking Firmware ==="
+    
+    # Check for missing firmware
+    if command -v fwupdmgr &> /dev/null; then
+        log_info "Checking for firmware updates..."
+        fwupdmgr refresh --force 2>/dev/null || true
+        fwupdmgr get-updates 2>/dev/null | grep -i "sd\|mmc\|card" || log_info "No SD card reader firmware updates found"
+    fi
+    
+    # Check if the device needs specific firmware
+    if lsmod | grep -q "ov02c10"; then
+        log_info "Image sensor detected - checking if SD card shares interface..."
+    fi
+    
+    echo
+}
+
+# Check dmesg for errors
+check_dmesg() {
+    echo "=== Step 5: Checking Kernel Logs ==="
+    
+    echo "Recent SD/MMC related kernel messages:"
+    dmesg | grep -i -E "(mmc|sdhci|sdcard|card reader)" | tail -20 || echo "No recent messages found"
+    
+    echo -e "\nUSB errors in kernel log:"
+    dmesg | grep -i "usb.*error" | tail -10 || echo "No USB errors found"
+    
+    echo
+}
+
+# Create udev rules for better card detection
+create_udev_rules() {
+    echo "=== Step 6: Creating Udev Rules ==="
+    
+    local rules_file="/etc/udev/rules.d/99-sdcard-reader.rules"
+    
+    if [[ -f "$rules_file" ]]; then
+        log_info "Udev rules already exist at $rules_file"
+    else
+        log_info "Creating udev rules for better SD card detection..."
+        
+        cat > "$rules_file" << 'EOF'
+# SD Card Reader (EGIS ETU905A80-E)
+SUBSYSTEM=="usb", ATTR{idVendor}=="1c7a", ATTR{idProduct}=="05a1", MODE="0666"
+SUBSYSTEM=="block", KERNEL=="mmcblk*", MODE="0666"
+SUBSYSTEM=="block", KERNEL=="/mmcblk*[0-9]", ENV{ID_FS_TYPE}=="vfat|ntfs|ext4", SYMLINK+="sdcard%n"
+
+# Allow users to read SD cards without additional permissions
+SUBSYSTEM=="block", KERNEL=="mmcblk*", TAG+="uaccess"
+SUBSYSTEM=="block", KERNEL=="mmcblk*[0-9]", TAG+="uaccess"
+
+# Log when SD card is inserted/removed
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="mmcblk*[0-9]", RUN+="/usr/bin/logger SD_CARD_INSERTED: %k"
+ACTION=="remove", SUBSYSTEM=="block", KERNEL=="mmcblk*[0-9]", RUN+="/usr/bin/logger SD_CARD_REMOVED: %k"
+EOF
+        
+        if [[ $EUID -eq 0 ]]; then
+            udevadm control --reload-rules
+            udevadm trigger
+            log_info "Udev rules installed and reloaded"
+        else
+            log_warn "Could not create udev rules - run as root"
+        fi
+    fi
+    
+    echo
+}
+
+# Check permissions and users
+check_permissions() {
+    echo "=== Step 7: Checking Permissions ==="
+    
+    # Add user to disk group if not already
+    if groups | grep -q disk; then
+        log_info "User is in 'disk' group"
+    else
+        log_warn "User is NOT in 'disk' group - SD cards may not be readable"
+    fi
+    
+    # Check if user is in storage group
+    if groups | grep -q storage; then
+        log_info "User is in 'storage' group"
+    fi
+    
+    echo
+}
+
+# Mount auto-detection fix
+fix_mount_issues() {
+    echo "=== Step 8: Mounting Fixes ==="
+    
+    # Check for automount services
+    if command -v udisks2 &> /dev/null; then
+        log_info "udisks2 is available - SD cards should auto-mount"
+        udisksctl dump | grep -i mmc || echo "No MMC devices detected by udisks2"
+    elif command -v udisks &> /dev/null; then
+        log_info "udisks (v1) is available"
+    else
+        log_warn "No udisks found - please install udisks2 for auto-mounting"
+    fi
+    
+    echo
+}
+
+# Display final status
+show_status() {
+    echo "=== Final Status ==="
+    
+    echo "Current block devices:"
+    lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,FSTYPE,VENDOR,MODEL 2>/dev/null | head -20
+    
+    echo -e "\nMMC devices:"
+    ls /dev/mmcblk* 2>/dev/null || echo "No MMC devices found"
+    
+    echo -e "\nSD card detection status:"
+    if ls /dev/mmcblk* &>/dev/null; then
+        log_info "SD card detected! Device nodes: $(ls /dev/mmcblk* | tr '\n' ' ')"
+    else
+        log_warn "No SD card detected at /dev/mmcblk*"
+    fi
+    
+    echo -e "\nCommon fix commands to try:"
+    echo "  1. Insert SD card and run: sudo udevadm trigger"
+    echo "  2. Check for devices: ls /dev/mmcblk* && lsblk"
+    echo "  3. Format SD card (WARNING: destroys all data):"
+    echo "     sudo mkfs.vfat -F 32 /dev/mmcblk0"
+    echo "  4. Mount manually:"
+    echo "     sudo mkdir -p /mnt/sd && sudo mount /dev/mmcblk0p1 /mnt/sd"
+    
+    echo
+}
+
+# Main execution
+main() {
+    check_root
+    detect_hardware
+    check_kernel_modules
+    reload_usb
+    check_firmware
+    check_dmesg
+    create_udev_rules
+    check_permissions
+    fix_mount_issues
+    show_status
+    
+    log_info "Diagnostic complete. If issues persist, please provide:"
+    echo "  - Output of 'lsblk'"
+    echo "  - Output of 'dmesg | grep -i mmc' after inserting card"
+    echo "  - Output of 'lsusb -v' for device 1c7a:05a1"
+}
+
+main "$@"

@@ -1,0 +1,25 @@
+[Unit]
+Description=Kodachi Host Exposure Session Notifier
+
+[Service]
+Type=simple
+ExecStart=/opt/kodachi/dashboard/hooks/kodachi-soc-notifier
+Restart=on-failure
+RestartSec=3
+MemoryHigh=24M
+MemoryMax=32M
+CPUQuota=5%
+OOMScoreAdjust=500
+TasksMax=32
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+RestrictAddressFamilies=AF_UNIX
+LockPersonality=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+UnsetEnvironment=LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG GLIBC_TUNABLES GCONV_PATH LOCPATH
+
+[Install]
+WantedBy=default.target

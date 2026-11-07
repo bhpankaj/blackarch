@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# blackarch:summary=Open Voxtype configuration
+
+set -e
+
+blackarch-launch-floating-terminal-with-presentation "voxtype configure"
+blackarch-restart-shell

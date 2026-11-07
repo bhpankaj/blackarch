@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Define the schema
+SCHEMA="org.gnome.desktop.interface"
+
+# Define the keys to check
+keys=(
+    "color-scheme"
+    "cursor-size"
+    "cursor-theme"
+    "font-antialiasing"
+    "font-hinting"
+    "font-name"
+    "font-rgba-order"
+    "gtk-theme"
+    "icon-theme"
+    "text-scaling-factor"
+    "gtk-application-prefer-dark-theme"
+)
+
+echo "--- Current GTK/Desktop Interface Settings ---"
+printf "%-40s | %-20s\n" "Setting" "Value"
+echo "-------------------------------------------------------------"
+
+for key in "${keys[@]}"; do
+    value=$(gsettings get "$SCHEMA" "$key" 2>/dev/null || echo "Not found")
+    printf "%-40s | %-20s\n" "$key" "$value"
+done

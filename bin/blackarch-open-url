@@ -1,0 +1,268 @@
+#!/usr/bin/env bash
+
+# Configuration: Set how many windows you want to cycle through
+MAX_SLOTS="${WIN_MAX_SLOTS:-3}"
+BASE_FILE="${WIN_BASE_FILE:-/tmp/webapp_addr}"
+
+# Helper function to get file path for a slot
+get_file() {
+    echo "${BASE_FILE}_$1"
+}
+
+extract_domain() {
+  echo "$1" | awk -F/ '{print $3}' | cut -d: -f1
+}
+
+# Detect environment and define functions accordingly
+if [[ "$XDG_SESSION_DESKTOP" = "Hyprland" ]]; then
+    # --- HYPRLAND CONFIGURATION ---
+    get_window_address() {
+        hyprctl clients -j | jq -r --arg p "$1" '.[] | select((.class | test($p; "i")) or (.initialClass | test($p; "i"))) | .address' | head -n1
+    }
+
+    get_active() {
+        hyprctl activewindow -j | jq -r '.address'
+    }
+
+    focus_window() {
+        local addr="$1"
+        hyprctl dispatch "hl.dsp.focus({ window = \"address:$addr\" })" || \
+        hyprctl dispatch focuswindow address:"$addr"
+    }
+
+    is_window_alive() {
+        local addr="$1"
+        hyprctl clients -j | jq -e --arg addr "$addr" 'any(.address == $addr)' >/dev/null 2>&1
+    }
+else
+    # --- FLUXBOX (X11) CONFIGURATION ---
+    get_active() {
+        wmctrl -lp | awk '{print $1}' | grep -i "$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')"
+    }
+
+    focus_window() {
+        local addr="$1"
+        wmctrl -i -a "$addr"
+    }
+
+    is_window_alive() {
+        local addr="$1"
+        wmctrl -lp | awk '{print $1}' | grep -qi "$addr"
+    }
+fi
+
+# Function to clear slots that contain closed/dead windows
+cleanup_closed_windows() {
+    for ((i=1; i<=MAX_SLOTS; i++)); do
+        local f="$(get_file "$i")"
+        if [ -s "$f" ]; then
+            local addr
+            addr="$(cat "$f" | awk '{print $1}')"
+            if ! is_window_alive "$addr"; then
+                rm "$f" # Empty the file if window no longer exists
+            fi
+        fi
+    done
+}
+
+# Function to check if an address already exists in any slot (excluding an optional slot to ignore)
+is_duplicate_address() {
+    local target_addr="$1"
+    local ignore_slot="${2:-0}"
+
+    for ((i=1; i<=MAX_SLOTS; i++)); do
+        if (( i == ignore_slot )); then
+            continue
+        fi
+        local f="$(get_file "$i")"
+        if [ -s "$f" ]; then
+            local saved_addr
+            saved_addr="$(cat "$f" | awk '{print $1}')"
+            if [ "$saved_addr" = "$target_addr" ]; then
+                return 0 # True, it's a duplicate
+            fi
+        fi
+    done
+    return 1 # False, not a duplicate
+}
+
+cmd="${1:-clipboard}"
+
+case "$cmd" in
+    clipboard)
+        cleanup_closed_windows
+
+        # 1. Check clipboard for a valid URL
+        URL=$(wl-paste 2>/dev/null | xargs)
+        if [ -n "$URL" ] && [[ "${URL}" =~ ^https?://?([^/]+)(/[^?#]*)?(\?[^#]*)? ]]; then
+            domain_port="${BASH_REMATCH[1]}"
+            path="${BASH_REMATCH[2]}"
+            WINDOW_PATTERN="${domain_port}_${path//\//_}"
+            WIN_ADDRESS="$(get_window_address "$WINDOW_PATTERN")"
+            
+            # If window doesn't exist yet, launch it and poll briefly for its address
+            if [ -z "$WIN_ADDRESS" ]; then
+                ulaa-browser-stable --profile-directory="Default" --app="$URL" >/dev/null 2>&1 &
+                
+                # Wait up to ~2 seconds for the window to spawn and register its address
+                for _ in {1..20}; do
+                    sleep 0.2
+                    WIN_ADDRESS="$(get_window_address "$WINDOW_PATTERN")"
+                    [ -n "$WIN_ADDRESS" ] && break
+                done
+            fi
+
+            if [ -n "$WIN_ADDRESS" ]; then
+                # Check if this window is already tracked anywhere
+                already_slot=0
+                for ((i=1; i<=MAX_SLOTS; i++)); do
+                    f="$(get_file "$i")"
+                    if [ -s "$f" ] && [ "$(cat "$f" | awk '{print $1}')" = "$WIN_ADDRESS" ]; then
+                        already_slot=$i
+                        break
+                    fi
+                done
+
+                # If not tracked, find an empty slot or auto-save/rotate
+                if (( already_slot == 0 )); then
+                    saved_to_empty=false
+                    for ((i=1; i<=MAX_SLOTS; i++)); do
+                        f="$(get_file "$i")"
+                        if [ ! -s "$f" ]; then
+                            if ! is_duplicate_address "$WIN_ADDRESS"; then
+                                echo "$WIN_ADDRESS" > "$f"
+                                notify-send "Clipboard WebApp" "Auto-saved to Slot $i."
+                                saved_to_empty=true
+                                break
+                            fi
+                        fi
+                    done
+
+                    # If all slots are full, push to slot 1 and shift/rotate ring
+                    if [ "$saved_to_empty" = false ]; then
+                        declare -a addrs
+                        for ((i=1; i<=MAX_SLOTS; i++)); do
+                            addrs[i-1]="$(cat "$(get_file "$i")" | awk '{print $1}')"
+                        done
+
+                        # Shift right/insert at front
+                        for ((i=MAX_SLOTS-1; i>0; i--)); do
+                            addrs[i]="${addrs[i-1]}"
+                        done
+                        addrs[0]="$WIN_ADDRESS"
+
+                        for ((i=1; i<=MAX_SLOTS; i++)); do
+                            echo "${addrs[i-1]}" > "$(get_file "$i")"
+                        done
+                        notify-send "Clipboard WebApp" "Slots full. Shifted to Slot 1."
+                    fi
+                fi
+
+            fi
+            focus_window "$WIN_ADDRESS"
+        fi
+        ;;
+    swap|"")
+          # 2. No valid URL found -> Clean up closed windows from saved slots
+          cleanup_closed_windows
+
+          # Get current active window address
+          active_addr="$(get_active)"
+          [ -z "$active_addr" ] && exit 0
+
+          # Collect all existing window addresses from slots
+          declare -a addrs
+          for ((i=1; i<=MAX_SLOTS; i++)); do
+              f="$(get_file "$i")"
+              if [ -s "$f" ]; then
+                  addrs[i-1]="$(cat "$f" | awk '{print $1}')"
+              else
+                  addrs[i-1]=""
+              fi
+          done
+
+          # Check if active window is already in a slot
+          already_slot=-1
+          for ((i=0; i<MAX_SLOTS; i++)); do
+              if [ -n "${addrs[i]}" ] && [ "${addrs[i]}" = "$active_addr" ]; then
+                  already_slot=$i
+                  break
+              fi
+          done
+
+          # Only proceed if we have at least one existing window to swap with
+          # Count non-empty slots
+          non_empty_count=0
+          for ((i=0; i<MAX_SLOTS; i++)); do
+              if [ -n "${addrs[i]}" ]; then
+                  ((non_empty_count++))
+              fi
+          done
+
+          if [ $non_empty_count -eq 0 ]; then
+              # No windows tracked yet, nothing to swap
+              exit 0
+          fi
+
+          # Check if active window is already tracked
+          if [ $already_slot -ge 0 ]; then
+              # Active window is in a slot - rotate the ring
+              first="${addrs[0]}"
+              for ((i=0; i<MAX_SLOTS-1; i++)); do
+                  addrs[i]="${addrs[i+1]}"
+              done
+              addrs[MAX_SLOTS-1]="$first"
+          # else
+          #     # Active window is not tracked - add it to the front of the ring
+          #     # Shift all existing entries right
+          #     for ((i=MAX_SLOTS-1; i>0; i--)); do
+          #         addrs[i]="${addrs[i-1]}"
+          #     done
+          #     addrs[0]="$active_addr"
+          fi
+
+          # Write back the updated slots (only non-empty ones)
+          for ((i=0; i<MAX_SLOTS; i++)); do
+              if [ -n "${addrs[i]}" ]; then
+                  echo "${addrs[i]}" > "$(get_file $((i+1)))"
+              else
+                  # Clear empty slots
+                  rm "$(get_file $((i+1)))"
+              fi
+          done
+
+          focus_window ${addrs[@]}
+        ;;
+    save*)
+        cleanup_closed_windows
+        if [[ "$cmd" =~ ^save([0-9]+)$ ]]; then
+            slot="${BASH_REMATCH[1]}"
+            if (( slot >= 1 && slot <= MAX_SLOTS )); then
+                active_addr="$(get_active)"
+                [ -z "$active_addr" ] && exit 1
+
+                if is_duplicate_address "$active_addr" "$slot"; then
+                    notify-send "Window Manager" "Error: Window already saved in another slot."
+                    exit 1
+                fi
+
+                echo "$active_addr" > "$(get_file "$slot")"
+                notify-send "Window Manager" "Slot $slot saved."
+            else
+                notify-send "Window Manager" "Error: Slot $slot out of range (1-$MAX_SLOTS)."
+            fi
+        fi
+        ;;
+
+    clear)
+        for ((i=1; i<=MAX_SLOTS; i++)); do
+            rm "$(get_file "$i")" 2>/dev/null
+        done
+        notify-send "Window Rotation" "All slots cleared."
+        ;;
+
+    *)
+        echo "Usage: $0 [clipboard|swap|save1..save$MAX_SLOTS|clear]"
+        exit 1
+        ;;
+esac

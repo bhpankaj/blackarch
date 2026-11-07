@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# blackarch:summary=Edit, set, or reset About branding
+# blackarch:group=branding
+# blackarch:name=about
+# blackarch:args=<image|text|reset>
+# blackarch:examples=blackarch branding about image | blackarch branding about text | blackarch branding about reset
+
+set -euo pipefail
+
+case "${1:-}" in
+image)
+  image=$(blackarch-file-select --title "Pick PNG or SVG for About" --extensions "png svg")
+  if blackarch-transcode-ascii "$image" ~/.config/blackarch/branding/about.txt --width 54 --height 26; then
+    blackarch-launch-about >/dev/null 2>&1
+  fi
+  ;;
+text)
+  blackarch-launch-editor ~/.config/blackarch/branding/about.txt >/dev/null 2>&1 && blackarch-launch-about >/dev/null 2>&1
+  ;;
+reset)
+  cp "$BLACKARCH_PATH/icon.txt" ~/.config/blackarch/branding/about.txt && blackarch-launch-about >/dev/null 2>&1
+  ;;
+*)
+  echo "Usage: blackarch-branding-about <image|text|reset>" >&2
+  exit 1
+  ;;
+esac

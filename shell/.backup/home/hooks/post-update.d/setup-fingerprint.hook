@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+# Only invite when there's a reader to use and it isn't set up yet (the lock
+# PAM file is the last thing the setup writes on success).
+if blackarch-hw-fingerprint && [[ ! -f /etc/pam.d/blackarch-lock-fingerprint ]] &&
+  blackarch-done ensure fingerprint-setup-invitation; then
+  blackarch-notification-send -u critical -g 󰈷 "Setup Fingerprint Reader" \
+    "Enable sudo and unlocking with your fingerprint." \
+    --exec blackarch-launch-floating-terminal-with-presentation blackarch-setup-security-fingerprint
+fi

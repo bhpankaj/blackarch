@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# blackarch:summary=Pick a webcam and start a screen recording with it
+# blackarch:examples=blackarch capture screenrecording-with-webcam
+
+mapfile -t devices < <(blackarch-capture-webcam-list)
+if (( ${#devices[@]} == 0 )); then
+  blackarch-notification-send "No webcam devices found!"
+  exit 1
+fi
+
+if (( ${#devices[@]} == 1 )); then
+  device="${devices[0]%%[[:space:]]*}"
+else
+  selection=$(blackarch-menu-select "Select Webcam" "${devices[@]}" -- --width 520 --maxheight 520) || exit 1
+  device="${selection%%[[:space:]]*}"
+  echo $device
+fi
+
+exec blackarch-capture-screenrecording \
+  --with-desktop-audio --with-microphone-audio \
+  --with-webcam --webcam-device="$device"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

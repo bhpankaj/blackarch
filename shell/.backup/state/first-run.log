@@ -1,0 +1,18 @@
+[2026-09-28 00:35:17] Starting: install Voxtype post-update hook
+[2026-09-28 00:35:17] Completed: install Voxtype post-update hook
+[2026-09-28 00:35:17] Starting: install fingerprint setup post-update hook
+[2026-09-28 00:35:17] Completed: install fingerprint setup post-update hook
+[2026-09-28 00:35:17] Starting: install agent setup post-update hook
+[2026-09-28 00:35:17] Completed: install agent setup post-update hook
+[2026-09-28 00:35:17] Starting: enable user systemd units
+[2026-09-28 00:35:17] Completed: enable user systemd units
+[2026-09-28 00:35:17] Starting: set GNOME theme
+[2026-09-28 00:35:17] Completed: set GNOME theme
+[2026-09-28 00:35:17] Starting: set GTK primary paste
+[2026-09-28 00:35:17] Completed: set GTK primary paste
+[2026-09-28 00:35:17] Starting: apply speaker tuning
+[2026-09-28 00:35:17] Completed: apply speaker tuning
+[2026-09-28 00:35:18] Starting: show welcome notification
+[2026-09-28 00:35:18] Completed: show welcome notification
+[2026-09-28 00:35:18] Starting: schedule Wi-Fi/update notifications
+[2026-09-28 00:35:18] Completed: schedule Wi-Fi/update notifications

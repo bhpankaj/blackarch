@@ -1,0 +1,69 @@
+#!/bin/bash
+grep blackarch /etc/pacman.conf &>/dev/null || wget -O - https://blackarch.org/strap.sh | sudo bash
+# 1. Define BlackArch package groups array
+BlackarchPkgGrps=(
+  # blackarch-officials
+  blackarch-wordlist
+  blackarch-backdoor
+  blackarch-binary
+  blackarch-bluetooth
+  blackarch-cracker
+  blackarch-database
+  blackarch-defensive
+  blackarch-dos
+  blackarch-exploitation
+  blackarch-fingerprint
+  blackarch-fuzzer
+  blackarch-honeypot
+  blackarch-ids
+  blackarch-keylogger
+  blackarch-malware
+  blackarch-misc
+  blackarch-mobile
+  blackarch-networking
+  blackarch-proxy
+  blackarch-recon
+  blackarch-scanner
+  blackarch-sniffer
+  blackarch-social
+  blackarch-spoof
+  blackarch-tunnel
+  blackarch-webapp
+  blackarch-windows
+  blackarch-wireless
+)
+
+BlackarchPkgGrps+=("${@}")
+
+# 2. Extract and format ignored packages cleanly into a regex string
+# This safely handles spaces, tabs, and multiple IgnorePkg lines.
+lib32_packages=$(pacman -Ss lib32 | grep '/lib32' | awk -F'[ /]' '{print $2}'| xargs)
+python2_packages=$(pacman -Ss python2 | grep '/python2' | awk -F'[ /]' '{print $2}'| xargs)
+
+IgnorePkg_Pacman=$(grep -E '^\s*IgnorePkg' /etc/pacman.conf | cut -d= -f2 | xargs)
+IgnorePkg_Conflicting="fastnetmon libpfring yeti autorecon  flare-floss  redasm  vivisect wpsik viproy-voipkit flare-floss  malboxes wssip plutil libjpeg webkit2gtk badkarma vega arptools  binflow  pfring-dkms  radare2-keystone  t50  tyton  vpnpivot  wolpertinger"
+IgnorePkg_32Bits="$(pacman -Sii $lib32_packages | grep "Required By" |cut -d: -f2 | grep -v None |tr ' ' '\n'| sort -u |xargs)"
+IgnorePkg_Python2="$(pacman -Sii $python2_packages | grep "Required By" |cut -d: -f2 | grep -v None |tr ' ' '\n'| sort -u |xargs)"
+IgnorePkg_CertainPkg="linux-headers linux"
+IgnorePkg="$IgnorePkg_CertainPkg $IgnorePkg_Conflicting $IgnorePkg_Python2 $IgnorePkg_32Bits $IgnorePkg_Pacman"
+IgnorePkgs="$(echo \"$IgnorePkg\" | tr ' ' '|')"
+
+echo "Regex of Ignored Packages: ${IgnorePkgs//|/ g}"
+
+# 3. Fetch packages from groups and filter out ignored ones
+# If IgnorePkgs is empty, we skip grep to prevent breaking the pipeline.
+if [ -n "$IgnorePkgs" ]; then
+  BlackarchPkgs=$(pacman -Sgq "${BlackarchPkgGrps[@]}" | grep -Ev "($IgnorePkgs)")
+else
+  BlackarchPkgs=$(pacman -Sgq "${BlackarchPkgGrps[@]}")
+fi
+
+# 4. Install the remaining packages
+if [ -n "$BlackarchPkgs" ]; then
+  while true
+    do sudo pacman -S --needed --noconfirm $BlackarchPkgs && break
+      sleep 15
+    done
+else
+  echo "No packages to install (or all were ignored)."
+fi

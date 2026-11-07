@@ -1,0 +1,17 @@
+cd /tmp/
+curl -sSL https://ulaa.com/release/linux/stable/install-ulaa-browser.sh | bash
+sudo apt update 
+sudo apt -y install linux-headers-$(uname -r) build-essential dkms git libexpat1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libdrm-dev v4l2loopback-dkms gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-bad
+sudo apt install -y snapd iwd acpi acpid systemd-resolved
+sudo systemctl enable --now snapd apparmor iwd systemd-resolved
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo apt install -y ulaa-browser jq xfonts-terminus fonts-noto-core fonts-noto-ui-core  fonts-noto-color-emoji  fonts-font-awesome mpv-mpris mpv python3-terminaltexteffects fonts-font-awesome fonts-material-design-icons-iconfont fonts-roboto
+systemctl enable --now --user battery-alert.timer
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh && source $HOME/.cargo/env
+cargo install impala bluetui
+git clone https://github.com/jjsullivan5196/wvkbd.git
+cd wvkbd && make LAYOUT=deskintl && sudo make install LAYOUT=deskintl
+git clone https://github.com/intel/ipu6-drivers
+cd ipu6-drivers
+sudo dkms add .
+sudo dkms autoinstall ipu6-drivers/0.0.0

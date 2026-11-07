@@ -1,0 +1,7 @@
+: "${BLACKARCH_PATH:=/usr/share/blackarch}"
+source "$BLACKARCH_PATH/default/bash/envs"
+source "$BLACKARCH_PATH/default/bash/shell"
+source "$BLACKARCH_PATH/default/bash/aliases"
+source "$BLACKARCH_PATH/default/bash/functions"
+source "$BLACKARCH_PATH/default/bash/init"
+[[ $- == *i* ]] && bind -f "$BLACKARCH_PATH/default/bash/inputrc"

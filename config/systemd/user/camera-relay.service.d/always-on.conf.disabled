@@ -1,0 +1,37 @@
+[Unit]
+Description=Camera Relay (always-on libcamera to v4l2loopback)
+
+[Service]
+# Always-on instead of --on-demand.
+#
+# Why: in on-demand mode the monitor writes BLACK frames while idle, then starts
+# the libcamera pipeline when an app opens the device. The pipeline always
+# begins at its lowest exposure (AGC state is per-pipeline, not persisted), so
+# every single app connect replays the auto-exposure ramp — measured 16 -> 43 ->
+# 66 -> 71 luma over ~5 frames. That ramp is the visible "light flickering":
+# it fires on every connect, and again mid-call if the relay ever restarts.
+#
+# Always-on keeps one pipeline running, so the AGC settles once (after ~10
+# frames, kNumStartupFrames) and every later client sees a stable exposure.
+# Measured startup swing drops from 56.3 luma to 1.1 luma.
+#
+# Cost: ~15% of one CPU core while streaming, because the software ISP debayers
+# on the GPU/CPU continuously. That is the trade for a flicker-free image.
+#
+# The simple IPA has NO anti-flicker (AeFlickerMode) support at all — see
+# `grep -ri flicker src/ipa/simple/` in the libcamera tree — so mains-banding
+# cannot be fixed from a tuning file. Keeping exposure stable is the only lever.
+#
+# ExecStart= with no value clears the base unit's --on-demand ExecStart; a
+# drop-in cannot otherwise add a second ExecStart (systemd rejects that with
+# "bad unit file setting").
+ExecStart=
+# --foreground is required here: plain `start` backgrounds the pipeline and
+# exits, and under Type=simple systemd then treats the service as stopped and
+# runs ExecStop, killing the relay. --foreground execs the setgid launcher and
+# stays in the foreground, which is what Type=simple expects.
+ExecStart=/usr/local/bin/camera-relay start --foreground
+ExecStartPost=-/usr/local/bin/camera-relay nudge-wireplumber
+ExecStop=/usr/local/bin/camera-relay stop
+Restart=on-failure
+RestartSec=5

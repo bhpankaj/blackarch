@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# 1. Determine the menu command
+if [[ -n "$1" ]]; then
+    # Wofi reads stdin by default
+    menu_cmd="fzf --prompt='Portals > ' --reverse"
+else
+    # fzf reads stdin by default
+    menu_cmd="wofi --allow-images -d -i"
+fi
+env > /tmp/tempenv
+hyprctl activewindow > /tmp/tmphypractive
+# 2. Take stdin and execute the chosen menu command
+# We use eval to allow the command string to be parsed correctly
+eval "$menu_cmd"

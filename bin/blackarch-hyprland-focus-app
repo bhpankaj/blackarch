@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Thin launcher so `blackarch-hyprland-focus-app` keeps working after the command family was ported
+# from bash to Python. The real implementation is blackarch-hyprland.py next to
+# this file. Usage and behaviour are unchanged; the Python version needs no
+# hyprctl, jq, awk, sed, socat or flock.
+# blackarch:summary=Focus a Hyprland window by application identity
+# blackarch:args=<app-name>
+# blackarch:examples=blackarch hyprland focus app Slack
+set -euo pipefail
+
+# readlink -f: these commands are symlinked into /usr/sbin, which precedes this
+# directory on PATH, so the symlink's own directory must not be used.
+here="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+exec "$here/blackarch-hyprland" focus-app "$@"

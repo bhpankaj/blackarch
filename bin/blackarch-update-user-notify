@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# blackarch:summary=Compatibility wrapper for blackarch-migrate-notify.
+# blackarch:hidden=true
+
+exec blackarch-migrate-notify "$@"

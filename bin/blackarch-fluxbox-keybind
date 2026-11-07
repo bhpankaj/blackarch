@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+gen_flux_keybind() {
+  SRC_DIR="$HOME/.config/hypr/blackarch"
+  DST_DIR="$HOME/.fluxbox/blackarch"
+  key_bind "${SRC_DIR}/binding_utilities.lua" > ${DST_DIR}/utilities
+  key_bind "${SRC_DIR}/binding_webapps.lua" > ${DST_DIR}/webapps
+  key_bind "${SRC_DIR}/binding_hacking.lua" > ${DST_DIR}/hacking
+  cat $DST_DIR/{tiling,media,utilities,webapps,hacking} > $DST_DIR/../keys
+}
+
+key_bind() {
+  test -f "$1" && cat "$1" | grep '^Binder.add' |sed -e 's/SUPER/Mod4/' -e 's/+ //g' -e 's/ALT/Mod1/' -e 's/CTRL/Control/' \
+  -e 's/SHIFT/Shift/' -e 's/blackarch/Exec blackarch/' -e 's/wofi -d/rofi -dmenu/' | awk -F '["]' '{print $2 " :"$6}' | \
+  grep -v ':$' | sed -e 's/:blackarch/:Exec blackarch/'
+}
+
+test -n "$1" && key_bind "$1" || gen_flux_keybind

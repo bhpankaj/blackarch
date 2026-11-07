@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Designed to be run by systemd timer every 30 seconds and alerts if battery is low
+
+BATTERY_THRESHOLD_UPPER=96
+BATTERY_THRESHOLD=25
+NOTIFICATION_FLAG="/run/user/$UID/blackarch_battery_notified"
+BATTERY_LEVEL=$(blackarch-battery-remaining)
+BATTERY_STATE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state" | awk '{print $2}')
+
+send_notification() {
+  if [[ $2 -eq 1 ]]; then
+    notify-send -u critical "󱐋 Time to recharge!" "Battery is down to ${1}%" -i battery-caution -t 30000
+  elif [[ $2 -eq 0 ]]; then
+    notify-send -u normal "󱐋 Battery recharge done!" "Battery is up to ${1}%" -i battery-caution -t 30000
+  fi
+}
+
+if [[ -n "$BATTERY_LEVEL" && "$BATTERY_LEVEL" =~ ^[0-9]+$ ]]; then
+  if [[ $BATTERY_STATE == "discharging" && $BATTERY_LEVEL -le $BATTERY_THRESHOLD ]]; then
+    smartthings devices:commands "4e715c22-7aa0-4bd6-9425-b694b26e325d" switch:on
+    if [[ ! -f $NOTIFICATION_FLAG ]]; then
+      send_notification $BATTERY_LEVEL 1
+      touch $NOTIFICATION_FLAG
+    fi
+  elif [[ $BATTERY_STATE == "charging" && $BATTERY_LEVEL -ge $BATTERY_THRESHOLD_UPPER ]]; then
+    send_notification $BATTERY_LEVEL 0
+    smartthings devices:commands "4e715c22-7aa0-4bd6-9425-b694b26e325d" switch:off
+    rm -f $NOTIFICATION_FLAG
+  else
+    rm -f $NOTIFICATION_FLAG
+  fi
+fi

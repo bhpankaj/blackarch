@@ -1,0 +1,12 @@
+#!/bin/bash
+killall -9 xdg-desktop-portal-hyprland
+killall -9 xdg-desktop-portal
+
+# 2. Update the environment (Crucial for DBus/Systemd communication)
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
+
+# 3. Start the Hyprland backend in the background
+/usr/lib/xdg-desktop-portal-hyprland &
+
+# 4. Restart the main portal service
+systemctl --user restart xdg-desktop-portal

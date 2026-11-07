@@ -1,0 +1,20 @@
+theme = ""
+auto_play = true
+cookies_from = "brave+gnomekeyring"
+
+# YouTube / YouTube Music.
+#
+# Ulaa is a Chromium fork and is not in yt-dlp's supported browser list, so
+# it is addressed through the `brave` entry.  That works because of the
+# pre-existing symlink:
+#     ~/.config/BraveSoftware/Brave-Browser -> ~/.config/Zoho/Ulaa
+# plus a gnome-keyring item labelled "Brave Safe Storage" holding the same
+# secret as "Ulaa Safe Storage".
+#
+# The "+gnomekeyring" suffix is required.  With no DESKTOP_SESSION set
+# (Hyprland), yt-dlp detects the desktop as OTHER and falls back to the
+# BASICTEXT keyring, which returns no key and fails to decrypt v11 cookies.
+repeat = "Off"
+shuffle = true
+[ytmusic]
+cookies_from = "brave+gnomekeyring"

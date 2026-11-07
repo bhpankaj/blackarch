@@ -1,0 +1,3 @@
+#!/bin/bash
+
+blackarch-restart-app hyprsunset

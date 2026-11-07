@@ -1,0 +1,13 @@
+[Unit]
+Description=EasyEffects Daemon
+After=pipewire.service
+
+[Service]
+Type=dbus
+BusName=com.github.wwmm.easyeffects
+# Replace "YourPresetName" with the exact name of your Galaxy Book 3 preset
+ExecStart=/usr/bin/easyeffects --gapplication-service -p "blackarch"
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

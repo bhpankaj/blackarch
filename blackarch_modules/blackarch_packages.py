@@ -62,6 +62,7 @@ MY_UTILITIES = (
 SYSTEM_UTILITIES = (
     "alsa-tools",
     "alsa-utils",
+    "archlinux-xdg-menu",
     "bc",
     "blueman",
     "bluetui",
@@ -108,7 +109,6 @@ SYSTEM_PACKAGES = (
     "beautyline",
     "bluetooth-autoconnect",
     "downgrade",
-    "emote",
     "fd",
     "ffmpegthumbnailer",
     "figlet",

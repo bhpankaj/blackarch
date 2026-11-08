@@ -1,337 +1,3739 @@
 {
+  "blackarch.pentest.blueteamer": {
+    "icon": "",
+    "label": "BLUETEAMER",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.blueteamer.osquery": {
+    "icon": "",
+    "label": "osquery",
+    "when": "blackarch-cmd-present osquery",
+    "action": "blackarch osquery"
+  },
+  "blackarch.pentest.blueteamer.zeek": {
+    "icon": "",
+    "label": "zeek",
+    "when": "blackarch-cmd-present zeek",
+    "action": "blackarch zeek"
+  },
+  "blackarch.pentest.blueteamer.suricata": {
+    "icon": "",
+    "label": "suricata",
+    "when": "blackarch-cmd-present suricata",
+    "action": "blackarch suricata"
+  },
+  "blackarch.pentest.blueteamer.wireshark-qt": {
+    "icon": "",
+    "label": "wireshark-qt",
+    "when": "blackarch-cmd-present wireshark-qt",
+    "action": "blackarch wireshark-qt"
+  },
+  "blackarch.pentest.blueteamer.impacket-ba": {
+    "icon": "",
+    "label": "impacket-ba",
+    "when": "blackarch-cmd-present impacket-ba",
+    "action": "blackarch impacket-ba"
+  },
+  "blackarch.pentest.blueteamer.sleuthkit": {
+    "icon": "",
+    "label": "sleuthkit",
+    "when": "blackarch-cmd-present sleuthkit",
+    "action": "blackarch sleuthkit"
+  },
+  "blackarch.pentest.blueteamer.guymager": {
+    "icon": "",
+    "label": "guymager",
+    "when": "blackarch-cmd-present guymager",
+    "action": "blackarch guymager"
+  },
+  "blackarch.pentest.blueteamer.dc3dd": {
+    "icon": "",
+    "label": "dc3dd",
+    "when": "blackarch-cmd-present dc3dd",
+    "action": "blackarch dc3dd"
+  },
+  "blackarch.pentest.blueteamer.ddrescue": {
+    "icon": "",
+    "label": "ddrescue",
+    "when": "blackarch-cmd-present ddrescue",
+    "action": "blackarch ddrescue"
+  },
+  "blackarch.pentest.blueteamer.foremost": {
+    "icon": "",
+    "label": "foremost",
+    "when": "blackarch-cmd-present foremost",
+    "action": "blackarch foremost"
+  },
+  "blackarch.pentest.blueteamer.extundelete": {
+    "icon": "",
+    "label": "extundelete",
+    "when": "blackarch-cmd-present extundelete",
+    "action": "blackarch extundelete"
+  },
+  "blackarch.pentest.blueteamer.scrounge-ntfs": {
+    "icon": "",
+    "label": "scrounge-ntfs",
+    "when": "blackarch-cmd-present scrounge-ntfs",
+    "action": "blackarch scrounge-ntfs"
+  },
+  "blackarch.pentest.blueteamer.mac-robber": {
+    "icon": "",
+    "label": "mac-robber",
+    "when": "blackarch-cmd-present mac-robber",
+    "action": "blackarch mac-robber"
+  },
+  "blackarch.pentest.blueteamer.volatility3": {
+    "icon": "",
+    "label": "volatility3",
+    "when": "blackarch-cmd-present volatility3",
+    "action": "blackarch volatility3"
+  },
+  "blackarch.pentest.blueteamer.clamav": {
+    "icon": "",
+    "label": "clamav",
+    "when": "blackarch-cmd-present clamav",
+    "action": "blackarch clamav"
+  },
+  "blackarch.pentest.blueteamer.yara": {
+    "icon": "",
+    "label": "yara",
+    "when": "blackarch-cmd-present yara",
+    "action": "blackarch yara"
+  },
+  "blackarch.pentest.blueteamer.yara-rules": {
+    "icon": "",
+    "label": "yara-rules",
+    "when": "blackarch-cmd-present yara-rules",
+    "action": "blackarch yara-rules"
+  },
+  "blackarch.pentest.blueteamer.ghidra": {
+    "icon": "",
+    "label": "ghidra",
+    "when": "blackarch-cmd-present ghidra",
+    "action": "blackarch ghidra"
+  },
+  "blackarch.pentest.blueteamer.netsniff-ng": {
+    "icon": "",
+    "label": "netsniff-ng",
+    "when": "blackarch-cmd-present netsniff-ng",
+    "action": "blackarch netsniff-ng"
+  },
+  "blackarch.pentest.blueteamer.nipper": {
+    "icon": "",
+    "label": "nipper",
+    "when": "blackarch-cmd-present nipper",
+    "action": "blackarch nipper"
+  },
+  "blackarch.pentest.blueteamer.spiderfoot": {
+    "icon": "",
+    "label": "spiderfoot",
+    "when": "blackarch-cmd-present spiderfoot",
+    "action": "blackarch spiderfoot"
+  },
+  "blackarch.pentest.blueteamer.rkhunter": {
+    "icon": "",
+    "label": "rkhunter",
+    "when": "blackarch-cmd-present rkhunter",
+    "action": "blackarch rkhunter"
+  },
+  "blackarch.pentest.blueteamer.unhide": {
+    "icon": "",
+    "label": "unhide",
+    "when": "blackarch-cmd-present unhide",
+    "action": "blackarch unhide"
+  },
+  "blackarch.pentest.bountyhunter": {
+    "icon": "",
+    "label": "BOUNTYHUNTER",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.bountyhunter.amass": {
+    "icon": "",
+    "label": "amass",
+    "when": "blackarch-cmd-present amass",
+    "action": "blackarch amass"
+  },
+  "blackarch.pentest.bountyhunter.assetfinder": {
+    "icon": "",
+    "label": "assetfinder",
+    "when": "blackarch-cmd-present assetfinder",
+    "action": "blackarch assetfinder"
+  },
+  "blackarch.pentest.bountyhunter.findomain": {
+    "icon": "",
+    "label": "findomain",
+    "when": "blackarch-cmd-present findomain",
+    "action": "blackarch findomain"
+  },
+  "blackarch.pentest.bountyhunter.subfinder": {
+    "icon": "",
+    "label": "subfinder",
+    "when": "blackarch-cmd-present subfinder",
+    "action": "blackarch subfinder"
+  },
+  "blackarch.pentest.bountyhunter.shuffledns": {
+    "icon": "",
+    "label": "shuffledns",
+    "when": "blackarch-cmd-present shuffledns",
+    "action": "blackarch shuffledns"
+  },
+  "blackarch.pentest.bountyhunter.massdns": {
+    "icon": "",
+    "label": "massdns",
+    "when": "blackarch-cmd-present massdns",
+    "action": "blackarch massdns"
+  },
+  "blackarch.pentest.bountyhunter.dnsx": {
+    "icon": "",
+    "label": "dnsx",
+    "when": "blackarch-cmd-present dnsx",
+    "action": "blackarch dnsx"
+  },
+  "blackarch.pentest.bountyhunter.naabu": {
+    "icon": "",
+    "label": "naabu",
+    "when": "blackarch-cmd-present naabu",
+    "action": "blackarch naabu"
+  },
+  "blackarch.pentest.bountyhunter.httpx": {
+    "icon": "",
+    "label": "httpx",
+    "when": "blackarch-cmd-present httpx",
+    "action": "blackarch httpx"
+  },
+  "blackarch.pentest.bountyhunter.whatweb": {
+    "icon": "",
+    "label": "whatweb",
+    "when": "blackarch-cmd-present whatweb",
+    "action": "blackarch whatweb"
+  },
+  "blackarch.pentest.bountyhunter.wafw00f": {
+    "icon": "",
+    "label": "wafw00f",
+    "when": "blackarch-cmd-present wafw00f",
+    "action": "blackarch wafw00f"
+  },
+  "blackarch.pentest.bountyhunter.waybackurls": {
+    "icon": "",
+    "label": "waybackurls",
+    "when": "blackarch-cmd-present waybackurls",
+    "action": "blackarch waybackurls"
+  },
+  "blackarch.pentest.bountyhunter.hakrawler": {
+    "icon": "",
+    "label": "hakrawler",
+    "when": "blackarch-cmd-present hakrawler",
+    "action": "blackarch hakrawler"
+  },
+  "blackarch.pentest.bountyhunter.gospider": {
+    "icon": "",
+    "label": "gospider",
+    "when": "blackarch-cmd-present gospider",
+    "action": "blackarch gospider"
+  },
+  "blackarch.pentest.bountyhunter.gau": {
+    "icon": "",
+    "label": "gau",
+    "when": "blackarch-cmd-present gau",
+    "action": "blackarch gau"
+  },
+  "blackarch.pentest.bountyhunter.linkfinder": {
+    "icon": "",
+    "label": "linkfinder",
+    "when": "blackarch-cmd-present linkfinder",
+    "action": "blackarch linkfinder"
+  },
+  "blackarch.pentest.bountyhunter.subjack": {
+    "icon": "",
+    "label": "subjack",
+    "when": "blackarch-cmd-present subjack",
+    "action": "blackarch subjack"
+  },
+  "blackarch.pentest.bountyhunter.vhostscan": {
+    "icon": "",
+    "label": "vhostscan",
+    "when": "blackarch-cmd-present vhostscan",
+    "action": "blackarch vhostscan"
+  },
+  "blackarch.pentest.bountyhunter.gowitness": {
+    "icon": "",
+    "label": "gowitness",
+    "when": "blackarch-cmd-present gowitness",
+    "action": "blackarch gowitness"
+  },
+  "blackarch.pentest.bountyhunter.webanalyze": {
+    "icon": "",
+    "label": "webanalyze",
+    "when": "blackarch-cmd-present webanalyze",
+    "action": "blackarch webanalyze"
+  },
+  "blackarch.pentest.bountyhunter.ffuf": {
+    "icon": "",
+    "label": "ffuf",
+    "when": "blackarch-cmd-present ffuf",
+    "action": "blackarch ffuf"
+  },
+  "blackarch.pentest.bountyhunter.feroxbuster": {
+    "icon": "",
+    "label": "feroxbuster",
+    "when": "blackarch-cmd-present feroxbuster",
+    "action": "blackarch feroxbuster"
+  },
+  "blackarch.pentest.bountyhunter.dirsearch": {
+    "icon": "",
+    "label": "dirsearch",
+    "when": "blackarch-cmd-present dirsearch",
+    "action": "blackarch dirsearch"
+  },
+  "blackarch.pentest.bountyhunter.arjun": {
+    "icon": "",
+    "label": "arjun",
+    "when": "blackarch-cmd-present arjun",
+    "action": "blackarch arjun"
+  },
+  "blackarch.pentest.bountyhunter.crlfuzz": {
+    "icon": "",
+    "label": "crlfuzz",
+    "when": "blackarch-cmd-present crlfuzz",
+    "action": "blackarch crlfuzz"
+  },
+  "blackarch.pentest.bountyhunter.dalfox": {
+    "icon": "",
+    "label": "dalfox",
+    "when": "blackarch-cmd-present dalfox",
+    "action": "blackarch dalfox"
+  },
+  "blackarch.pentest.bountyhunter.smuggler": {
+    "icon": "",
+    "label": "smuggler",
+    "when": "blackarch-cmd-present smuggler",
+    "action": "blackarch smuggler"
+  },
+  "blackarch.pentest.bountyhunter.parampampam": {
+    "icon": "",
+    "label": "parampampam",
+    "when": "blackarch-cmd-present parampampam",
+    "action": "blackarch parampampam"
+  },
+  "blackarch.pentest.bountyhunter.xsscon": {
+    "icon": "",
+    "label": "xsscon",
+    "when": "blackarch-cmd-present xsscon",
+    "action": "blackarch xsscon"
+  },
+  "blackarch.pentest.bountyhunter.xsstrike": {
+    "icon": "",
+    "label": "xsstrike",
+    "when": "blackarch-cmd-present xsstrike",
+    "action": "blackarch xsstrike"
+  },
+  "blackarch.pentest.bountyhunter.xspear": {
+    "icon": "",
+    "label": "xspear",
+    "when": "blackarch-cmd-present xspear",
+    "action": "blackarch xspear"
+  },
+  "blackarch.pentest.bountyhunter.sqlmap": {
+    "icon": "",
+    "label": "sqlmap",
+    "when": "blackarch-cmd-present sqlmap",
+    "action": "blackarch sqlmap"
+  },
+  "blackarch.pentest.bountyhunter.nuclei": {
+    "icon": "",
+    "label": "nuclei",
+    "when": "blackarch-cmd-present nuclei",
+    "action": "blackarch nuclei"
+  },
+  "blackarch.pentest.bountyhunter.nuclei-templates": {
+    "icon": "",
+    "label": "nuclei-templates",
+    "when": "blackarch-cmd-present nuclei-templates",
+    "action": "blackarch nuclei-templates"
+  },
+  "blackarch.pentest.bountyhunter.nikto": {
+    "icon": "",
+    "label": "nikto",
+    "when": "blackarch-cmd-present nikto",
+    "action": "blackarch nikto"
+  },
+  "blackarch.pentest.bountyhunter.graphqlmap": {
+    "icon": "",
+    "label": "graphqlmap",
+    "when": "blackarch-cmd-present graphqlmap",
+    "action": "blackarch graphqlmap"
+  },
+  "blackarch.pentest.bountyhunter.corsy": {
+    "icon": "",
+    "label": "corsy",
+    "when": "blackarch-cmd-present corsy",
+    "action": "blackarch corsy"
+  },
+  "blackarch.pentest.bountyhunter.ssrfmap": {
+    "icon": "",
+    "label": "ssrfmap",
+    "when": "blackarch-cmd-present ssrfmap",
+    "action": "blackarch ssrfmap"
+  },
+  "blackarch.pentest.bountyhunter.ssrf-sheriff": {
+    "icon": "",
+    "label": "ssrf-sheriff",
+    "when": "blackarch-cmd-present ssrf-sheriff",
+    "action": "blackarch ssrf-sheriff"
+  },
+  "blackarch.pentest.bountyhunter.dotdotpwn": {
+    "icon": "",
+    "label": "dotdotpwn",
+    "when": "blackarch-cmd-present dotdotpwn",
+    "action": "blackarch dotdotpwn"
+  },
+  "blackarch.pentest.bountyhunter.gitleaks": {
+    "icon": "",
+    "label": "gitleaks",
+    "when": "blackarch-cmd-present gitleaks",
+    "action": "blackarch gitleaks"
+  },
+  "blackarch.pentest.bountyhunter.shhgit": {
+    "icon": "",
+    "label": "shhgit",
+    "when": "blackarch-cmd-present shhgit",
+    "action": "blackarch shhgit"
+  },
+  "blackarch.pentest.bountyhunter.trufflehog": {
+    "icon": "",
+    "label": "trufflehog",
+    "when": "blackarch-cmd-present trufflehog",
+    "action": "blackarch trufflehog"
+  },
+  "blackarch.pentest.bountyhunter.s3scanner": {
+    "icon": "",
+    "label": "s3scanner",
+    "when": "blackarch-cmd-present s3scanner",
+    "action": "blackarch s3scanner"
+  },
+  "blackarch.pentest.bountyhunter.awsbucketdump": {
+    "icon": "",
+    "label": "awsbucketdump",
+    "when": "blackarch-cmd-present awsbucketdump",
+    "action": "blackarch awsbucketdump"
+  },
+  "blackarch.pentest.bountyhunter.jwt-tool": {
+    "icon": "",
+    "label": "jwt-tool",
+    "when": "blackarch-cmd-present jwt-tool",
+    "action": "blackarch jwt-tool"
+  },
+  "blackarch.pentest.bountyhunter.jwt-hack": {
+    "icon": "",
+    "label": "jwt-hack",
+    "when": "blackarch-cmd-present jwt-hack",
+    "action": "blackarch jwt-hack"
+  },
+  "blackarch.pentest.bountyhunter.ysoserial": {
+    "icon": "",
+    "label": "ysoserial",
+    "when": "blackarch-cmd-present ysoserial",
+    "action": "blackarch ysoserial"
+  },
+  "blackarch.pentest.bountyhunter.cewl": {
+    "icon": "",
+    "label": "cewl",
+    "when": "blackarch-cmd-present cewl",
+    "action": "blackarch cewl"
+  },
+  "blackarch.pentest.bountyhunter.crunch": {
+    "icon": "",
+    "label": "crunch",
+    "when": "blackarch-cmd-present crunch",
+    "action": "blackarch crunch"
+  },
+  "blackarch.pentest.bountyhunter.wordlister": {
+    "icon": "",
+    "label": "wordlister",
+    "when": "blackarch-cmd-present wordlister",
+    "action": "blackarch wordlister"
+  },
+  "blackarch.pentest.bountyhunter.burpsuite": {
+    "icon": "",
+    "label": "burpsuite",
+    "when": "blackarch-cmd-present burpsuite",
+    "action": "blackarch burpsuite"
+  },
+  "blackarch.pentest.bountyhunter.caido-desktop": {
+    "icon": "",
+    "label": "caido-desktop",
+    "when": "blackarch-cmd-present caido-desktop",
+    "action": "blackarch caido-desktop"
+  },
+  "blackarch.pentest.bountyhunter.theharvester": {
+    "icon": "",
+    "label": "theharvester",
+    "when": "blackarch-cmd-present theharvester",
+    "action": "blackarch theharvester"
+  },
+  "blackarch.pentest.bountyhunter.wfuzz": {
+    "icon": "",
+    "label": "wfuzz",
+    "when": "blackarch-cmd-present wfuzz",
+    "action": "blackarch wfuzz"
+  },
+  "blackarch.pentest.cracker": {
+    "icon": "",
+    "label": "CRACKER",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.cracker.hashcat": {
+    "icon": "",
+    "label": "hashcat",
+    "when": "blackarch-cmd-present hashcat",
+    "action": "blackarch hashcat"
+  },
+  "blackarch.pentest.cracker.john": {
+    "icon": "",
+    "label": "john",
+    "when": "blackarch-cmd-present john",
+    "action": "blackarch john"
+  },
+  "blackarch.pentest.cracker.rcracki-mt": {
+    "icon": "",
+    "label": "rcracki-mt",
+    "when": "blackarch-cmd-present rcracki-mt",
+    "action": "blackarch rcracki-mt"
+  },
+  "blackarch.pentest.cracker.rainbowcrack": {
+    "icon": "",
+    "label": "rainbowcrack",
+    "when": "blackarch-cmd-present rainbowcrack",
+    "action": "blackarch rainbowcrack"
+  },
+  "blackarch.pentest.cracker.hash-identifier": {
+    "icon": "",
+    "label": "hash-identifier",
+    "when": "blackarch-cmd-present hash-identifier",
+    "action": "blackarch hash-identifier"
+  },
+  "blackarch.pentest.cracker.hash-extender": {
+    "icon": "",
+    "label": "hash-extender",
+    "when": "blackarch-cmd-present hash-extender",
+    "action": "blackarch hash-extender"
+  },
+  "blackarch.pentest.cracker.hashpump": {
+    "icon": "",
+    "label": "hashpump",
+    "when": "blackarch-cmd-present hashpump",
+    "action": "blackarch hashpump"
+  },
+  "blackarch.pentest.cracker.rsactftool": {
+    "icon": "",
+    "label": "rsactftool",
+    "when": "blackarch-cmd-present rsactftool",
+    "action": "blackarch rsactftool"
+  },
+  "blackarch.pentest.cracker.rsatool": {
+    "icon": "",
+    "label": "rsatool",
+    "when": "blackarch-cmd-present rsatool",
+    "action": "blackarch rsatool"
+  },
+  "blackarch.pentest.cracker.aeskeyfind": {
+    "icon": "",
+    "label": "aeskeyfind",
+    "when": "blackarch-cmd-present aeskeyfind",
+    "action": "blackarch aeskeyfind"
+  },
+  "blackarch.pentest.cracker.aesfix": {
+    "icon": "",
+    "label": "aesfix",
+    "when": "blackarch-cmd-present aesfix",
+    "action": "blackarch aesfix"
+  },
+  "blackarch.pentest.cracker.cewl": {
+    "icon": "",
+    "label": "cewl",
+    "when": "blackarch-cmd-present cewl",
+    "action": "blackarch cewl"
+  },
+  "blackarch.pentest.cracker.crunch": {
+    "icon": "",
+    "label": "crunch",
+    "when": "blackarch-cmd-present crunch",
+    "action": "blackarch crunch"
+  },
+  "blackarch.pentest.cracker.duplicut": {
+    "icon": "",
+    "label": "duplicut",
+    "when": "blackarch-cmd-present duplicut",
+    "action": "blackarch duplicut"
+  },
+  "blackarch.pentest.cracker.pipal": {
+    "icon": "",
+    "label": "pipal",
+    "when": "blackarch-cmd-present pipal",
+    "action": "blackarch pipal"
+  },
+  "blackarch.pentest.cracker.mentalist": {
+    "icon": "",
+    "label": "mentalist",
+    "when": "blackarch-cmd-present mentalist",
+    "action": "blackarch mentalist"
+  },
+  "blackarch.pentest.cracker.mimikatz": {
+    "icon": "",
+    "label": "mimikatz",
+    "when": "blackarch-cmd-present mimikatz",
+    "action": "blackarch mimikatz"
+  },
+  "blackarch.pentest.cracker.mimipenguin": {
+    "icon": "",
+    "label": "mimipenguin",
+    "when": "blackarch-cmd-present mimipenguin",
+    "action": "blackarch mimipenguin"
+  },
+  "blackarch.pentest.cracker.samdump2": {
+    "icon": "",
+    "label": "samdump2",
+    "when": "blackarch-cmd-present samdump2",
+    "action": "blackarch samdump2"
+  },
+  "blackarch.pentest.cracker.pwdump": {
+    "icon": "",
+    "label": "pwdump",
+    "when": "blackarch-cmd-present pwdump",
+    "action": "blackarch pwdump"
+  },
+  "blackarch.pentest.cracker.cachedump": {
+    "icon": "",
+    "label": "cachedump",
+    "when": "blackarch-cmd-present cachedump",
+    "action": "blackarch cachedump"
+  },
+  "blackarch.pentest.cracker.ntds-decode": {
+    "icon": "",
+    "label": "ntds-decode",
+    "when": "blackarch-cmd-present ntds-decode",
+    "action": "blackarch ntds-decode"
+  },
+  "blackarch.pentest.cracker.rsakeyfind": {
+    "icon": "",
+    "label": "rsakeyfind",
+    "when": "blackarch-cmd-present rsakeyfind",
+    "action": "blackarch rsakeyfind"
+  },
+  "blackarch.pentest.cracker.hydra": {
+    "icon": "",
+    "label": "hydra",
+    "when": "blackarch-cmd-present hydra",
+    "action": "blackarch hydra"
+  },
+  "blackarch.pentest.cracker.medusa": {
+    "icon": "",
+    "label": "medusa",
+    "when": "blackarch-cmd-present medusa",
+    "action": "blackarch medusa"
+  },
+  "blackarch.pentest.cracker.patator": {
+    "icon": "",
+    "label": "patator",
+    "when": "blackarch-cmd-present patator",
+    "action": "blackarch patator"
+  },
+  "blackarch.pentest.cracker.crowbar": {
+    "icon": "",
+    "label": "crowbar",
+    "when": "blackarch-cmd-present crowbar",
+    "action": "blackarch crowbar"
+  },
+  "blackarch.pentest.cracker.brutespray": {
+    "icon": "",
+    "label": "brutespray",
+    "when": "blackarch-cmd-present brutespray",
+    "action": "blackarch brutespray"
+  },
+  "blackarch.pentest.cracker.trevorspray": {
+    "icon": "",
+    "label": "trevorspray",
+    "when": "blackarch-cmd-present trevorspray",
+    "action": "blackarch trevorspray"
+  },
+  "blackarch.pentest.cracker.kerbrute": {
+    "icon": "",
+    "label": "kerbrute",
+    "when": "blackarch-cmd-present kerbrute",
+    "action": "blackarch kerbrute"
+  },
+  "blackarch.pentest.cracker.kerberoast": {
+    "icon": "",
+    "label": "kerberoast",
+    "when": "blackarch-cmd-present kerberoast",
+    "action": "blackarch kerberoast"
+  },
+  "blackarch.pentest.cracker.adfspray": {
+    "icon": "",
+    "label": "adfspray",
+    "when": "blackarch-cmd-present adfspray",
+    "action": "blackarch adfspray"
+  },
+  "blackarch.pentest.cracker.keimpx": {
+    "icon": "",
+    "label": "keimpx",
+    "when": "blackarch-cmd-present keimpx",
+    "action": "blackarch keimpx"
+  },
+  "blackarch.pentest.cracker.kekeo": {
+    "icon": "",
+    "label": "kekeo",
+    "when": "blackarch-cmd-present kekeo",
+    "action": "blackarch kekeo"
+  },
+  "blackarch.pentest.cracker.aircrack-ng": {
+    "icon": "",
+    "label": "aircrack-ng",
+    "when": "blackarch-cmd-present aircrack-ng",
+    "action": "blackarch aircrack-ng"
+  },
+  "blackarch.pentest.cracker.crackle": {
+    "icon": "",
+    "label": "crackle",
+    "when": "blackarch-cmd-present crackle",
+    "action": "blackarch crackle"
+  },
+  "blackarch.pentest.cracker.fern-wifi-cracker": {
+    "icon": "",
+    "label": "fern-wifi-cracker",
+    "when": "blackarch-cmd-present fern-wifi-cracker",
+    "action": "blackarch fern-wifi-cracker"
+  },
+  "blackarch.pentest.cracker.bkcrack": {
+    "icon": "",
+    "label": "bkcrack",
+    "when": "blackarch-cmd-present bkcrack",
+    "action": "blackarch bkcrack"
+  },
+  "blackarch.pentest.cracker.pkcrack": {
+    "icon": "",
+    "label": "pkcrack",
+    "when": "blackarch-cmd-present pkcrack",
+    "action": "blackarch pkcrack"
+  },
+  "blackarch.pentest.cracker.pemcrack": {
+    "icon": "",
+    "label": "pemcrack",
+    "when": "blackarch-cmd-present pemcrack",
+    "action": "blackarch pemcrack"
+  },
+  "blackarch.pentest.cracker.openstego": {
+    "icon": "",
+    "label": "openstego",
+    "when": "blackarch-cmd-present openstego",
+    "action": "blackarch openstego"
+  },
+  "blackarch.pentest.cracker.outguess": {
+    "icon": "",
+    "label": "outguess",
+    "when": "blackarch-cmd-present outguess",
+    "action": "blackarch outguess"
+  },
+  "blackarch.pentest.cracker.zulucrypt": {
+    "icon": "",
+    "label": "zulucrypt",
+    "when": "blackarch-cmd-present zulucrypt",
+    "action": "blackarch zulucrypt"
+  },
+  "blackarch.pentest.cracker.zulu": {
+    "icon": "",
+    "label": "zulu",
+    "when": "blackarch-cmd-present zulu",
+    "action": "blackarch zulu"
+  },
+  "blackarch.pentest.cracker.xorsearch": {
+    "icon": "",
+    "label": "xorsearch",
+    "when": "blackarch-cmd-present xorsearch",
+    "action": "blackarch xorsearch"
+  },
+  "blackarch.pentest.cracker.unsecure": {
+    "icon": "",
+    "label": "unsecure",
+    "when": "blackarch-cmd-present unsecure",
+    "action": "blackarch unsecure"
+  },
+  "blackarch.pentest.cracker.jwt-tool": {
+    "icon": "",
+    "label": "jwt-tool",
+    "when": "blackarch-cmd-present jwt-tool",
+    "action": "blackarch jwt-tool"
+  },
+  "blackarch.pentest.cracker.jwt-hack": {
+    "icon": "",
+    "label": "jwt-hack",
+    "when": "blackarch-cmd-present jwt-hack",
+    "action": "blackarch jwt-hack"
+  },
+  "blackarch.pentest.cracker.jwtcat": {
+    "icon": "",
+    "label": "jwtcat",
+    "when": "blackarch-cmd-present jwtcat",
+    "action": "blackarch jwtcat"
+  },
+  "blackarch.pentest.cracker.jwt-key-recovery": {
+    "icon": "",
+    "label": "jwt-key-recovery",
+    "when": "blackarch-cmd-present jwt-key-recovery",
+    "action": "blackarch jwt-key-recovery"
+  },
+  "blackarch.pentest.cracker.flask-unsign": {
+    "icon": "",
+    "label": "flask-unsign",
+    "when": "blackarch-cmd-present flask-unsign",
+    "action": "blackarch flask-unsign"
+  },
+  "blackarch.pentest.cracker.passe-partout": {
+    "icon": "",
+    "label": "passe-partout",
+    "when": "blackarch-cmd-present passe-partout",
+    "action": "blackarch passe-partout"
+  },
+  "blackarch.pentest.cracker.ttpassgen": {
+    "icon": "",
+    "label": "ttpassgen",
+    "when": "blackarch-cmd-present ttpassgen",
+    "action": "blackarch ttpassgen"
+  },
+  "blackarch.pentest.dos": {
+    "icon": "",
+    "label": "DOS",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.dos.ddosify": {
+    "icon": "",
+    "label": "ddosify",
+    "when": "blackarch-cmd-present ddosify",
+    "action": "blackarch ddosify"
+  },
+  "blackarch.pentest.dos.slowloris": {
+    "icon": "",
+    "label": "slowloris",
+    "when": "blackarch-cmd-present slowloris",
+    "action": "blackarch slowloris"
+  },
+  "blackarch.pentest.dos.hulk": {
+    "icon": "",
+    "label": "hulk",
+    "when": "blackarch-cmd-present hulk",
+    "action": "blackarch hulk"
+  },
+  "blackarch.pentest.dos.goldeneye": {
+    "icon": "",
+    "label": "goldeneye",
+    "when": "blackarch-cmd-present goldeneye",
+    "action": "blackarch goldeneye"
+  },
+  "blackarch.pentest.dos.synflood": {
+    "icon": "",
+    "label": "synflood",
+    "when": "blackarch-cmd-present synflood",
+    "action": "blackarch synflood"
+  },
+  "blackarch.pentest.dos.t50": {
+    "icon": "",
+    "label": "t50",
+    "when": "blackarch-cmd-present t50",
+    "action": "blackarch t50"
+  },
+  "blackarch.pentest.dos.mausezahn": {
+    "icon": "",
+    "label": "mausezahn",
+    "when": "blackarch-cmd-present mausezahn",
+    "action": "blackarch mausezahn"
+  },
+  "blackarch.pentest.dos.dnsdrdos": {
+    "icon": "",
+    "label": "dnsdrdos",
+    "when": "blackarch-cmd-present dnsdrdos",
+    "action": "blackarch dnsdrdos"
+  },
+  "blackarch.pentest.dos.ntpdos": {
+    "icon": "",
+    "label": "ntpdos",
+    "when": "blackarch-cmd-present ntpdos",
+    "action": "blackarch ntpdos"
+  },
+  "blackarch.pentest.dos.pyersinia": {
+    "icon": "",
+    "label": "pyersinia",
+    "when": "blackarch-cmd-present pyersinia",
+    "action": "blackarch pyersinia"
+  },
+  "blackarch.pentest.dos.ufonet": {
+    "icon": "",
+    "label": "ufonet",
+    "when": "blackarch-cmd-present ufonet",
+    "action": "blackarch ufonet"
+  },
+  "blackarch.pentest.dos.httpbog": {
+    "icon": "",
+    "label": "httpbog",
+    "when": "blackarch-cmd-present httpbog",
+    "action": "blackarch httpbog"
+  },
+  "blackarch.pentest.forensic": {
+    "icon": "",
+    "label": "FORENSIC",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.forensic.dc3dd": {
+    "icon": "",
+    "label": "dc3dd",
+    "when": "blackarch-cmd-present dc3dd",
+    "action": "blackarch dc3dd"
+  },
+  "blackarch.pentest.forensic.ddrescue": {
+    "icon": "",
+    "label": "ddrescue",
+    "when": "blackarch-cmd-present ddrescue",
+    "action": "blackarch ddrescue"
+  },
+  "blackarch.pentest.forensic.guymager": {
+    "icon": "",
+    "label": "guymager",
+    "when": "blackarch-cmd-present guymager",
+    "action": "blackarch guymager"
+  },
+  "blackarch.pentest.forensic.safecopy": {
+    "icon": "",
+    "label": "safecopy",
+    "when": "blackarch-cmd-present safecopy",
+    "action": "blackarch safecopy"
+  },
+  "blackarch.pentest.forensic.libfvde": {
+    "icon": "",
+    "label": "libfvde",
+    "when": "blackarch-cmd-present libfvde",
+    "action": "blackarch libfvde"
+  },
+  "blackarch.pentest.forensic.imagemounter": {
+    "icon": "",
+    "label": "imagemounter",
+    "when": "blackarch-cmd-present imagemounter",
+    "action": "blackarch imagemounter"
+  },
+  "blackarch.pentest.forensic.memdump": {
+    "icon": "",
+    "label": "memdump",
+    "when": "blackarch-cmd-present memdump",
+    "action": "blackarch memdump"
+  },
+  "blackarch.pentest.forensic.limeaide": {
+    "icon": "",
+    "label": "limeaide",
+    "when": "blackarch-cmd-present limeaide",
+    "action": "blackarch limeaide"
+  },
+  "blackarch.pentest.forensic.rekall": {
+    "icon": "",
+    "label": "rekall",
+    "when": "blackarch-cmd-present rekall",
+    "action": "blackarch rekall"
+  },
+  "blackarch.pentest.forensic.volatility3": {
+    "icon": "",
+    "label": "volatility3",
+    "when": "blackarch-cmd-present volatility3",
+    "action": "blackarch volatility3"
+  },
+  "blackarch.pentest.forensic.sleuthkit": {
+    "icon": "",
+    "label": "sleuthkit",
+    "when": "blackarch-cmd-present sleuthkit",
+    "action": "blackarch sleuthkit"
+  },
+  "blackarch.pentest.forensic.scrounge-ntfs": {
+    "icon": "",
+    "label": "scrounge-ntfs",
+    "when": "blackarch-cmd-present scrounge-ntfs",
+    "action": "blackarch scrounge-ntfs"
+  },
+  "blackarch.pentest.forensic.mftcarver": {
+    "icon": "",
+    "label": "mftcarver",
+    "when": "blackarch-cmd-present mftcarver",
+    "action": "blackarch mftcarver"
+  },
+  "blackarch.pentest.forensic.mft2csv": {
+    "icon": "",
+    "label": "mft2csv",
+    "when": "blackarch-cmd-present mft2csv",
+    "action": "blackarch mft2csv"
+  },
+  "blackarch.pentest.forensic.ntfs-file-extractor": {
+    "icon": "",
+    "label": "ntfs-file-extractor",
+    "when": "blackarch-cmd-present ntfs-file-extractor",
+    "action": "blackarch ntfs-file-extractor"
+  },
+  "blackarch.pentest.forensic.ntfs-log-tracker": {
+    "icon": "",
+    "label": "ntfs-log-tracker",
+    "when": "blackarch-cmd-present ntfs-log-tracker",
+    "action": "blackarch ntfs-log-tracker"
+  },
+  "blackarch.pentest.forensic.powermft": {
+    "icon": "",
+    "label": "powermft",
+    "when": "blackarch-cmd-present powermft",
+    "action": "blackarch powermft"
+  },
+  "blackarch.pentest.forensic.usnparser": {
+    "icon": "",
+    "label": "usnparser",
+    "when": "blackarch-cmd-present usnparser",
+    "action": "blackarch usnparser"
+  },
+  "blackarch.pentest.forensic.usnjrnl2csv": {
+    "icon": "",
+    "label": "usnjrnl2csv",
+    "when": "blackarch-cmd-present usnjrnl2csv",
+    "action": "blackarch usnjrnl2csv"
+  },
+  "blackarch.pentest.forensic.regipy": {
+    "icon": "",
+    "label": "regipy",
+    "when": "blackarch-cmd-present regipy",
+    "action": "blackarch regipy"
+  },
+  "blackarch.pentest.forensic.regripper": {
+    "icon": "",
+    "label": "regripper",
+    "when": "blackarch-cmd-present regripper",
+    "action": "blackarch regripper"
+  },
+  "blackarch.pentest.forensic.regview": {
+    "icon": "",
+    "label": "regview",
+    "when": "blackarch-cmd-present regview",
+    "action": "blackarch regview"
+  },
+  "blackarch.pentest.forensic.windows-prefetch-parser": {
+    "icon": "",
+    "label": "windows-prefetch-parser",
+    "when": "blackarch-cmd-present windows-prefetch-parser",
+    "action": "blackarch windows-prefetch-parser"
+  },
+  "blackarch.pentest.forensic.thumbcacheviewer": {
+    "icon": "",
+    "label": "thumbcacheviewer",
+    "when": "blackarch-cmd-present thumbcacheviewer",
+    "action": "blackarch thumbcacheviewer"
+  },
+  "blackarch.pentest.forensic.shadowexplorer": {
+    "icon": "",
+    "label": "shadowexplorer",
+    "when": "blackarch-cmd-present shadowexplorer",
+    "action": "blackarch shadowexplorer"
+  },
+  "blackarch.pentest.forensic.dftimewolf": {
+    "icon": "",
+    "label": "dftimewolf",
+    "when": "blackarch-cmd-present dftimewolf",
+    "action": "blackarch dftimewolf"
+  },
+  "blackarch.pentest.forensic.log-file-parser": {
+    "icon": "",
+    "label": "log-file-parser",
+    "when": "blackarch-cmd-present log-file-parser",
+    "action": "blackarch log-file-parser"
+  },
+  "blackarch.pentest.forensic.parse-evtx": {
+    "icon": "",
+    "label": "parse-evtx",
+    "when": "blackarch-cmd-present parse-evtx",
+    "action": "blackarch parse-evtx"
+  },
+  "blackarch.pentest.forensic.indxcarver": {
+    "icon": "",
+    "label": "indxcarver",
+    "when": "blackarch-cmd-present indxcarver",
+    "action": "blackarch indxcarver"
+  },
+  "blackarch.pentest.forensic.indx2csv": {
+    "icon": "",
+    "label": "indx2csv",
+    "when": "blackarch-cmd-present indx2csv",
+    "action": "blackarch indx2csv"
+  },
+  "blackarch.pentest.forensic.dumpzilla": {
+    "icon": "",
+    "label": "dumpzilla",
+    "when": "blackarch-cmd-present dumpzilla",
+    "action": "blackarch dumpzilla"
+  },
+  "blackarch.pentest.forensic.firefox-decrypt": {
+    "icon": "",
+    "label": "firefox-decrypt",
+    "when": "blackarch-cmd-present firefox-decrypt",
+    "action": "blackarch firefox-decrypt"
+  },
+  "blackarch.pentest.forensic.lazagne": {
+    "icon": "",
+    "label": "lazagne",
+    "when": "blackarch-cmd-present lazagne",
+    "action": "blackarch lazagne"
+  },
+  "blackarch.pentest.forensic.mac-robber": {
+    "icon": "",
+    "label": "mac-robber",
+    "when": "blackarch-cmd-present mac-robber",
+    "action": "blackarch mac-robber"
+  },
+  "blackarch.pentest.forensic.tell-me-your-secrets": {
+    "icon": "",
+    "label": "tell-me-your-secrets",
+    "when": "blackarch-cmd-present tell-me-your-secrets",
+    "action": "blackarch tell-me-your-secrets"
+  },
+  "blackarch.pentest.forensic.scalpel": {
+    "icon": "",
+    "label": "scalpel",
+    "when": "blackarch-cmd-present scalpel",
+    "action": "blackarch scalpel"
+  },
+  "blackarch.pentest.forensic.bulk-extractor": {
+    "icon": "",
+    "label": "bulk-extractor",
+    "when": "blackarch-cmd-present bulk-extractor",
+    "action": "blackarch bulk-extractor"
+  },
+  "blackarch.pentest.forensic.foremost": {
+    "icon": "",
+    "label": "foremost",
+    "when": "blackarch-cmd-present foremost",
+    "action": "blackarch foremost"
+  },
+  "blackarch.pentest.forensic.magicrescue": {
+    "icon": "",
+    "label": "magicrescue",
+    "when": "blackarch-cmd-present magicrescue",
+    "action": "blackarch magicrescue"
+  },
+  "blackarch.pentest.forensic.recoverjpeg": {
+    "icon": "",
+    "label": "recoverjpeg",
+    "when": "blackarch-cmd-present recoverjpeg",
+    "action": "blackarch recoverjpeg"
+  },
+  "blackarch.pentest.forensic.rcrdcarver": {
+    "icon": "",
+    "label": "rcrdcarver",
+    "when": "blackarch-cmd-present rcrdcarver",
+    "action": "blackarch rcrdcarver"
+  },
+  "blackarch.pentest.forensic.pev": {
+    "icon": "",
+    "label": "pev",
+    "when": "blackarch-cmd-present pev",
+    "action": "blackarch pev"
+  },
+  "blackarch.pentest.forensic.peepdf": {
+    "icon": "",
+    "label": "peepdf",
+    "when": "blackarch-cmd-present peepdf",
+    "action": "blackarch peepdf"
+  },
+  "blackarch.pentest.forensic.pdf-parser": {
+    "icon": "",
+    "label": "pdf-parser",
+    "when": "blackarch-cmd-present pdf-parser",
+    "action": "blackarch pdf-parser"
+  },
+  "blackarch.pentest.forensic.pdfid": {
+    "icon": "",
+    "label": "pdfid",
+    "when": "blackarch-cmd-present pdfid",
+    "action": "blackarch pdfid"
+  },
+  "blackarch.pentest.forensic.yara": {
+    "icon": "",
+    "label": "yara",
+    "when": "blackarch-cmd-present yara",
+    "action": "blackarch yara"
+  },
+  "blackarch.pentest.forensic.yara-rules": {
+    "icon": "",
+    "label": "yara-rules",
+    "when": "blackarch-cmd-present yara-rules",
+    "action": "blackarch yara-rules"
+  },
+  "blackarch.pentest.forensic.ghidra": {
+    "icon": "",
+    "label": "ghidra",
+    "when": "blackarch-cmd-present ghidra",
+    "action": "blackarch ghidra"
+  },
+  "blackarch.pentest.forensic.xplico": {
+    "icon": "",
+    "label": "xplico",
+    "when": "blackarch-cmd-present xplico",
+    "action": "blackarch xplico"
+  },
+  "blackarch.pentest.forensic.pcapxray": {
+    "icon": "",
+    "label": "pcapxray",
+    "when": "blackarch-cmd-present pcapxray",
+    "action": "blackarch pcapxray"
+  },
+  "blackarch.pentest.forensic.networkminer": {
+    "icon": "",
+    "label": "networkminer",
+    "when": "blackarch-cmd-present networkminer",
+    "action": "blackarch networkminer"
+  },
+  "blackarch.pentest.forensic.snort": {
+    "icon": "",
+    "label": "snort",
+    "when": "blackarch-cmd-present snort",
+    "action": "blackarch snort"
+  },
+  "blackarch.pentest.forensic.netsniff-ng": {
+    "icon": "",
+    "label": "netsniff-ng",
+    "when": "blackarch-cmd-present netsniff-ng",
+    "action": "blackarch netsniff-ng"
+  },
+  "blackarch.pentest.forensic.wireshark-qt": {
+    "icon": "",
+    "label": "wireshark-qt",
+    "when": "blackarch-cmd-present wireshark-qt",
+    "action": "blackarch wireshark-qt"
+  },
+  "blackarch.pentest.forensic.afflib": {
+    "icon": "",
+    "label": "afflib",
+    "when": "blackarch-cmd-present afflib",
+    "action": "blackarch afflib"
+  },
+  "blackarch.pentest.forensic.exiftool": {
+    "icon": "",
+    "label": "exiftool",
+    "when": "blackarch-cmd-present exiftool",
+    "action": "blackarch exiftool"
+  },
+  "blackarch.pentest.forensic.pngcheck": {
+    "icon": "",
+    "label": "pngcheck",
+    "when": "blackarch-cmd-present pngcheck",
+    "action": "blackarch pngcheck"
+  },
+  "blackarch.pentest.forensic.trid": {
+    "icon": "",
+    "label": "trid",
+    "when": "blackarch-cmd-present trid",
+    "action": "blackarch trid"
+  },
+  "blackarch.pentest.forensic.stegdetect": {
+    "icon": "",
+    "label": "stegdetect",
+    "when": "blackarch-cmd-present stegdetect",
+    "action": "blackarch stegdetect"
+  },
+  "blackarch.pentest.forensic.stringsifter": {
+    "icon": "",
+    "label": "stringsifter",
+    "when": "blackarch-cmd-present stringsifter",
+    "action": "blackarch stringsifter"
+  },
+  "blackarch.pentest.forensic.munin-hashchecker": {
+    "icon": "",
+    "label": "munin-hashchecker",
+    "when": "blackarch-cmd-present munin-hashchecker",
+    "action": "blackarch munin-hashchecker"
+  },
+  "blackarch.pentest.malware": {
+    "icon": "",
+    "label": "MALWARE",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.malware.ida-free": {
+    "icon": "",
+    "label": "ida-free",
+    "when": "blackarch-cmd-present ida-free",
+    "action": "blackarch ida-free"
+  },
+  "blackarch.pentest.malware.x64dbg": {
+    "icon": "",
+    "label": "x64dbg",
+    "when": "blackarch-cmd-present x64dbg",
+    "action": "blackarch x64dbg"
+  },
+  "blackarch.pentest.malware.gdbgui": {
+    "icon": "",
+    "label": "gdbgui",
+    "when": "blackarch-cmd-present gdbgui",
+    "action": "blackarch gdbgui"
+  },
+  "blackarch.pentest.malware.voltron": {
+    "icon": "",
+    "label": "voltron",
+    "when": "blackarch-cmd-present voltron",
+    "action": "blackarch voltron"
+  },
+  "blackarch.pentest.malware.radare2-keystone": {
+    "icon": "",
+    "label": "radare2-keystone",
+    "when": "blackarch-cmd-present radare2-keystone",
+    "action": "blackarch radare2-keystone"
+  },
+  "blackarch.pentest.malware.radare2-unicorn": {
+    "icon": "",
+    "label": "radare2-unicorn",
+    "when": "blackarch-cmd-present radare2-unicorn",
+    "action": "blackarch radare2-unicorn"
+  },
+  "blackarch.pentest.malware.lief": {
+    "icon": "",
+    "label": "lief",
+    "when": "blackarch-cmd-present lief",
+    "action": "blackarch lief"
+  },
+  "blackarch.pentest.malware.retdec": {
+    "icon": "",
+    "label": "retdec",
+    "when": "blackarch-cmd-present retdec",
+    "action": "blackarch retdec"
+  },
+  "blackarch.pentest.malware.recaf": {
+    "icon": "",
+    "label": "recaf",
+    "when": "blackarch-cmd-present recaf",
+    "action": "blackarch recaf"
+  },
+  "blackarch.pentest.malware.dnspy": {
+    "icon": "",
+    "label": "dnspy",
+    "when": "blackarch-cmd-present dnspy",
+    "action": "blackarch dnspy"
+  },
+  "blackarch.pentest.malware.jd-cli": {
+    "icon": "",
+    "label": "jd-cli",
+    "when": "blackarch-cmd-present jd-cli",
+    "action": "blackarch jd-cli"
+  },
+  "blackarch.pentest.malware.jd-gui": {
+    "icon": "",
+    "label": "jd-gui",
+    "when": "blackarch-cmd-present jd-gui",
+    "action": "blackarch jd-gui"
+  },
+  "blackarch.pentest.malware.jpexs-decompiler": {
+    "icon": "",
+    "label": "jpexs-decompiler",
+    "when": "blackarch-cmd-present jpexs-decompiler",
+    "action": "blackarch jpexs-decompiler"
+  },
+  "blackarch.pentest.malware.de4dot": {
+    "icon": "",
+    "label": "de4dot",
+    "when": "blackarch-cmd-present de4dot",
+    "action": "blackarch de4dot"
+  },
+  "blackarch.pentest.malware.androguard": {
+    "icon": "",
+    "label": "androguard",
+    "when": "blackarch-cmd-present androguard",
+    "action": "blackarch androguard"
+  },
+  "blackarch.pentest.malware.dex2jar": {
+    "icon": "",
+    "label": "dex2jar",
+    "when": "blackarch-cmd-present dex2jar",
+    "action": "blackarch dex2jar"
+  },
+  "blackarch.pentest.malware.dexpatcher": {
+    "icon": "",
+    "label": "dexpatcher",
+    "when": "blackarch-cmd-present dexpatcher",
+    "action": "blackarch dexpatcher"
+  },
+  "blackarch.pentest.malware.soot": {
+    "icon": "",
+    "label": "soot",
+    "when": "blackarch-cmd-present soot",
+    "action": "blackarch soot"
+  },
+  "blackarch.pentest.malware.pyinstxtractor": {
+    "icon": "",
+    "label": "pyinstxtractor",
+    "when": "blackarch-cmd-present pyinstxtractor",
+    "action": "blackarch pyinstxtractor"
+  },
+  "blackarch.pentest.malware.pe-bear": {
+    "icon": "",
+    "label": "pe-bear",
+    "when": "blackarch-cmd-present pe-bear",
+    "action": "blackarch pe-bear"
+  },
+  "blackarch.pentest.malware.pev": {
+    "icon": "",
+    "label": "pev",
+    "when": "blackarch-cmd-present pev",
+    "action": "blackarch pev"
+  },
+  "blackarch.pentest.malware.peepdf": {
+    "icon": "",
+    "label": "peepdf",
+    "when": "blackarch-cmd-present peepdf",
+    "action": "blackarch peepdf"
+  },
+  "blackarch.pentest.malware.pdf-parser": {
+    "icon": "",
+    "label": "pdf-parser",
+    "when": "blackarch-cmd-present pdf-parser",
+    "action": "blackarch pdf-parser"
+  },
+  "blackarch.pentest.malware.pdfid": {
+    "icon": "",
+    "label": "pdfid",
+    "when": "blackarch-cmd-present pdfid",
+    "action": "blackarch pdfid"
+  },
+  "blackarch.pentest.malware.pe-sieve": {
+    "icon": "",
+    "label": "pe-sieve",
+    "when": "blackarch-cmd-present pe-sieve",
+    "action": "blackarch pe-sieve"
+  },
+  "blackarch.pentest.malware.preeny": {
+    "icon": "",
+    "label": "preeny",
+    "when": "blackarch-cmd-present preeny",
+    "action": "blackarch preeny"
+  },
+  "blackarch.pentest.malware.packerid": {
+    "icon": "",
+    "label": "packerid",
+    "when": "blackarch-cmd-present packerid",
+    "action": "blackarch packerid"
+  },
+  "blackarch.pentest.malware.stringsifter": {
+    "icon": "",
+    "label": "stringsifter",
+    "when": "blackarch-cmd-present stringsifter",
+    "action": "blackarch stringsifter"
+  },
+  "blackarch.pentest.malware.trid": {
+    "icon": "",
+    "label": "trid",
+    "when": "blackarch-cmd-present trid",
+    "action": "blackarch trid"
+  },
+  "blackarch.pentest.malware.dynamorio": {
+    "icon": "",
+    "label": "dynamorio",
+    "when": "blackarch-cmd-present dynamorio",
+    "action": "blackarch dynamorio"
+  },
+  "blackarch.pentest.malware.qbdi": {
+    "icon": "",
+    "label": "qbdi",
+    "when": "blackarch-cmd-present qbdi",
+    "action": "blackarch qbdi"
+  },
+  "blackarch.pentest.malware.gadgetinspector": {
+    "icon": "",
+    "label": "gadgetinspector",
+    "when": "blackarch-cmd-present gadgetinspector",
+    "action": "blackarch gadgetinspector"
+  },
+  "blackarch.pentest.malware.hollows-hunter": {
+    "icon": "",
+    "label": "hollows-hunter",
+    "when": "blackarch-cmd-present hollows-hunter",
+    "action": "blackarch hollows-hunter"
+  },
+  "blackarch.pentest.malware.hookanalyser": {
+    "icon": "",
+    "label": "hookanalyser",
+    "when": "blackarch-cmd-present hookanalyser",
+    "action": "blackarch hookanalyser"
+  },
+  "blackarch.pentest.malware.vmcloak": {
+    "icon": "",
+    "label": "vmcloak",
+    "when": "blackarch-cmd-present vmcloak",
+    "action": "blackarch vmcloak"
+  },
+  "blackarch.pentest.malware.noriben": {
+    "icon": "",
+    "label": "noriben",
+    "when": "blackarch-cmd-present noriben",
+    "action": "blackarch noriben"
+  },
+  "blackarch.pentest.malware.procdump": {
+    "icon": "",
+    "label": "procdump",
+    "when": "blackarch-cmd-present procdump",
+    "action": "blackarch procdump"
+  },
+  "blackarch.pentest.malware.pcileech": {
+    "icon": "",
+    "label": "pcileech",
+    "when": "blackarch-cmd-present pcileech",
+    "action": "blackarch pcileech"
+  },
+  "blackarch.pentest.malware.memdump": {
+    "icon": "",
+    "label": "memdump",
+    "when": "blackarch-cmd-present memdump",
+    "action": "blackarch memdump"
+  },
+  "blackarch.pentest.malware.flare-floss": {
+    "icon": "",
+    "label": "flare-floss",
+    "when": "blackarch-cmd-present flare-floss",
+    "action": "blackarch flare-floss"
+  },
+  "blackarch.pentest.malware.malwareanalyser": {
+    "icon": "",
+    "label": "malwareanalyser",
+    "when": "blackarch-cmd-present malwareanalyser",
+    "action": "blackarch malwareanalyser"
+  },
+  "blackarch.pentest.malware.malwaredetect": {
+    "icon": "",
+    "label": "malwaredetect",
+    "when": "blackarch-cmd-present malwaredetect",
+    "action": "blackarch malwaredetect"
+  },
+  "blackarch.pentest.malware.origami": {
+    "icon": "",
+    "label": "origami",
+    "when": "blackarch-cmd-present origami",
+    "action": "blackarch origami"
+  },
+  "blackarch.pentest.malware.vivisect": {
+    "icon": "",
+    "label": "vivisect",
+    "when": "blackarch-cmd-present vivisect",
+    "action": "blackarch vivisect"
+  },
+  "blackarch.pentest.malware.yara-rules": {
+    "icon": "",
+    "label": "yara-rules",
+    "when": "blackarch-cmd-present yara-rules",
+    "action": "blackarch yara-rules"
+  },
+  "blackarch.pentest.mobile": {
+    "icon": "",
+    "label": "MOBILE",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.mobile.android-sdk": {
+    "icon": "",
+    "label": "android-sdk",
+    "when": "blackarch-cmd-present android-sdk",
+    "action": "blackarch android-sdk"
+  },
+  "blackarch.pentest.mobile.android-udev-rules": {
+    "icon": "",
+    "label": "android-udev-rules",
+    "when": "blackarch-cmd-present android-udev-rules",
+    "action": "blackarch android-udev-rules"
+  },
+  "blackarch.pentest.mobile.androguard": {
+    "icon": "",
+    "label": "androguard",
+    "when": "blackarch-cmd-present androguard",
+    "action": "blackarch androguard"
+  },
+  "blackarch.pentest.mobile.mobsf": {
+    "icon": "",
+    "label": "mobsf",
+    "when": "blackarch-cmd-present mobsf",
+    "action": "blackarch mobsf"
+  },
+  "blackarch.pentest.mobile.apkleaks": {
+    "icon": "",
+    "label": "apkleaks",
+    "when": "blackarch-cmd-present apkleaks",
+    "action": "blackarch apkleaks"
+  },
+  "blackarch.pentest.mobile.bagbak": {
+    "icon": "",
+    "label": "bagbak",
+    "when": "blackarch-cmd-present bagbak",
+    "action": "blackarch bagbak"
+  },
+  "blackarch.pentest.mobile.dex2jar": {
+    "icon": "",
+    "label": "dex2jar",
+    "when": "blackarch-cmd-present dex2jar",
+    "action": "blackarch dex2jar"
+  },
+  "blackarch.pentest.mobile.jd-gui": {
+    "icon": "",
+    "label": "jd-gui",
+    "when": "blackarch-cmd-present jd-gui",
+    "action": "blackarch jd-gui"
+  },
+  "blackarch.pentest.mobile.jd-cli": {
+    "icon": "",
+    "label": "jd-cli",
+    "when": "blackarch-cmd-present jd-cli",
+    "action": "blackarch jd-cli"
+  },
+  "blackarch.pentest.mobile.de4dot": {
+    "icon": "",
+    "label": "de4dot",
+    "when": "blackarch-cmd-present de4dot",
+    "action": "blackarch de4dot"
+  },
+  "blackarch.pentest.mobile.pyaxmlparser": {
+    "icon": "",
+    "label": "pyaxmlparser",
+    "when": "blackarch-cmd-present pyaxmlparser",
+    "action": "blackarch pyaxmlparser"
+  },
+  "blackarch.pentest.mobile.pyinstxtractor": {
+    "icon": "",
+    "label": "pyinstxtractor",
+    "when": "blackarch-cmd-present pyinstxtractor",
+    "action": "blackarch pyinstxtractor"
+  },
+  "blackarch.pentest.mobile.objection": {
+    "icon": "",
+    "label": "objection",
+    "when": "blackarch-cmd-present objection",
+    "action": "blackarch objection"
+  },
+  "blackarch.pentest.mobile.appmon": {
+    "icon": "",
+    "label": "appmon",
+    "when": "blackarch-cmd-present appmon",
+    "action": "blackarch appmon"
+  },
+  "blackarch.pentest.mobile.javasnoop": {
+    "icon": "",
+    "label": "javasnoop",
+    "when": "blackarch-cmd-present javasnoop",
+    "action": "blackarch javasnoop"
+  },
+  "blackarch.pentest.mobile.hookanalyser": {
+    "icon": "",
+    "label": "hookanalyser",
+    "when": "blackarch-cmd-present hookanalyser",
+    "action": "blackarch hookanalyser"
+  },
+  "blackarch.pentest.mobile.androidsniffer": {
+    "icon": "",
+    "label": "androidsniffer",
+    "when": "blackarch-cmd-present androidsniffer",
+    "action": "blackarch androidsniffer"
+  },
+  "blackarch.pentest.mobile.phoneinfoga": {
+    "icon": "",
+    "label": "phoneinfoga",
+    "when": "blackarch-cmd-present phoneinfoga",
+    "action": "blackarch phoneinfoga"
+  },
+  "blackarch.pentest.mobile.iphoneanalyzer": {
+    "icon": "",
+    "label": "iphoneanalyzer",
+    "when": "blackarch-cmd-present iphoneanalyzer",
+    "action": "blackarch iphoneanalyzer"
+  },
+  "blackarch.pentest.mobile.packerid": {
+    "icon": "",
+    "label": "packerid",
+    "when": "blackarch-cmd-present packerid",
+    "action": "blackarch packerid"
+  },
+  "blackarch.pentest.mobile.sign": {
+    "icon": "",
+    "label": "sign",
+    "when": "blackarch-cmd-present sign",
+    "action": "blackarch sign"
+  },
+  "blackarch.pentest.mobile.kalibrate-rtl": {
+    "icon": "",
+    "label": "kalibrate-rtl",
+    "when": "blackarch-cmd-present kalibrate-rtl",
+    "action": "blackarch kalibrate-rtl"
+  },
+  "blackarch.pentest.mobile.lte-cell-scanner": {
+    "icon": "",
+    "label": "lte-cell-scanner",
+    "when": "blackarch-cmd-present lte-cell-scanner",
+    "action": "blackarch lte-cell-scanner"
+  },
+  "blackarch.pentest.mobile.netzob": {
+    "icon": "",
+    "label": "netzob",
+    "when": "blackarch-cmd-present netzob",
+    "action": "blackarch netzob"
+  },
+  "blackarch.pentest.mobile.retdec": {
+    "icon": "",
+    "label": "retdec",
+    "when": "blackarch-cmd-present retdec",
+    "action": "blackarch retdec"
+  },
+  "blackarch.pentest.network": {
+    "icon": "",
+    "label": "NETWORK",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.network.zeek": {
+    "icon": "",
+    "label": "zeek",
+    "when": "blackarch-cmd-present zeek",
+    "action": "blackarch zeek"
+  },
+  "blackarch.pentest.network.suricata": {
+    "icon": "",
+    "label": "suricata",
+    "when": "blackarch-cmd-present suricata",
+    "action": "blackarch suricata"
+  },
+  "blackarch.pentest.network.snort": {
+    "icon": "",
+    "label": "snort",
+    "when": "blackarch-cmd-present snort",
+    "action": "blackarch snort"
+  },
+  "blackarch.pentest.network.moloch": {
+    "icon": "",
+    "label": "moloch",
+    "when": "blackarch-cmd-present moloch",
+    "action": "blackarch moloch"
+  },
+  "blackarch.pentest.network.fastnetmon": {
+    "icon": "",
+    "label": "fastnetmon",
+    "when": "blackarch-cmd-present fastnetmon",
+    "action": "blackarch fastnetmon"
+  },
+  "blackarch.pentest.network.nfdump": {
+    "icon": "",
+    "label": "nfdump",
+    "when": "blackarch-cmd-present nfdump",
+    "action": "blackarch nfdump"
+  },
+  "blackarch.pentest.network.pmacct": {
+    "icon": "",
+    "label": "pmacct",
+    "when": "blackarch-cmd-present pmacct",
+    "action": "blackarch pmacct"
+  },
+  "blackarch.pentest.network.pcapxray": {
+    "icon": "",
+    "label": "pcapxray",
+    "when": "blackarch-cmd-present pcapxray",
+    "action": "blackarch pcapxray"
+  },
+  "blackarch.pentest.network.pcapfix": {
+    "icon": "",
+    "label": "pcapfix",
+    "when": "blackarch-cmd-present pcapfix",
+    "action": "blackarch pcapfix"
+  },
+  "blackarch.pentest.network.tcptraceroute": {
+    "icon": "",
+    "label": "tcptraceroute",
+    "when": "blackarch-cmd-present tcptraceroute",
+    "action": "blackarch tcptraceroute"
+  },
+  "blackarch.pentest.network.tcptrace": {
+    "icon": "",
+    "label": "tcptrace",
+    "when": "blackarch-cmd-present tcptrace",
+    "action": "blackarch tcptrace"
+  },
+  "blackarch.pentest.network.packet-o-matic": {
+    "icon": "",
+    "label": "packet-o-matic",
+    "when": "blackarch-cmd-present packet-o-matic",
+    "action": "blackarch packet-o-matic"
+  },
+  "blackarch.pentest.network.packetsender": {
+    "icon": "",
+    "label": "packetsender",
+    "when": "blackarch-cmd-present packetsender",
+    "action": "blackarch packetsender"
+  },
+  "blackarch.pentest.network.packetq": {
+    "icon": "",
+    "label": "packetq",
+    "when": "blackarch-cmd-present packetq",
+    "action": "blackarch packetq"
+  },
+  "blackarch.pentest.network.promiscdetect": {
+    "icon": "",
+    "label": "promiscdetect",
+    "when": "blackarch-cmd-present promiscdetect",
+    "action": "blackarch promiscdetect"
+  },
+  "blackarch.pentest.network.dublin-traceroute": {
+    "icon": "",
+    "label": "dublin-traceroute",
+    "when": "blackarch-cmd-present dublin-traceroute",
+    "action": "blackarch dublin-traceroute"
+  },
+  "blackarch.pentest.network.massdns": {
+    "icon": "",
+    "label": "massdns",
+    "when": "blackarch-cmd-present massdns",
+    "action": "blackarch massdns"
+  },
+  "blackarch.pentest.network.dnschef": {
+    "icon": "",
+    "label": "dnschef",
+    "when": "blackarch-cmd-present dnschef",
+    "action": "blackarch dnschef"
+  },
+  "blackarch.pentest.network.dnsdiag": {
+    "icon": "",
+    "label": "dnsdiag",
+    "when": "blackarch-cmd-present dnsdiag",
+    "action": "blackarch dnsdiag"
+  },
+  "blackarch.pentest.network.dnswatch": {
+    "icon": "",
+    "label": "dnswatch",
+    "when": "blackarch-cmd-present dnswatch",
+    "action": "blackarch dnswatch"
+  },
+  "blackarch.pentest.network.dns-reverse-proxy": {
+    "icon": "",
+    "label": "dns-reverse-proxy",
+    "when": "blackarch-cmd-present dns-reverse-proxy",
+    "action": "blackarch dns-reverse-proxy"
+  },
+  "blackarch.pentest.network.exabgp": {
+    "icon": "",
+    "label": "exabgp",
+    "when": "blackarch-cmd-present exabgp",
+    "action": "blackarch exabgp"
+  },
+  "blackarch.pentest.network.eigrp-tools": {
+    "icon": "",
+    "label": "eigrp-tools",
+    "when": "blackarch-cmd-present eigrp-tools",
+    "action": "blackarch eigrp-tools"
+  },
+  "blackarch.pentest.network.mapcidr": {
+    "icon": "",
+    "label": "mapcidr",
+    "when": "blackarch-cmd-present mapcidr",
+    "action": "blackarch mapcidr"
+  },
+  "blackarch.pentest.network.nipper": {
+    "icon": "",
+    "label": "nipper",
+    "when": "blackarch-cmd-present nipper",
+    "action": "blackarch nipper"
+  },
+  "blackarch.pentest.network.netdiscover": {
+    "icon": "",
+    "label": "netdiscover",
+    "when": "blackarch-cmd-present netdiscover",
+    "action": "blackarch netdiscover"
+  },
+  "blackarch.pentest.network.netactview": {
+    "icon": "",
+    "label": "netactview",
+    "when": "blackarch-cmd-present netactview",
+    "action": "blackarch netactview"
+  },
+  "blackarch.pentest.network.netscan": {
+    "icon": "",
+    "label": "netscan",
+    "when": "blackarch-cmd-present netscan",
+    "action": "blackarch netscan"
+  },
+  "blackarch.pentest.network.neighbor-cache-fingerprinter": {
+    "icon": "",
+    "label": "neighbor-cache-fingerprinter",
+    "when": "blackarch-cmd-present neighbor-cache-fingerprinter",
+    "action": "blackarch neighbor-cache-fingerprinter"
+  },
+  "blackarch.pentest.network.arpalert": {
+    "icon": "",
+    "label": "arpalert",
+    "when": "blackarch-cmd-present arpalert",
+    "action": "blackarch arpalert"
+  },
+  "blackarch.pentest.network.arpoison": {
+    "icon": "",
+    "label": "arpoison",
+    "when": "blackarch-cmd-present arpoison",
+    "action": "blackarch arpoison"
+  },
+  "blackarch.pentest.network.arptools": {
+    "icon": "",
+    "label": "arptools",
+    "when": "blackarch-cmd-present arptools",
+    "action": "blackarch arptools"
+  },
+  "blackarch.pentest.network.dhcpoptinj": {
+    "icon": "",
+    "label": "dhcpoptinj",
+    "when": "blackarch-cmd-present dhcpoptinj",
+    "action": "blackarch dhcpoptinj"
+  },
+  "blackarch.pentest.network.ifchk": {
+    "icon": "",
+    "label": "ifchk",
+    "when": "blackarch-cmd-present ifchk",
+    "action": "blackarch ifchk"
+  },
+  "blackarch.pentest.network.hostapd-wpe": {
+    "icon": "",
+    "label": "hostapd-wpe",
+    "when": "blackarch-cmd-present hostapd-wpe",
+    "action": "blackarch hostapd-wpe"
+  },
+  "blackarch.pentest.network.airgeddon": {
+    "icon": "",
+    "label": "airgeddon",
+    "when": "blackarch-cmd-present airgeddon",
+    "action": "blackarch airgeddon"
+  },
+  "blackarch.pentest.network.mdk3": {
+    "icon": "",
+    "label": "mdk3",
+    "when": "blackarch-cmd-present mdk3",
+    "action": "blackarch mdk3"
+  },
+  "blackarch.pentest.network.wifiphisher": {
+    "icon": "",
+    "label": "wifiphisher",
+    "when": "blackarch-cmd-present wifiphisher",
+    "action": "blackarch wifiphisher"
+  },
+  "blackarch.pentest.network.wifichannelmonitor": {
+    "icon": "",
+    "label": "wifichannelmonitor",
+    "when": "blackarch-cmd-present wifichannelmonitor",
+    "action": "blackarch wifichannelmonitor"
+  },
+  "blackarch.pentest.network.wlan2eth": {
+    "icon": "",
+    "label": "wlan2eth",
+    "when": "blackarch-cmd-present wlan2eth",
+    "action": "blackarch wlan2eth"
+  },
+  "blackarch.pentest.network.wifi-pumpkin": {
+    "icon": "",
+    "label": "wifi-pumpkin",
+    "when": "blackarch-cmd-present wifi-pumpkin",
+    "action": "blackarch wifi-pumpkin"
+  },
+  "blackarch.pentest.network.gr-gsm": {
+    "icon": "",
+    "label": "gr-gsm",
+    "when": "blackarch-cmd-present gr-gsm",
+    "action": "blackarch gr-gsm"
+  },
+  "blackarch.pentest.network.gqrx-scanner": {
+    "icon": "",
+    "label": "gqrx-scanner",
+    "when": "blackarch-cmd-present gqrx-scanner",
+    "action": "blackarch gqrx-scanner"
+  },
+  "blackarch.pentest.network.rtl-433": {
+    "icon": "",
+    "label": "rtl-433",
+    "when": "blackarch-cmd-present rtl-433",
+    "action": "blackarch rtl-433"
+  },
+  "blackarch.pentest.network.kalibrate-rtl": {
+    "icon": "",
+    "label": "kalibrate-rtl",
+    "when": "blackarch-cmd-present kalibrate-rtl",
+    "action": "blackarch kalibrate-rtl"
+  },
+  "blackarch.pentest.network.lte-cell-scanner": {
+    "icon": "",
+    "label": "lte-cell-scanner",
+    "when": "blackarch-cmd-present lte-cell-scanner",
+    "action": "blackarch lte-cell-scanner"
+  },
+  "blackarch.pentest.network.rfcat": {
+    "icon": "",
+    "label": "rfcat",
+    "when": "blackarch-cmd-present rfcat",
+    "action": "blackarch rfcat"
+  },
+  "blackarch.pentest.network.sagan": {
+    "icon": "",
+    "label": "sagan",
+    "when": "blackarch-cmd-present sagan",
+    "action": "blackarch sagan"
+  },
+  "blackarch.pentest.network.maltrail": {
+    "icon": "",
+    "label": "maltrail",
+    "when": "blackarch-cmd-present maltrail",
+    "action": "blackarch maltrail"
+  },
+  "blackarch.pentest.network.ngrok": {
+    "icon": "",
+    "label": "ngrok",
+    "when": "blackarch-cmd-present ngrok",
+    "action": "blackarch ngrok"
+  },
+  "blackarch.pentest.network.chisel": {
+    "icon": "",
+    "label": "chisel",
+    "when": "blackarch-cmd-present chisel",
+    "action": "blackarch chisel"
+  },
+  "blackarch.pentest.network.ligolo-ng": {
+    "icon": "",
+    "label": "ligolo-ng",
+    "when": "blackarch-cmd-present ligolo-ng",
+    "action": "blackarch ligolo-ng"
+  },
+  "blackarch.pentest.network.redsocks": {
+    "icon": "",
+    "label": "redsocks",
+    "when": "blackarch-cmd-present redsocks",
+    "action": "blackarch redsocks"
+  },
+  "blackarch.pentest.network.pwncat": {
+    "icon": "",
+    "label": "pwncat",
+    "when": "blackarch-cmd-present pwncat",
+    "action": "blackarch pwncat"
+  },
+  "blackarch.pentest.network.netmap": {
+    "icon": "",
+    "label": "netmap",
+    "when": "blackarch-cmd-present netmap",
+    "action": "blackarch netmap"
+  },
+  "blackarch.pentest.network.portspoof": {
+    "icon": "",
+    "label": "portspoof",
+    "when": "blackarch-cmd-present portspoof",
+    "action": "blackarch portspoof"
+  },
+  "blackarch.pentest.network.snmpcheck": {
+    "icon": "",
+    "label": "snmpcheck",
+    "when": "blackarch-cmd-present snmpcheck",
+    "action": "blackarch snmpcheck"
+  },
+  "blackarch.pentest.network.soapui": {
+    "icon": "",
+    "label": "soapui",
+    "when": "blackarch-cmd-present soapui",
+    "action": "blackarch soapui"
+  },
+  "blackarch.pentest.network.xplico": {
+    "icon": "",
+    "label": "xplico",
+    "when": "blackarch-cmd-present xplico",
+    "action": "blackarch xplico"
+  },
+  "blackarch.pentest.osint": {
+    "icon": "",
+    "label": "OSINT",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.osint.amass": {
+    "icon": "",
+    "label": "amass",
+    "when": "blackarch-cmd-present amass",
+    "action": "blackarch amass"
+  },
+  "blackarch.pentest.osint.assetfinder": {
+    "icon": "",
+    "label": "assetfinder",
+    "when": "blackarch-cmd-present assetfinder",
+    "action": "blackarch assetfinder"
+  },
+  "blackarch.pentest.osint.subfinder": {
+    "icon": "",
+    "label": "subfinder",
+    "when": "blackarch-cmd-present subfinder",
+    "action": "blackarch subfinder"
+  },
+  "blackarch.pentest.osint.findomain": {
+    "icon": "",
+    "label": "findomain",
+    "when": "blackarch-cmd-present findomain",
+    "action": "blackarch findomain"
+  },
+  "blackarch.pentest.osint.shuffledns": {
+    "icon": "",
+    "label": "shuffledns",
+    "when": "blackarch-cmd-present shuffledns",
+    "action": "blackarch shuffledns"
+  },
+  "blackarch.pentest.osint.massdns": {
+    "icon": "",
+    "label": "massdns",
+    "when": "blackarch-cmd-present massdns",
+    "action": "blackarch massdns"
+  },
+  "blackarch.pentest.osint.dnsx": {
+    "icon": "",
+    "label": "dnsx",
+    "when": "blackarch-cmd-present dnsx",
+    "action": "blackarch dnsx"
+  },
+  "blackarch.pentest.osint.httpx": {
+    "icon": "",
+    "label": "httpx",
+    "when": "blackarch-cmd-present httpx",
+    "action": "blackarch httpx"
+  },
+  "blackarch.pentest.osint.httpscreenshot": {
+    "icon": "",
+    "label": "httpscreenshot",
+    "when": "blackarch-cmd-present httpscreenshot",
+    "action": "blackarch httpscreenshot"
+  },
+  "blackarch.pentest.osint.gowitness": {
+    "icon": "",
+    "label": "gowitness",
+    "when": "blackarch-cmd-present gowitness",
+    "action": "blackarch gowitness"
+  },
+  "blackarch.pentest.osint.waybackurls": {
+    "icon": "",
+    "label": "waybackurls",
+    "when": "blackarch-cmd-present waybackurls",
+    "action": "blackarch waybackurls"
+  },
+  "blackarch.pentest.osint.gau": {
+    "icon": "",
+    "label": "gau",
+    "when": "blackarch-cmd-present gau",
+    "action": "blackarch gau"
+  },
+  "blackarch.pentest.osint.gospider": {
+    "icon": "",
+    "label": "gospider",
+    "when": "blackarch-cmd-present gospider",
+    "action": "blackarch gospider"
+  },
+  "blackarch.pentest.osint.hakrawler": {
+    "icon": "",
+    "label": "hakrawler",
+    "when": "blackarch-cmd-present hakrawler",
+    "action": "blackarch hakrawler"
+  },
+  "blackarch.pentest.osint.whatweb": {
+    "icon": "",
+    "label": "whatweb",
+    "when": "blackarch-cmd-present whatweb",
+    "action": "blackarch whatweb"
+  },
+  "blackarch.pentest.osint.wafw00f": {
+    "icon": "",
+    "label": "wafw00f",
+    "when": "blackarch-cmd-present wafw00f",
+    "action": "blackarch wafw00f"
+  },
+  "blackarch.pentest.osint.theharvester": {
+    "icon": "",
+    "label": "theharvester",
+    "when": "blackarch-cmd-present theharvester",
+    "action": "blackarch theharvester"
+  },
+  "blackarch.pentest.osint.spiderfoot": {
+    "icon": "",
+    "label": "spiderfoot",
+    "when": "blackarch-cmd-present spiderfoot",
+    "action": "blackarch spiderfoot"
+  },
+  "blackarch.pentest.osint.gitleaks": {
+    "icon": "",
+    "label": "gitleaks",
+    "when": "blackarch-cmd-present gitleaks",
+    "action": "blackarch gitleaks"
+  },
+  "blackarch.pentest.osint.shhgit": {
+    "icon": "",
+    "label": "shhgit",
+    "when": "blackarch-cmd-present shhgit",
+    "action": "blackarch shhgit"
+  },
+  "blackarch.pentest.osint.trufflehog": {
+    "icon": "",
+    "label": "trufflehog",
+    "when": "blackarch-cmd-present trufflehog",
+    "action": "blackarch trufflehog"
+  },
+  "blackarch.pentest.osint.git-dumper": {
+    "icon": "",
+    "label": "git-dumper",
+    "when": "blackarch-cmd-present git-dumper",
+    "action": "blackarch git-dumper"
+  },
+  "blackarch.pentest.osint.s3scanner": {
+    "icon": "",
+    "label": "s3scanner",
+    "when": "blackarch-cmd-present s3scanner",
+    "action": "blackarch s3scanner"
+  },
+  "blackarch.pentest.osint.awsbucketdump": {
+    "icon": "",
+    "label": "awsbucketdump",
+    "when": "blackarch-cmd-present awsbucketdump",
+    "action": "blackarch awsbucketdump"
+  },
+  "blackarch.pentest.osint.nuclei": {
+    "icon": "",
+    "label": "nuclei",
+    "when": "blackarch-cmd-present nuclei",
+    "action": "blackarch nuclei"
+  },
+  "blackarch.pentest.osint.nuclei-templates": {
+    "icon": "",
+    "label": "nuclei-templates",
+    "when": "blackarch-cmd-present nuclei-templates",
+    "action": "blackarch nuclei-templates"
+  },
+  "blackarch.pentest.redteamer": {
+    "icon": "",
+    "label": "REDTEAMER",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.redteamer.amass": {
+    "icon": "",
+    "label": "amass",
+    "when": "blackarch-cmd-present amass",
+    "action": "blackarch amass"
+  },
+  "blackarch.pentest.redteamer.assetfinder": {
+    "icon": "",
+    "label": "assetfinder",
+    "when": "blackarch-cmd-present assetfinder",
+    "action": "blackarch assetfinder"
+  },
+  "blackarch.pentest.redteamer.subfinder": {
+    "icon": "",
+    "label": "subfinder",
+    "when": "blackarch-cmd-present subfinder",
+    "action": "blackarch subfinder"
+  },
+  "blackarch.pentest.redteamer.massdns": {
+    "icon": "",
+    "label": "massdns",
+    "when": "blackarch-cmd-present massdns",
+    "action": "blackarch massdns"
+  },
+  "blackarch.pentest.redteamer.puredns": {
+    "icon": "",
+    "label": "puredns",
+    "when": "blackarch-cmd-present puredns",
+    "action": "blackarch puredns"
+  },
+  "blackarch.pentest.redteamer.dnsx": {
+    "icon": "",
+    "label": "dnsx",
+    "when": "blackarch-cmd-present dnsx",
+    "action": "blackarch dnsx"
+  },
+  "blackarch.pentest.redteamer.naabu": {
+    "icon": "",
+    "label": "naabu",
+    "when": "blackarch-cmd-present naabu",
+    "action": "blackarch naabu"
+  },
+  "blackarch.pentest.redteamer.httpx": {
+    "icon": "",
+    "label": "httpx",
+    "when": "blackarch-cmd-present httpx",
+    "action": "blackarch httpx"
+  },
+  "blackarch.pentest.redteamer.hakrawler": {
+    "icon": "",
+    "label": "hakrawler",
+    "when": "blackarch-cmd-present hakrawler",
+    "action": "blackarch hakrawler"
+  },
+  "blackarch.pentest.redteamer.waybackurls": {
+    "icon": "",
+    "label": "waybackurls",
+    "when": "blackarch-cmd-present waybackurls",
+    "action": "blackarch waybackurls"
+  },
+  "blackarch.pentest.redteamer.arjun": {
+    "icon": "",
+    "label": "arjun",
+    "when": "blackarch-cmd-present arjun",
+    "action": "blackarch arjun"
+  },
+  "blackarch.pentest.redteamer.ffuf": {
+    "icon": "",
+    "label": "ffuf",
+    "when": "blackarch-cmd-present ffuf",
+    "action": "blackarch ffuf"
+  },
+  "blackarch.pentest.redteamer.feroxbuster": {
+    "icon": "",
+    "label": "feroxbuster",
+    "when": "blackarch-cmd-present feroxbuster",
+    "action": "blackarch feroxbuster"
+  },
+  "blackarch.pentest.redteamer.dalfox": {
+    "icon": "",
+    "label": "dalfox",
+    "when": "blackarch-cmd-present dalfox",
+    "action": "blackarch dalfox"
+  },
+  "blackarch.pentest.redteamer.kiterunner": {
+    "icon": "",
+    "label": "kiterunner",
+    "when": "blackarch-cmd-present kiterunner",
+    "action": "blackarch kiterunner"
+  },
+  "blackarch.pentest.redteamer.graphqlmap": {
+    "icon": "",
+    "label": "graphqlmap",
+    "when": "blackarch-cmd-present graphqlmap",
+    "action": "blackarch graphqlmap"
+  },
+  "blackarch.pentest.redteamer.nuclei": {
+    "icon": "",
+    "label": "nuclei",
+    "when": "blackarch-cmd-present nuclei",
+    "action": "blackarch nuclei"
+  },
+  "blackarch.pentest.redteamer.nuclei-templates": {
+    "icon": "",
+    "label": "nuclei-templates",
+    "when": "blackarch-cmd-present nuclei-templates",
+    "action": "blackarch nuclei-templates"
+  },
+  "blackarch.pentest.redteamer.gowitness": {
+    "icon": "",
+    "label": "gowitness",
+    "when": "blackarch-cmd-present gowitness",
+    "action": "blackarch gowitness"
+  },
+  "blackarch.pentest.redteamer.whatweb": {
+    "icon": "",
+    "label": "whatweb",
+    "when": "blackarch-cmd-present whatweb",
+    "action": "blackarch whatweb"
+  },
+  "blackarch.pentest.redteamer.wafw00f": {
+    "icon": "",
+    "label": "wafw00f",
+    "when": "blackarch-cmd-present wafw00f",
+    "action": "blackarch wafw00f"
+  },
+  "blackarch.pentest.redteamer.dontgo403": {
+    "icon": "",
+    "label": "dontgo403",
+    "when": "blackarch-cmd-present dontgo403",
+    "action": "blackarch dontgo403"
+  },
+  "blackarch.pentest.redteamer.subjack": {
+    "icon": "",
+    "label": "subjack",
+    "when": "blackarch-cmd-present subjack",
+    "action": "blackarch subjack"
+  },
+  "blackarch.pentest.redteamer.linkfinder": {
+    "icon": "",
+    "label": "linkfinder",
+    "when": "blackarch-cmd-present linkfinder",
+    "action": "blackarch linkfinder"
+  },
+  "blackarch.pentest.redteamer.bloodhound-python": {
+    "icon": "",
+    "label": "bloodhound-python",
+    "when": "blackarch-cmd-present bloodhound-python",
+    "action": "blackarch bloodhound-python"
+  },
+  "blackarch.pentest.redteamer.bloodyad": {
+    "icon": "",
+    "label": "bloodyad",
+    "when": "blackarch-cmd-present bloodyad",
+    "action": "blackarch bloodyad"
+  },
+  "blackarch.pentest.redteamer.go-windapsearch": {
+    "icon": "",
+    "label": "go-windapsearch",
+    "when": "blackarch-cmd-present go-windapsearch",
+    "action": "blackarch go-windapsearch"
+  },
+  "blackarch.pentest.redteamer.adidnsdump": {
+    "icon": "",
+    "label": "adidnsdump",
+    "when": "blackarch-cmd-present adidnsdump",
+    "action": "blackarch adidnsdump"
+  },
+  "blackarch.pentest.redteamer.certipy": {
+    "icon": "",
+    "label": "certipy",
+    "when": "blackarch-cmd-present certipy",
+    "action": "blackarch certipy"
+  },
+  "blackarch.pentest.redteamer.coercer": {
+    "icon": "",
+    "label": "coercer",
+    "when": "blackarch-cmd-present coercer",
+    "action": "blackarch coercer"
+  },
+  "blackarch.pentest.redteamer.donpapi": {
+    "icon": "",
+    "label": "donpapi",
+    "when": "blackarch-cmd-present donpapi",
+    "action": "blackarch donpapi"
+  },
+  "blackarch.pentest.redteamer.kerbrute": {
+    "icon": "",
+    "label": "kerbrute",
+    "when": "blackarch-cmd-present kerbrute",
+    "action": "blackarch kerbrute"
+  },
+  "blackarch.pentest.redteamer.evil-winrm": {
+    "icon": "",
+    "label": "evil-winrm",
+    "when": "blackarch-cmd-present evil-winrm",
+    "action": "blackarch evil-winrm"
+  },
+  "blackarch.pentest.redteamer.responder": {
+    "icon": "",
+    "label": "responder",
+    "when": "blackarch-cmd-present responder",
+    "action": "blackarch responder"
+  },
+  "blackarch.pentest.redteamer.pingcastle": {
+    "icon": "",
+    "label": "pingcastle",
+    "when": "blackarch-cmd-present pingcastle",
+    "action": "blackarch pingcastle"
+  },
+  "blackarch.pentest.redteamer.netexec": {
+    "icon": "",
+    "label": "netexec",
+    "when": "blackarch-cmd-present netexec",
+    "action": "blackarch netexec"
+  },
+  "blackarch.pentest.redteamer.mimikatz": {
+    "icon": "",
+    "label": "mimikatz",
+    "when": "blackarch-cmd-present mimikatz",
+    "action": "blackarch mimikatz"
+  },
+  "blackarch.pentest.redteamer.mimipenguin": {
+    "icon": "",
+    "label": "mimipenguin",
+    "when": "blackarch-cmd-present mimipenguin",
+    "action": "blackarch mimipenguin"
+  },
+  "blackarch.pentest.redteamer.samdump2": {
+    "icon": "",
+    "label": "samdump2",
+    "when": "blackarch-cmd-present samdump2",
+    "action": "blackarch samdump2"
+  },
+  "blackarch.pentest.redteamer.pcredz": {
+    "icon": "",
+    "label": "pcredz",
+    "when": "blackarch-cmd-present pcredz",
+    "action": "blackarch pcredz"
+  },
+  "blackarch.pentest.redteamer.kerberoast": {
+    "icon": "",
+    "label": "kerberoast",
+    "when": "blackarch-cmd-present kerberoast",
+    "action": "blackarch kerberoast"
+  },
+  "blackarch.pentest.redteamer.trevorspray": {
+    "icon": "",
+    "label": "trevorspray",
+    "when": "blackarch-cmd-present trevorspray",
+    "action": "blackarch trevorspray"
+  },
+  "blackarch.pentest.redteamer.o365spray": {
+    "icon": "",
+    "label": "o365spray",
+    "when": "blackarch-cmd-present o365spray",
+    "action": "blackarch o365spray"
+  },
+  "blackarch.pentest.redteamer.ligolo-ng": {
+    "icon": "",
+    "label": "ligolo-ng",
+    "when": "blackarch-cmd-present ligolo-ng",
+    "action": "blackarch ligolo-ng"
+  },
+  "blackarch.pentest.redteamer.redsocks": {
+    "icon": "",
+    "label": "redsocks",
+    "when": "blackarch-cmd-present redsocks",
+    "action": "blackarch redsocks"
+  },
+  "blackarch.pentest.redteamer.pacu": {
+    "icon": "",
+    "label": "pacu",
+    "when": "blackarch-cmd-present pacu",
+    "action": "blackarch pacu"
+  },
+  "blackarch.pentest.redteamer.enumerate-iam": {
+    "icon": "",
+    "label": "enumerate-iam",
+    "when": "blackarch-cmd-present enumerate-iam",
+    "action": "blackarch enumerate-iam"
+  },
+  "blackarch.pentest.redteamer.prowler": {
+    "icon": "",
+    "label": "prowler",
+    "when": "blackarch-cmd-present prowler",
+    "action": "blackarch prowler"
+  },
+  "blackarch.pentest.redteamer.s3scanner": {
+    "icon": "",
+    "label": "s3scanner",
+    "when": "blackarch-cmd-present s3scanner",
+    "action": "blackarch s3scanner"
+  },
+  "blackarch.pentest.redteamer.aws-iam-privesc": {
+    "icon": "",
+    "label": "aws-iam-privesc",
+    "when": "blackarch-cmd-present aws-iam-privesc",
+    "action": "blackarch aws-iam-privesc"
+  },
+  "blackarch.pentest.redteamer.donut": {
+    "icon": "",
+    "label": "donut",
+    "when": "blackarch-cmd-present donut",
+    "action": "blackarch donut"
+  },
+  "blackarch.pentest.redteamer.veil": {
+    "icon": "",
+    "label": "veil",
+    "when": "blackarch-cmd-present veil",
+    "action": "blackarch veil"
+  },
+  "blackarch.pentest.redteamer.havoc-c2": {
+    "icon": "",
+    "label": "havoc-c2",
+    "when": "blackarch-cmd-present havoc-c2",
+    "action": "blackarch havoc-c2"
+  },
+  "blackarch.pentest.redteamer.phpggc": {
+    "icon": "",
+    "label": "phpggc",
+    "when": "blackarch-cmd-present phpggc",
+    "action": "blackarch phpggc"
+  },
+  "blackarch.pentest.redteamer.ysoserial": {
+    "icon": "",
+    "label": "ysoserial",
+    "when": "blackarch-cmd-present ysoserial",
+    "action": "blackarch ysoserial"
+  },
+  "blackarch.pentest.redteamer.peass": {
+    "icon": "",
+    "label": "peass",
+    "when": "blackarch-cmd-present peass",
+    "action": "blackarch peass"
+  },
+  "blackarch.pentest.redteamer.linux-smart-enumeration": {
+    "icon": "",
+    "label": "linux-smart-enumeration",
+    "when": "blackarch-cmd-present linux-smart-enumeration",
+    "action": "blackarch linux-smart-enumeration"
+  },
+  "blackarch.pentest.redteamer.linenum": {
+    "icon": "",
+    "label": "linenum",
+    "when": "blackarch-cmd-present linenum",
+    "action": "blackarch linenum"
+  },
+  "blackarch.pentest.redteamer.weevely": {
+    "icon": "",
+    "label": "weevely",
+    "when": "blackarch-cmd-present weevely",
+    "action": "blackarch weevely"
+  },
+  "blackarch.pentest.student": {
+    "icon": "",
+    "label": "STUDENT",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.student.nmap": {
+    "icon": "",
+    "label": "nmap",
+    "when": "blackarch-cmd-present nmap",
+    "action": "blackarch nmap"
+  },
+  "blackarch.pentest.student.enum4linux": {
+    "icon": "",
+    "label": "enum4linux",
+    "when": "blackarch-cmd-present enum4linux",
+    "action": "blackarch enum4linux"
+  },
+  "blackarch.pentest.student.dmitry": {
+    "icon": "",
+    "label": "dmitry",
+    "when": "blackarch-cmd-present dmitry",
+    "action": "blackarch dmitry"
+  },
+  "blackarch.pentest.student.theharvester": {
+    "icon": "",
+    "label": "theharvester",
+    "when": "blackarch-cmd-present theharvester",
+    "action": "blackarch theharvester"
+  },
+  "blackarch.pentest.student.legion": {
+    "icon": "",
+    "label": "legion",
+    "when": "blackarch-cmd-present legion",
+    "action": "blackarch legion"
+  },
+  "blackarch.pentest.student.gobuster": {
+    "icon": "",
+    "label": "gobuster",
+    "when": "blackarch-cmd-present gobuster",
+    "action": "blackarch gobuster"
+  },
+  "blackarch.pentest.student.dirb": {
+    "icon": "",
+    "label": "dirb",
+    "when": "blackarch-cmd-present dirb",
+    "action": "blackarch dirb"
+  },
+  "blackarch.pentest.student.ffuf": {
+    "icon": "",
+    "label": "ffuf",
+    "when": "blackarch-cmd-present ffuf",
+    "action": "blackarch ffuf"
+  },
+  "blackarch.pentest.student.wfuzz": {
+    "icon": "",
+    "label": "wfuzz",
+    "when": "blackarch-cmd-present wfuzz",
+    "action": "blackarch wfuzz"
+  },
+  "blackarch.pentest.student.whatweb": {
+    "icon": "",
+    "label": "whatweb",
+    "when": "blackarch-cmd-present whatweb",
+    "action": "blackarch whatweb"
+  },
+  "blackarch.pentest.student.wafw00f": {
+    "icon": "",
+    "label": "wafw00f",
+    "when": "blackarch-cmd-present wafw00f",
+    "action": "blackarch wafw00f"
+  },
+  "blackarch.pentest.student.nikto": {
+    "icon": "",
+    "label": "nikto",
+    "when": "blackarch-cmd-present nikto",
+    "action": "blackarch nikto"
+  },
+  "blackarch.pentest.student.sqlmap": {
+    "icon": "",
+    "label": "sqlmap",
+    "when": "blackarch-cmd-present sqlmap",
+    "action": "blackarch sqlmap"
+  },
+  "blackarch.pentest.student.wpscan": {
+    "icon": "",
+    "label": "wpscan",
+    "when": "blackarch-cmd-present wpscan",
+    "action": "blackarch wpscan"
+  },
+  "blackarch.pentest.student.burpsuite": {
+    "icon": "",
+    "label": "burpsuite",
+    "when": "blackarch-cmd-present burpsuite",
+    "action": "blackarch burpsuite"
+  },
+  "blackarch.pentest.student.osert": {
+    "icon": "",
+    "label": "osert",
+    "when": "blackarch-cmd-present osert",
+    "action": "blackarch osert"
+  },
+  "blackarch.pentest.student.metasploit": {
+    "icon": "",
+    "label": "metasploit",
+    "when": "blackarch-cmd-present metasploit",
+    "action": "blackarch metasploit"
+  },
+  "blackarch.pentest.student.pwncat-caleb": {
+    "icon": "",
+    "label": "pwncat-caleb",
+    "when": "blackarch-cmd-present pwncat-caleb",
+    "action": "blackarch pwncat-caleb"
+  },
+  "blackarch.pentest.student.evil-winrm": {
+    "icon": "",
+    "label": "evil-winrm",
+    "when": "blackarch-cmd-present evil-winrm",
+    "action": "blackarch evil-winrm"
+  },
+  "blackarch.pentest.student.powersploit": {
+    "icon": "",
+    "label": "powersploit",
+    "when": "blackarch-cmd-present powersploit",
+    "action": "blackarch powersploit"
+  },
+  "blackarch.pentest.student.set": {
+    "icon": "",
+    "label": "set",
+    "when": "blackarch-cmd-present set",
+    "action": "blackarch set"
+  },
+  "blackarch.pentest.student.hashcat": {
+    "icon": "",
+    "label": "hashcat",
+    "when": "blackarch-cmd-present hashcat",
+    "action": "blackarch hashcat"
+  },
+  "blackarch.pentest.student.john": {
+    "icon": "",
+    "label": "john",
+    "when": "blackarch-cmd-present john",
+    "action": "blackarch john"
+  },
+  "blackarch.pentest.student.hydra": {
+    "icon": "",
+    "label": "hydra",
+    "when": "blackarch-cmd-present hydra",
+    "action": "blackarch hydra"
+  },
+  "blackarch.pentest.student.medusa": {
+    "icon": "",
+    "label": "medusa",
+    "when": "blackarch-cmd-present medusa",
+    "action": "blackarch medusa"
+  },
+  "blackarch.pentest.student.cewl": {
+    "icon": "",
+    "label": "cewl",
+    "when": "blackarch-cmd-present cewl",
+    "action": "blackarch cewl"
+  },
+  "blackarch.pentest.student.crunch": {
+    "icon": "",
+    "label": "crunch",
+    "when": "blackarch-cmd-present crunch",
+    "action": "blackarch crunch"
+  },
+  "blackarch.pentest.student.wordlister": {
+    "icon": "",
+    "label": "wordlister",
+    "when": "blackarch-cmd-present wordlister",
+    "action": "blackarch wordlister"
+  },
+  "blackarch.pentest.student.mimikatz": {
+    "icon": "",
+    "label": "mimikatz",
+    "when": "blackarch-cmd-present mimikatz",
+    "action": "blackarch mimikatz"
+  },
+  "blackarch.pentest.student.responder": {
+    "icon": "",
+    "label": "responder",
+    "when": "blackarch-cmd-present responder",
+    "action": "blackarch responder"
+  },
+  "blackarch.pentest.student.wireshark-qt": {
+    "icon": "",
+    "label": "wireshark-qt",
+    "when": "blackarch-cmd-present wireshark-qt",
+    "action": "blackarch wireshark-qt"
+  },
+  "blackarch.pentest.student.mitmproxy": {
+    "icon": "",
+    "label": "mitmproxy",
+    "when": "blackarch-cmd-present mitmproxy",
+    "action": "blackarch mitmproxy"
+  },
+  "blackarch.pentest.student.proxychains-ng": {
+    "icon": "",
+    "label": "proxychains-ng",
+    "when": "blackarch-cmd-present proxychains-ng",
+    "action": "blackarch proxychains-ng"
+  },
+  "blackarch.pentest.student.pwncat": {
+    "icon": "",
+    "label": "pwncat",
+    "when": "blackarch-cmd-present pwncat",
+    "action": "blackarch pwncat"
+  },
+  "blackarch.pentest.student.aircrack-ng": {
+    "icon": "",
+    "label": "aircrack-ng",
+    "when": "blackarch-cmd-present aircrack-ng",
+    "action": "blackarch aircrack-ng"
+  },
+  "blackarch.pentest.student.wifite": {
+    "icon": "",
+    "label": "wifite",
+    "when": "blackarch-cmd-present wifite",
+    "action": "blackarch wifite"
+  },
+  "blackarch.pentest.student.kismet": {
+    "icon": "",
+    "label": "kismet",
+    "when": "blackarch-cmd-present kismet",
+    "action": "blackarch kismet"
+  },
+  "blackarch.pentest.student.reaver": {
+    "icon": "",
+    "label": "reaver",
+    "when": "blackarch-cmd-present reaver",
+    "action": "blackarch reaver"
+  },
+  "blackarch.pentest.student.fern-wifi-cracker": {
+    "icon": "",
+    "label": "fern-wifi-cracker",
+    "when": "blackarch-cmd-present fern-wifi-cracker",
+    "action": "blackarch fern-wifi-cracker"
+  },
+  "blackarch.pentest.student.ghidra": {
+    "icon": "",
+    "label": "ghidra",
+    "when": "blackarch-cmd-present ghidra",
+    "action": "blackarch ghidra"
+  },
+  "blackarch.pentest.student.radare2": {
+    "icon": "",
+    "label": "radare2",
+    "when": "blackarch-cmd-present radare2",
+    "action": "blackarch radare2"
+  },
+  "blackarch.pentest.student.edb": {
+    "icon": "",
+    "label": "edb",
+    "when": "blackarch-cmd-present edb",
+    "action": "blackarch edb"
+  },
+  "blackarch.pentest.student.nasm": {
+    "icon": "",
+    "label": "nasm",
+    "when": "blackarch-cmd-present nasm",
+    "action": "blackarch nasm"
+  },
+  "blackarch.pentest.student.spiderfoot": {
+    "icon": "",
+    "label": "spiderfoot",
+    "when": "blackarch-cmd-present spiderfoot",
+    "action": "blackarch spiderfoot"
+  },
+  "blackarch.pentest.student.unix-privesc-check": {
+    "icon": "",
+    "label": "unix-privesc-check",
+    "when": "blackarch-cmd-present unix-privesc-check",
+    "action": "blackarch unix-privesc-check"
+  },
+  "blackarch.pentest.student.rsmangler": {
+    "icon": "",
+    "label": "rsmangler",
+    "when": "blackarch-cmd-present rsmangler",
+    "action": "blackarch rsmangler"
+  },
+  "blackarch.pentest.student.weevely": {
+    "icon": "",
+    "label": "weevely",
+    "when": "blackarch-cmd-present weevely",
+    "action": "blackarch weevely"
+  },
+  "blackarch.pentest.web": {
+    "icon": "",
+    "label": "WEB",
+    "aliases": [
+      "app",
+      "applications"
+    ],
+    "provider": "apps"
+  },
+  "blackarch.pentest.web.shuffledns": {
+    "icon": "",
+    "label": "shuffledns",
+    "when": "blackarch-cmd-present shuffledns",
+    "action": "blackarch shuffledns"
+  },
+  "blackarch.pentest.web.domato": {
+    "icon": "",
+    "label": "domato",
+    "when": "blackarch-cmd-present domato",
+    "action": "blackarch domato"
+  },
+  "blackarch.pentest.web.directorytraversalscan": {
+    "icon": "",
+    "label": "directorytraversalscan",
+    "when": "blackarch-cmd-present directorytraversalscan",
+    "action": "blackarch directorytraversalscan"
+  },
+  "blackarch.pentest.web.gospider": {
+    "icon": "",
+    "label": "gospider",
+    "when": "blackarch-cmd-present gospider",
+    "action": "blackarch gospider"
+  },
+  "blackarch.pentest.web.gobuster": {
+    "icon": "",
+    "label": "gobuster",
+    "when": "blackarch-cmd-present gobuster",
+    "action": "blackarch gobuster"
+  },
+  "blackarch.pentest.web.dirsearch": {
+    "icon": "",
+    "label": "dirsearch",
+    "when": "blackarch-cmd-present dirsearch",
+    "action": "blackarch dirsearch"
+  },
+  "blackarch.pentest.web.dirb": {
+    "icon": "",
+    "label": "dirb",
+    "when": "blackarch-cmd-present dirb",
+    "action": "blackarch dirb"
+  },
+  "blackarch.pentest.web.dawnscanner": {
+    "icon": "",
+    "label": "dawnscanner",
+    "when": "blackarch-cmd-present dawnscanner",
+    "action": "blackarch dawnscanner"
+  },
+  "blackarch.pentest.web.dsstore-crawler": {
+    "icon": "",
+    "label": "dsstore-crawler",
+    "when": "blackarch-cmd-present dsstore-crawler",
+    "action": "blackarch dsstore-crawler"
+  },
+  "blackarch.pentest.web.dsxs": {
+    "icon": "",
+    "label": "dsxs",
+    "when": "blackarch-cmd-present dsxs",
+    "action": "blackarch dsxs"
+  },
+  "blackarch.pentest.web.autowordlists": {
+    "icon": "",
+    "label": "autowordlists",
+    "when": "blackarch-cmd-present autowordlists",
+    "action": "blackarch autowordlists"
+  },
+  "blackarch.pentest.web.fuzzdb": {
+    "icon": "",
+    "label": "fuzzdb",
+    "when": "blackarch-cmd-present fuzzdb",
+    "action": "blackarch fuzzdb"
+  },
+  "blackarch.pentest.web.security-wordlist": {
+    "icon": "",
+    "label": "security-wordlist",
+    "when": "blackarch-cmd-present security-wordlist",
+    "action": "blackarch security-wordlist"
+  },
+  "blackarch.pentest.web.httpx": {
+    "icon": "",
+    "label": "httpx",
+    "when": "blackarch-cmd-present httpx",
+    "action": "blackarch httpx"
+  },
+  "blackarch.pentest.web.httpgrep": {
+    "icon": "",
+    "label": "httpgrep",
+    "when": "blackarch-cmd-present httpgrep",
+    "action": "blackarch httpgrep"
+  },
+  "blackarch.pentest.web.httpsniff": {
+    "icon": "",
+    "label": "httpsniff",
+    "when": "blackarch-cmd-present httpsniff",
+    "action": "blackarch httpsniff"
+  },
+  "blackarch.pentest.web.httpscreenshot": {
+    "icon": "",
+    "label": "httpscreenshot",
+    "when": "blackarch-cmd-present httpscreenshot",
+    "action": "blackarch httpscreenshot"
+  },
+  "blackarch.pentest.web.hetty": {
+    "icon": "",
+    "label": "hetty",
+    "when": "blackarch-cmd-present hetty",
+    "action": "blackarch hetty"
+  },
+  "blackarch.pentest.web.http2smugl": {
+    "icon": "",
+    "label": "http2smugl",
+    "when": "blackarch-cmd-present http2smugl",
+    "action": "blackarch http2smugl"
+  },
+  "blackarch.pentest.web.ffuf": {
+    "icon": "",
+    "label": "ffuf",
+    "when": "blackarch-cmd-present ffuf",
+    "action": "blackarch ffuf"
+  },
+  "blackarch.pentest.web.feroxbuster": {
+    "icon": "",
+    "label": "feroxbuster",
+    "when": "blackarch-cmd-present feroxbuster",
+    "action": "blackarch feroxbuster"
+  },
+  "blackarch.pentest.web.fuzztalk": {
+    "icon": "",
+    "label": "fuzztalk",
+    "when": "blackarch-cmd-present fuzztalk",
+    "action": "blackarch fuzztalk"
+  },
+  "blackarch.pentest.web.h2csmuggler": {
+    "icon": "",
+    "label": "h2csmuggler",
+    "when": "blackarch-cmd-present h2csmuggler",
+    "action": "blackarch h2csmuggler"
+  },
+  "blackarch.pentest.web.http-fuzz": {
+    "icon": "",
+    "label": "http-fuzz",
+    "when": "blackarch-cmd-present http-fuzz",
+    "action": "blackarch http-fuzz"
+  },
+  "blackarch.pentest.web.easyfuzzer": {
+    "icon": "",
+    "label": "easyfuzzer",
+    "when": "blackarch-cmd-present easyfuzzer",
+    "action": "blackarch easyfuzzer"
+  },
+  "blackarch.pentest.web.sloth-fuzzer": {
+    "icon": "",
+    "label": "sloth-fuzzer",
+    "when": "blackarch-cmd-present sloth-fuzzer",
+    "action": "blackarch sloth-fuzzer"
+  },
+  "blackarch.pentest.web.dalfox": {
+    "icon": "",
+    "label": "dalfox",
+    "when": "blackarch-cmd-present dalfox",
+    "action": "blackarch dalfox"
+  },
+  "blackarch.pentest.web.xsscon": {
+    "icon": "",
+    "label": "xsscon",
+    "when": "blackarch-cmd-present xsscon",
+    "action": "blackarch xsscon"
+  },
+  "blackarch.pentest.web.xsstrike": {
+    "icon": "",
+    "label": "xsstrike",
+    "when": "blackarch-cmd-present xsstrike",
+    "action": "blackarch xsstrike"
+  },
+  "blackarch.pentest.web.xsser": {
+    "icon": "",
+    "label": "xsser",
+    "when": "blackarch-cmd-present xsser",
+    "action": "blackarch xsser"
+  },
+  "blackarch.pentest.web.xssscan": {
+    "icon": "",
+    "label": "xssscan",
+    "when": "blackarch-cmd-present xssscan",
+    "action": "blackarch xssscan"
+  },
+  "blackarch.pentest.web.crlfuzz": {
+    "icon": "",
+    "label": "crlfuzz",
+    "when": "blackarch-cmd-present crlfuzz",
+    "action": "blackarch crlfuzz"
+  },
+  "blackarch.pentest.web.corscanner": {
+    "icon": "",
+    "label": "corscanner",
+    "when": "blackarch-cmd-present corscanner",
+    "action": "blackarch corscanner"
+  },
+  "blackarch.pentest.web.corsy": {
+    "icon": "",
+    "label": "corsy",
+    "when": "blackarch-cmd-present corsy",
+    "action": "blackarch corsy"
+  },
+  "blackarch.pentest.web.ssrfmap": {
+    "icon": "",
+    "label": "ssrfmap",
+    "when": "blackarch-cmd-present ssrfmap",
+    "action": "blackarch ssrfmap"
+  },
+  "blackarch.pentest.web.ssrf-sheriff": {
+    "icon": "",
+    "label": "ssrf-sheriff",
+    "when": "blackarch-cmd-present ssrf-sheriff",
+    "action": "blackarch ssrf-sheriff"
+  },
+  "blackarch.pentest.web.extended-ssrf-search": {
+    "icon": "",
+    "label": "extended-ssrf-search",
+    "when": "blackarch-cmd-present extended-ssrf-search",
+    "action": "blackarch extended-ssrf-search"
+  },
+  "blackarch.pentest.web.graphqlmap": {
+    "icon": "",
+    "label": "graphqlmap",
+    "when": "blackarch-cmd-present graphqlmap",
+    "action": "blackarch graphqlmap"
+  },
+  "blackarch.pentest.web.graphql-path-enum": {
+    "icon": "",
+    "label": "graphql-path-enum",
+    "when": "blackarch-cmd-present graphql-path-enum",
+    "action": "blackarch graphql-path-enum"
+  },
+  "blackarch.pentest.web.graphql-cop": {
+    "icon": "",
+    "label": "graphql-cop",
+    "when": "blackarch-cmd-present graphql-cop",
+    "action": "blackarch graphql-cop"
+  },
+  "blackarch.pentest.web.nuclei": {
+    "icon": "",
+    "label": "nuclei",
+    "when": "blackarch-cmd-present nuclei",
+    "action": "blackarch nuclei"
+  },
+  "blackarch.pentest.web.nuclei-templates": {
+    "icon": "",
+    "label": "nuclei-templates",
+    "when": "blackarch-cmd-present nuclei-templates",
+    "action": "blackarch nuclei-templates"
+  },
+  "blackarch.pentest.web.cmsmap": {
+    "icon": "",
+    "label": "cmsmap",
+    "when": "blackarch-cmd-present cmsmap",
+    "action": "blackarch cmsmap"
+  },
+  "blackarch.pentest.web.drupalscan": {
+    "icon": "",
+    "label": "drupalscan",
+    "when": "blackarch-cmd-present drupalscan",
+    "action": "blackarch drupalscan"
+  },
+  "blackarch.pentest.web.joomscan": {
+    "icon": "",
+    "label": "joomscan",
+    "when": "blackarch-cmd-present joomscan",
+    "action": "blackarch joomscan"
+  },
+  "blackarch.pentest.web.wordpress-exploit-framework": {
+    "icon": "",
+    "label": "wordpress-exploit-framework",
+    "when": "blackarch-cmd-present wordpress-exploit-framework",
+    "action": "blackarch wordpress-exploit-framework"
+  },
+  "blackarch.pentest.web.wpscan": {
+    "icon": "",
+    "label": "wpscan",
+    "when": "blackarch-cmd-present wpscan",
+    "action": "blackarch wpscan"
+  },
+  "blackarch.pentest.web.plecost": {
+    "icon": "",
+    "label": "plecost",
+    "when": "blackarch-cmd-present plecost",
+    "action": "blackarch plecost"
+  },
+  "blackarch.pentest.web.joomlavs": {
+    "icon": "",
+    "label": "joomlavs",
+    "when": "blackarch-cmd-present joomlavs",
+    "action": "blackarch joomlavs"
+  },
+  "blackarch.pentest.web.phpggc": {
+    "icon": "",
+    "label": "phpggc",
+    "when": "blackarch-cmd-present phpggc",
+    "action": "blackarch phpggc"
+  },
+  "blackarch.pentest.web.flask-unsign": {
+    "icon": "",
+    "label": "flask-unsign",
+    "when": "blackarch-cmd-present flask-unsign",
+    "action": "blackarch flask-unsign"
+  },
+  "blackarch.pentest.web.php-findsock-shell": {
+    "icon": "",
+    "label": "php-findsock-shell",
+    "when": "blackarch-cmd-present php-findsock-shell",
+    "action": "blackarch php-findsock-shell"
+  },
+  "blackarch.pentest.web.php-vulnerability-hunter": {
+    "icon": "",
+    "label": "php-vulnerability-hunter",
+    "when": "blackarch-cmd-present php-vulnerability-hunter",
+    "action": "blackarch php-vulnerability-hunter"
+  },
+  "blackarch.pentest.web.sqlmap": {
+    "icon": "",
+    "label": "sqlmap",
+    "when": "blackarch-cmd-present sqlmap",
+    "action": "blackarch sqlmap"
+  },
+  "blackarch.pentest.web.commix": {
+    "icon": "",
+    "label": "commix",
+    "when": "blackarch-cmd-present commix",
+    "action": "blackarch commix"
+  },
+  "blackarch.pentest.web.dotdotpwn": {
+    "icon": "",
+    "label": "dotdotpwn",
+    "when": "blackarch-cmd-present dotdotpwn",
+    "action": "blackarch dotdotpwn"
+  },
+  "blackarch.pentest.web.lfi-scanner": {
+    "icon": "",
+    "label": "lfi-scanner",
+    "when": "blackarch-cmd-present lfi-scanner",
+    "action": "blackarch lfi-scanner"
+  },
+  "blackarch.pentest.web.lfi-exploiter": {
+    "icon": "",
+    "label": "lfi-exploiter",
+    "when": "blackarch-cmd-present lfi-exploiter",
+    "action": "blackarch lfi-exploiter"
+  },
+  "blackarch.pentest.web.jwt-hack": {
+    "icon": "",
+    "label": "jwt-hack",
+    "when": "blackarch-cmd-present jwt-hack",
+    "action": "blackarch jwt-hack"
+  },
+  "blackarch.pentest.web.jwt-tool": {
+    "icon": "",
+    "label": "jwt-tool",
+    "when": "blackarch-cmd-present jwt-tool",
+    "action": "blackarch jwt-tool"
+  },
+  "blackarch.pentest.web.jwt-cracker": {
+    "icon": "",
+    "label": "jwt-cracker",
+    "when": "blackarch-cmd-present jwt-cracker",
+    "action": "blackarch jwt-cracker"
+  },
+  "blackarch.pentest.web.waybackpack": {
+    "icon": "",
+    "label": "waybackpack",
+    "when": "blackarch-cmd-present waybackpack",
+    "action": "blackarch waybackpack"
+  },
+  "blackarch.pentest.web.photon": {
+    "icon": "",
+    "label": "photon",
+    "when": "blackarch-cmd-present photon",
+    "action": "blackarch photon"
+  },
+  "blackarch.pentest.web.gitleaks": {
+    "icon": "",
+    "label": "gitleaks",
+    "when": "blackarch-cmd-present gitleaks",
+    "action": "blackarch gitleaks"
+  },
+  "blackarch.pentest.web.trufflehog": {
+    "icon": "",
+    "label": "trufflehog",
+    "when": "blackarch-cmd-present trufflehog",
+    "action": "blackarch trufflehog"
+  },
+  "blackarch.pentest.web.burpsuite": {
+    "icon": "",
+    "label": "burpsuite",
+    "when": "blackarch-cmd-present burpsuite",
+    "action": "blackarch burpsuite"
+  },
+  "blackarch.pentest.web.ratproxy": {
+    "icon": "",
+    "label": "ratproxy",
+    "when": "blackarch-cmd-present ratproxy",
+    "action": "blackarch ratproxy"
+  },
+  "blackarch.pentest.web.webscarab": {
+    "icon": "",
+    "label": "webscarab",
+    "when": "blackarch-cmd-present webscarab",
+    "action": "blackarch webscarab"
+  },
+  "blackarch.pentest.web.whatweb": {
+    "icon": "",
+    "label": "whatweb",
+    "when": "blackarch-cmd-present whatweb",
+    "action": "blackarch whatweb"
+  },
+  "blackarch.pentest.web.whatwaf": {
+    "icon": "",
+    "label": "whatwaf",
+    "when": "blackarch-cmd-present whatwaf",
+    "action": "blackarch whatwaf"
+  },
+  "blackarch.pentest.web.wafw00f": {
+    "icon": "",
+    "label": "wafw00f",
+    "when": "blackarch-cmd-present wafw00f",
+    "action": "blackarch wafw00f"
+  },
+  "blackarch.pentest.web.whichcdn": {
+    "icon": "",
+    "label": "whichcdn",
+    "when": "blackarch-cmd-present whichcdn",
+    "action": "blackarch whichcdn"
+  },
+  "blackarch.pentest.web.theharvester": {
+    "icon": "",
+    "label": "theharvester",
+    "when": "blackarch-cmd-present theharvester",
+    "action": "blackarch theharvester"
+  },
+  "blackarch.pentest.web.linkfinder": {
+    "icon": "",
+    "label": "linkfinder",
+    "when": "blackarch-cmd-present linkfinder",
+    "action": "blackarch linkfinder"
+  },
+  "blackarch.pentest.web.inurlbr": {
+    "icon": "",
+    "label": "inurlbr",
+    "when": "blackarch-cmd-present inurlbr",
+    "action": "blackarch inurlbr"
+  },
+  "blackarch.pentest.web.findomain": {
+    "icon": "",
+    "label": "findomain",
+    "when": "blackarch-cmd-present findomain",
+    "action": "blackarch findomain"
+  },
+  "blackarch.pentest.web.owtf": {
+    "icon": "",
+    "label": "owtf",
+    "when": "blackarch-cmd-present owtf",
+    "action": "blackarch owtf"
+  },
+  "blackarch.pentest.web.openvas-scanner": {
+    "icon": "",
+    "label": "openvas-scanner",
+    "when": "blackarch-cmd-present openvas-scanner",
+    "action": "blackarch openvas-scanner"
+  },
+  "blackarch.pentest.web.nullscan": {
+    "icon": "",
+    "label": "nullscan",
+    "when": "blackarch-cmd-present nullscan",
+    "action": "blackarch nullscan"
+  },
+  "blackarch.pentest.web.cmsscan": {
+    "icon": "",
+    "label": "cmsscan",
+    "when": "blackarch-cmd-present cmsscan",
+    "action": "blackarch cmsscan"
+  },
+  "blackarch.pentest.web.dontgo403": {
+    "icon": "",
+    "label": "dontgo403",
+    "when": "blackarch-cmd-present dontgo403",
+    "action": "blackarch dontgo403"
+  },
+  "blackarch.pentest.web.payloadmask": {
+    "icon": "",
+    "label": "payloadmask",
+    "when": "blackarch-cmd-present payloadmask",
+    "action": "blackarch payloadmask"
+  },
+  "blackarch.pentest.web.urlcrazy": {
+    "icon": "",
+    "label": "urlcrazy",
+    "when": "blackarch-cmd-present urlcrazy",
+    "action": "blackarch urlcrazy"
+  },
+  "blackarch.pentest.web.urlextractor": {
+    "icon": "",
+    "label": "urlextractor",
+    "when": "blackarch-cmd-present urlextractor",
+    "action": "blackarch urlextractor"
+  },
   "smartthings.a144e48a-4c50-4a19-8931-d0e155c8037a": {
     "icon": "󰭎",
     "label": "Akanksha's M33",
-    "action": "blackarch execute smartthings a144e48a-4c50-4a19-8931-d0e155c8037a"
+    "action": "blackarch smartthings a144e48a-4c50-4a19-8931-d0e155c8037a"
   },
   "smartthings.560abf78-0d78-4b9b-a6c5-737abeff5829": {
     "icon": "󰭎",
     "label": "Aquaguard",
-    "action": "blackarch execute smartthings 560abf78-0d78-4b9b-a6c5-737abeff5829"
+    "action": "blackarch smartthings 560abf78-0d78-4b9b-a6c5-737abeff5829"
   },
   "smartthings.522d203c-8320-46c8-9b1d-f177b048b7be": {
     "icon": "󰭎",
     "label": "Bedroom Allout",
-    "action": "blackarch execute smartthings 522d203c-8320-46c8-9b1d-f177b048b7be"
+    "action": "blackarch smartthings 522d203c-8320-46c8-9b1d-f177b048b7be"
   },
   "smartthings.94db9ce7-5b95-4744-b5b5-a31ef363f748": {
     "icon": "󰭎",
     "label": "Bedroom Exhaust",
-    "action": "blackarch execute smartthings 94db9ce7-5b95-4744-b5b5-a31ef363f748"
+    "action": "blackarch smartthings 94db9ce7-5b95-4744-b5b5-a31ef363f748"
   },
   "smartthings.aa4c8271-30bd-41e2-9ca5-20b1a9aaea4e": {
     "icon": "󰭎",
     "label": "Bedroom Fan off",
-    "action": "blackarch execute smartthings aa4c8271-30bd-41e2-9ca5-20b1a9aaea4e"
+    "action": "blackarch smartthings aa4c8271-30bd-41e2-9ca5-20b1a9aaea4e"
   },
   "smartthings.57e02864-6650-407c-8559-0334350187cb": {
     "icon": "󰭎",
     "label": "Bedroom Fan Speed 1",
-    "action": "blackarch execute smartthings 57e02864-6650-407c-8559-0334350187cb"
+    "action": "blackarch smartthings 57e02864-6650-407c-8559-0334350187cb"
   },
   "smartthings.cbd22e95-7d6a-4707-8ac5-9f64290b272a": {
     "icon": "󰭎",
     "label": "Bedroom Fan Speed 2",
-    "action": "blackarch execute smartthings cbd22e95-7d6a-4707-8ac5-9f64290b272a"
+    "action": "blackarch smartthings cbd22e95-7d6a-4707-8ac5-9f64290b272a"
   },
   "smartthings.3707ce2c-f623-463d-aed4-40d79fae0bd4": {
     "icon": "󰭎",
     "label": "Bedroom Fan Speed 3",
-    "action": "blackarch execute smartthings 3707ce2c-f623-463d-aed4-40d79fae0bd4"
+    "action": "blackarch smartthings 3707ce2c-f623-463d-aed4-40d79fae0bd4"
   },
   "smartthings.ee60702f-a62d-43c4-ad4f-dc2c12838f27": {
     "icon": "󰭎",
     "label": "Bedroom Fan Speed 4",
-    "action": "blackarch execute smartthings ee60702f-a62d-43c4-ad4f-dc2c12838f27"
+    "action": "blackarch smartthings ee60702f-a62d-43c4-ad4f-dc2c12838f27"
   },
   "smartthings.c3346a0f-5614-4d3b-9213-412bcc80ca22": {
     "icon": "󰭎",
     "label": "Bedroom Fan Speed 5",
-    "action": "blackarch execute smartthings c3346a0f-5614-4d3b-9213-412bcc80ca22"
+    "action": "blackarch smartthings c3346a0f-5614-4d3b-9213-412bcc80ca22"
   },
   "smartthings.e3a5944f-594c-4b63-8caa-43442d7f752f": {
     "icon": "󰭎",
     "label": "Bedroom Goodnight",
-    "action": "blackarch execute smartthings e3a5944f-594c-4b63-8caa-43442d7f752f"
+    "action": "blackarch smartthings e3a5944f-594c-4b63-8caa-43442d7f752f"
   },
   "smartthings.36ed8f31-0028-446c-aab0-e4a0f357558a": {
     "icon": "󰭎",
     "label": "Bedroom Heater",
-    "action": "blackarch execute smartthings 36ed8f31-0028-446c-aab0-e4a0f357558a"
+    "action": "blackarch smartthings 36ed8f31-0028-446c-aab0-e4a0f357558a"
   },
   "smartthings.a68d632c-0196-4edd-9dc8-3609b1dcaf32": {
     "icon": "󰭎",
     "label": "Bedroom Light",
-    "action": "blackarch execute smartthings a68d632c-0196-4edd-9dc8-3609b1dcaf32"
+    "action": "blackarch smartthings a68d632c-0196-4edd-9dc8-3609b1dcaf32"
   },
   "smartthings.b3ab4a46-e0fc-4de9-b864-cd7486a77549": {
     "icon": "󰭎",
     "label": "Bedroom Light Smart",
-    "action": "blackarch execute smartthings b3ab4a46-e0fc-4de9-b864-cd7486a77549"
+    "action": "blackarch smartthings b3ab4a46-e0fc-4de9-b864-cd7486a77549"
   },
   "smartthings.755f41db-ca37-4879-86b2-ad9f61a0790b": {
     "icon": "󰭎",
     "label": "Bedroom Socket",
-    "action": "blackarch execute smartthings 755f41db-ca37-4879-86b2-ad9f61a0790b"
+    "action": "blackarch smartthings 755f41db-ca37-4879-86b2-ad9f61a0790b"
   },
   "smartthings.a792fd89-47a8-4455-a7ac-08fc0fb22492": {
     "icon": "󰭎",
     "label": "Charger Mobile Akanksha",
-    "action": "blackarch execute smartthings a792fd89-47a8-4455-a7ac-08fc0fb22492"
+    "action": "blackarch smartthings a792fd89-47a8-4455-a7ac-08fc0fb22492"
   },
   "smartthings.3e601a1b-91c3-4eb6-ab06-a7180a391fe3": {
     "icon": "󰭎",
     "label": "Charger Mobile Pankaj",
-    "action": "blackarch execute smartthings 3e601a1b-91c3-4eb6-ab06-a7180a391fe3"
+    "action": "blackarch smartthings 3e601a1b-91c3-4eb6-ab06-a7180a391fe3"
   },
   "smartthings.d203bee7-6ef2-4288-9d9e-20289eaca0c7": {
     "icon": "󰭎",
     "label": "Chimney",
-    "action": "blackarch execute smartthings d203bee7-6ef2-4288-9d9e-20289eaca0c7"
+    "action": "blackarch smartthings d203bee7-6ef2-4288-9d9e-20289eaca0c7"
   },
   "smartthings.dee10100-eb14-4a9a-91c2-e3556b3a43a6": {
     "icon": "󰭎",
     "label": "Fan with full speed",
-    "action": "blackarch execute smartthings dee10100-eb14-4a9a-91c2-e3556b3a43a6"
+    "action": "blackarch smartthings dee10100-eb14-4a9a-91c2-e3556b3a43a6"
   },
   "smartthings.8e99bc60-3cef-4d54-8d56-c3bc35b6bb61": {
     "icon": "󰭎",
     "label": "Goodnight go out",
-    "action": "blackarch execute smartthings 8e99bc60-3cef-4d54-8d56-c3bc35b6bb61"
+    "action": "blackarch smartthings 8e99bc60-3cef-4d54-8d56-c3bc35b6bb61"
   },
-  "smartthings.b0690e26-1cca-41c8-97fc-88cb6cf61518": {
+  "smartthings.8ab0de04-d197-4bb3-aefc-bc5f55d1bdd0": {
     "icon": "󰭎",
     "label": "Induction",
-    "action": "blackarch execute smartthings b0690e26-1cca-41c8-97fc-88cb6cf61518"
+    "action": "blackarch smartthings 8ab0de04-d197-4bb3-aefc-bc5f55d1bdd0"
   },
   "smartthings.81077e39-79f7-4e7f-a9e6-325c000ba2e7": {
     "icon": "󰭎",
     "label": "Kitchen Automation 2",
-    "action": "blackarch execute smartthings 81077e39-79f7-4e7f-a9e6-325c000ba2e7"
+    "action": "blackarch smartthings 81077e39-79f7-4e7f-a9e6-325c000ba2e7"
   },
   "smartthings.77479cc7-523d-4940-9e0f-d9b16e2f6c65": {
     "icon": "󰭎",
     "label": "Kitchen Automation 3",
-    "action": "blackarch execute smartthings 77479cc7-523d-4940-9e0f-d9b16e2f6c65"
+    "action": "blackarch smartthings 77479cc7-523d-4940-9e0f-d9b16e2f6c65"
   },
   "smartthings.7840200b-1fdc-4da5-85e0-c61492cee237": {
     "icon": "󰭎",
     "label": "Kitchen Exhaust",
-    "action": "blackarch execute smartthings 7840200b-1fdc-4da5-85e0-c61492cee237"
+    "action": "blackarch smartthings 7840200b-1fdc-4da5-85e0-c61492cee237"
   },
-  "smartthings.e1fdc18b-0d55-4fc4-aa0c-a91f96de806b": {
+  "smartthings.041db645-b517-40ed-800c-13e806b3d201": {
     "icon": "󰭎",
     "label": "Kitchen Light",
-    "action": "blackarch execute smartthings e1fdc18b-0d55-4fc4-aa0c-a91f96de806b"
+    "action": "blackarch smartthings 041db645-b517-40ed-800c-13e806b3d201"
   },
   "smartthings.4b5927fc-3b5d-4380-a052-4f4804b0f9ad": {
     "icon": "󰭎",
     "label": "Kitchen Off",
-    "action": "blackarch execute smartthings 4b5927fc-3b5d-4380-a052-4f4804b0f9ad"
+    "action": "blackarch smartthings 4b5927fc-3b5d-4380-a052-4f4804b0f9ad"
   },
   "smartthings.51597af0-014b-46db-92c8-52a2839103d6": {
     "icon": "󰭎",
     "label": "Laptop charger off",
-    "action": "blackarch execute smartthings 51597af0-014b-46db-92c8-52a2839103d6"
+    "action": "blackarch smartthings 51597af0-014b-46db-92c8-52a2839103d6"
   },
   "smartthings.a7d8dada-6c80-43a8-b81e-b1d16bf10698": {
     "icon": "󰭎",
     "label": "Laptop Charger on",
-    "action": "blackarch execute smartthings a7d8dada-6c80-43a8-b81e-b1d16bf10698"
+    "action": "blackarch smartthings a7d8dada-6c80-43a8-b81e-b1d16bf10698"
   },
   "smartthings.37b6b8ef-ce55-4077-b0af-f6ad88db7d3e": {
     "icon": "󰭎",
     "label": "Laptop Socket",
-    "action": "blackarch execute smartthings 37b6b8ef-ce55-4077-b0af-f6ad88db7d3e"
+    "action": "blackarch smartthings 37b6b8ef-ce55-4077-b0af-f6ad88db7d3e"
   },
   "smartthings.0431fcbc-34f1-4e63-83cd-2fab137d756a": {
     "icon": "󰭎",
     "label": "LED 1",
-    "action": "blackarch execute smartthings 0431fcbc-34f1-4e63-83cd-2fab137d756a"
+    "action": "blackarch smartthings 0431fcbc-34f1-4e63-83cd-2fab137d756a"
   },
   "smartthings.9eed87d9-e015-4ddd-a00e-ef9c812b693c": {
     "icon": "󰭎",
     "label": "LED 2",
-    "action": "blackarch execute smartthings 9eed87d9-e015-4ddd-a00e-ef9c812b693c"
+    "action": "blackarch smartthings 9eed87d9-e015-4ddd-a00e-ef9c812b693c"
   },
   "smartthings.995e4868-49d7-436a-b35a-79c9cfba3e91": {
     "icon": "󰭎",
     "label": "Light Sensor - Samsung Television",
-    "action": "blackarch execute smartthings 995e4868-49d7-436a-b35a-79c9cfba3e91"
+    "action": "blackarch smartthings 995e4868-49d7-436a-b35a-79c9cfba3e91"
   },
   "smartthings.817a0436-cbab-4f7b-a099-ba9d8aebcced": {
     "icon": "󰭎",
     "label": "Living Alexa",
-    "action": "blackarch execute smartthings 817a0436-cbab-4f7b-a099-ba9d8aebcced"
+    "action": "blackarch smartthings 817a0436-cbab-4f7b-a099-ba9d8aebcced"
   },
   "smartthings.18c741f5-0363-4857-85ff-dfbc781a808a": {
     "icon": "󰭎",
     "label": "Living GoodNight",
-    "action": "blackarch execute smartthings 18c741f5-0363-4857-85ff-dfbc781a808a"
+    "action": "blackarch smartthings 18c741f5-0363-4857-85ff-dfbc781a808a"
   },
   "smartthings.112894cd-5583-4105-ba22-2afb68c22008": {
     "icon": "󰭎",
     "label": "Living light",
-    "action": "blackarch execute smartthings 112894cd-5583-4105-ba22-2afb68c22008"
+    "action": "blackarch smartthings 112894cd-5583-4105-ba22-2afb68c22008"
   },
   "smartthings.405be179-cd06-4088-9460-4c4fd300da47": {
     "icon": "󰭎",
     "label": "Living Socket 1",
-    "action": "blackarch execute smartthings 405be179-cd06-4088-9460-4c4fd300da47"
+    "action": "blackarch smartthings 405be179-cd06-4088-9460-4c4fd300da47"
   },
   "smartthings.3102e555-dae7-4500-ad65-8c67a5333252": {
     "icon": "󰭎",
     "label": "Living Socket 2",
-    "action": "blackarch execute smartthings 3102e555-dae7-4500-ad65-8c67a5333252"
+    "action": "blackarch smartthings 3102e555-dae7-4500-ad65-8c67a5333252"
   },
   "smartthings.34d10ba3-48a1-4d2e-b5f6-b33a2a0dbdbf": {
     "icon": "󰭎",
     "label": "Living Socket 3",
-    "action": "blackarch execute smartthings 34d10ba3-48a1-4d2e-b5f6-b33a2a0dbdbf"
+    "action": "blackarch smartthings 34d10ba3-48a1-4d2e-b5f6-b33a2a0dbdbf"
   },
   "smartthings.97229bcb-7757-476e-b4e4-1dcb22688d9e": {
     "icon": "󰭎",
     "label": "Living Socket 4",
-    "action": "blackarch execute smartthings 97229bcb-7757-476e-b4e4-1dcb22688d9e"
+    "action": "blackarch smartthings 97229bcb-7757-476e-b4e4-1dcb22688d9e"
   },
   "smartthings.d4e613c4-d17d-4b6b-b11b-dcc78aabc286": {
     "icon": "󰭎",
     "label": "Living Socket 6",
-    "action": "blackarch execute smartthings d4e613c4-d17d-4b6b-b11b-dcc78aabc286"
+    "action": "blackarch smartthings d4e613c4-d17d-4b6b-b11b-dcc78aabc286"
   },
   "smartthings.3ec7f029-01c5-4120-97fe-1d836c16835a": {
     "icon": "󰭎",
     "label": "Location Akanksha",
-    "action": "blackarch execute smartthings 3ec7f029-01c5-4120-97fe-1d836c16835a"
+    "action": "blackarch smartthings 3ec7f029-01c5-4120-97fe-1d836c16835a"
   },
   "smartthings.09b162fe-6f6a-4790-ab41-e2e6793edc00": {
     "icon": "󰭎",
     "label": "Location Pankaj",
-    "action": "blackarch execute smartthings 09b162fe-6f6a-4790-ab41-e2e6793edc00"
+    "action": "blackarch smartthings 09b162fe-6f6a-4790-ab41-e2e6793edc00"
   },
   "smartthings.ccf07502-c2fd-48c7-86cb-d2dd1303d098": {
     "icon": "󰭎",
     "label": "Master Goodnight",
-    "action": "blackarch execute smartthings ccf07502-c2fd-48c7-86cb-d2dd1303d098"
+    "action": "blackarch smartthings ccf07502-c2fd-48c7-86cb-d2dd1303d098"
   },
   "smartthings.39af4783-42cb-4b04-b8da-0dca9b60fbef": {
     "icon": "󰭎",
     "label": "Master GoodNight",
-    "action": "blackarch execute smartthings 39af4783-42cb-4b04-b8da-0dca9b60fbef"
+    "action": "blackarch smartthings 39af4783-42cb-4b04-b8da-0dca9b60fbef"
   },
   "smartthings.e3a01433-2ee3-4dba-934b-254fca8c0780": {
     "icon": "󰭎",
     "label": "Master Light",
-    "action": "blackarch execute smartthings e3a01433-2ee3-4dba-934b-254fca8c0780"
+    "action": "blackarch smartthings e3a01433-2ee3-4dba-934b-254fca8c0780"
   },
   "smartthings.1e2b0e91-068c-42d0-a961-7b3cc0205687": {
     "icon": "󰭎",
     "label": "Master Light Smart",
-    "action": "blackarch execute smartthings 1e2b0e91-068c-42d0-a961-7b3cc0205687"
+    "action": "blackarch smartthings 1e2b0e91-068c-42d0-a961-7b3cc0205687"
   },
   "smartthings.52b78ef1-590c-470d-acfa-2482c3c6d2c6": {
     "icon": "󰭎",
     "label": "Master Socket",
-    "action": "blackarch execute smartthings 52b78ef1-590c-470d-acfa-2482c3c6d2c6"
+    "action": "blackarch smartthings 52b78ef1-590c-470d-acfa-2482c3c6d2c6"
   },
   "smartthings.28101503-1805-4ae9-a6fb-1054731a5d76": {
     "icon": "󰭎",
     "label": "Mobile Charger",
-    "action": "blackarch execute smartthings 28101503-1805-4ae9-a6fb-1054731a5d76"
+    "action": "blackarch smartthings 28101503-1805-4ae9-a6fb-1054731a5d76"
   },
   "smartthings.42be203b-6562-4f8c-825e-cd287fb734aa": {
     "icon": "󰭎",
     "label": "Mobile charger off",
-    "action": "blackarch execute smartthings 42be203b-6562-4f8c-825e-cd287fb734aa"
+    "action": "blackarch smartthings 42be203b-6562-4f8c-825e-cd287fb734aa"
   },
   "smartthings.69669c1a-dd56-4a29-8463-9e68eee984ce": {
     "icon": "󰭎",
     "label": "Mobile charger on",
-    "action": "blackarch execute smartthings 69669c1a-dd56-4a29-8463-9e68eee984ce"
+    "action": "blackarch smartthings 69669c1a-dd56-4a29-8463-9e68eee984ce"
   },
   "smartthings.1ac6e983-3b23-4abd-b7bd-6bef4d6ad286": {
     "icon": "󰭎",
     "label": "Ola Socket",
-    "action": "blackarch execute smartthings 1ac6e983-3b23-4abd-b7bd-6bef4d6ad286"
+    "action": "blackarch smartthings 1ac6e983-3b23-4abd-b7bd-6bef4d6ad286"
   },
   "smartthings.11edf6fa-f453-42fd-a94a-8e8303c8e7ef": {
     "icon": "󰭎",
     "label": "Parking Light",
-    "action": "blackarch execute smartthings 11edf6fa-f453-42fd-a94a-8e8303c8e7ef"
+    "action": "blackarch smartthings 11edf6fa-f453-42fd-a94a-8e8303c8e7ef"
   },
   "smartthings.9e2f39ef-407d-4834-aa52-43367376b8a1": {
     "icon": "󰭎",
     "label": "Printer",
-    "action": "blackarch execute smartthings 9e2f39ef-407d-4834-aa52-43367376b8a1"
+    "action": "blackarch smartthings 9e2f39ef-407d-4834-aa52-43367376b8a1"
   },
   "smartthings.080e1289-322a-4741-a70f-bca561a25d94": {
     "icon": "󰭎",
     "label": "PSBKitchen",
-    "action": "blackarch execute smartthings 080e1289-322a-4741-a70f-bca561a25d94"
+    "action": "blackarch smartthings 080e1289-322a-4741-a70f-bca561a25d94"
   },
   "smartthings.77ca96f3-322b-4aa3-8f41-73cc0d93dafe": {
     "icon": "󰭎",
     "label": "REDMI Note 15 Pro 5G",
-    "action": "blackarch execute smartthings 77ca96f3-322b-4aa3-8f41-73cc0d93dafe"
+    "action": "blackarch smartthings 77ca96f3-322b-4aa3-8f41-73cc0d93dafe"
   },
   "smartthings.903c7b37-a673-5865-a04e-cc11649dd83a": {
     "icon": "󰭎",
     "label": "Samsung Television",
-    "action": "blackarch execute smartthings 903c7b37-a673-5865-a04e-cc11649dd83a"
+    "action": "blackarch smartthings 903c7b37-a673-5865-a04e-cc11649dd83a"
   },
   "smartthings.87241a3e-d634-42e5-9d9a-78d669fa92d2": {
     "icon": "󰭎",
     "label": "SmartTag for OLA",
-    "action": "blackarch execute smartthings 87241a3e-d634-42e5-9d9a-78d669fa92d2"
+    "action": "blackarch smartthings 87241a3e-d634-42e5-9d9a-78d669fa92d2"
   },
   "smartthings.f18dc53a-1fe6-418f-be61-d3fa656b122f": {
     "icon": "󰭎",
     "label": "Status Bedroom Socket",
-    "action": "blackarch execute smartthings f18dc53a-1fe6-418f-be61-d3fa656b122f"
+    "action": "blackarch smartthings f18dc53a-1fe6-418f-be61-d3fa656b122f"
   },
   "smartthings.4e715c22-7aa0-4bd6-9425-b694b26e325d": {
     "icon": "󰭎",
     "label": "Status Laptop",
-    "action": "blackarch execute smartthings 4e715c22-7aa0-4bd6-9425-b694b26e325d"
+    "action": "blackarch smartthings 4e715c22-7aa0-4bd6-9425-b694b26e325d"
   },
   "smartthings.d4030ed6-d5e5-4006-bb10-736656b3dbee": {
     "icon": "󰭎",
     "label": "Status Living Socket",
-    "action": "blackarch execute smartthings d4030ed6-d5e5-4006-bb10-736656b3dbee"
+    "action": "blackarch smartthings d4030ed6-d5e5-4006-bb10-736656b3dbee"
   },
   "smartthings.bdd146ee-ad10-45c5-8302-df21a508017e": {
     "icon": "󰭎",
     "label": "Status Master Socket",
-    "action": "blackarch execute smartthings bdd146ee-ad10-45c5-8302-df21a508017e"
+    "action": "blackarch smartthings bdd146ee-ad10-45c5-8302-df21a508017e"
   },
   "smartthings.34d15b39-e019-43e1-be78-e2a8b0a9e75c": {
     "icon": "󰭎",
     "label": "Television",
-    "action": "blackarch execute smartthings 34d15b39-e019-43e1-be78-e2a8b0a9e75c"
+    "action": "blackarch smartthings 34d15b39-e019-43e1-be78-e2a8b0a9e75c"
   },
   "smartthings.dc549b0e-aff4-4014-af47-0a15b6e72ac8": {
     "icon": "󰭎",
     "label": "Television Socket",
-    "action": "blackarch execute smartthings dc549b0e-aff4-4014-af47-0a15b6e72ac8"
+    "action": "blackarch smartthings dc549b0e-aff4-4014-af47-0a15b6e72ac8"
   },
   "smartthings.44fbf2e3-d552-4a5d-a178-c59d9ff0aba3": {
     "icon": "󰭎",
     "label": "TelevisionAutomation",
-    "action": "blackarch execute smartthings 44fbf2e3-d552-4a5d-a178-c59d9ff0aba3"
+    "action": "blackarch smartthings 44fbf2e3-d552-4a5d-a178-c59d9ff0aba3"
   },
   "smartthings.c7d8ce74-d4d9-4dec-8f5d-ca12ef477f63": {
     "icon": "󰭎",
     "label": "Temple Light",
-    "action": "blackarch execute smartthings c7d8ce74-d4d9-4dec-8f5d-ca12ef477f63"
+    "action": "blackarch smartthings c7d8ce74-d4d9-4dec-8f5d-ca12ef477f63"
   },
   "smartthings.ef41c66e-8aea-435c-a04a-4096af648ac6": {
     "icon": "󰭎",
     "label": "Utility Light",
-    "action": "blackarch execute smartthings ef41c66e-8aea-435c-a04a-4096af648ac6"
+    "action": "blackarch smartthings ef41c66e-8aea-435c-a04a-4096af648ac6"
   },
   "smartthings.22d524e1-64e3-435d-a3ec-3a1f78fdccb2": {
     "icon": "󰭎",
     "label": "Washroom Light",
-    "action": "blackarch execute smartthings 22d524e1-64e3-435d-a3ec-3a1f78fdccb2"
+    "action": "blackarch smartthings 22d524e1-64e3-435d-a3ec-3a1f78fdccb2"
   }
 }

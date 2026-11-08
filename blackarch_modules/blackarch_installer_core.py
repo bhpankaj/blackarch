@@ -52,6 +52,7 @@ from __future__ import annotations
 import argparse
 import getpass
 import os
+import glob
 import re
 
 from blackarch_packages import *
@@ -1093,6 +1094,12 @@ def partition_target(
     """Create the partition table with parted. Returns (esp_part, root_part)."""
     step(f"Partitioning {target}")
 
+    # Unmount any existing mounted partitions on the target disk first, even
+    # when --keep-mounted was requested: partitioning needs the device free.
+    for part in sorted(glob.glob(f"{target}*")):
+        if part == target:
+            continue
+        try_run(["umount", "-R", part])
     try_run(["wipefs", "-a", target])
     try_run(["partprobe", target])
 
@@ -3525,6 +3532,12 @@ on it: nothing is reformatted and nothing is encrypted.
                     and the running system's hostname otherwise. never prompted
 """,
     )
+    ap.add_argument(
+        "--skip-copy-sudoers",
+        action="store_true",
+        help="do not copy /etc/sudoers.d from the host; only create uid-1000 sudoers",
+    )
+    ap.add_argument("--gui", action="store_true", help="launch the graphical installer (PySide6)")
     ap.add_argument("--disk", help="target disk, e.g. /dev/sda")
     ap.add_argument(
         "--scheme",
@@ -3733,6 +3746,55 @@ def bootstrap_pacman(cache_dir: str) -> None:
             os.path.join("/etc/pacman.d", name), os.path.join(conf_dir, name)
         )
         copied.append(name)
+
+    # Ensure BlackArch/Athena repos are available even if the live ISO lacks them.
+    extra_repos = {
+        "blackarch": (
+            "[blackarch]\nSigLevel = Optional TrustedOnly\n"
+            "Include = /etc/pacman.d/blackarch-mirrorlist\n"
+        ),
+        "athena": (
+            "[athena]\nSigLevel = Optional TrustedOnly\n"
+            "Include = /etc/pacman.d/athena-mirrorlist\n"
+        ),
+        "chaotic-aur": (
+            "[chaotic-aur]\nSigLevel = Optional TrustedOnly\n"
+            "Include = /etc/pacman.d/chaotic-mirrorlist\n"
+        ),
+        "garuda": (
+            "[garuda]\nSigLevel = Optional TrustedOnly\n"
+            "Include = /etc/pacman.d/chaotic-mirrorlist\n"
+        ),
+    }
+    mirror_urls = {
+        "blackarch": "https://www.blackarch.org/blackarch-mirrorlist",
+        "athena": "https://raw.githubusercontent.com/Athena-OS/athena/main/src/os-specific/system/athena-mirrorlist/athena-mirrorlist",
+        "chaotic-aur": "https://raw.githubusercontent.com/chaotic-aur/pkgbuild-chaotic-mirrorlist/master/mirrorlist",
+    }
+    mirror_files = {
+        "blackarch": "blackarch-mirrorlist",
+        "athena": "athena-mirrorlist",
+        "chaotic-aur": "chaotic-mirrorlist",
+        "garuda": "chaotic-mirrorlist",
+    }
+    conf_text = open(conf, "r").read()
+    for repo, block in extra_repos.items():
+        if f"[{repo}]" not in conf_text:
+            with open(conf, "a") as f:
+                f.write("\n" + block)
+            conf_text += "\n" + block
+        ml_name = mirror_files[repo]
+        ml = os.path.join(conf_dir, ml_name)
+        if not os.path.exists(ml):
+            url = mirror_urls.get(repo)
+            if not url:
+                continue
+            try:
+                subprocess.run(
+                    ["curl", "-fsSL", url, "-o", ml], check=True, timeout=60
+                )
+            except Exception as exc:
+                warn(f"could not download {repo} mirrorlist: {exc}")
 
     # the cache lives on the target disk, so a re-run that does not reformat
     # reuses every package already in it
@@ -3997,6 +4059,9 @@ def main(args=None) -> int:
     global SKIP_HOME_DIRS, SKIP_HOME_EXTS, SKIP_VM, KEEP_MOUNTED
     if args is None:
         args = parse_args()
+    if getattr(args, "gui", False):
+        from blackarch_modules.blackarch_installer_gui import main as _gui_main
+        return _gui_main()
     CLONE_MODE = args.install == "clone"
 
     preflight()
@@ -4073,7 +4138,8 @@ def main(args=None) -> int:
     # uid/gid it maps the name to) before any home is copied.
     preserve_credentials()
     enable_target_services()
-    copy_sudoers_d()
+    if not getattr(args, "skip_copy_sudoers", False):
+        copy_sudoers_d()
     ensure_uid_1000_sudo()
     copy_network_config(skip=SKIP_NETWORK)
     homes_copied = copy_homes_now(args)

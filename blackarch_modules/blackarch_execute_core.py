@@ -1477,18 +1477,25 @@ class WindowRing:
                     break
         if not address:
             return
+        app_id = None
+        for c in hypr_clients():
+            if c.get("address") == address:
+                app_id = c.get("class")
+                break
+        if not app_id:
+            app_id = pattern
         addrs = self.read_all()
-        if address in addrs:
-            focus_window(address)
+        if app_id in addrs:
+            focus_window(app_id)
             return
         if len(addrs) < self.max_slots:
-            addrs.append(address)
+            addrs.append(app_id)
             notify("Clipboard WebApp", f"Auto-saved (slot {len(addrs)}).")
         else:
-            addrs = [address] + addrs[:-1]
+            addrs = [app_id] + addrs[:-1]
             notify("Clipboard WebApp", "Slots full. Shifted to front.")
         self.write_all(addrs)
-        focus_window(address)
+        focus_window(app_id)
 
     def swap(self) -> None:
         self.cleanup_closed_windows()
@@ -1500,21 +1507,55 @@ class WindowRing:
             self.write_all(addrs)
         focus_window(addrs[0])
 
-    def save(self, slot: int) -> None:
+    def save(self) -> None:
         self.cleanup_closed_windows()
         active = get_active_class()
         if not active:
             sys.exit(1)
-        if active in self.read_all():
+        addrs = self.read_all()
+        if active in addrs:
             notify("Window Manager", "Error: Window already saved.")
             sys.exit(1)
-        addrs = self.read_all()
-        if len(addrs) >= self.max_slots:
-            addrs = [active] + addrs[:-1]
-        else:
-            addrs.append(active)
+        addrs.append(active)
         self.write_all(addrs)
         notify("Window Manager", f"Saved ({len(addrs)}).")
+
+    def remove(self) -> None:
+        self.cleanup_closed_windows()
+        active = get_active_class()
+        addrs = self.read_all()
+        if active in addrs:
+            addrs.remove(active)
+            self.write_all(addrs)
+            notify("Window Manager", f"Removed ({len(addrs)}).")
+        else:
+            notify("Window Manager", "Error: Window not saved.")
+            sys.exit(1)
+
+    def count(self) -> None:
+        self.cleanup_closed_windows()
+        addrs = self.read_all()
+        notify("Window Manager", f"Saved windows: {len(addrs)}")
+
+    def select(self) -> None:
+        self.cleanup_closed_windows()
+        addrs = self.read_all()
+        if not addrs:
+            notify("Window Manager", "No saved windows.")
+            return
+        # Map addresses to window titles/classes for selection
+        choices = []
+        for a in addrs:
+            choices.append(a)
+        try:
+            sel = subprocess.run(
+                ["blackarch-menu-select", "Select window", *choices],
+                capture_output=True, text=True
+            ).stdout.strip()
+        except Exception:
+            sel = ""
+        if sel and sel in addrs:
+            focus_window(sel)
 
     def clear(self) -> None:
         self._remove_file()
@@ -1531,8 +1572,14 @@ def window_dispatch(argv: Sequence[str]) -> int:
         ring.clipboard()
     elif cmd in ("swap", ""):
         ring.swap()
-    elif re.fullmatch(r"save\d+", cmd):
-        ring.save(int(cmd[4:]))
+    elif cmd == "save":
+        ring.save()
+    elif cmd == "remove":
+        ring.remove()
+    elif cmd == "count":
+        ring.count()
+    elif cmd == "select":
+        ring.select()
     elif cmd == "clear":
         ring.clear()
     else:

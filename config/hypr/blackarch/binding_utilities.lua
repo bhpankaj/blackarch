@@ -58,25 +58,37 @@ Binder.add("SHIFT + PRINT",  { desc = "Take Screenshot and Copy to Clipboard" } 
 Binder.add("ALT + PRINT",  { desc = "Record Screen" }, "blackarch-menu screenrecord")
 Binder.add("CTRL + PRINT",  { desc = "Take Screenshot" }, "pkill hyprpicker || hyprpicker -a")
 
--- Window Swapping
-Binder.add(vars.super .. " + BACKSLASH", { desc = "Swap Focus on selected Webapps"}, "blackarch window swap" )
-Binder.add(vars.ralt .. " + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window swap /tmp/altWin" )
-Binder.add(vars.rctl .. " + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window swap /tmp/ctrlWin" )
+-- Window Management
+Binder.add(vars.numlock .. " + ALT + tab", { desc = "NUMLOCK - Swap Focus on selected Windows"}, "blackarch window select /tmp/numWin" )
+Binder.add(vars.rctl .. " + ALT + tab", { desc = "RCTL - Swap Focus on selected Windows"}, "blackarch window select /tmp/ctrlWin" )
+Binder.add(vars.ralt .. " + ALT + tab", { desc = "RALT - Swap Focus on selected Windows"}, "blackarch window select /tmp/altWin" )
+Binder.add(vars.super .. " + ALT + tab", { desc = "SUPER - Swap Focus on selected Windows"}, "blackarch window select" )
 
-Binder.add(vars.numlock .. " + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window clipboard" )
-Binder.add(vars.numlock .. " + SHIFT + BACKSLASH", { desc = "Clear Swap Windows"}, "blackarch window clear" )
+Binder.add(vars.numlock .. " + delete", { desc = "NUMLOCK - Clear Swap Windows"}, "blackarch window clear /tmp/numWin" )
+Binder.add(vars.rctl .. " + delete", { desc = "RCTL - Clear Swap Windows"}, "blackarch window clear /tmp/ctrlWin" )
+Binder.add(vars.ralt .. " + delete", { desc = "RALT - Clear Swap Windows"}, "blackarch window clear /tmp/altWin" )
+Binder.add(vars.super .. " + delete", { desc = "SUPER - Clear Swap Windows"}, "blackarch window clear" )
 
-Binder.add(vars.super .. " + CTRL + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save1" )
-Binder.add(vars.super .. " + ALT + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save2" )
-Binder.add(vars.super .. " + SHIFT + BACKSLASH", { desc = "Swap Focus on selected Webapps"}, "blackarch window save3" )
+Binder.add(vars.numlock .. " + BACKSLASH", { desc = "NUMLOCK - Swap Focus"}, "blackarch window swap /tmp/numWin" )
+Binder.add(vars.rctl .. " + BACKSLASH", { desc = "RCTL - Swap Focus"}, "blackarch window swap /tmp/ctrlWin" )
+Binder.add(vars.ralt .. " + BACKSLASH", { desc = "RALT - Swap Focus"}, "blackarch window swap /tmp/altWin" )
+Binder.add(vars.super .. " + BACKSLASH", { desc = "SUPER - Swap Focus"}, "blackarch window swap" )
 
--- Binder.add(vars.rctl .. " + CTRL + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save1 /tmp/ctrlWin" )
-Binder.add(vars.rctl .. " + ALT + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save2 /tmp/ctrlWin" )
-Binder.add(vars.rctl .. " + SHIFT + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save3 /tmp/ctrlWin" )
+Binder.add(vars.numlock .. " + SHIFT + BACKSLASH", { desc = "NUMLOCK - ClipBoard save window"}, "blackarch window clipboard /tmp/numWin" )
+Binder.add(vars.rctl .. " + SHIFT + BACKSLASH", { desc = "RCTL - save Window"}, "blackarch window save /tmp/ctrlWin" )
+Binder.add(vars.ralt .. " + SHIFT + BACKSLASH", { desc = "RALT - save Window"}, "blackarch window save /tmp/altWin" )
+Binder.add(vars.super .. " + SHIFT + BACKSLASH", { desc = "SUPER - save Window"}, "blackarch window save" )
 
-Binder.add(vars.ralt .. " + CTRL + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save1 /tmp/altWin" )
-Binder.add(vars.ralt .. " + ALT + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save2 /tmp/altWin" )
-Binder.add(vars.ralt .. " + SHIFT + BACKSLASH", { desc = "Swap Focus on selected Windows"}, "blackarch window save3 /tmp/altWin" )
+Binder.add(vars.numlock .. " + CTRL + BACKSLASH", { desc = "NUMLOCK - save Window"}, "blackarch window count /tmp/numWin" )
+Binder.add(vars.rctl .. " + CTRL + BACKSLASH", { desc = "RCTL - save Window"}, "blackarch window save /tmp/ctrlWin" ) -- not working
+Binder.add(vars.ralt .. " + CTRL + BACKSLASH", { desc = "RALT - save Window"}, "blackarch window count /tmp/altWin" )
+Binder.add(vars.super .. " + CTRL + BACKSLASH", { desc = "SUPER - save Window"}, "blackarch window count" )
+
+Binder.add(vars.numlock .. " + ALT + BACKSLASH", { desc = "NUMLOCK - Remove Windows"}, "blackarch window remove /tmp/numWin" )
+Binder.add(vars.rctl .. " + ALT + BACKSLASH", { desc = "RCTL - Remove Windows"}, "blackarch window remove /tmp/ctrlWin" )
+Binder.add(vars.ralt .. " + ALT + BACKSLASH", { desc = "RALT - Remove Windows"}, "blackarch window remove /tmp/altWin" )
+Binder.add(vars.super .. " + ALT + BACKSLASH", { desc = "SUPER - Remove Windows"}, "blackarch window remove" )
+
 
 -- Web Applications
 Binder.add(vars.mainMod .. " + CTRL + E", { desc = "Emojis"}, "blackarch-shell shell toggle blackarch.emojis")

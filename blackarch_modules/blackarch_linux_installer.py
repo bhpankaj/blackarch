@@ -1387,16 +1387,11 @@ def select_target_disk(disk_arg: str | None, existing: bool = False) -> tuple[st
 
     _emit("")
     if existing:
-        # --existing mounts the partitions that are already there: nothing is
-        # reformatted, but the install still writes into them
         _emit(
             f"{C['bold']}{C['yellow']}The partitions on {target} will be mounted "
             f"as-is — nothing is reformatted.{C['reset']}"
         )
-        if not ask_yesno(
-            f"Install into the existing layout on {target} ?", default=False
-        ):
-            die("Aborted by user.")
+        info("Existing layout selected: proceeding without reformatting.")
     else:
         _emit(
             f"{C['bold']}{C['red']}THIS WILL DESTROY ALL DATA ON {target}{C['reset']}"
@@ -3391,6 +3386,20 @@ def install_limine_bootloader(esp_part: str = "") -> None:
     if not os.path.exists(os.path.join(EFI_MNT, "limine.conf")):
         write_limine_conf()
 
+    # Samsung firmware auto-removes non-standard NVRAM entries. When Limine is
+    # the sole bootloader, place its binary on the fallback path so the firmware
+    # still finds it without an NVRAM entry.
+    if BOOTLOADER == "limine":
+        import shutil as _shutil
+        src = os.path.join(EFI_MNT, "EFI", "limine", "limine_x64.efi")
+        dst = os.path.join(EFI_MNT, "EFI", "BOOT", "BOOTX64.EFI")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        if os.path.exists(src):
+            _shutil.copy2(src, dst)
+            ok(f"Limine installed to fallback path {dst} (no NVRAM entry)")
+        else:
+            warn(f"loader not found at {src}; cannot install fallback")
+
 
 @log_all
 def write_limine_conf() -> None:
@@ -3624,6 +3633,26 @@ def install_systemd_boot() -> None:
         f"systemd-boot installed on {EFI_MNT} "
         f"({len(built)} menu entr{'y' if len(built) == 1 else 'ies'})"
     )
+
+    # When both bootloaders are selected, systemd-boot is primary (it owns the
+    # fallback path that survives Samsung firmware's NVRAM cleanup) and chainloads
+    # Limine so it remains reachable from the boot menu.
+    if BOOTLOADER == "both":
+        import shutil as _shutil
+        src = "/usr/share/limine/BOOTX64.EFI"
+        dst = os.path.join(EFI_MNT, "EFI", "limine", "limine_x64.efi")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        if os.path.exists(src):
+            _shutil.copy2(src, dst)
+            ok(f"Limine EFI installed separately at {dst}")
+        entries_dir = os.path.join(EFI_MNT, "loader", "entries")
+        os.makedirs(entries_dir, exist_ok=True)
+        path = os.path.join(entries_dir, "limine-chainload.conf")
+        with open(path, "w") as fh:
+            fh.write("title   Limine (chainload)\n")
+            fh.write("efi     /EFI/limine/limine_x64.efi\n")
+        os.chmod(path, 0o644)
+        ok("systemd-boot chainload entry for Limine written")
 
 
 # --------------------------------------------------------------------------- #
@@ -3958,13 +3987,9 @@ on it: nothing is reformatted and nothing is encrypted.
     )
     ap.add_argument(
         "--bootloader",
-        choices=("limine", "systemd-boot"),
-        default=None,
-        help="which bootloader to install on the new ESP. default is NONE: a "
-        "pacstrap root is built without a loader unless you name one, because "
-        "installing one would also write an NVRAM entry to your ESP. there is no "
-        "prompt for this -- the flag is the only way to choose. ignored on the "
-        "clone path, which keeps the loader the running system's own ESP carries",
+        choices=("none", "limine", "systemd-boot", "both"),
+        default="none",
+        help="which bootloader to install on the new ESP. default is NONE.",
     )
     ap.add_argument(
         "--webcam-setup",
@@ -4584,42 +4609,26 @@ def main(args=None) -> int:
             }.get(entry_bl, r"/EFI/BOOT/BOOTX64.EFI")
             label = f"Blackarch-{entry_bl}-{time.strftime('%Y-%m-%d %H:%M:%S')}"
             try:
-                disk = parent_disk(esp_part)
-                esp_disk_path = f"/dev/{disk}" if disk else ""
-                m = re.search(r"(\d+)$", esp_part)
-                if disk and not m:
-                    m = re.search(r"p(\d+)$", esp_part)
-                part_num = m.group(1) if m else "1"
-                cmd = [
-                    "efibootmgr",
-                    "-c",
-                    "-d",
-                    esp_disk_path,
-                    "-p",
-                    part_num,
-                    "-L",
-                    label,
-                    "-l",
-                    loader_path,
-                ]
-                run(cmd, check=False)
-                ok(f"EFI boot entry created via efibootmgr: {label} ({loader_path})")
-            except SystemExit:
-                warn("efibootmgr entry creation failed (check --efi-entry conditions)")
-    if BOOTLOADER == "limine":
-        # Limine's Linux protocol loads vmlinuz + initramfs as two modules, so
-        # no UKI is built; build_initramfs() already put both on the ESP.
+                # Samsung firmware auto-removes non-standard NVRAM entries, so
+                # install to the fallback path instead of efibootmgr -c.
+                import os as _os, shutil as _shutil
+                src = _os.path.join(EFI_MNT, loader_path.lstrip("/"))
+                dst = _os.path.join(EFI_MNT, "EFI", "BOOT", "BOOTX64.EFI")
+                _os.makedirs(_os.path.dirname(dst), exist_ok=True)
+                if _os.path.exists(src):
+                    _shutil.copy2(src, dst)
+                    ok(f"Bootloader installed to fallback path {dst} (no NVRAM entry)")
+                else:
+                    warn(f"loader not found at {src}; cannot install fallback")
+            except Exception as e:
+                warn(f"fallback install failed: {e}")
+    if BOOTLOADER in ("limine", "both"):
         build_initramfs()
         install_limine_bootloader(esp_part)
-    elif BOOTLOADER == "systemd-boot":
+    if BOOTLOADER in ("systemd-boot", "both"):
         build_initramfs()
         build_ukis(new_cmdline)
         install_systemd_boot()
-    else:
-        # No bootloader: nothing installed. The initramfs and UKI are not built
-        # because nothing can boot this root yet; a later loader install will
-        # trigger them.
-        pass
     # what the summary reports: decided once --install and --skip-pacstrap are
     # both known, so it cannot disagree with what bootstrap_system() did
     if args.install == "clone":
@@ -4897,13 +4906,34 @@ def choose_bootloader(args) -> str:
         return ""
 
     if not args.bootloader:
-        info(
-            "no bootloader selected (--bootloader was not given): the new ESP "
-            "will not get a loader or an NVRAM entry"
-        )
-        return ""
+        if args.install == "clone":
+            info(
+                "no bootloader selected (--bootloader was not given): the new ESP "
+                "will not get a loader or an NVRAM entry"
+            )
+            return ""
+        _emit("")
+        _emit(f"{C['bold']}Bootloader to install on the new ESP:{C['reset']}")
+        _emit(f"  {C['cyan']}1){C['reset']} none (default)")
+        _emit(f"  {C['cyan']}2){C['reset']} limine")
+        _emit(f"  {C['cyan']}3){C['reset']} systemd-boot")
+        while True:
+            choice = ask("Choose bootloader", "1")
+            if choice in ("1", "2", "3"):
+                break
+            warn("Enter 1, 2, or 3")
+        if choice == "1":
+            info("no bootloader selected: the new ESP will not get a loader or an NVRAM entry")
+            return ""
+        args.bootloader = "limine" if choice == "2" else "systemd-boot"
 
     choice = args.bootloader
+    if choice == "both":
+        tools = BOOTLOADER_TOOLS["limine"] + BOOTLOADER_TOOLS["systemd-boot"]
+        missing = [t for t in tools if not shutil.which(t)]
+        if missing:
+            die(f"both needs {', '.join(missing)}")
+        return "both"
     # preflight() ran before the choice existed, so the tool check for the chosen
     # loader happens here too -- an explicit --bootloader must not skip it.
     missing = [t for t in BOOTLOADER_TOOLS[choice] if not shutil.which(t)]

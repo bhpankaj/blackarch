@@ -33,14 +33,16 @@ def main(argv=None):
             self.esp = QLineEdit("1024")
             self.hostname = QLineEdit(socket.gethostname())
             self.bootloader = QComboBox()
-            self.bootloader.addItems(["limine", "systemd-boot"])
-            self.copy_home = QCheckBox("Copy home")
-            self.copy_home.setChecked(True)
+            self.bootloader.addItems(["none", "limine", "systemd-boot", "both"])
+            self.bootloader.setCurrentIndex(3)
+            self.skip_copy_home = QCheckBox("Skip copy home")
+            self.skip_copy_home.setChecked(False)
             self.copy_sudoers = QCheckBox("Copy sudoers.d")
             self.keep_mounted = QCheckBox("Keep mounted")
             self.existing = QCheckBox("Existing install")
             self.no_encrypt = QCheckBox("No encrypt")
             self.skip_pacstrap = QCheckBox("Skip pacstrap")
+            self.existing.stateChanged.connect(lambda: self.skip_pacstrap.setChecked(self.existing.isChecked()))
             self.skip_network = QCheckBox("Skip network")
             self.skip_timezone = QCheckBox("Skip timezone")
             self.skip_vm = QCheckBox("Skip VM")
@@ -59,8 +61,8 @@ def main(argv=None):
                 row.addWidget(widget)
                 layout.addLayout(row)
 
-            for cb in (self.copy_home, self.copy_sudoers, self.keep_mounted, self.existing,
-                       self.no_encrypt, self.skip_pacstrap, self.skip_network, self.skip_timezone,
+            for cb in (self.copy_sudoers, self.existing, self.keep_mounted, self.no_encrypt,
+                       self.skip_copy_home, self.skip_network, self.skip_pacstrap, self.skip_timezone,
                        self.skip_vm):
                 layout.addWidget(cb)
 
@@ -88,10 +90,10 @@ def main(argv=None):
                    "--esp-size", self.esp.text(),
                    "--hostname", self.hostname.text(),
                    "--bootloader", self.bootloader.currentText()]
-            if self.copy_home.isChecked():
-                cmd.append("--copy-home")
-            else:
+            if self.skip_copy_home.isChecked():
                 cmd.append("--no-copy-home")
+            else:
+                cmd.append("--copy-home")
             if not self.copy_sudoers.isChecked():
                 cmd.append("--skip-copy-sudoers")
             if self.keep_mounted.isChecked():
@@ -131,6 +133,7 @@ def main(argv=None):
     if w.cmd:
         print("Running:", " ".join(w.cmd))
         subprocess.run(w.cmd)
+        print("Equivalent command:", " ".join(w.cmd))
     return 0
 
 

@@ -545,6 +545,7 @@ def install_efi_binary(layout: Layout, dry_run: bool) -> None:
     esp = layout.esp_mount
     targets = [
         os.path.join(esp, "EFI", "BOOT", "BOOTX64.EFI"),
+        os.path.join(esp, "EFI", "limine", "limine_x64.efi"),
         os.path.join(esp, "EFI", "limine", "limine.efi"),
     ]
     if dry_run:
@@ -707,17 +708,22 @@ def set_boot_order(layout: Layout, dry_run: bool) -> None:
     ]
 
     if not limine_nums:
-        loader = "\\\\EFI\\\\limine\\\\limine.efi"
+        # Samsung (and some other) firmware auto-removes non-standard NVRAM
+        # boot entries on reboot, so do NOT create one with efibootmgr -c.
+        # Install the bootloader at the UEFI fallback path instead, which
+        # firmware always honours without an NVRAM entry.
+        src = os.path.join(layout.esp_mount, "EFI", "limine", "limine_x64.efi")
+        if not os.path.exists(src):
+            src = os.path.join(layout.esp_mount, "EFI", "limine", "limine.efi")
+        dst_dir = os.path.join(layout.esp_mount, "EFI", "BOOT")
+        dst = os.path.join(dst_dir, "BOOTX64.EFI")
         if dry_run:
-            info(f"would run: efibootmgr -c -d {esp} -p {partno} -L Limine -l {loader}")
+            info(f"would copy {src} -> {dst} (fallback boot path; no NVRAM entry)")
             return
-        run(["efibootmgr", "-c", "-d", esp, "-p", partno, "-L", "Limine", "-l", loader])
-        ok(f"Limine boot entry created on {esp} partition {partno}")
-        listing = run(["efibootmgr"], check=False).stdout
-        nums = re.findall(r"Boot([0-9A-Fa-f]{4})", listing)
-        limine_nums = [
-            n for n in nums if re.search(rf"Boot{n}\*?\s+.*limine", listing, re.I)
-        ]
+        os.makedirs(dst_dir, exist_ok=True)
+        shutil.copy2(src, dst)
+        ok(f"Limine installed to fallback path {dst} (no NVRAM entry; survives Samsung firmware purge)")
+        return
 
     if limine_nums:
         first = limine_nums[0]

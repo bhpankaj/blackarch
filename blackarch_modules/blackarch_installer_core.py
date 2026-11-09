@@ -51,17 +51,19 @@ from __future__ import annotations
 
 import argparse
 import getpass
-import os
 import glob
+import os
 import re
 
 from blackarch_packages import *
 
 try:
     from blackarch_modules.blackarch_logging import get_logger
+
     logger = get_logger("commander-installer")
 except ImportError:
     import logging
+
     logger = logging.getLogger("commander-installer")
 
 # Auto-logging decorator for installer functions
@@ -71,9 +73,13 @@ import functools
 def log_all(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        logger.info(f"installer: {func.__name__} called", extra={"command": func.__name__})
+        logger.info(
+            f"installer: {func.__name__} called", extra={"command": func.__name__}
+        )
         return func(*args, **kwargs)
+
     return wrapper
+
 
 import secrets
 import shutil
@@ -84,9 +90,11 @@ from pathlib import Path
 
 try:
     from blackarch_modules.blackarch_logging import get_logger
+
     logger = get_logger("commander-installer")
 except ImportError:
     import logging
+
     logger = logging.getLogger("commander-installer")
 
 # Auto-logging decorator for installer functions
@@ -96,8 +104,11 @@ import functools
 def log_all(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        logger.info(f"installer: {func.__name__} called", extra={"command": func.__name__})
+        logger.info(
+            f"installer: {func.__name__} called", extra={"command": func.__name__}
+        )
         return func(*args, **kwargs)
+
     return wrapper
 
 
@@ -322,10 +333,6 @@ BOOTSTRAP_KEYRINGS = (
 # The omarchy key is not published in a keyring package, so it has to be
 # received and locally signed before omarchy-keyring can be verified.
 OMARCHY_KEY = "F0134EE680CAC571"
-
-
-    
-
 
 
 # The running system's Blackarch tree, copied into a bootstrap target.
@@ -711,7 +718,11 @@ def list_disks() -> list[dict]:
         model = parts[3] if len(parts) > 3 else ""
         if re.match(r"^(zram|loop|ram|fd|dm-|sr|mmcblk)", name):
             continue
-        if tran.lower() == "usb" and "STORAGE" in model.upper() and "DEVICE" in model.upper():
+        if (
+            tran.lower() == "usb"
+            and "STORAGE" in model.upper()
+            and "DEVICE" in model.upper()
+        ):
             continue
         if not tran and not model:
             continue
@@ -953,7 +964,9 @@ def introspect_source() -> None:
 # target disk selection
 # --------------------------------------------------------------------------- #
 @log_all
-def select_target_disk(disk_arg: str | None, existing: bool = False) -> tuple[str, str, bool]:
+def select_target_disk(
+    disk_arg: str | None, existing: bool = False
+) -> tuple[str, str, bool]:
     """Returns (target_disk, target_disk_name)."""
     step("Select the TARGET hard disk")
 
@@ -2389,7 +2402,7 @@ def write_profile_d() -> None:
         "black ALL=(ALL) NOPASSWD: SETENV: /usr/bin/pacman, /usr/sbin/env \n"
         "black ALL=(root) NOPASSWD: /opt/blackarch/bin/blackarch-dns Cloudflare, /opt/blackarch/bin/blackarch-dns Google, /opt/blackarch/bin/blackarch-dns DHCP, /opt/blackarch/bin/blackarch-kbd-backlight-monitor \n"
         "black ALL=(root) NOPASSWD: /opt/blackarch/bin/blackarch-theme-set-browser-policy [0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f],  /usr/sbin/timedatectl ^set-timezone [A-Za-z0-9_+][A-Za-z0-9_+.-]*(/[A-Za-z0-9_+][A-Za-z0-9_+.-]*)*$ \n"
-        '\n# secure_path / env_keep (original blackarch content)\n'
+        "\n# secure_path / env_keep (original blackarch content)\n"
         'Defaults env_keep += "BLACKARCH_PATH PATH BASH_ENV ENV"\n'
         "Defaults secure_path = "
         '"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/blackarch/bin"\n'
@@ -2994,6 +3007,17 @@ def install_limine_bootloader(esp_part: str = "") -> None:
     # /boot in the clone must exist for the vmlinuz lookup.
     os.makedirs(os.path.join(ROOT_MNT, "boot"), exist_ok=True)
 
+    # Ensure Limine's EFI binary is on the ESP at the canonical path even when
+    # limine-install did not place it there (e.g. when the ESP already existed).
+    limine_src = "/usr/share/limine/BOOTX64.EFI"
+    limine_dst = os.path.join(EFI_MNT, "EFI", "limine", "limine_x64.efi")
+    if os.path.exists(limine_src) and not os.path.exists(limine_dst):
+        os.makedirs(os.path.dirname(limine_dst), exist_ok=True)
+        import shutil as _shutil
+        _shutil.copy2(limine_src, limine_dst)
+    if not os.path.exists(limine_dst):
+        die(f"Limine EFI binary not found: {limine_dst}")
+
     # Inside the chroot ESP_PATH must name a path that exists THERE.
     chroot_env = {**os.environ, "ESP_PATH": CHROOT_ESP}
     run(["arch-chroot", ROOT_MNT, "/usr/bin/limine-mkinitcpio"], env=chroot_env)
@@ -3225,6 +3249,31 @@ def install_systemd_boot() -> None:
 
     for owner, kver, suffix in built:
         write_loader_entry(owner, kver, suffix)
+
+    # In "both" mode Limine's EFI binary may not be on the ESP yet; make sure
+    # it exists so the chainload entry points at limine_x64.efi (not the
+    # fallback BOOTX64.EFI) which firmware keeps.
+    limine_src = "/usr/share/limine/BOOTX64.EFI"
+    limine_dst = os.path.join(EFI_MNT, "EFI", "limine", "limine_x64.efi")
+    if os.path.exists(limine_src) and not os.path.exists(limine_dst):
+        os.makedirs(os.path.dirname(limine_dst), exist_ok=True)
+        import shutil as _shutil
+        _shutil.copy2(limine_src, limine_dst)
+    # Chainload Limine if it is configured on the ESP: systemd-boot can hand
+    # off to Limine's EFI binary as a UEFI application, which then reads its
+    # own limine.conf. Detected from the ESP rather than assumed.
+    for rel in ("EFI/limine/limine_x64.efi", "EFI/BOOT/BOOTX64.EFI"):
+        limine_efi = os.path.join(EFI_MNT, *rel.split("/"))
+        if os.path.exists(limine_efi):
+            entries_dir = os.path.join(EFI_MNT, "loader", "entries")
+            os.makedirs(entries_dir, exist_ok=True)
+            path = os.path.join(entries_dir, "limine-chainload.conf")
+            with open(path, "w") as fh:
+                fh.write("title   Limine (chainload)\n")
+                fh.write(f"efi     /{rel}\n")
+            os.chmod(path, 0o644)
+            ok(f"systemd-boot chainload entry written for Limine: {path}")
+            break
 
     # The first kernel is the default; defaulting to a snapshot entry would boot
     # a rollback every time.
@@ -3537,7 +3586,9 @@ on it: nothing is reformatted and nothing is encrypted.
         action="store_true",
         help="do not copy /etc/sudoers.d from the host; only create uid-1000 sudoers",
     )
-    ap.add_argument("--gui", action="store_true", help="launch the graphical installer (PySide6)")
+    ap.add_argument(
+        "--gui", action="store_true", help="launch the graphical installer (PySide6)"
+    )
     ap.add_argument("--disk", help="target disk, e.g. /dev/sda")
     ap.add_argument(
         "--scheme",
@@ -3573,7 +3624,7 @@ on it: nothing is reformatted and nothing is encrypted.
     )
     ap.add_argument(
         "--bootloader",
-        choices=("limine", "systemd-boot"),
+        choices=("none", "limine", "systemd-boot", "both"),
         default=None,
         help="which bootloader to install on the new ESP. default is NONE: a "
         "pacstrap root is built without a loader unless you name one, because "
@@ -3790,9 +3841,7 @@ def bootstrap_pacman(cache_dir: str) -> None:
             if not url:
                 continue
             try:
-                subprocess.run(
-                    ["curl", "-fsSL", url, "-o", ml], check=True, timeout=60
-                )
+                subprocess.run(["curl", "-fsSL", url, "-o", ml], check=True, timeout=60)
             except Exception as exc:
                 warn(f"could not download {repo} mirrorlist: {exc}")
 
@@ -3891,7 +3940,15 @@ def bootstrap_system(cache_dir: str) -> None:
     # Makepkg refuses root; use the desktop user (UID 1000) inside the chroot.
 
     run(["arch-chroot", ROOT_MNT, "pacman", "-S", "--needed", "--noconfirm", "yay"])
-    run(["arch-chroot", ROOT_MNT, "/opt/blackarch/bin/blackarch", "smartthings"])
+    run(
+        [
+            "arch-chroot",
+            ROOT_MNT,
+            "/opt/blackarch/bin/blackarch",
+            "smartthings",
+            "install",
+        ]
+    )
     try_run(
         [
             "arch-chroot",
@@ -4061,6 +4118,7 @@ def main(args=None) -> int:
         args = parse_args()
     if getattr(args, "gui", False):
         from blackarch_modules.blackarch_installer_gui import main as _gui_main
+
         return _gui_main()
     CLONE_MODE = args.install == "clone"
 
@@ -4188,13 +4246,19 @@ def main(args=None) -> int:
         # Explicitly NOT build_initramfs(): nothing can boot this root yet, so
         # the image would be built against a kernel tree the user may never use
         # and then rebuilt the moment they install their loader.
-        warn("no bootloader selected: leaving the new ESP without a loader; install a bootloader later before rebooting")
+        warn(
+            "no bootloader selected: leaving the new ESP without a loader; install a bootloader later before rebooting"
+        )
     if BOOTLOADER:
         if not esp_part:
             warn("--bootloader requires an ESP; skipping efibootmgr entry")
         else:
             # If --bootloader is set, use its loader path; otherwise ask.
             entry_bl = BOOTLOADER
+            if entry_bl == "both":
+                # In both mode only systemd-boot gets an NVRAM entry; Limine is
+                # reached through the chainload entry written by systemd-boot.
+                entry_bl = "systemd-boot"
             if not entry_bl:
                 info("--bootloader: which bootloader is this EFI entry for?")
                 choice = ask_choice(
@@ -4234,20 +4298,13 @@ def main(args=None) -> int:
                 ok(f"EFI boot entry created via efibootmgr: {label} ({loader_path})")
             except SystemExit:
                 warn("efibootmgr entry creation failed (check --bootloader conditions)")
-    if BOOTLOADER == "limine":
-        # Limine's Linux protocol loads vmlinuz + initramfs as two modules, so
-        # no UKI is built; build_initramfs() already put both on the ESP.
+    if BOOTLOADER in ("limine", "both"):
         build_initramfs()
         install_limine_bootloader(esp_part)
-    elif BOOTLOADER == "systemd-boot":
+    if BOOTLOADER in ("systemd-boot", "both"):
         build_initramfs()
         build_ukis(new_cmdline)
         install_systemd_boot()
-    else:
-        # No bootloader: nothing installed. The initramfs and UKI are not built
-        # because nothing can boot this root yet; a later loader install will
-        # trigger them.
-        pass
     # what the summary reports: decided once --install and --skip-pacstrap are
     # both known, so it cannot disagree with what bootstrap_system() did
     if args.install == "clone":
@@ -4283,7 +4340,6 @@ def main(args=None) -> int:
         )
     else:
         HOMES_LINE = "left as they are (existing root)"
-
 
     finalize()
     print_summary(esp_part, root_part, luks_uuid, new_cmdline)
@@ -4348,14 +4404,19 @@ def choose_bootloader(args) -> str:
         info(f"clone path: keeping the running system's own bootloader ({esp_loader})")
         return ""
 
-    if not args.bootloader:
+    if args.bootloader in (None, "none"):
         info(
-            "no bootloader selected (--bootloader was not given): the new ESP "
-            "will not get a loader or an NVRAM entry"
+            "no bootloader selected: the new ESP will not get a loader or an NVRAM entry"
         )
         return ""
 
     choice = args.bootloader
+    if choice == "both":
+        tools = BOOTLOADER_TOOLS["limine"] + BOOTLOADER_TOOLS["systemd-boot"]
+        missing = [t for t in tools if not shutil.which(t)]
+        if missing:
+            die(f"both needs {', '.join(missing)}")
+        return "both"
     # preflight() ran before the choice existed, so the tool check for the chosen
     # loader happens here too -- an explicit --bootloader must not skip it.
     missing = [t for t in BOOTLOADER_TOOLS[choice] if not shutil.which(t)]

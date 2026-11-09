@@ -37,12 +37,15 @@ def main(argv=None):
             self.bootloader.setCurrentIndex(3)
             self.skip_copy_home = QCheckBox("Skip copy home")
             self.skip_copy_home.setChecked(False)
-            self.copy_sudoers = QCheckBox("Copy sudoers.d")
+            self.skip_sudoers = QCheckBox("Skip sudoers.d")
+            self.skip_sudoers.setChecked(False)
             self.keep_mounted = QCheckBox("Keep mounted")
             self.existing = QCheckBox("Existing install")
             self.no_encrypt = QCheckBox("No encrypt")
             self.skip_pacstrap = QCheckBox("Skip pacstrap")
             self.existing.stateChanged.connect(lambda: self.skip_pacstrap.setChecked(self.existing.isChecked()))
+            self.existing.stateChanged.connect(lambda: self.skip_copy_home.setChecked(self.existing.isChecked()))
+            self.existing.stateChanged.connect(lambda: self.skip_sudoers.setChecked(self.existing.isChecked()))
             self.skip_network = QCheckBox("Skip network")
             self.skip_timezone = QCheckBox("Skip timezone")
             self.skip_vm = QCheckBox("Skip VM")
@@ -61,9 +64,9 @@ def main(argv=None):
                 row.addWidget(widget)
                 layout.addLayout(row)
 
-            for cb in (self.copy_sudoers, self.existing, self.keep_mounted, self.no_encrypt,
-                       self.skip_copy_home, self.skip_network, self.skip_pacstrap, self.skip_timezone,
-                       self.skip_vm):
+            for cb in (self.existing, self.keep_mounted, self.no_encrypt,
+                       self.skip_copy_home, self.skip_network, self.skip_pacstrap,
+                       self.skip_sudoers, self.skip_timezone, self.skip_vm):
                 layout.addWidget(cb)
 
             for label, w in [("Cache dir", self.cache_dir), ("EFI part", self.efi_part),
@@ -94,7 +97,7 @@ def main(argv=None):
                 cmd.append("--no-copy-home")
             else:
                 cmd.append("--copy-home")
-            if not self.copy_sudoers.isChecked():
+            if self.skip_sudoers.isChecked():
                 cmd.append("--skip-copy-sudoers")
             if self.keep_mounted.isChecked():
                 cmd.append("--keep-mounted")

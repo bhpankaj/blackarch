@@ -1,3 +1,76 @@
+# --------------------------------------------------------------------------- #
+# bootstrap package sets
+# --------------------------------------------------------------------------- #
+# `--install pacstrap` builds a new Arch root instead of cloning the running
+# one. The package lists are inline, so the installer is self-contained.
+BOOTSTRAP_BASE = (
+    "base",
+    "base-devel",
+    "linux-aegis-offensive",
+    "linux-aegis-offensive-headers",
+    "linux-firmware",
+    "linux-headers",
+)
+
+BOOTSTRAP_KEYRINGS = (
+    "archlinux-keyring",
+    "blackarch-keyring",
+    "athena-keyring",
+    "chaotic-keyring",
+    "omarchy-keyring",
+)
+
+BOOTLOADER_TOOLS = {
+    "limine": ("limine", "limine-install", "limine-entry-tool", "limine-mkinitcpio"),
+    "systemd-boot": ("bootctl", "ukify"),
+}
+
+# tokens that only make sense in a live/temporary environment
+LIVE_ONLY_TOKENS = (
+    "nvme_load",
+    "zswap.enabled",
+    "nowatchdog",
+    "quiet",
+    "loglevel",
+    "systemd-measure",
+    "splash",
+)
+
+BASE_REQUIRED_TOOLS = (
+    "lsblk",
+    "blkid",
+    "parted",
+    "wipefs",
+    "cryptsetup",
+    "mkfs.btrfs",
+    "mkfs.vfat",
+    "btrfs",
+    "rsync",
+    "mount",
+    "umount",
+    "findmnt",
+    "efibootmgr",
+    "mkinitcpio",
+    "snapper",
+    "pacman",
+    "chpasswd",
+    "genfstab",
+    "partprobe",
+)
+
+# Packages the chosen bootloader needs IN THE NEW ROOT, and the tools they
+# provide on the running system. `arch-chroot pacman -S` fetches them as part of
+# the bootstrap; the tool binary is what the installer itself invokes.
+BOOTLOADER_PKGS = {
+    "limine": ("limine", "limine-mkinitcpio-hook", "snapper"),
+    "systemd-boot": ("systemd", "systemd-ukify", "snapper"),
+}
+BOOTLOADER_PREFLIGHT_PKGS = {
+    "limine": ("limine",),
+    "systemd-boot": ("systemd",),
+}
+
+# Packages for Arch and hyprland
 HYPRLAND_PACKAGES = (
     "exa",
     "fcitx5",
@@ -28,7 +101,14 @@ HYPRLAND_PACKAGES = (
     "wtype",
 )
 
-OMARCHY_PKGS = ("omacut", "omasnap", "omawrite", "voxtype-bin", "ttfx", "cliamp")
+OMARCHY_PKGS = (
+    "omacut",
+    "omasnap",
+    "omawrite",
+    "voxtype-bin",
+    "ttfx",
+    "cliamp",
+)
 
 MY_UTILITIES = (
     "aria2",
@@ -106,6 +186,9 @@ SYSTEM_PACKAGES = (
     "acpid",
     "adobe-source-code-pro-fonts",
     "arch-install-scripts",
+    "mkinitcpio-archiso",
+    *BOOTSTRAP_BASE,
+    *BOOTSTRAP_KEYRINGS,
     "beautyline",
     "bluetooth-autoconnect",
     "downgrade",
@@ -140,6 +223,8 @@ SYSTEM_PACKAGES = (
     "libsoup3",
     "libspng",
     "libv4l",
+    "limine",
+    "limine-mkinitcpio-hook",
     "lm_sensors",
     "loupe",
     "lsb-release",
@@ -153,6 +238,7 @@ SYSTEM_PACKAGES = (
     "mercurial",
     "networkmanager",
     "network-manager-applet",
+    "networkmanager-openvpn",
     "noto-fonts-emoji",
     "npm",
     "nss-mdns",
@@ -386,9 +472,6 @@ AUR_TOOLS = "wvkbd-deskintl"
 
 ATHENA_TOOLS = (
     "cyber-toolkit",
-    "athena-firefox-config",
-    "athena-green-base",
-    "athena-htb-design",
     "athena-mirrorlist",
     "athena-nexus",
     "athena-powershell-config",

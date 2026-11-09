@@ -23,20 +23,27 @@ DEVICE_ID = "4e715c22-7aa0-4bd6-9425-b694b26e325d"
 
 
 def battery_level():
-    rc, out = run("blackarch-battery-remaining")
-    if rc == 0 and out.isdigit():
-        return int(out)
+    import glob
+    for path in sorted(glob.glob("/sys/class/power_supply/BAT*/capacity")):
+        try:
+            with open(path) as f:
+                val = f.read().strip()
+            if val.isdigit():
+                return int(val)
+        except OSError:
+            continue
     return None
 
 
 def battery_state():
-    rc, out = run("upower -e | grep 'BAT'")
-    if rc != 0 or not out:
-        return ""
-    dev = out.splitlines()[0].strip()
-    rc, out = run(f"upower -i {dev}")
-    m = re.search(r"^\s*state:\s*(\S+)", out, re.MULTILINE)
-    return m.group(1) if m else ""
+    import glob
+    for path in sorted(glob.glob("/sys/class/power_supply/BAT*/status")):
+        try:
+            with open(path) as f:
+                return f.read().strip().lower()
+        except OSError:
+            continue
+    return ""
 
 
 def send_notification(level, mode):

@@ -214,11 +214,6 @@ PCR_NAMES = (
 
 # limine + systemd-boot are alternatives: each needs its own tooling, its own
 # package set and its own boot layout, so preflight checks the chosen one only.
-BOOTLOADER_TOOLS = {
-    "limine": ("limine", "limine-install", "limine-entry-tool", "limine-mkinitcpio"),
-    "systemd-boot": ("bootctl", "ukify"),
-}
-
 # What backs the new root: the LUKS mapper when encrypted, the partition itself
 # with --existing or --no-encrypt. Set by prepare_layout().
 ENCRYPTED = False
@@ -260,74 +255,6 @@ LUKS_PART = ""
 # shells out to when it needs to escalate to root without losing the Wayland
 # session. repr() keeps the line continuations literal.
 PROFILE_D_BLACKARCH_SH = ': "${BLACKARCH_PATH:=/opt/blackarch/}"\n# Strip trailing slashes so "$BLACKARCH_PATH/bin" never becomes "//bin".\nBLACKARCH_PATH="${BLACKARCH_PATH%/}"\n\ncase ":${PATH}:" in\n  *":${BLACKARCH_PATH}/bin:"*) ;;\n  *) [ -d "${BLACKARCH_PATH}/bin" ] && PATH="${BLACKARCH_PATH}/bin:${PATH}" ;;\nesac\n\nexport BLACKARCH_PATH PATH\n# Source this file for non-interactive shells too (SSH, cron, bash, zsh).\nexport BASH_ENV=/etc/profile.d/blackarch.sh\nexport ENV=/etc/profile.d/blackarch.sh\n\nwaylandsudo() {\n    local uid\n    uid=$(id -u)\n    sudo /usr/bin/env \\\n        XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$uid}" \\\n        DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/$uid/bus}" \\\n        WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-1}" \\\n        HYPRLAND_INSTANCE_SIGNATURE="${HYPRLAND_INSTANCE_SIGNATURE}" \\\n        BLACKARCH_PATH="${BLACKARCH_PATH}" \\\n        "$@"\n}\n'
-
-# tokens that only make sense in a live/temporary environment
-LIVE_ONLY_TOKENS = (
-    "nvme_load",
-    "zswap.enabled",
-    "nowatchdog",
-    "quiet",
-    "loglevel",
-    "systemd-measure",
-    "splash",
-)
-
-BASE_REQUIRED_TOOLS = (
-    "lsblk",
-    "blkid",
-    "parted",
-    "wipefs",
-    "cryptsetup",
-    "mkfs.btrfs",
-    "mkfs.vfat",
-    "btrfs",
-    "rsync",
-    "mount",
-    "umount",
-    "findmnt",
-    "efibootmgr",
-    "mkinitcpio",
-    "snapper",
-    "pacman",
-    "chpasswd",
-    "genfstab",
-    "partprobe",
-)
-
-# Packages the chosen bootloader needs IN THE NEW ROOT, and the tools they
-# provide on the running system. `arch-chroot pacman -S` fetches them as part of
-# the bootstrap; the tool binary is what the installer itself invokes.
-BOOTLOADER_PKGS = {
-    "limine": ("limine", "limine-mkinitcpio-hook", "snapper"),
-    "systemd-boot": ("systemd", "systemd-ukify", "snapper"),
-}
-BOOTLOADER_PREFLIGHT_PKGS = {
-    "limine": ("limine",),
-    "systemd-boot": ("systemd",),
-}
-
-# --------------------------------------------------------------------------- #
-# bootstrap package sets
-# --------------------------------------------------------------------------- #
-# `--install pacstrap` builds a new Arch root instead of cloning the running
-# one. The package lists are inline, so the installer is self-contained.
-BOOTSTRAP_BASE = (
-    "base",
-    "base-devel",
-    "linux-aegis-offensive",
-    "linux-aegis-offensive-headers",
-    "linux-aegis-hardened",
-    "linux-aegis-hardened-headers",
-    "linux-firmware",
-)
-
-BOOTSTRAP_KEYRINGS = (
-    "archlinux-keyring",
-    "blackarch-keyring",
-    "athena-keyring",
-    "chaotic-keyring",
-    "omarchy-keyring",
-)
 
 
 # The omarchy key is not published in a keyring package, so it has to be
@@ -1037,7 +964,7 @@ def select_target_disk(
             f"as-is — nothing is reformatted.{C['reset']}"
         )
         if not ask_yesno(
-            f"Install into the existing layout on {target} ?", default=False
+            f"Install into the existing layout on {target} ?", default=True
         ):
             # fall back to existing layout instead of aborting
             existing = True
@@ -2758,10 +2685,15 @@ def clone_kernels() -> list[tuple[str, str]]:
             owner = open(os.path.join(kdir, "pkgbase")).read().strip()
         except OSError:
             owner = ""
-        if owner:
-            found.append((owner, kver))
-    # Prefer the offensive kernel as the default boot entry.
-    found.sort(key=lambda kv: 0 if "offensive" in kv[0] else 1)
+        if not owner:
+            continue
+        # Keep only the offensive kernel.
+        if "offensive" not in owner and "offensive" not in kver:
+            continue
+        found.append((owner, kver))
+    # Prefer the offensive kernel as the default boot entry (match on package
+    # name or kernel release, so a differently-named offensive build still wins).
+    found.sort(key=lambda kv: 0 if ("offensive" in kv[0] or "offensive" in kv[1]) else 1)
     return found
 
 
@@ -2942,7 +2874,6 @@ def configure_mkinitcpio_hooks() -> None:
         "block",
         "sd-encrypt",
         "filesystems",
-        "fsck",
     ]
     if not ENCRYPTED:
         # nothing to unlock; the encrypt hook would only wait for a passphrase
@@ -3569,7 +3500,7 @@ on it: nothing is reformatted and nothing is encrypted.
 --skip-pacstrap     with --install pacstrap and --existing: skip pacstrap and
                     reuse the packages already in the target root, so a re-run
                     does not reinstall the base set over a populated root
---no-copy-home      with --install pacstrap: do not copy the running system's
+--skip-copy-home      with --install pacstrap: do not copy the running system's
                     user homes into the new root -- it boots with the
                     package-default dotfiles instead. this is already the
                     default when the installer runs from a live/ISO session,
@@ -3655,8 +3586,8 @@ on it: nothing is reformatted and nothing is encrypted.
         "--existing, where the root is already bootstrapped",
     )
     ap.add_argument(
-        "--no-copy-home",
-        action="store_true",
+        "--skip-copy-home", "--no-copy-home",
+        action="store_true", dest="skip_copy_home",
         help="with --install pacstrap: do not copy the running system's user "
         "homes into the new root; it boots with the package-default dotfiles. "
         "default is to copy every real user's home -- except when the installer "
@@ -3840,10 +3771,46 @@ def bootstrap_pacman(cache_dir: str) -> None:
             url = mirror_urls.get(repo)
             if not url:
                 continue
+            tmp = ml + ".tmp"
             try:
-                subprocess.run(["curl", "-fsSL", url, "-o", ml], check=True, timeout=60)
+                subprocess.run(["curl", "-fsSL", url, "-o", tmp], check=True, timeout=60)
             except Exception as exc:
                 warn(f"could not download {repo} mirrorlist: {exc}")
+                continue
+            # Rank mirrors by download speed at runtime, keep fastest 5.
+            servers = []
+            with open(tmp) as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("Server") and "=" in line:
+                        servers.append(line.split("=", 1)[1].strip())
+            ranked = []
+            for s_url in servers:
+                test_url = s_url.replace("$repo", "blackarch").replace("$arch", "x86_64") + "/blackarch.db" if repo == "blackarch" else s_url
+                try:
+                    out = subprocess.run(
+                        ["curl", "-s", "-o", "/dev/null", "-w", "%{time_total}", "--max-time", "8", test_url],
+                        capture_output=True, text=True, timeout=10,
+                    )
+                    t = float(out.stdout.strip() or "999")
+                except Exception:
+                    t = 999.0
+                ranked.append((t, s_url))
+            ranked.sort()
+            top = [u for _, u in ranked[:5] if _ < 999]
+            if not top:
+                top = servers[:5]
+            try:
+                with open(ml, "w") as f:
+                    for u in top:
+                        f.write(f"Server = {u}\n")
+            except Exception as exc:
+                warn(f"could not write {repo} mirrorlist: {exc}")
+            try:
+                os.remove(tmp)
+            except OSError:
+                pass
+            continue
 
     # the cache lives on the target disk, so a re-run that does not reformat
     # reuses every package already in it
@@ -3864,6 +3831,9 @@ def bootstrap_system(cache_dir: str) -> None:
     # already populated, and pacstrap would reinstall the base set over it.
     # bootstrap_pacman() still runs -- it is cheap, idempotent, and keeps the
     # mirrorlist and CacheDir in step with the running system.
+    # Always sync mirrorlists (and rank them) even when skipping pacstrap.
+    bootstrap_pacman(cache_dir)
+
     if SKIP_PACSTRAP:
         for marker, why in (
             (
@@ -3882,8 +3852,6 @@ def bootstrap_system(cache_dir: str) -> None:
                 die(f"--skip-pacstrap: {why} ({marker} is missing)")
         ok("pacstrap skipped (--skip-pacstrap): reusing the packages in the root")
         return
-
-    bootstrap_pacman(cache_dir)
 
     # pacstrap copies the host's keyring into the new root, so the AthenaOS /
     # Blackarch / chaotic / omarchy packages verify without a recv-keys dance.
@@ -3940,15 +3908,6 @@ def bootstrap_system(cache_dir: str) -> None:
     # Makepkg refuses root; use the desktop user (UID 1000) inside the chroot.
 
     run(["arch-chroot", ROOT_MNT, "pacman", "-S", "--needed", "--noconfirm", "yay"])
-    run(
-        [
-            "arch-chroot",
-            ROOT_MNT,
-            "/opt/blackarch/bin/blackarch",
-            "smartthings",
-            "install",
-        ]
-    )
     try_run(
         [
             "arch-chroot",
@@ -4098,9 +4057,9 @@ def copy_homes_now(args) -> bool:
     nothing worth keeping, so the default pacstrap path would otherwise import
     that account's throwaway home as a real user of the new install. Live
     therefore flips the default to no, and --copy-home is what takes the homes
-    anyway. --no-copy-home wins on every path.
+    anyway. --skip-copy-home wins on every path.
     """
-    if args.no_copy_home:
+    if args.skip_copy_home:
         return False
     if args.copy_home:
         return True
@@ -4138,8 +4097,8 @@ def main(args=None) -> int:
         info("pacstrap will be skipped: reusing the packages already in the root")
     SKIP_NETWORK = args.skip_network
     SKIP_TIMEZONE = args.skip_timezone
-    if args.no_copy_home and args.copy_home:
-        die("--no-copy-home and --copy-home are mutually exclusive")
+    if args.skip_copy_home and args.copy_home:
+        die("--skip-copy-home and --copy-home are mutually exclusive")
     # Resolved here, ahead of prepare_layout(), so home_excludes() sees the
     # final lists however the run is invoked.
     SKIP_HOME_DIRS = list(args.skip_home_dir or [])
@@ -4204,6 +4163,10 @@ def main(args=None) -> int:
     if homes_copied:
         copy_user_homes()
     deploy_blackarch_tree()
+    try:
+        run(["arch-chroot", ROOT_MNT, "/opt/blackarch/bin/blackarch", "smartthings", "install"])
+    except Exception:
+        pass
     write_profile_d()
     configure_identity(esp_part, args.hostname)
     new_cmdline = build_new_cmdline(luks_uuid)
@@ -4326,8 +4289,8 @@ def main(args=None) -> int:
                     *(["VM images"] if SKIP_VM else []),
                 ]
             )
-    elif args.no_copy_home:
-        HOMES_LINE = "not copied (--no-copy-home)"
+    elif args.skip_copy_home:
+        HOMES_LINE = "not copied (--skip-copy-home)"
     elif args.install == "clone":
         HOMES_LINE = "carried by the clone (not copied)"
     elif SKIP_PACSTRAP:

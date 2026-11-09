@@ -1307,24 +1307,15 @@ def install_smartthings() -> None:
 
 @log_all
 def setup_kodachi() -> None:
-    sudo_run(
-        [
-            "curl",
-            "-sSL",
-            "https://kodachi.cloud/apps/os/install/kodachi-deps-install.sh",
-            "|",
-            "bash",
-        ]
-    )
-    sudo_run(
-        [
-            "curl",
-            "-sSL",
-            "https://kodachi.cloud/apps/os/install/kodachi-binary-install.sh",
-            "|",
-            "bash",
-        ]
-    )
+    # sudo_run execs argv directly (no shell), so the pipe must run inside `bash -c`;
+    # passing "|" and "bash" as curl arguments only downloads the script to stdout.
+    # -f and pipefail make a failed download abort instead of running empty input.
+    for script in (
+        "https://kodachi.cloud/apps/os/install/kodachi-deps-install.sh",
+        "https://kodachi.cloud/apps/os/install/kodachi-binary-install.sh",
+    ):
+        cmd = f"set -o pipefail; curl -fsSL {script} | bash"
+        sudo_run(["bash", "-c", cmd])
 
 
 @log_all
@@ -1550,7 +1541,8 @@ class WindowRing:
         try:
             sel = subprocess.run(
                 ["blackarch-menu-select", "Select window", *choices],
-                capture_output=True, text=True
+                capture_output=True,
+                text=True,
             ).stdout.strip()
         except Exception:
             sel = ""
@@ -2237,10 +2229,10 @@ def launch(id_kind: str, cmd: str, app_id: str = "", app_instance: str = "") -> 
                 "setsid",
                 "uwsm-app",
                 "--",
-                browser,
+                *browser,
                 *sandbox_args(),
                 "--incognito",
-                "--profile-directory=Default Kids",
+                "--profile-directory=Default",
                 *browser_args,
             ],
         )

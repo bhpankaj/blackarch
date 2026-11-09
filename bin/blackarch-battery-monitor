@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
-"""blackarch:summary=Battery monitor: low-battery alerts and smartthings switch control"""
+"""blackarch:summary=Battery monitor: low-battery alerts and smartthings switch control; --shell prints formatted status"""
 
 import os
 import re
 import subprocess
 import sys
+import glob
+
+
+# ---- monitor constants ----
+BATTERY_THRESHOLD_UPPER = 96
+BATTERY_THRESHOLD = 25
+uid = os.getuid()
+NOTIFICATION_FLAG = f"/run/user/{uid}/blackarch_battery_notified"
+DEVICE_ID = "4e715c22-7aa0-4bd6-9425-b694b26e325d"
 
 
 def run(cmd, shell=True, timeout=30):
@@ -15,15 +24,7 @@ def run(cmd, shell=True, timeout=30):
         return -1, str(e)
 
 
-BATTERY_THRESHOLD_UPPER = 96
-BATTERY_THRESHOLD = 25
-uid = os.getuid()
-NOTIFICATION_FLAG = f"/run/user/{uid}/blackarch_battery_notified"
-DEVICE_ID = "4e715c22-7aa0-4bd6-9425-b694b26e325d"
-
-
 def battery_level():
-    import glob
     for path in sorted(glob.glob("/sys/class/power_supply/BAT*/capacity")):
         try:
             with open(path) as f:
@@ -36,7 +37,6 @@ def battery_level():
 
 
 def battery_state():
-    import glob
     for path in sorted(glob.glob("/sys/class/power_supply/BAT*/status")):
         try:
             with open(path) as f:
@@ -60,7 +60,7 @@ def send_notification(level, mode):
     subprocess.run(cmd, check=False)
 
 
-def main():
+def monitor_main():
     level = battery_level()
     if level is None:
         return
@@ -85,5 +85,265 @@ def main():
             pass
 
 
+# ---- status (--shell) functionality merged from blackarch-battery-status ----
+POWER_SUPPLY_PATH = os.environ.get("BLACKARCH_POWER_SUPPLY_PATH") or "/sys/class/power_supply"
+CHARGING_GLYPH = "\uf062"
+DISCHARGING_GLYPH = "\uf063"
+
+
+def read_text(path):
+    try:
+        with open(path) as fh:
+            return fh.read().strip()
+    except OSError:
+        return ""
+
+
+def first_line_matching(text, pattern):
+    for line in text.split("\n"):
+        if re.search(pattern, line):
+            fields = line.split()
+            return fields[1] if len(fields) > 1 else ""
+    return ""
+
+
+def awk_percentage(info):
+    value = first_line_matching(info, r"percentage")
+    value = value.replace("%", "")
+    try:
+        return str(int(float(value)))
+    except ValueError:
+        return ""
+
+
+def awk_capacity(info):
+    value = first_line_matching(info, r"energy-full:")
+    try:
+        return str(int(float(value)))
+    except ValueError:
+        return ""
+
+
+def awk_time_remaining(info):
+    for line in info.split("\n"):
+        if re.search(r"time to (empty|full)", line):
+            fields = line.split()
+            value = float(fields[3])
+            unit = fields[4]
+            if unit.startswith("minute"):
+                return "%dm" % int(value)
+            hours = int(value)
+            minutes = int((value - hours) * 60)
+            if minutes > 0:
+                return "%dh %dm" % (hours, minutes)
+            return "%dh" % hours
+    return ""
+
+
+def awk_energy_rate(info):
+    return first_line_matching(info, r"energy-rate")
+
+
+def awk_native_path(info):
+    return first_line_matching(info, r"native-path")
+
+
+def awk_state(info):
+    return first_line_matching(info, r"state")
+
+
+def awk_threshold(info, field):
+    value = first_line_matching(info, field + r":")
+    value = value.replace("%", "")
+    try:
+        return str(int(float(value)))
+    except ValueError:
+        return ""
+
+
+def format_power_rate(rate):
+    rounded = "%.1f" % rate
+    if rounded.endswith(".0"):
+        rounded = rounded[:-2]
+    return rounded
+
+
+def glob_first(pattern):
+    for path in sorted(glob.glob(pattern)):
+        if os.access(path, os.R_OK):
+            return read_text(path)
+    return ""
+
+
+def upower_battery():
+    out = subprocess.run(["upower", "-e"], capture_output=True, text=True, errors="replace").stdout
+    for line in out.split("\n"):
+        if "BAT" in line:
+            return line
+    return ""
+
+
+def upower_battery_info(device):
+    return subprocess.run(["upower", "-i", device], capture_output=True, text=True, errors="replace").stdout
+
+
+def ac_online(power_supply_path):
+    for supply in sorted(glob.glob(os.path.join(power_supply_path, "*"))):
+        if not os.access(os.path.join(supply, "type"), os.R_OK):
+            continue
+        if read_text(os.path.join(supply, "type")) != "Mains":
+            continue
+        if not os.access(os.path.join(supply, "online"), os.R_OK):
+            continue
+        if read_text(os.path.join(supply, "online")) == "1":
+            return True
+    return False
+
+
+def power_rate_raw(battery_info, battery_path):
+    raw = awk_energy_rate(battery_info)
+    power_now = os.path.join(battery_path, "power_now")
+    if os.access(power_now, os.R_OK):
+        microwatts = read_text(power_now)
+        try:
+            return str(float(microwatts) / 1000000)
+        except ValueError:
+            return raw
+    current_path = os.path.join(battery_path, "current_now")
+    voltage_path = os.path.join(battery_path, "voltage_now")
+    if os.access(current_path, os.R_OK) and os.access(voltage_path, os.R_OK):
+        try:
+            microamps = float(read_text(current_path))
+            microvolts = float(read_text(voltage_path))
+            return str(microamps * microvolts / 1000000000000)
+        except ValueError:
+            return raw
+    return raw
+
+
+def status_main():
+    battery = upower_battery()
+    if not battery:
+        return 0
+    battery_info = upower_battery_info(battery)
+
+    percentage = awk_percentage(battery_info)
+    capacity = awk_capacity(battery_info)
+    time_remaining = awk_time_remaining(battery_info)
+    native_path = awk_native_path(battery_info)
+    battery_path = os.path.join(POWER_SUPPLY_PATH, native_path)
+
+    rate_raw = power_rate_raw(battery_info, battery_path)
+    power_rate = format_power_rate(float(rate_raw) if rate_raw else 0.0)
+    state = awk_state(battery_info)
+    threshold_start = awk_threshold(battery_info, "charge-start-threshold")
+    threshold_end = awk_threshold(battery_info, "charge-end-threshold")
+
+    if not threshold_end:
+        threshold_end = glob_first(os.path.join(POWER_SUPPLY_PATH, "BAT*", "charge_control_end_threshold"))
+    if not threshold_start:
+        threshold_start = glob_first(os.path.join(POWER_SUPPLY_PATH, "BAT*", "charge_control_start_threshold"))
+
+    online = ac_online(POWER_SUPPLY_PATH)
+    charge_idle = (float(rate_raw) if rate_raw else 0.0) <= 0.2
+
+    charge_holding = False
+    if online and threshold_end:
+        if state == "pending-charge":
+            charge_holding = True
+        elif state == "fully-charged" and int(float(percentage)) < 99:
+            charge_holding = True
+        elif (
+            state == "charging"
+            and charge_idle
+            and int(float(threshold_end)) < 99
+            and int(float(percentage)) >= int(float(threshold_end))
+        ):
+            charge_holding = True
+
+    shell_output = True
+    if shell_output:
+        sys.stdout.write("percentage\t" + percentage + "%\n")
+        if charge_holding:
+            sys.stdout.write("state\tholding\n")
+        else:
+            sys.stdout.write("state\t" + state + "\n")
+        sys.stdout.write("rate\t" + power_rate + "W\n")
+        sys.stdout.write("size\t" + capacity + "Wh\n")
+        sys.stdout.write("time\t" + time_remaining + "\n")
+
+        cycles = glob_first(os.path.join(POWER_SUPPLY_PATH, "BAT*", "cycle_count"))
+        if cycles:
+            sys.stdout.write("cycles\t" + cycles + "\n")
+
+        if threshold_end:
+            if threshold_start and threshold_start != threshold_end:
+                sys.stdout.write("threshold\t" + threshold_start + "-" + threshold_end + "%\n")
+            else:
+                sys.stdout.write("threshold\t" + threshold_end + "%\n")
+        return 0
+
+
+def low_main(level):
+    subprocess.run(
+        ["blackarch-notification-send", "-g", "󱐋", "-u", "critical", "Time to recharge!",
+         f"Battery is down to {level}%", "-i", "battery-caution", "-t", "30000"],
+        check=False,
+    )
+    subprocess.run(["blackarch-hook", "battery-low", str(level)], check=False)
+    return 0
+
+
+def remaining_main():
+    battery = upower_battery()
+    if not battery:
+        return 0
+    info = upower_battery_info(battery)
+    pct = awk_percentage(info)
+    try:
+        val = float(pct)
+        print(int(val + 0.5))
+    except ValueError:
+        print(pct)
+    return 0
+
+
+def present_main():
+    import glob
+    for bat in sorted(glob.glob("/sys/class/power_supply/BAT*")):
+        present_path = os.path.join(bat, "present")
+        type_path = os.path.join(bat, "type")
+        if os.access(present_path, os.R_OK) and os.access(type_path, os.R_OK):
+            if read_text(present_path) == "1" and read_text(type_path) == "Battery":
+                return 0
+    return 1
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv
+    if len(argv) > 1 and argv[1] in ("--help", "-h"):
+        print("Usage: blackarch-battery-monitor [--shell|--status|--low <percentage>|--remaining|--remaning|--present]")
+        print("  (no args)   run battery monitor (low-battery alerts + smartthings)")
+        print("  --shell     print formatted battery status")
+        print("  --status    alias for --shell")
+        print("  --low PCT   send low-battery notification and run hooks")
+        print("  --remaining print battery percentage remaining")
+        print("  --present   exit 0 if a battery is present")
+        return 0
+    if len(argv) > 1 and argv[1] in ("--shell", "--status"):
+        return status_main()
+    if len(argv) > 1 and argv[1] == "--low":
+        if len(argv) < 3:
+            print("Usage: blackarch-battery-monitor --low <percentage>", file=sys.stderr)
+            return 2
+        return low_main(argv[2])
+    if len(argv) > 1 and argv[1] in ("--remaining", "--remaning"):
+        return remaining_main()
+    if len(argv) > 1 and argv[1] == "--present":
+        return present_main()
+    monitor_main()
+    return 0
+
+
 if __name__ == "__main__":
-    main()
+    sys.exit(main(sys.argv))

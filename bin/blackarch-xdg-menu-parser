@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+import json
+import sys
+import os
+
+def parse_custom_menu(filepath):
+    categories = []
+    current_cat = None
+    current_items = []
+    
+    if not os.path.exists(filepath):
+        return categories
+
+    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            # Detect Category Start
+            if line.endswith('MENU') and not line.startswith('"Applications"'):
+                parts = line.split('"')
+                if len(parts) >= 2:
+                    current_cat = parts[1]
+                    current_items = []
+            # Detect Category End
+            elif current_cat and line == f'"{current_cat}" END':
+                categories.append({
+                    "category": current_cat,
+                    "items": current_items
+                })
+                current_cat = None
+            # Detect Exec entry
+            elif ' EXEC ' in line and current_cat:
+                parts = line.split(' EXEC ')
+                name = parts[0].strip().strip('"')
+                exec_cmd = parts[1].strip()
+                current_items.append({"name": name, "exec": exec_cmd})
+                
+    return categories
+
+def main():
+    # Accept multiple menu files via command line arguments
+    all_categories = {}
+    
+    files = sys.argv[1:]
+    if not files:
+        files = ["menu.txt"]
+
+    for filepath in files:
+        cats = parse_custom_menu(filepath)
+        for cat in cats:
+            c_name = cat["category"]
+            if c_name not in all_categories:
+                all_categories[c_name] = []
+            all_categories[c_name].extend(cat["items"])
+
+    # Format into the final list structure
+    output_data = [
+        {"category": k, "items": v} for k, v in all_categories.items()
+    ]
+    
+    print(json.dumps(output_data, indent=2))
+
+if __name__ == "__main__":
+    main()

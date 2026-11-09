@@ -10,11 +10,18 @@ def main(argv):
     # Flatten execute subcommands to top level
     try:
         sys.path.insert(0, "/opt/blackarch/blackarch_modules")
-        from blackarch_modules.blackarch_execute_core import main as _exec_main
+        from blackarch_modules.blackarch_core_execute import main as _exec_main
+        from blackarch_modules.blackarch_core_execute import print_help as _exec_help
         _exec_cmds = ["shell","toggle","quickshell","vpn","smartthings","update","update-system",
                       "webapp","work","private","tui","gui","window","brightness",
-                      "audio","focus","setup","banner","charger"]
+                      "audio","focus","setup","banner","charger","flatpak-ulaa"]
         if argv and argv[0] in _exec_cmds:
+            # The execute module's main() treats every argument as real input,
+            # so `blackarch <cmd> --help` would otherwise launch the command
+            # instead of documenting it. Print its help table first.
+            if any(a in ("--help", "-h") for a in argv[1:]):
+                _exec_help()
+                return 0
             return _exec_main(argv)
     except Exception:
         pass
@@ -25,7 +32,7 @@ def main(argv):
             # include flattened execute subcommands
             cmds = sorted(set(cmds + ["shell","toggle","quickshell","vpn","smartthings","update","update-system",
                       "webapp","work","private","tui","gui","window","brightness",
-                      "audio","focus","setup","banner","charger"]))
+                      "audio","focus","setup","banner","charger","flatpak-ulaa"]))
             for k in cmds:
                 print(k)
         except Exception:

@@ -207,7 +207,7 @@ Panel {
 
   Process {
     id: batteryProc
-    command: ["blackarch-battery-status", "--shell"]
+    command: ["blackarch-battery-monitor", "--shell"]
     stdout: StdioCollector { waitForEnd: true; onStreamFinished: root.updateKeyValue(text, "battery") }
   }
 

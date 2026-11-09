@@ -42,7 +42,7 @@ top-level helpers: `blackarch`, `blackarch-shell`, `blackarch-menu`,
 
 Python modules mirroring `bin/` names (e.g. `bin/blackarch-audio-tuning` →
 `blackarch_modules/blackarch_audio_tuning.py`). Heavy logic lives in
-`blackarch_execute_core.py`, `blackarch_installer_core.py`,
+`blackarch_core_execute.py`, `blackarch_core_installer.py`,
 `blackarch_linux_commander.py`, `blackarch_linux_installer.py`.
 
 ## quickshell

@@ -36,7 +36,8 @@ Item {
   function sendLowBatteryWarning(level) {
     if (warningProcess.running) return
     warningProcess.command = [
-      "blackarch-battery-low",
+      "blackarch-battery-monitor",
+      "--low",
       String(level)
     ]
     warningProcess.running = true

@@ -8,7 +8,7 @@ import subprocess
 sys.path.insert(0, "/opt/blackarch")
 sys.path.insert(0, "/opt/blackarch/blackarch_modules")
 
-from blackarch_modules.blackarch_installer_core import list_disks
+from blackarch_modules.blackarch_core_installer import list_disks
 
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel,

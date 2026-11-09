@@ -14,6 +14,7 @@ Usage:
 
 from __future__ import annotations
 
+import importlib
 import json
 import locale
 import os
@@ -127,6 +128,28 @@ GROUP_DESCRIPTIONS: dict[str, str] = {
     "webapp": "Web app launchers",
     "wifi": "Wi-Fi helpers",
     "windows": "Windows VM management",
+}
+
+# Module-backed commands: the dispatcher has no `blackarch-<name>` executable
+# for these, so it hands them to a Python module instead of exec'ing a binary.
+# Keys are routes ("blackarch private"), values are module names.
+MODULE_COMMANDS: dict[str, str] = {
+    "blackarch private": "blackarch_core_execute",
+    "blackarch work": "blackarch_core_execute",
+    "blackarch webapp": "blackarch_core_execute",
+    "blackarch flatpak-ulaa": "blackarch_core_execute",
+    "blackarch window": "blackarch_core_execute",
+    "blackarch focus": "blackarch_core_execute",
+    "blackarch gui": "blackarch_core_execute",
+    "blackarch tui": "blackarch_core_execute",
+    "blackarch vpn": "blackarch_core_execute",
+    "blackarch update": "blackarch_core_execute",
+    "blackarch update-system": "blackarch_core_execute",
+    "blackarch brightness": "blackarch_core_execute",
+    "blackarch audio": "blackarch_core_execute",
+    "blackarch charger": "blackarch_core_execute",
+    "blackarch banner": "blackarch_core_execute",
+    "blackarch quickshell": "blackarch_core_execute",
 }
 
 # Bash [[:space:]] is locale dependent; this is the portable ASCII set.
@@ -896,6 +919,42 @@ def dispatch_or_help(args: list[str]) -> int:
     return 127
 
 
+def dispatch_module(args: list[str]) -> int | None:
+    """Run a module-backed command, or None when no route matches.
+
+    Longest prefix wins, mirroring resolve_route(). The module's main() always
+    receives the full argv (not the remainder) because the flattened execute
+    commands read their own subcommand from argv[0].
+    """
+    for prefix_count in range(len(args), 0, -1):
+        route = "blackarch " + join_words(" ", args[:prefix_count])
+        module_name = MODULE_COMMANDS.get(route)
+        if module_name is None:
+            continue
+        try:
+            module = importlib.import_module(f"blackarch_modules.{module_name}")
+        except ImportError as exc:
+            print(f"Cannot load module for {route}: {exc}", file=sys.stderr)
+            return 1
+        handler = getattr(module, "main", None)
+        if handler is None:
+            print(f"Module {module_name} has no main()", file=sys.stderr)
+            return 1
+        if remaining_has_help_flag(args[prefix_count:]):
+            printer = getattr(module, "print_help", None)
+            if printer is None:
+                print(
+                    f"Module-backed command. Run it with:\n"
+                    f"  blackarch {join_words(' ', args[:prefix_count])} <arguments>"
+                )
+                return 0
+            printer()
+            return 0
+        result = handler(args)
+        return 0 if result is None else int(result)
+    return None
+
+
 def main(argv: list[str]) -> int:
     if not argv:
         show_main_help()
@@ -912,7 +971,7 @@ def main(argv: list[str]) -> int:
     # Module-backed commands (no separate executable wrappers required)
     if argv and argv[0] == "installer":
         sys.path.insert(0, BLACKARCH_BIN_DIR)
-        import blackarch_modules.blackarch_installer_core as _inst
+        import blackarch_modules.blackarch_core_installer as _inst
 
         if "--complete" in argv[1:]:
             print(
@@ -921,6 +980,11 @@ def main(argv: list[str]) -> int:
             return 0
         args = _inst.parse_args(argv[1:])
         return _inst.main(args=args)
+
+    if argv[0] in MODULE_COMMANDS:
+        handled = dispatch_module(argv)
+        if handled is not None:
+            return handled
 
     return dispatch_fast_or_help(argv)
 

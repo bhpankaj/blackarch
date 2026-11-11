@@ -3,6 +3,17 @@
     "label": "X BlackArch",
     "icon": ""
   },
+  "blackarch.x-blackarch.fingerprint": {
+    "label": "Fingerprint"
+  },
+  "blackarch.x-blackarch.fingerprint.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
+  },
   "blackarch.x-blackarch.fuzzer": {
     "label": "Fuzzer"
   },
@@ -13,6 +24,18 @@
     "appIcon": "burpsuite",
     "action": "burpsuite",
     "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  },
+  "blackarch.x-blackarch.networking": {
+    "label": "Networking",
+    "icon": "󰛳"
+  },
+  "blackarch.x-blackarch.networking.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
   },
   "blackarch.x-blackarch.proxy": {
     "label": "Proxy"
@@ -25,8 +48,28 @@
     "action": "burpsuite",
     "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
   },
+  "blackarch.x-blackarch.recon": {
+    "label": "Recon",
+    "icon": ""
+  },
+  "blackarch.x-blackarch.recon.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
+  },
   "blackarch.x-blackarch.scanner": {
     "label": "Scanner"
+  },
+  "blackarch.x-blackarch.scanner.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
   },
   "blackarch.x-blackarch.scanner.burpsuite": {
     "label": "Burp Suite community edition",
@@ -35,6 +78,29 @@
     "appIcon": "burpsuite",
     "action": "burpsuite",
     "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  },
+  "blackarch.x-blackarch.sniffer": {
+    "label": "Sniffer",
+    "icon": ""
+  },
+  "blackarch.x-blackarch.sniffer.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
+  },
+  "blackarch.x-blackarch.voip": {
+    "label": "Voip"
+  },
+  "blackarch.x-blackarch.voip.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
   },
   "blackarch.x-blackarch.webapp": {
     "label": "Webapp",

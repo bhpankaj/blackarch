@@ -1145,6 +1145,14 @@
     "action": "shell-rocket -b above",
     "description": "Invisible protocol sniffer for finding vulnerabilities in the network"
   },
+  "blackarch.red-applications.usual-applications.other.ba-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "ba-above",
+    "appIcon": "utilities-terminal",
+    "action": "sh -c '/usr/bin/above;$SHELL'",
+    "description": "Network Protocols Sniffer."
+  },
   "blackarch.red-applications.usual-applications.other.nm-connection-editor": {
     "label": "Advanced Network Configuration",
     "kind": "app",

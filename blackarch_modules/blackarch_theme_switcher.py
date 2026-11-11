@@ -120,28 +120,30 @@ def main() -> int:
                 fast_lines.append(f"{child}:{mtime(child)}")
     fast_signature = "\n".join(fast_lines) + "\n"
 
-    def fast_signature_current() -> bool:
+    # The full signature carries each preview's size+mtime, so an in-place
+    # rewrite of preview.png invalidates the cache. The fast signature only
+    # tracks directory mtimes, and rewriting a file in place never changes its
+    # parent directory's mtime -- so it cannot be the sole gate.
+    lines = []
+    for theme_dir in (user_themes, blackarch_themes):
+        if os.path.isdir(theme_dir):
+            lines.append(f"{theme_dir}:{mtime(theme_dir)}")
+            for child in theme_children(theme_dir):
+                preview = find_preview(child)
+                lines.append(f"{child}:{mtime(child)}")
+                if preview:
+                    st = os.stat(preview)
+                    lines.append(f"{preview}:{st.st_size}:{int(st.st_mtime)}")
+    theme_signature = "\n".join(lines) + "\n"
+
+    def full_signature_current() -> bool:
         try:
-            with open(fast_signature_file, encoding="utf-8", errors="replace") as fh:
-                return fh.read() == fast_signature
+            with open(signature_file, encoding="utf-8", errors="replace") as fh:
+                return fh.read() == theme_signature
         except OSError:
             return False
 
-    theme_signature = ""
-    if not fast_signature_current():
-        lines = []
-        for theme_dir in (user_themes, blackarch_themes):
-            if os.path.isdir(theme_dir):
-                lines.append(f"{theme_dir}:{mtime(theme_dir)}")
-                for child in theme_children(theme_dir):
-                    preview = find_preview(child)
-                    lines.append(f"{child}:{mtime(child)}")
-                    if preview:
-                        st = os.stat(preview)
-                        lines.append(f"{preview}:{st.st_size}:{int(st.st_mtime)}")
-        theme_signature = "\n".join(lines) + "\n"
-
-    if not fast_signature_current():
+    if not full_signature_current():
         # Invalidate the preview cache and rebuild it from the theme dirs.
         import shutil
 
@@ -161,8 +163,9 @@ def main() -> int:
 
         with open(signature_file, "w", encoding="utf-8") as fh:
             fh.write(theme_signature)
-        with open(fast_signature_file, "w", encoding="utf-8") as fh:
-            fh.write(fast_signature)
+
+    with open(fast_signature_file, "w", encoding="utf-8") as fh:
+        fh.write(fast_signature)
 
     try:
         with open(

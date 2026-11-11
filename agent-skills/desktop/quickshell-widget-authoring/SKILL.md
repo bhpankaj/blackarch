@@ -322,6 +322,11 @@ before restarting the shell — it catches the whole class in one pass.
 
 ## Debugging a widget that renders wrong
 
+**Parse-check the edited QML before anything else**: `qmllint <plugin>/Widget.qml`
+(Arch: `/usr/lib/qt6/bin/qmllint`) reports syntax and unqualified-access errors
+without loading the host, so it is cheaper than a shell restart. It catches only
+parser and name-resolution problems, never host-API mistakes.
+
 In order of cost:
 
 1. **Restart the shell, reopen the panel, look again.** Half of "my fix did
@@ -382,6 +387,20 @@ print("green px:", hits)
   `Cannot specify left, right, horizontalCenter, fill or centerIn anchors for
   items inside Row` and the layout collapses. Size such children with explicit
   `width`/`height` instead.
+- **`Image.cache` defaults to `true`, and Qt's pixmap cache is keyed on the URL
+  alone — it never notices the file being rewritten in place.** Any `Image`
+  whose `source` is a stable path whose *contents* can change (a generated
+  preview, a thumbnail, a screenshot, a user-editable asset) keeps rendering the
+  old pixels for the life of the shell process, because the cache survives
+  component destruction and the shell is one long-running process. Set
+  `cache: false` on those; the cache shares nothing when every row has a unique
+  URL, so it costs no memory. Restarting the shell also clears this cache, so a
+  restart makes the symptom vanish and reads as "fixed" — replace the file while
+  the shell keeps running before believing it. Prove it with an offscreen Qt 6
+  harness: `QQuickView` + `Image{cache:true}`, `grabWindow()` centre pixel before
+  and after rewriting the same path in place and toggling `source` away and
+  back; `cache:true` returns the old colour, `cache:false` the new one. Recipe in
+  the `blackarch-theme` skill's preview-cache-invalidation reference.
 - **A duplicate `id:` anywhere in the file fails the WHOLE plugin, not one
   element.** QML ids are file-scoped, so the same `id` on two elements (easy to
   leave behind when you move a child into a container during a refactor) makes

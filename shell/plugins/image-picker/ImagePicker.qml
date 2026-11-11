@@ -508,7 +508,13 @@ Item {
                   source: item.sourceActivated && item.thumbnailPath ? Util.fileUrl(item.thumbnailPath) : ""
                   fillMode: Image.PreserveAspectCrop
                   asynchronous: false
-                  cache: true
+                  // The row URLs are stable paths (a theme's preview.png, or a
+                  // content-addressed thumbnail). Qt's pixmap cache is keyed on
+                  // the URL alone and does not notice the file being rewritten
+                  // in place, so a replaced preview.png would keep showing the
+                  // old image for as long as the shell process lives. Every row
+                  // here has a unique URL, so the cache shares nothing anyway.
+                  cache: false
                   smooth: true
                 }
 

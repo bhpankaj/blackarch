@@ -3,9 +3,9 @@
 # Walker's bright flat selection carry the legacy identity into Quattro.
 
 [bar]
-background = ""
+background = "#131318"
 background-alpha = 1.0
-text = "#008580"
+text = "#6670c4"
 active = "#4ECDC4"
 scale-with-font = true
 size-horizontal = 26

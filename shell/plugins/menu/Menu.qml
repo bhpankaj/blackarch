@@ -37,7 +37,7 @@ Item {
 
   function refresh() {
     defaultMenuFile.reload()
-    userMenuFile.reload()
+    userMenuScan.running = true
     return "ok"
   }
 
@@ -49,7 +49,9 @@ Item {
   // path doesn't have to shell out to bash + jq on every open.
   // Quickshell.env("HOME")
   property string defaultMenuPath: blackarchPath + "/default/blackarch/blackarch-menu.jsonc"
-  property string userMenuPath: blackarchPath + "/default/blackarch/additional-menu.jsonc"
+  // Generated menu sources live one file per menu in this directory; the shell
+  // globs it instead of reading a single hardcoded aggregate.
+  property string userMenuDir: blackarchPath + "/default/blackarch/menus"
   property var defaultMenuItems: []
   property var userMenuItems: []
   property bool opened: false
@@ -239,6 +241,42 @@ Item {
 
   function parseMenuJsonc(raw) {
     return MenuModel.parseMenuJsonc(raw)
+  }
+
+  // Parse the concatenated `===<path>===` / `=== EOM ===` stream produced by
+  // userMenuScan and merge every file's items into the user menu source.
+  function parseUserMenuOutput(output) {
+    var lines = String(output || "").split("\n")
+    var items = []
+    var currentPath = ""
+    var currentJson = []
+
+    function flush() {
+      if (currentPath === "") return
+      items = items.concat(root.parseMenuJsonc(currentJson.join("\n")))
+      currentPath = ""
+      currentJson = []
+    }
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i]
+      var start = line.match(/^===(.+)===$/)
+      if (start && line !== "=== EOM ===") {
+        flush()
+        currentPath = start[1]
+        currentJson = []
+        continue
+      }
+      if (line === "=== EOM ===") {
+        flush()
+        continue
+      }
+      if (currentPath !== "") currentJson.push(line)
+    }
+    flush()
+
+    root.userMenuItems = items
+    root.rebuildItemsFromSources()
   }
 
   // Merge defaults + user extension. Later entries override earlier ones
@@ -929,14 +967,31 @@ Item {
     onFileChanged: reload()
   }
 
+  // The generated menu files are globbed from a directory: each XDG menu, the
+  // cyber-toolkit roles and SmartThings write their own JSONC, and the shell
+  // merges whatever is present. Quickshell has no dirContents, so a bash Process
+  // concatenates the files with markers (the same pattern the agents plugin uses
+  // for its usage records); the directory FileView re-runs the scan on change.
+  Process {
+    id: userMenuScan
+    running: true
+    command: ["bash", "-c", "dir=$0; [[ -d \"$dir\" ]] || exit 0; shopt -s nullglob; for f in \"$dir\"/*.jsonc; do [[ -f \"$f\" ]] || continue; printf '===%s===\\n' \"$f\"; cat \"$f\"; printf '\\n=== EOM ===\\n'; done", root.userMenuDir]
+    stdout: StdioCollector {
+      waitForEnd: true
+      onStreamFinished: root.parseUserMenuOutput(text)
+    }
+    stderr: StdioCollector {
+      waitForEnd: true
+      onStreamFinished: if (text.trim() !== "") console.warn("menu/sources", text.trim())
+    }
+  }
+
   FileView {
-    id: userMenuFile
-    path: root.userMenuPath
+    id: userMenuDirWatch
+    path: root.userMenuDir
     watchChanges: true
     printErrors: false
-    onLoaded: { root.userMenuItems = root.parseMenuJsonc(text()); root.rebuildItemsFromSources() }
-    onLoadFailed: { root.userMenuItems = []; root.rebuildItemsFromSources() }
-    onFileChanged: reload()
+    onFileChanged: userMenuScan.running = true
   }
 
   // ---------------------------------------------------------------- guards

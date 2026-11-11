@@ -18,7 +18,10 @@ function normalizeItem(id, raw) {
     parent = id.indexOf(".") >= 0 ? id.split(".").slice(0, -1).join(".") : "root"
   if (id === "root") parent = ""
 
-  var kind = value.action ? "action" : (value.target ? "link" : "menu")
+  // `kind` is optional and defaults to the historical inference, so existing
+  // menus are unaffected. Generated application rows set it to "app" to get
+  // the image icon, launch feedback and uninstall path from AppLibrary.
+  var kind = value.kind || (value.action ? "action" : (value.target ? "link" : "menu"))
 
   return {
     id: id,
@@ -34,7 +37,9 @@ function normalizeItem(id, raw) {
     provider: value.provider || "",
     aliases: aliases,
     when: value.when || "",
-    checked: value.checked || ""
+    checked: value.checked || "",
+    appIcon: value.appIcon || "",
+    appId: value.appId || ""
   }
 }
 
@@ -115,8 +120,10 @@ function mergeAppRows(items, itemOrder, appRows) {
     var id = order[i]
     var existing = source[id]
     // Orphans (an id with no item) are dropped rather than carried forward,
-    // so a single lost write cannot compound into a duplicate row.
-    if (!existing || existing.kind === "app") continue
+    // so a single lost write cannot compound into a duplicate row. Only this
+    // provider's own rows (parent === "apps") are swapped: app rows contributed
+    // by other sources, such as the generated XDG menus, must survive.
+    if (!existing || (existing.kind === "app" && existing.parent === "apps")) continue
     nextItems[id] = existing
     nextOrder.push(id)
   }

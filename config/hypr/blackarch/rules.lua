@@ -94,7 +94,7 @@ hl.window_rule({ match = { class = "(.*kitty.*)" } , size = {"(monitor_w*0.95)",
 hl.window_rule({ match = { class = "(.*hacker.*)" } , size = {"(monitor_w*0.95)", "(monitor_h*0.95)"}, workspace = "4" })
 hl.window_rule({ match = { class = "(^org.blackarch.screensaver$)" }, fullscreen = true })
 hl.window_rule({ match = { class = "(.*ulaa-.*)" }, workspace = "1", group = "set" })
-hl.window_rule({ match = { class = "(.*youtube.com.*)" }, workspace = "special:hacker", group = "unset",no_screen_share = on, no_shadow = on  })
+hl.window_rule({ match = { class = "(.*youtube.com.*|.*cliamp.*)" }, workspace = "special:hacker", group = "unset",no_screen_share = on, no_shadow = on  })
 hl.window_rule({ match = { class = "(.*firefox.*|.*chromium.*|.*brave.*|.*librewolf.*)" }, workspace = "2" , group = "set"})
 -- hl.window_rule({ match = { class = "()"  }, size = {"(monitor_w*0.45)", "(monitor_h*0.45)"}, float = true})
 hl.window_rule({ match = { class = "org.blackarch.mpv" }, workspace = "5", group = "set" })
@@ -103,6 +103,16 @@ hl.window_rule({ match = { class = "org.blackarch.mpv" }, workspace = "5", group
 hl.window_rule({ match = { class = "(.*ulaa-browser.*|.*burp.*)" }, workspace = "5", group = "set" })
 hl.window_rule({ match = { class = "(.*windows.cloud.*)" }, workspace = "5", group = "set" })
 hl.window_rule({ match = { class = "(.*qutebrowser.*)" }, workspace = "5", group = "set" })
+
+-- Windows apps opened with `blackarch-windows-vm app` (RDP RemoteApp / RAIL).
+-- xfreerdp3 is an XWayland client and names every remote window "RAIL:<id>",
+-- with no rule of its own, so a remote app would arrive at a default size and
+-- tile like a stray window. Float it and give it a sensible app-window size.
+hl.window_rule({ match = { class = ".*RAIL:.*" }, float = true, center = true, size = { "(monitor_w*0.7)", "(monitor_h*0.7)" } })
+-- The remote session also announces helper windows ("PopupHost", the language
+-- bar and notification area). Those must stay tiny: the rule above would
+-- otherwise blow each one up to app-window size. Applied after, so it wins.
+hl.window_rule({ match = { class = ".*RAIL:.*", title = "^PopupHost$" }, float = true, size = { 1, 1 } })
 
 -- Cleanup Rules
 hl.window_rule({ match = { class = "(xdg-desktop-portal-gtk|sublime_text|DesktopEditors|org.gnome.Nautilus)",title = "^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)",
@@ -133,13 +143,14 @@ hl.layer_rule({ match = { namespace = "wvkbd" }, no_anim = true, no_screen_share
 hl.window_rule({ match = { tag = "floating-window" }, float = true, center = true, size = { 1875, 1100 } })
 hl.window_rule({ match = { tag = "pop" }, rounding = 8 })
 hl.window_rule({ match = { tag = "noidle" }, idle_inhibit = "always" })
+hl.window_rule({ match = { class = "RAIL:*" }, workspace = "1" })
 
 -- Workspace Layout rules
 hl.workspace_rule({ workspace = "special:hacker", layout = "master", no_screen_share = on, no_shadow = on })
-hl.workspace_rule({ workspace = "special:silent", layout = "master", no_screen_share = on, no_shadow = on })
+hl.workspace_rule({ workspace = "special:silent", layout = "scrolling", no_screen_share = on, no_shadow = on })
 hl.workspace_rule({ workspace = "special:scratchpad", layout = "master", no_screen_share = on, no_shadow = on })
 hl.workspace_rule({ workspace = "1", layout = "monocle" })
-hl.workspace_rule({ workspace = "2", layout = "master" })
+hl.workspace_rule({ workspace = "2", layout = "monocle" })
 hl.workspace_rule({ workspace = "3", layout = "lua:blackarch"})
 hl.workspace_rule({ workspace = "4", layout = "scrolling", layout_opts = { direction = "down" } })
-hl.workspace_rule({ workspace = "5", layout = "monocle" })
+hl.workspace_rule({ workspace = "5", layout = "master" })

@@ -226,16 +226,16 @@ BarWidget {
 
   // ---- Data plumbing ----------------------------------------------------
 
-  // Path to the curated device list. Defaults to Blackarch's own menu file so
-  // the widget tracks whatever `blackarch-launch-hackingTools` writes; the
-  // `menuFile` setting can point it somewhere else (e.g. a personal list that
-  // does not touch the shared menu).
+  // Path to the curated device list. Defaults to Blackarch's own per-source
+  // menu file so the widget tracks whatever `blackarch shell generate` writes;
+  // the `menuFile` setting can point it somewhere else (e.g. a personal list
+  // that does not touch the shared menu).
   readonly property string menuPath: {
     var override = setting("menuFile", "")
     if (override !== "" && override !== null && override !== undefined)
       return String(override)
     return (Quickshell.env("BLACKARCH_PATH") || "/opt/blackarch")
-           + "/default/blackarch/additional-menu.jsonc"
+           + "/default/blackarch/menus/smartthings.jsonc"
   }
 
   // Curated device list. watchChanges makes an edit (by

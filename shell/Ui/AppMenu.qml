@@ -3,26 +3,38 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
+import Quickshell.Wayland
 
-PopupWindow {
+// Classic XDG applications menu. PanelWindow (not PopupWindow) so it creates
+// its own layer-shell surface when the shell summons the plugin.
+PanelWindow {
     id: root
-    width: 360
-    height: 520
+    visible: false
     color: "transparent"
+    WlrLayershell.namespace: "blackarch-xdgmenu"
+    WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+    exclusionMode: ExclusionMode.Ignore
+    anchors { top: true; bottom: true; left: true; right: true }
 
     property var menuData: []
+    property bool opened: visible
 
-    // Run the Python script at runtime to read multiple menu files and output JSON
+    Rectangle {
+        anchors.fill: parent
+        color: "#80000000"
+        MouseArea { anchors.fill: parent; onClicked: root.visible = false }
+    }
+
+    // Evaluate the XDG menu definitions against the installed desktop entries.
     Process {
         id: menuLoader
-        // Pass multiple menu files as arguments to your parser script
-        command: ["python3", "/opt/blackarch/bin/blackarch-xdg-menu-parser", 
-                  "/etc/xdg/menus/red-applications.menu", 
-                  "/etc/xdg/menus/blue-applications.menu", 
-                  "/etc/xdg/menus/mitre-applications.menu", 
-                  "/etc/xdg/menus/xfce-applications.menu", 
+        command: ["python3", "/opt/blackarch/bin/blackarch-xdg-menu-parser",
+                  "/etc/xdg/menus/red-applications.menu",
+                  "/etc/xdg/menus/blue-applications.menu",
+                  "/etc/xdg/menus/mitre-applications.menu",
+                  "/etc/xdg/menus/xfce-applications.menu",
                   "/etc/xdg/menus/arch-applications.menu"]
-        
         running: true
         stdout: SplitParser {
             onRead: data => {
@@ -41,7 +53,9 @@ PopupWindow {
     }
 
     Rectangle {
-        anchors.fill: parent
+        anchors.centerIn: parent
+        width: 380
+        height: 560
         color: "#1e1e2e"
         radius: 12
         border.color: "#313244"
@@ -104,7 +118,7 @@ PopupWindow {
                             delegate: Rectangle {
                                 id: itemRect
                                 readonly property bool matchesSearch: searchInput.text === "" || modelData.name.toLowerCase().includes(searchInput.text.toLowerCase())
-                                
+
                                 Layout.fillWidth: true
                                 height: matchesSearch ? 30 : 0
                                 visible: matchesSearch

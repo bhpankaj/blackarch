@@ -1,0 +1,4957 @@
+{
+  "blackarch.mitre-applications": {
+    "label": "Mitre Applications",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.usual-applications": {
+    "label": "Usual Applications",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.accessories": {
+    "label": "Accessories",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.athena-tweak-tool": {
+    "label": "Athena Tweak Tool",
+    "kind": "app",
+    "appId": "athena-tweak-tool",
+    "appIcon": "athenaos",
+    "action": "/usr/bin/athena-tweak-tool",
+    "aliases": [
+      "Athena Tweak Tool",
+      "tweak tool tweaktool"
+    ],
+    "description": "Athena Tweak Tool - graphical tool to set Athena OS"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-bleachbit-bleachbit": {
+    "label": "BleachBit",
+    "kind": "app",
+    "appId": "org.bleachbit.BleachBit",
+    "appIcon": "bleachbit",
+    "action": "bleachbit",
+    "aliases": [
+      "Unnecessary file cleaner",
+      "cache clean free performance privacy"
+    ],
+    "description": "Free space and maintain privacy"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.camera-relay-systray": {
+    "label": "Camera Relay",
+    "kind": "app",
+    "appId": "camera-relay-systray",
+    "appIcon": "camera-video-symbolic",
+    "action": "/usr/local/share/camera-relay/camera-relay-systray.py",
+    "description": "Toggle the camera relay for apps without PipeWire support"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-chipass-chipass": {
+    "label": "ChiPass",
+    "kind": "app",
+    "appId": "org.chipass.ChiPass",
+    "appIcon": "org.chipass.ChiPass",
+    "action": "ChiPass",
+    "aliases": [
+      "Password Manager",
+      "security privacy password-manager yubikey password keepass"
+    ],
+    "description": "Password manager with desktop and browser integration"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.xfce4-clipman": {
+    "label": "Clipboard Manager",
+    "kind": "app",
+    "appId": "xfce4-clipman",
+    "appIcon": "xfce4-clipman-plugin",
+    "action": "xfce4-clipman",
+    "description": "Clipboard Manager Autostart File"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.com-github-hluk-copyq": {
+    "label": "CopyQ",
+    "kind": "app",
+    "appId": "com.github.hluk.copyq",
+    "appIcon": "copyq",
+    "action": "copyq --start-server show",
+    "aliases": [
+      "Clipboard Manager"
+    ],
+    "description": "A cut & paste history utility"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-gnome-nautilus": {
+    "label": "Files",
+    "kind": "app",
+    "appId": "org.gnome.Nautilus",
+    "appIcon": "org.gnome.Nautilus",
+    "action": "nautilus --new-window",
+    "aliases": [
+      "folder manager explore disk filesystem nautilus"
+    ],
+    "description": "Access and organize files"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.shell": {
+    "label": "Fish Shell",
+    "kind": "app",
+    "appId": "shell",
+    "appIcon": "shell",
+    "action": "kitty --class shell",
+    "description": "Fish Shell"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-gnome-font-viewer": {
+    "label": "Fonts",
+    "kind": "app",
+    "appId": "org.gnome.font-viewer",
+    "appIcon": "org.gnome.font-viewer",
+    "action": "gnome-font-viewer",
+    "aliases": [
+      "fonts fontface"
+    ],
+    "description": "View fonts on your system"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.io-github-cboxdoerfer-fsearch": {
+    "label": "FSearch",
+    "kind": "app",
+    "appId": "io.github.cboxdoerfer.FSearch",
+    "appIcon": "io.github.cboxdoerfer.FSearch",
+    "action": "fsearch",
+    "aliases": [
+      "File Search Utility",
+      "search fsearch files folders music video documents find tool everything"
+    ],
+    "description": "A file search application focusing on performance and advanced features"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.fuzzdb": {
+    "label": "FuzzDB",
+    "kind": "app",
+    "appId": "fuzzdb",
+    "appIcon": "athena-ike-scan",
+    "action": "shell-rocket -b fuzzdb -d /usr/share/fuzzdb",
+    "description": "FuzzDB"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.kbd-layout-viewer5": {
+    "label": "Keyboard layout viewer",
+    "kind": "app",
+    "appId": "kbd-layout-viewer5",
+    "appIcon": "input-keyboard",
+    "action": "kbd-layout-viewer5",
+    "description": "View keyboard layout"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.kvantummanager": {
+    "label": "Kvantum Manager",
+    "kind": "app",
+    "appId": "kvantummanager",
+    "appIcon": "kvantum",
+    "action": "kvantummanager",
+    "description": "A simple GUI for installing, selecting and manipulating Kvantum themes"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-xfce-mousepad": {
+    "label": "Mousepad",
+    "kind": "app",
+    "appId": "org.xfce.mousepad",
+    "appIcon": "org.xfce.mousepad",
+    "action": "mousepad",
+    "aliases": [
+      "Text Editor",
+      "Edit Text Simple XFCE Lightweight Fast"
+    ],
+    "description": "Simple Text Editor"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.nvim": {
+    "label": "Neovim",
+    "kind": "app",
+    "appId": "nvim",
+    "appIcon": "nvim",
+    "action": "nvim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.org-moson-pacseek": {
+    "label": "pacseek",
+    "kind": "app",
+    "appId": "org.moson.pacseek",
+    "appIcon": "pacseek",
+    "action": "pacseek",
+    "aliases": [
+      "terminal package"
+    ],
+    "description": "A terminal user interface for searching and installing Arch Linux packages"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.payloadsallthethings": {
+    "label": "PayloadsAllTheThings",
+    "kind": "app",
+    "appId": "payloadsallthethings",
+    "appIcon": "athena-commix",
+    "action": "shell-rocket -b payloadsallthethings -d /usr/share/payloadsallthethings",
+    "description": "PayloadsAllTheThings"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.powershell": {
+    "label": "PowerShell",
+    "kind": "app",
+    "appId": "powershell",
+    "appIcon": "powershell",
+    "action": "shell-rocket -b pwsh -p powershell",
+    "description": "PowerShell"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.xfce4-screenshooter": {
+    "label": "Screenshot",
+    "kind": "app",
+    "appId": "xfce4-screenshooter",
+    "appIcon": "org.xfce.screenshooter",
+    "action": "xfce4-screenshooter",
+    "description": "Take screenshots of the entire screen, of the active window or of a region"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.seclists": {
+    "label": "SecLists",
+    "kind": "app",
+    "appId": "seclists",
+    "appIcon": "athena-bettercap",
+    "action": "shell-rocket -b seclists -d /usr/share/seclists",
+    "description": "SecLists"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.uuctl": {
+    "label": "uuctl",
+    "kind": "app",
+    "appId": "uuctl",
+    "appIcon": "applications-system",
+    "action": "uuctl",
+    "aliases": [
+      "User unit manager",
+      "units services systemd session"
+    ],
+    "description": "Select and perform actions on user systemd units"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.vim": {
+    "label": "Vim",
+    "kind": "app",
+    "appId": "vim",
+    "appIcon": "gvim",
+    "action": "vim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.vscodium": {
+    "label": "VSCodium",
+    "kind": "app",
+    "appId": "vscodium",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.vscodium-wayland": {
+    "label": "VSCodium - Wayland",
+    "kind": "app",
+    "appId": "vscodium-wayland",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.wiremix": {
+    "label": "Wiremix",
+    "kind": "app",
+    "appId": "wiremix",
+    "appIcon": "",
+    "action": "wiremix",
+    "aliases": [
+      "Audio Mixer",
+      "pipewire sound audio"
+    ],
+    "description": "Configure audio device settings"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.xarchiver": {
+    "label": "Xarchiver",
+    "kind": "app",
+    "appId": "xarchiver",
+    "appIcon": "xarchiver",
+    "action": "xarchiver",
+    "aliases": [
+      "Archive manager",
+      "archive compress decompress extract pack uncompress unpack 7-zip 7z 7za 7zip 7zr 7zz aab apk AppImage ar arj bz bz2 bz3 bzip bzip1 bzip2 bzip3 cab cb7 cbr cbt cbz chm compress cpio deb docx epub exe fbz gtar gunzip gz gzip iso jar jsonlz4 lbzip2 lha lrz lrzip lsar lunzip lz lz4 lzh lzip lzma lzo lzop mksquashfs mozlz4 odt oxt pbzip2 pigz plzip rar rar4 rar5 rpm rzip sfs snap sqfs sqsh squashfs tar unar unarj unrar unsquashfs unzip xpi xz zip zpaq zst Zstandard zstd"
+    ],
+    "description": "Create, extract and modify archives"
+  },
+  "blackarch.mitre-applications.usual-applications.accessories.zeit": {
+    "label": "Zeit",
+    "kind": "app",
+    "appId": "zeit",
+    "appIcon": "chronometer",
+    "action": "/usr/bin/zeit",
+    "description": "Qt GUI for crontab and at"
+  },
+  "blackarch.mitre-applications.usual-applications.development": {
+    "label": "Development",
+    "icon": "󰵮"
+  },
+  "blackarch.mitre-applications.usual-applications.development.cmake-gui": {
+    "label": "CMake",
+    "kind": "app",
+    "appId": "cmake-gui",
+    "appIcon": "CMakeSetup",
+    "action": "cmake-gui",
+    "description": "Cross-platform buildsystem"
+  },
+  "blackarch.mitre-applications.usual-applications.development.code-oss": {
+    "label": "Code - OSS",
+    "kind": "app",
+    "appId": "code-oss",
+    "appIcon": "com.visualstudio.code.oss",
+    "action": "code-oss",
+    "aliases": [
+      "Text Editor",
+      "vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.mitre-applications.usual-applications.development.gsharp": {
+    "label": "gsharp",
+    "kind": "app",
+    "appId": "gsharp",
+    "appIcon": "",
+    "action": "/usr/bin/gsharp",
+    "aliases": [
+      "Interactive C# Shell"
+    ],
+    "description": "Write C# in an interactive shell, and inject your code into running Mono processes"
+  },
+  "blackarch.mitre-applications.usual-applications.development.nvim": {
+    "label": "Neovim",
+    "kind": "app",
+    "appId": "nvim",
+    "appIcon": "nvim",
+    "action": "nvim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.mitre-applications.usual-applications.development.vscodium": {
+    "label": "VSCodium",
+    "kind": "app",
+    "appId": "vscodium",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.mitre-applications.usual-applications.development.vscodium-wayland": {
+    "label": "VSCodium - Wayland",
+    "kind": "app",
+    "appId": "vscodium-wayland",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.mitre-applications.usual-applications.education": {
+    "label": "Education",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.usual-applications.education.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.mitre-applications.usual-applications.education.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.mitre-applications.usual-applications.science": {
+    "label": "Science",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.usual-applications.science.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.mitre-applications.usual-applications.science.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.mitre-applications.usual-applications.graphics": {
+    "label": "Graphics",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.graphics.org-gnome-loupe": {
+    "label": "Image Viewer",
+    "kind": "app",
+    "appId": "org.gnome.Loupe",
+    "appIcon": "org.gnome.Loupe",
+    "action": "loupe",
+    "aliases": [
+      "Picture Graphics Loupe"
+    ],
+    "description": "View and edit images"
+  },
+  "blackarch.mitre-applications.usual-applications.graphics.libreoffice-draw": {
+    "label": "LibreOffice Draw",
+    "kind": "app",
+    "appId": "libreoffice-draw",
+    "appIcon": "libreoffice-draw",
+    "action": "libreoffice --draw",
+    "aliases": [
+      "Drawing Program",
+      "Vector Schema Diagram Layout OpenDocument Graphics Microsoft Publisher Microsoft Visio Corel Draw cdr odg svg pdf vsd"
+    ],
+    "description": "Create and edit drawings, flow charts and logos."
+  },
+  "blackarch.mitre-applications.usual-applications.graphics.omasnap": {
+    "label": "Omasnap",
+    "kind": "app",
+    "appId": "omasnap",
+    "appIcon": "camera-photo",
+    "action": "omasnap",
+    "description": "Capture and annotate a screenshot"
+  },
+  "blackarch.mitre-applications.usual-applications.graphics.com-github-flxzt-rnote": {
+    "label": "Rnote",
+    "kind": "app",
+    "appId": "com.github.flxzt.rnote",
+    "appIcon": "com.github.flxzt.rnote",
+    "action": "rnote",
+    "aliases": [
+      "Gnome GTK Office Graphics Notes"
+    ],
+    "description": "Sketch and take handwritten notes"
+  },
+  "blackarch.mitre-applications.usual-applications.internet": {
+    "label": "Internet",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.internet.athena-nexus": {
+    "label": "Athena Nexus",
+    "kind": "app",
+    "appId": "athena-nexus",
+    "appIcon": "athena-nexus",
+    "action": "athena-nexus",
+    "aliases": [
+      "Container Orchestrator",
+      "container docker podman security pentest siem forensics"
+    ],
+    "description": "Deploy and manage security tools as containers"
+  },
+  "blackarch.mitre-applications.usual-applications.internet.blackarch-webapp": {
+    "label": "BlackArch WebApp Handler",
+    "kind": "app",
+    "appId": "blackarch-webapp",
+    "appIcon": "",
+    "action": "/opt/blackarch/bin/blackarch execute webapp",
+    "description": "Open URLs using BlackArch webapp execution script"
+  },
+  "blackarch.mitre-applications.usual-applications.internet.chromium": {
+    "label": "Chromium",
+    "kind": "app",
+    "appId": "chromium",
+    "appIcon": "chromium",
+    "action": "chromium",
+    "aliases": [
+      "Web Browser"
+    ],
+    "description": "Access the Internet"
+  },
+  "blackarch.mitre-applications.usual-applications.internet.discord": {
+    "label": "Discord",
+    "kind": "app",
+    "appId": "discord",
+    "appIcon": "discord",
+    "action": "/usr/bin/discord --url --",
+    "aliases": [
+      "Internet Messenger"
+    ],
+    "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone."
+  },
+  "blackarch.mitre-applications.usual-applications.internet.firefox": {
+    "label": "Firefox",
+    "kind": "app",
+    "appId": "firefox",
+    "appIcon": "firefox",
+    "action": "/usr/lib/firefox/firefox",
+    "aliases": [
+      "Web Browser",
+      "Internet WWW Browser Web Explorer"
+    ],
+    "description": "Fast and private browser"
+  },
+  "blackarch.mitre-applications.usual-applications.internet.teams-for-linux": {
+    "label": "Microsoft Teams for Linux",
+    "kind": "app",
+    "appId": "teams-for-linux",
+    "appIcon": "teams-for-linux",
+    "action": "teams-for-linux --gtk-version=3",
+    "aliases": [
+      "Teams"
+    ],
+    "description": "Unofficial Microsoft Teams client for Linux."
+  },
+  "blackarch.mitre-applications.usual-applications.internet.com-ulaa-ulaa": {
+    "label": "Ulaa",
+    "kind": "app",
+    "appId": "com.ulaa.Ulaa",
+    "appIcon": "com.ulaa.Ulaa",
+    "action": "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=ulaa --file-forwarding com.ulaa.Ulaa @@u  @@",
+    "aliases": [
+      "Web Browser"
+    ],
+    "description": "Access the Internet"
+  },
+  "blackarch.mitre-applications.usual-applications.internet.zaproxy": {
+    "label": "ZAP",
+    "kind": "app",
+    "appId": "zaproxy",
+    "appIcon": "zaproxy",
+    "action": "zaproxy",
+    "aliases": [
+      "network scan scanner web security zed attack proxy"
+    ],
+    "description": "ZAP is an open-source web application security scanner"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia": {
+    "label": "Multimedia",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.cliamp": {
+    "label": "cliamp",
+    "kind": "app",
+    "appId": "cliamp",
+    "appIcon": "cliamp",
+    "action": "cliamp",
+    "aliases": [
+      "Music Player",
+      "music audio player terminal tui winamp radio podcast"
+    ],
+    "description": "A retro terminal music player inspired by Winamp 2.x"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.com-github-wwmm-easyeffects": {
+    "label": "Easy Effects",
+    "kind": "app",
+    "appId": "com.github.wwmm.easyeffects",
+    "appIcon": "com.github.wwmm.easyeffects",
+    "action": "easyeffects",
+    "aliases": [
+      "Equalizer, Compressor and Other Audio Effects",
+      "limiter compressor reverberation equalizer autovolume"
+    ],
+    "description": "Simple audio effects"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.envy24control": {
+    "label": "Envy24 Control",
+    "kind": "app",
+    "appId": "envy24control",
+    "appIcon": "envy24control",
+    "action": "envy24control",
+    "aliases": [
+      "Envy24 Control Utility"
+    ],
+    "description": "Mixer and GUI control utility for Envy24-based sound cards"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.guvcview": {
+    "label": "guvcview",
+    "kind": "app",
+    "appId": "guvcview",
+    "appIcon": "guvcview",
+    "action": "guvcview",
+    "aliases": [
+      "GTK UVC video viewer"
+    ],
+    "description": "A video viewer and capturer for the linux uvc driver"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.hdajackretask": {
+    "label": "HDAJackRetask",
+    "kind": "app",
+    "appId": "hdajackretask",
+    "appIcon": "hdajackretask",
+    "action": "hdajackretask",
+    "description": "Retask the audio jacks for the HDA sound driver"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.hdspconf": {
+    "label": "HDSPConf",
+    "kind": "app",
+    "appId": "hdspconf",
+    "appIcon": "hdspconf",
+    "action": "hdspconf",
+    "description": "Hammerfall DSP control application"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.hdspmixer": {
+    "label": "HDSPMixer",
+    "kind": "app",
+    "appId": "hdspmixer",
+    "appIcon": "hdspmixer",
+    "action": "hdspmixer",
+    "description": "Hammerfall DSP matrix mixer control GUI"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.hwmixvolume": {
+    "label": "Hwmixvolume",
+    "kind": "app",
+    "appId": "hwmixvolume",
+    "appIcon": "hwmixvolume",
+    "action": "hwmixvolume",
+    "aliases": [
+      "Control the volume of individual streams on sound cards that use hardware mixing"
+    ]
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.me-timschneeberger-jdsp4linux": {
+    "label": "JamesDSP",
+    "kind": "app",
+    "appId": "me.timschneeberger.jdsp4linux",
+    "appIcon": "me.timschneeberger.jdsp4linux",
+    "action": "jamesdsp",
+    "description": "Audio effect processor for Pipewire"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.lsp-plugins": {
+    "label": "LSP Plugins",
+    "kind": "app",
+    "appId": "lsp-plugins",
+    "appIcon": "lsp-plugins",
+    "action": "lsp-plugins",
+    "aliases": [
+      "Audio processing",
+      "audio sound jackd lsp-plugins"
+    ],
+    "description": "Launcher application for standalone collection of open source audio processing plugins"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.mpv": {
+    "label": "mpv Media Player",
+    "kind": "app",
+    "appId": "mpv",
+    "appIcon": "mpv",
+    "action": "mpv --player-operation-mode=pseudo-gui --",
+    "aliases": [
+      "Multimedia player",
+      "mpv media player video audio tv"
+    ],
+    "description": "Play movies and songs"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.omacut": {
+    "label": "Omacut",
+    "kind": "app",
+    "appId": "omacut",
+    "appIcon": "omacut",
+    "action": "omacut",
+    "aliases": [
+      "Video Trimmer",
+      "video trim cut clip ffmpeg"
+    ],
+    "description": "Dead-simple video length trimmer"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.qv4l2": {
+    "label": "Qt V4L2 test Utility",
+    "kind": "app",
+    "appId": "qv4l2",
+    "appIcon": "qv4l2",
+    "action": "qv4l2",
+    "aliases": [
+      "video grabber V4L"
+    ],
+    "description": "Allow testing Video4Linux devices"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.qvidcap": {
+    "label": "Qt V4L2 video capture utility",
+    "kind": "app",
+    "appId": "qvidcap",
+    "appIcon": "qvidcap",
+    "action": "qvidcap",
+    "aliases": [
+      "video grabber V4L"
+    ],
+    "description": "Viewer for video capture"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.org-rncbc-qtractor": {
+    "label": "Qtractor",
+    "kind": "app",
+    "appId": "org.rncbc.qtractor",
+    "appIcon": "org.rncbc.qtractor",
+    "action": "qtractor -platform xcb",
+    "aliases": [
+      "Multi-track Sequencer",
+      "Audio MIDI Multitrack Sequencer DAW ALSA JACK LADSPA DSSI VST VST2 VST3 CLAP LV2 Qt"
+    ],
+    "description": "Qtractor is an Audio/MIDI multi-track sequencer application"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.soundwire": {
+    "label": "SoundWire Server",
+    "kind": "app",
+    "appId": "soundwire",
+    "appIcon": "soundwire",
+    "action": "SoundWireServer",
+    "description": "Server program for SoundWire Android app"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.org-pulseaudio-pavucontrol": {
+    "label": "Volume Control",
+    "kind": "app",
+    "appId": "org.pulseaudio.pavucontrol",
+    "appIcon": "org.pulseaudio.pavucontrol",
+    "action": "pavucontrol",
+    "aliases": [
+      "Volume Control",
+      "pavucontrol PulseAudio Microphone Volume Fade Balance Headset Speakers Headphones Audio Mixer Output Input Devices Playback Recording System Sounds Sound Card Settings Preferences"
+    ],
+    "description": "Adjust the volume level"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.com-zamaudio-zamgrains": {
+    "label": "zamgrains",
+    "kind": "app",
+    "appId": "com.zamaudio.zamgrains",
+    "appIcon": "com.zamaudio.zamgrains",
+    "action": "ZamGrains",
+    "aliases": [
+      "Granular Synthesizer"
+    ],
+    "description": "Granular Synthesizer"
+  },
+  "blackarch.mitre-applications.usual-applications.multimedia.com-zamaudio-zamtube": {
+    "label": "zamtube",
+    "kind": "app",
+    "appId": "com.zamaudio.zamtube",
+    "appIcon": "com.zamaudio.zamtube",
+    "action": "ZamTube",
+    "aliases": [
+      "Tube Amplifier"
+    ],
+    "description": "Wave digital filter physical model of a triode tube amplifier stage, with modelled tone stacks from real guitar amplifiers"
+  },
+  "blackarch.mitre-applications.usual-applications.office": {
+    "label": "Office",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-startcenter": {
+    "label": "LibreOffice",
+    "kind": "app",
+    "appId": "libreoffice-startcenter",
+    "appIcon": "libreoffice-startcenter",
+    "action": "libreoffice",
+    "aliases": [
+      "Office"
+    ],
+    "description": "Launch applications to create text documents, spreadsheets, presentations, drawings, formulas, and databases, or open recently used documents."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-base": {
+    "label": "LibreOffice Base",
+    "kind": "app",
+    "appId": "libreoffice-base",
+    "appIcon": "libreoffice-base",
+    "action": "libreoffice --base",
+    "aliases": [
+      "Database Development",
+      "Data SQL"
+    ],
+    "description": "Manage databases, create queries and reports to track and manage your information."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-calc": {
+    "label": "LibreOffice Calc",
+    "kind": "app",
+    "appId": "libreoffice-calc",
+    "appIcon": "libreoffice-calc",
+    "action": "libreoffice --calc",
+    "aliases": [
+      "Spreadsheet",
+      "Accounting Stats OpenDocument Spreadsheet Chart Microsoft Excel Microsoft Works OpenOffice Calc ods xls xlsx"
+    ],
+    "description": "Perform calculations, analyze information and manage lists in spreadsheets."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-draw": {
+    "label": "LibreOffice Draw",
+    "kind": "app",
+    "appId": "libreoffice-draw",
+    "appIcon": "libreoffice-draw",
+    "action": "libreoffice --draw",
+    "aliases": [
+      "Drawing Program",
+      "Vector Schema Diagram Layout OpenDocument Graphics Microsoft Publisher Microsoft Visio Corel Draw cdr odg svg pdf vsd"
+    ],
+    "description": "Create and edit drawings, flow charts and logos."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-impress": {
+    "label": "LibreOffice Impress",
+    "kind": "app",
+    "appId": "libreoffice-impress",
+    "appIcon": "libreoffice-impress",
+    "action": "libreoffice --impress",
+    "aliases": [
+      "Presentation",
+      "Slideshow Slides OpenDocument Presentation Microsoft PowerPoint Microsoft Works OpenOffice Impress odp ppt pptx"
+    ],
+    "description": "Create and edit presentations for slideshows, meetings and Web pages."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.mitre-applications.usual-applications.office.libreoffice-writer": {
+    "label": "LibreOffice Writer",
+    "kind": "app",
+    "appId": "libreoffice-writer",
+    "appIcon": "libreoffice-writer",
+    "action": "libreoffice --writer",
+    "aliases": [
+      "Word Processor",
+      "Text Letter Fax Document OpenDocument Text Microsoft Word Microsoft Works Lotus WordPro OpenOffice Writer CV odt doc docx rtf"
+    ],
+    "description": "Create and edit text and graphics in letters, reports, documents and Web pages."
+  },
+  "blackarch.mitre-applications.usual-applications.office.obsidian": {
+    "label": "Obsidian",
+    "kind": "app",
+    "appId": "obsidian",
+    "appIcon": "obsidian",
+    "action": "/usr/bin/obsidian",
+    "description": "Obsidian"
+  },
+  "blackarch.mitre-applications.usual-applications.office.omawrite": {
+    "label": "Omawrite",
+    "kind": "app",
+    "appId": "omawrite",
+    "appIcon": "omawrite",
+    "action": "omawrite",
+    "aliases": [
+      "Markdown Writer",
+      "markdown write notes text editor"
+    ],
+    "description": "Dead-simple Markdown writing app"
+  },
+  "blackarch.mitre-applications.usual-applications.office.org-pwmt-zathura": {
+    "label": "Zathura",
+    "kind": "app",
+    "appId": "org.pwmt.zathura",
+    "appIcon": "org.pwmt.zathura",
+    "action": "zathura",
+    "aliases": [
+      "PDF PS PostScript DjVU document presentation viewer"
+    ],
+    "description": "Minimalistic document viewer"
+  },
+  "blackarch.mitre-applications.usual-applications.settings": {
+    "label": "Settings",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.settings.nm-connection-editor": {
+    "label": "Advanced Network Configuration",
+    "kind": "app",
+    "appId": "nm-connection-editor",
+    "appIcon": "preferences-system-network",
+    "action": "nm-connection-editor",
+    "description": "Manage and change your network connection settings"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.athena-tweak-tool": {
+    "label": "Athena Tweak Tool",
+    "kind": "app",
+    "appId": "athena-tweak-tool",
+    "appIcon": "athenaos",
+    "action": "/usr/bin/athena-tweak-tool",
+    "aliases": [
+      "Athena Tweak Tool",
+      "tweak tool tweaktool"
+    ],
+    "description": "Athena Tweak Tool - graphical tool to set Athena OS"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.blueman-adapters": {
+    "label": "Bluetooth Adapters",
+    "kind": "app",
+    "appId": "blueman-adapters",
+    "appIcon": "blueman-device",
+    "action": "blueman-adapters",
+    "description": "Set Bluetooth Adapter Properties"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.blueman-manager": {
+    "label": "Bluetooth Manager",
+    "kind": "app",
+    "appId": "blueman-manager",
+    "appIcon": "blueman",
+    "action": "blueman-manager",
+    "description": "Blueman Bluetooth Manager"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.xfce4-clipman-settings": {
+    "label": "Clipboard Manager Settings",
+    "kind": "app",
+    "appId": "xfce4-clipman-settings",
+    "appIcon": "xfce4-clipman-plugin",
+    "action": "xfce4-clipman-settings",
+    "description": "Customize your clipboard"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.nwg-displays": {
+    "label": "Displays Settings",
+    "kind": "app",
+    "appId": "nwg-displays",
+    "appIcon": "nwg-displays",
+    "action": "nwg-displays",
+    "aliases": [
+      "Output configuration utility"
+    ],
+    "description": "nwg-shell tool to configure outputs"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.fcitx5-configtool": {
+    "label": "Fcitx 5 Configuration",
+    "kind": "app",
+    "appId": "fcitx5-configtool",
+    "appIcon": "fcitx",
+    "action": "/usr/bin/fcitx5-configtool",
+    "aliases": [
+      "Input Method Configuration"
+    ],
+    "description": "Change Fcitx 5 Configuration"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.org-fcitx-fcitx5-migrator": {
+    "label": "Fcitx 5 Migration Wizard",
+    "kind": "app",
+    "appId": "org.fcitx.fcitx5-migrator",
+    "appIcon": "fcitx",
+    "action": "fcitx5-migrator",
+    "description": "Import data from other input method such as Fcitx 4"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.nwg-look": {
+    "label": "GTK Settings",
+    "kind": "app",
+    "appId": "nwg-look",
+    "appIcon": "nwg-look",
+    "action": "nwg-look",
+    "aliases": [
+      "Adjust Look and Feel",
+      "windows preferences settings theme style appearance look"
+    ],
+    "description": "Customizes GTK3 look and feel settings"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.kvantummanager": {
+    "label": "Kvantum Manager",
+    "kind": "app",
+    "appId": "kvantummanager",
+    "appIcon": "kvantum",
+    "action": "kvantummanager",
+    "description": "A simple GUI for installing, selecting and manipulating Kvantum themes"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.panel-preferences": {
+    "label": "Panel",
+    "kind": "app",
+    "appId": "panel-preferences",
+    "appIcon": "org.xfce.panel",
+    "action": "xfce4-panel --preferences",
+    "aliases": [
+      "panels settings preferences taskbar autohide application menu start buttons launcher notification area status icons plugins"
+    ],
+    "description": "Customize the panel"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.qt5ct": {
+    "label": "Qt5 Settings",
+    "kind": "app",
+    "appId": "qt5ct",
+    "appIcon": "preferences-desktop-theme",
+    "action": "qt5ct",
+    "aliases": [
+      "settings desktop qt qtsettings qt5"
+    ],
+    "description": "Qt5 Configuration Tool"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.qt6ct": {
+    "label": "Qt6 Settings",
+    "kind": "app",
+    "appId": "qt6ct",
+    "appIcon": "preferences-desktop-theme",
+    "action": "qt6ct",
+    "aliases": [
+      "settings desktop qt qtsettings qt6"
+    ],
+    "description": "Qt6 Configuration Tool"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.uuctl": {
+    "label": "uuctl",
+    "kind": "app",
+    "appId": "uuctl",
+    "appIcon": "applications-system",
+    "action": "uuctl",
+    "aliases": [
+      "User unit manager",
+      "units services systemd session"
+    ],
+    "description": "Select and perform actions on user systemd units"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.org-pulseaudio-pavucontrol": {
+    "label": "Volume Control",
+    "kind": "app",
+    "appId": "org.pulseaudio.pavucontrol",
+    "appIcon": "org.pulseaudio.pavucontrol",
+    "action": "pavucontrol",
+    "aliases": [
+      "Volume Control",
+      "pavucontrol PulseAudio Microphone Volume Fade Balance Headset Speakers Headphones Audio Mixer Output Input Devices Playback Recording System Sounds Sound Card Settings Preferences"
+    ],
+    "description": "Adjust the volume level"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.voxtype-configure": {
+    "label": "Voxtype Configuration",
+    "kind": "app",
+    "appId": "voxtype-configure",
+    "appIcon": "audio-input-microphone",
+    "action": "voxtype-configure-launcher",
+    "aliases": [
+      "Voice-to-Text Settings",
+      "voxtype voice dictation transcription whisper parakeet settings configuration"
+    ],
+    "description": "Configure voxtype dictation settings (engine, model, hotkey, audio, output)"
+  },
+  "blackarch.mitre-applications.usual-applications.settings.wiremix": {
+    "label": "Wiremix",
+    "kind": "app",
+    "appId": "wiremix",
+    "appIcon": "",
+    "action": "wiremix",
+    "aliases": [
+      "Audio Mixer",
+      "pipewire sound audio"
+    ],
+    "description": "Configure audio device settings"
+  },
+  "blackarch.mitre-applications.usual-applications.system": {
+    "label": "System",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.usual-applications.system.athena-nexus": {
+    "label": "Athena Nexus",
+    "kind": "app",
+    "appId": "athena-nexus",
+    "appIcon": "athena-nexus",
+    "action": "athena-nexus",
+    "aliases": [
+      "Container Orchestrator",
+      "container docker podman security pentest siem forensics"
+    ],
+    "description": "Deploy and manage security tools as containers"
+  },
+  "blackarch.mitre-applications.usual-applications.system.org-bleachbit-bleachbit": {
+    "label": "BleachBit",
+    "kind": "app",
+    "appId": "org.bleachbit.BleachBit",
+    "appIcon": "bleachbit",
+    "action": "bleachbit",
+    "aliases": [
+      "Unnecessary file cleaner",
+      "cache clean free performance privacy"
+    ],
+    "description": "Free space and maintain privacy"
+  },
+  "blackarch.mitre-applications.usual-applications.system.btop": {
+    "label": "btop++",
+    "kind": "app",
+    "appId": "btop",
+    "appIcon": "btop",
+    "action": "btop",
+    "aliases": [
+      "System Monitor",
+      "system process task"
+    ],
+    "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes"
+  },
+  "blackarch.mitre-applications.usual-applications.system.conky": {
+    "label": "conky",
+    "kind": "app",
+    "appId": "conky",
+    "appIcon": "conky-logomark-violet",
+    "action": "conky --daemonize --pause=1"
+  },
+  "blackarch.mitre-applications.usual-applications.system.gnome-system-monitor-kde": {
+    "label": "GNOME System Monitor",
+    "kind": "app",
+    "appId": "gnome-system-monitor-kde",
+    "appIcon": "org.gnome.SystemMonitor",
+    "action": "gnome-system-monitor",
+    "aliases": [
+      "Monitor System Process CPU Memory Network History Usage"
+    ],
+    "description": "View current processes and monitor system state"
+  },
+  "blackarch.mitre-applications.usual-applications.system.lstopo": {
+    "label": "Hardware Locality lstopo",
+    "kind": "app",
+    "appId": "lstopo",
+    "appIcon": "hwloc",
+    "action": "lstopo",
+    "aliases": [
+      "System Utility"
+    ],
+    "description": "Show hardware topology"
+  },
+  "blackarch.mitre-applications.usual-applications.system.htop": {
+    "label": "Htop",
+    "kind": "app",
+    "appId": "htop",
+    "appIcon": "htop",
+    "action": "htop",
+    "aliases": [
+      "Process Viewer",
+      "system process task resources monitoring performance"
+    ],
+    "description": "Show System Processes"
+  },
+  "blackarch.mitre-applications.usual-applications.system.kitty": {
+    "label": "kitty",
+    "kind": "app",
+    "appId": "kitty",
+    "appIcon": "kitty",
+    "action": "kitty",
+    "aliases": [
+      "Terminal emulator"
+    ],
+    "description": "Fast, feature-rich, GPU based terminal"
+  },
+  "blackarch.mitre-applications.usual-applications.system.kodachi-dashboard": {
+    "label": "Kodachi Dashboard",
+    "kind": "app",
+    "appId": "kodachi-dashboard",
+    "appIcon": "/opt/kodachi/dashboard/hooks/icons/kodachi-dashboard.png",
+    "action": "/usr/local/bin/kodachi-dashboard-launcher",
+    "aliases": [
+      "Security Dashboard",
+      "kodachi dashboard security privacy tor vpn dns firewall"
+    ],
+    "description": "Kodachi Security Dashboard - control privacy, networking, and system hardening"
+  },
+  "blackarch.mitre-applications.usual-applications.system.kodachi-rofi-actions": {
+    "label": "Kodachi Quick Actions",
+    "kind": "app",
+    "appId": "kodachi-rofi-actions",
+    "appIcon": "/opt/kodachi/dashboard/hooks/icons/kodachi-dashboard.png",
+    "action": "kodachi-rofi-actions",
+    "aliases": [
+      "Rofi Security Actions",
+      "kodachi rofi actions security privacy tor vpn dns"
+    ],
+    "description": "Launch approved Kodachi quick actions in rofi without changing your current rofi theme"
+  },
+  "blackarch.mitre-applications.usual-applications.system.nvtop": {
+    "label": "nvtop",
+    "kind": "app",
+    "appId": "nvtop",
+    "appIcon": "nvtop",
+    "action": "nvtop",
+    "aliases": [
+      "GPU Process Monitor"
+    ]
+  },
+  "blackarch.mitre-applications.usual-applications.system.jconsole-java-openjdk": {
+    "label": "OpenJDK Java 27 Console",
+    "kind": "app",
+    "appId": "jconsole-java-openjdk",
+    "appIcon": "java27-openjdk",
+    "action": "/usr/lib/jvm/java-27-openjdk/bin/jconsole",
+    "aliases": [
+      "java console monitoring"
+    ],
+    "description": "OpenJDK Java 27 Monitoring & Management Console"
+  },
+  "blackarch.mitre-applications.usual-applications.system.jshell-java-openjdk": {
+    "label": "OpenJDK Java 27 Shell",
+    "kind": "app",
+    "appId": "jshell-java-openjdk",
+    "appIcon": "java27-openjdk",
+    "action": "/usr/lib/jvm/java-27-openjdk/bin/jshell",
+    "aliases": [
+      "java shell"
+    ],
+    "description": "OpenJDK Java 27 Shell"
+  },
+  "blackarch.mitre-applications.usual-applications.system.org-gnome-systemmonitor": {
+    "label": "System Monitor",
+    "kind": "app",
+    "appId": "org.gnome.SystemMonitor",
+    "appIcon": "org.gnome.SystemMonitor",
+    "action": "gnome-system-monitor",
+    "aliases": [
+      "Monitor System Process CPU Memory Network History Usage Performance Task Manager Activity"
+    ],
+    "description": "View current processes and monitor system state"
+  },
+  "blackarch.mitre-applications.usual-applications.system.uxterm": {
+    "label": "UXTerm",
+    "kind": "app",
+    "appId": "uxterm",
+    "appIcon": "xterm-color_48x48",
+    "action": "uxterm",
+    "aliases": [
+      "shell prompt command commandline cmd"
+    ],
+    "description": "xterm wrapper for Unicode environments"
+  },
+  "blackarch.mitre-applications.usual-applications.system.windows-vm": {
+    "label": "Windows",
+    "kind": "app",
+    "appId": "windows-vm",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm launch",
+    "description": "Start Windows VM via Docker and connect with RDP"
+  },
+  "blackarch.mitre-applications.usual-applications.system.windows-vm-app": {
+    "label": "Windows App",
+    "kind": "app",
+    "appId": "windows-vm-app",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app",
+    "description": "Open a Windows application in its own window"
+  },
+  "blackarch.mitre-applications.usual-applications.system.windows-vm-connect": {
+    "label": "Windows Connect",
+    "kind": "app",
+    "appId": "windows-vm-connect",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm connect",
+    "description": "Connect to the running Windows VM with RDP"
+  },
+  "blackarch.mitre-applications.usual-applications.system.windows-vm-edge": {
+    "label": "Windows Edge",
+    "kind": "app",
+    "appId": "windows-vm-edge",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app edge",
+    "description": "Open Microsoft Edge in its own window"
+  },
+  "blackarch.mitre-applications.usual-applications.system.windows-vm-powershell": {
+    "label": "Windows PowerShell",
+    "kind": "app",
+    "appId": "windows-vm-powershell",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app powershell",
+    "description": "Open PowerShell in its own window"
+  },
+  "blackarch.mitre-applications.usual-applications.system.xterm": {
+    "label": "XTerm",
+    "kind": "app",
+    "appId": "xterm",
+    "appIcon": "xterm-color_48x48",
+    "action": "xterm",
+    "aliases": [
+      "shell prompt command commandline cmd"
+    ],
+    "description": "standard terminal emulator for the X window system"
+  },
+  "blackarch.mitre-applications.usual-applications.system.yazi": {
+    "label": "Yazi File Manager",
+    "kind": "app",
+    "appId": "yazi",
+    "appIcon": "yazi",
+    "action": "yazi",
+    "aliases": [
+      "File Manager Explorer Browser Launcher"
+    ],
+    "description": "Blazing fast terminal file manager written in Rust, based on async I/O"
+  },
+  "blackarch.mitre-applications.usual-applications.system.zeit": {
+    "label": "Zeit",
+    "kind": "app",
+    "appId": "zeit",
+    "appIcon": "chronometer",
+    "action": "/usr/bin/zeit",
+    "description": "Qt GUI for crontab and at"
+  },
+  "blackarch.mitre-applications.reconnaissance": {
+    "label": "01 - Reconnaissance",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.reconnaissance.host-information": {
+    "label": "• Host Information",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.reconnaissance.host-information.athena-metagoofil": {
+    "label": "metagoofil",
+    "kind": "app",
+    "appId": "athena-metagoofil",
+    "appIcon": "athena-metagoofil",
+    "action": "shell-rocket -b metagoofil -x '-h'",
+    "description": "Tool designed for extracting metadata of public documents"
+  },
+  "blackarch.mitre-applications.reconnaissance.host-information.athena-spiderfoot": {
+    "label": "spiderfoot",
+    "kind": "app",
+    "appId": "athena-spiderfoot",
+    "appIcon": "athena-spiderfoot",
+    "action": "shell-rocket -b spiderfoot -x '--help'",
+    "description": "OSINT collection and reconnaissance tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.host-information.athena-spiderfoot-cli": {
+    "label": "spiderfoot-cli",
+    "kind": "app",
+    "appId": "athena-spiderfoot-cli",
+    "appIcon": "athena-spiderfoot-cli",
+    "action": "shell-rocket -b spiderfoot-cli -p spiderfoot -x '--help'",
+    "description": "OSINT collection and reconnaissance tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.identity-information": {
+    "label": "• Identity Information",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.reconnaissance.identity-information.athena-email2phonenumber": {
+    "label": "email2phonenumber",
+    "kind": "app",
+    "appId": "athena-email2phonenumber",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b email2phonenumber -x '--help'",
+    "description": "OSINT tool to obtain a target's phone number by having their email address"
+  },
+  "blackarch.mitre-applications.reconnaissance.identity-information.athena-linkedin2username": {
+    "label": "linkedin2username",
+    "kind": "app",
+    "appId": "athena-linkedin2username",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b linkedin2username -x '-h'",
+    "description": "Generate username lists for companies on LinkedIn"
+  },
+  "blackarch.mitre-applications.reconnaissance.identity-information.athena-photon": {
+    "label": "photon",
+    "kind": "app",
+    "appId": "athena-photon",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b photon",
+    "description": "Incredibly fast crawler designed for open source intelligence"
+  },
+  "blackarch.mitre-applications.reconnaissance.identity-information.athena-sherlock": {
+    "label": "sherlock",
+    "kind": "app",
+    "appId": "athena-sherlock",
+    "appIcon": "athena-sherlock",
+    "action": "shell-rocket -b sherlock -x '-h'",
+    "description": "Find usernames across social networks"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information": {
+    "label": "• Network Information",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-amass": {
+    "label": "amass",
+    "kind": "app",
+    "appId": "athena-amass",
+    "appIcon": "athena-amass",
+    "action": "shell-rocket -b amass",
+    "description": "In-depth DNS Enumeration and Network Mapping"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-dmitry": {
+    "label": "dmitry",
+    "kind": "app",
+    "appId": "athena-dmitry",
+    "appIcon": "athena-dmitry",
+    "action": "shell-rocket -b dmitry",
+    "description": "Deepmagic Information Gathering Tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-legion": {
+    "label": "legion",
+    "kind": "app",
+    "appId": "athena-legion",
+    "appIcon": "athena-legion",
+    "action": "shell-rocket -b legion -r",
+    "description": "semi-automated network penetration testing tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-nmap": {
+    "label": "nmap",
+    "kind": "app",
+    "appId": "athena-nmap",
+    "appIcon": "athena-nmap",
+    "action": "shell-rocket -b nmap",
+    "description": "Network exploration tool and security / port scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-theharvester": {
+    "label": "theHarvester",
+    "kind": "app",
+    "appId": "athena-theHarvester",
+    "appIcon": "athena-theHarvester",
+    "action": "shell-rocket -b theharvester -x '-h'",
+    "description": "tool for gathering e-mail accounts and subdomain names from public sources"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information.athena-unicornscan": {
+    "label": "unicornscan",
+    "kind": "app",
+    "appId": "athena-unicornscan",
+    "appIcon": "athena-unicornscan",
+    "action": "shell-rocket -b unicornscan -x '-h'",
+    "description": "Userland distributed TCP/IP stack"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns": {
+    "label": "• Network Information: DNS",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-dnsenum": {
+    "label": "dnsenum",
+    "kind": "app",
+    "appId": "athena-dnsenum",
+    "appIcon": "athena-dnsenum",
+    "action": "shell-rocket -b dnsenum -x '-h'",
+    "description": "- multithread script to enumerate information on a domain and to discover non-contiguous IP blocks"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-dnsmap": {
+    "label": "dnsmap",
+    "kind": "app",
+    "appId": "athena-dnsmap",
+    "appIcon": "athena-dnsmap",
+    "action": "shell-rocket -b dnsmap",
+    "description": "Scan for subdomains using bruteforcing techniques"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-dnsrecon": {
+    "label": "dnsrecon",
+    "kind": "app",
+    "appId": "athena-dnsrecon",
+    "appIcon": "athena-dnsrecon",
+    "action": "shell-rocket -b dnsrecon -x '-h'",
+    "description": "DNS Enumeration and Scanning Tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-dnstracer": {
+    "label": "dnstracer",
+    "kind": "app",
+    "appId": "athena-dnstracer",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dnstracer",
+    "description": "Trace a chain of DNS servers to the source"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-dnswalk": {
+    "label": "dnswalk",
+    "kind": "app",
+    "appId": "athena-dnswalk",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dnswalk -x '--help'",
+    "description": "A DNS database debugger"
+  },
+  "blackarch.mitre-applications.reconnaissance.network-information-dns.athena-massdns": {
+    "label": "massdns",
+    "kind": "app",
+    "appId": "athena-massdns",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b massdns",
+    "description": "high-performance DNS stub resolver"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning": {
+    "label": "• Web Scanning",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-assetfinder": {
+    "label": "assetfinder",
+    "kind": "app",
+    "appId": "athena-assetfinder",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b assetfinder -x '-h'",
+    "description": "Find domains and subdomains related to a given domain"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-dirb": {
+    "label": "dirb",
+    "kind": "app",
+    "appId": "athena-dirb",
+    "appIcon": "athena-dirb",
+    "action": "shell-rocket -b dirb",
+    "description": "Web Content Scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-dirbuster": {
+    "label": "dirbuster",
+    "kind": "app",
+    "appId": "athena-dirbuster",
+    "appIcon": "athena-dirbuster",
+    "action": "shell-rocket -b dirbuster -g",
+    "description": "Web server directory brute-forcer"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-dirsearch": {
+    "label": "dirsearch",
+    "kind": "app",
+    "appId": "athena-dirsearch",
+    "appIcon": "athena-dirsearch",
+    "action": "shell-rocket -b dirsearch -x '-h'",
+    "description": "An advanced command-line tool designed to brute force directories and files in webservers"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-feroxbuster": {
+    "label": "feroxbuster",
+    "kind": "app",
+    "appId": "athena-feroxbuster",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b feroxbuster -x '-h'",
+    "description": "Manual page for feroxbuster 2.11.0"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-ffuf": {
+    "label": "ffuf",
+    "kind": "app",
+    "appId": "athena-ffuf",
+    "appIcon": "athena-ffuf",
+    "action": "shell-rocket -b ffuf -x '-h'",
+    "description": "Fast web fuzzer written in Go"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-finalrecon": {
+    "label": "finalrecon",
+    "kind": "app",
+    "appId": "athena-finalrecon",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b finalrecon -x '-h'",
+    "description": "fast and simple Python script for web reconnaissance"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-gobuster": {
+    "label": "gobuster",
+    "kind": "app",
+    "appId": "athena-gobuster",
+    "appIcon": "athena-gobuster",
+    "action": "shell-rocket -b gobuster",
+    "description": "Directory/file & DNS busting tool written in Go"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-gospider": {
+    "label": "gospider",
+    "kind": "app",
+    "appId": "athena-gospider",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b gospider -x '-h'",
+    "description": "Fast web spider written in Go"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-lbd": {
+    "label": "lbd",
+    "kind": "app",
+    "appId": "athena-lbd",
+    "appIcon": "athena-lbd",
+    "action": "shell-rocket -b lbd",
+    "description": "Load balancer detector"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-parsero": {
+    "label": "parsero",
+    "kind": "app",
+    "appId": "athena-parsero",
+    "appIcon": "athena-parsero",
+    "action": "shell-rocket -b parsero",
+    "description": "Robots.txt audit tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-recon-ng": {
+    "label": "recon-ng",
+    "kind": "app",
+    "appId": "athena-recon-ng",
+    "appIcon": "athena-recon-ng",
+    "action": "shell-rocket -b recon-ng",
+    "description": "Web Reconnaissance framework"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-subfinder": {
+    "label": "subfinder",
+    "kind": "app",
+    "appId": "athena-subfinder",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b subfinder -x '-h'",
+    "description": "subdomain discovery tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-sublist3r": {
+    "label": "sublist3r",
+    "kind": "app",
+    "appId": "athena-sublist3r",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sublist3r -x '-h'",
+    "description": "Tool designed to enumerate subdomains of websites using OSINT"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-uniscan-gui": {
+    "label": "uniscan-gui",
+    "kind": "app",
+    "appId": "athena-uniscan-gui",
+    "appIcon": "athena-menu",
+    "action": "uniscan-gui",
+    "description": "LFI, RFI, and RCE vulnerability scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-scanning.athena-wfuzz": {
+    "label": "wfuzz",
+    "kind": "app",
+    "appId": "athena-wfuzz",
+    "appIcon": "athena-wfuzz",
+    "action": "shell-rocket -b wfuzz",
+    "description": "A web application bruteforcer"
+  },
+  "blackarch.mitre-applications.reconnaissance.vulnerability-scanning": {
+    "label": "• Vulnerability Scanning",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.reconnaissance.vulnerability-scanning.athena-cat": {
+    "label": "CAT",
+    "kind": "app",
+    "appId": "athena-CAT",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b CAT -p cisco-auditing-tool",
+    "description": "Concatenate files and print on the standard output"
+  },
+  "blackarch.mitre-applications.reconnaissance.vulnerability-scanning.athena-heartleech": {
+    "label": "heartleech",
+    "kind": "app",
+    "appId": "athena-heartleech",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b heartleech",
+    "description": "Exploits OpenSSL heartbleed vulnerability"
+  },
+  "blackarch.mitre-applications.reconnaissance.vulnerability-scanning.athena-nmap": {
+    "label": "nmap",
+    "kind": "app",
+    "appId": "athena-nmap",
+    "appIcon": "athena-nmap",
+    "action": "shell-rocket -b nmap",
+    "description": "Network exploration tool and security / port scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning": {
+    "label": "• Web Vulnerability Scanning",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-burpsuite": {
+    "label": "burpsuite",
+    "kind": "app",
+    "appId": "athena-burpsuite",
+    "appIcon": "athena-burpsuite",
+    "action": "shell-rocket -b burpsuite -g",
+    "description": "platform for security testing of web applications"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-davtest": {
+    "label": "davtest",
+    "kind": "app",
+    "appId": "athena-davtest",
+    "appIcon": "athena-davtest",
+    "action": "shell-rocket -b davtest",
+    "description": "Testing tool for WebDAV servers"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-joomscan": {
+    "label": "joomscan",
+    "kind": "app",
+    "appId": "athena-joomscan",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b joomscan -x '-h'",
+    "description": "OWASP Joomla Vulnerability Scanner Project"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-nikto": {
+    "label": "nikto",
+    "kind": "app",
+    "appId": "athena-nikto",
+    "appIcon": "athena-nikto",
+    "action": "shell-rocket -b nikto -x '-h'",
+    "description": "Scan web server for known vulnerabilities"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-nuclei": {
+    "label": "nuclei",
+    "kind": "app",
+    "appId": "athena-nuclei",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b nuclei -x '-h'",
+    "description": "Fast and customizable vulnerability scanner based on simple YAML based DSL"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-paros": {
+    "label": "paros",
+    "kind": "app",
+    "appId": "athena-paros",
+    "appIcon": "athena-paros",
+    "action": "paros",
+    "description": "Web application proxy"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-skipfish": {
+    "label": "skipfish",
+    "kind": "app",
+    "appId": "athena-skipfish",
+    "appIcon": "athena-skipfish",
+    "action": "shell-rocket -b skipfish -x '-h'",
+    "description": "Web application security scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-subjack": {
+    "label": "subjack",
+    "kind": "app",
+    "appId": "athena-subjack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b subjack",
+    "description": "Subdomain Takeover tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-wapiti": {
+    "label": "wapiti",
+    "kind": "app",
+    "appId": "athena-wapiti",
+    "appIcon": "athena-wapiti",
+    "action": "shell-rocket -b wapiti -x '-h'",
+    "description": "A web application vulnerability scanner in Python"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-watobo": {
+    "label": "watobo",
+    "kind": "app",
+    "appId": "athena-watobo",
+    "appIcon": "athena-watobo",
+    "action": "watobo",
+    "description": "Semi-automated web application scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-wcvs": {
+    "label": "wcvs",
+    "kind": "app",
+    "appId": "athena-wcvs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b wcvs -x '-h'",
+    "description": "Go-based CLI tool for testing for web cache poisoning"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-webscarab": {
+    "label": "webscarab",
+    "kind": "app",
+    "appId": "athena-webscarab",
+    "appIcon": "athena-webscarab",
+    "action": "webscarab",
+    "description": "Web application review tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-whatweb": {
+    "label": "whatweb",
+    "kind": "app",
+    "appId": "athena-whatweb",
+    "appIcon": "athena-whatweb",
+    "action": "shell-rocket -b whatweb -x '-h'",
+    "description": "Next generation Web scanner. Identify technologies used by websites."
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-wpscan": {
+    "label": "wpscan",
+    "kind": "app",
+    "appId": "athena-wpscan",
+    "appIcon": "athena-wpscan",
+    "action": "shell-rocket -b wpscan -x '--help'",
+    "description": "WordPress Security Scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.web-vulnerability-scanning.athena-zaproxy": {
+    "label": "zaproxy",
+    "kind": "app",
+    "appId": "athena-zaproxy",
+    "appIcon": "athena-zaproxy",
+    "action": "shell-rocket -b zaproxy -g",
+    "description": "Testing tool for finding vulnerabilities in web applications"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth": {
+    "label": "• Bluetooth"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-bettercap": {
+    "label": "bettercap",
+    "kind": "app",
+    "appId": "athena-bettercap",
+    "appIcon": "athena-bettercap",
+    "action": "shell-rocket -b bettercap -x '-h'",
+    "description": "Complete, modular, portable and easily extensible MITM framework"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-bluelog": {
+    "label": "bluelog",
+    "kind": "app",
+    "appId": "athena-bluelog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b bluelog -x '-h'",
+    "description": "Bluetooth Scanner and Logger"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-blueranger": {
+    "label": "blueranger",
+    "kind": "app",
+    "appId": "athena-blueranger",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b blueranger",
+    "description": "Simple Bash script to locate Bluetooth devices"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-bluesnarfer": {
+    "label": "bluesnarfer",
+    "kind": "app",
+    "appId": "athena-bluesnarfer",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b bluesnarfer",
+    "description": "A Bluesnarfing Utility"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-fang": {
+    "label": "fang",
+    "kind": "app",
+    "appId": "athena-fang",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b redfang -x '-h'",
+    "description": "Locates non-discoverable bluetooth devices"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-spooftooph": {
+    "label": "spooftooph",
+    "kind": "app",
+    "appId": "athena-spooftooph",
+    "appIcon": "athena-spooftooph",
+    "action": "shell-rocket -b spooftooph -x '-h'",
+    "description": "Automates spoofing or cloning Bluetooth devices"
+  },
+  "blackarch.mitre-applications.reconnaissance.bluetooth.athena-ubertooth-util": {
+    "label": "ubertooth-util",
+    "kind": "app",
+    "appId": "athena-ubertooth-util",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ubertooth-util -p ubertooth",
+    "description": "General purpose Ubertooth utility"
+  },
+  "blackarch.mitre-applications.reconnaissance.wifi": {
+    "label": "• WiFi"
+  },
+  "blackarch.mitre-applications.reconnaissance.wifi.athena-bettercap": {
+    "label": "bettercap",
+    "kind": "app",
+    "appId": "athena-bettercap",
+    "appIcon": "athena-bettercap",
+    "action": "shell-rocket -b bettercap -x '-h'",
+    "description": "Complete, modular, portable and easily extensible MITM framework"
+  },
+  "blackarch.mitre-applications.reconnaissance.wifi.athena-kismet": {
+    "label": "kismet",
+    "kind": "app",
+    "appId": "athena-kismet",
+    "appIcon": "athena-kismet",
+    "action": "shell-rocket -b kismet -x '-h'",
+    "description": "Wireless sniffer and monitor"
+  },
+  "blackarch.mitre-applications.reconnaissance.wifi.athena-sparrow-wifi": {
+    "label": "sparrow-wifi",
+    "kind": "app",
+    "appId": "athena-sparrow-wifi",
+    "appIcon": "athena-sparrow-wifi",
+    "action": "pkexec sparrow-wifi",
+    "description": "Graphical Wi-Fi Analyzer for Linux"
+  },
+  "blackarch.mitre-applications.reconnaissance.wifi.athena-wash": {
+    "label": "wash",
+    "kind": "app",
+    "appId": "athena-wash",
+    "appIcon": "athena-wash",
+    "action": "shell-rocket -b wash -p reaver",
+    "description": "Brute force attack tool against Wi-Fi Protected Setup PIN number"
+  },
+  "blackarch.mitre-applications.reconnaissance.radio-frequency": {
+    "label": "• Radio Frequency"
+  },
+  "blackarch.mitre-applications.reconnaissance.radio-frequency.athena-hackrf-info": {
+    "label": "hackrf_info",
+    "kind": "app",
+    "appId": "athena-hackrf_info",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b hackrf_info -p hackrf",
+    "description": "Probe device and show configuration"
+  },
+  "blackarch.mitre-applications.reconnaissance.radio-frequency.athena-rfcat": {
+    "label": "rfcat",
+    "kind": "app",
+    "appId": "athena-rfcat",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b rfcat -x '-h'",
+    "description": "Swiss army knife of sub-GHz radio"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-bettercap": {
+    "label": "bettercap",
+    "kind": "app",
+    "appId": "athena-bettercap",
+    "appIcon": "athena-bettercap",
+    "action": "shell-rocket -b bettercap -x '-h'",
+    "description": "Complete, modular, portable and easily extensible MITM framework"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-burpsuite": {
+    "label": "burpsuite",
+    "kind": "app",
+    "appId": "athena-burpsuite",
+    "appIcon": "athena-burpsuite",
+    "action": "shell-rocket -b burpsuite -g",
+    "description": "platform for security testing of web applications"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-dirb": {
+    "label": "dirb",
+    "kind": "app",
+    "appId": "athena-dirb",
+    "appIcon": "athena-dirb",
+    "action": "shell-rocket -b dirb",
+    "description": "Web Content Scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-dirbuster": {
+    "label": "dirbuster",
+    "kind": "app",
+    "appId": "athena-dirbuster",
+    "appIcon": "athena-dirbuster",
+    "action": "shell-rocket -b dirbuster -g",
+    "description": "Web server directory brute-forcer"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-ffuf": {
+    "label": "ffuf",
+    "kind": "app",
+    "appId": "athena-ffuf",
+    "appIcon": "athena-ffuf",
+    "action": "shell-rocket -b ffuf -x '-h'",
+    "description": "Fast web fuzzer written in Go"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-gobuster": {
+    "label": "gobuster",
+    "kind": "app",
+    "appId": "athena-gobuster",
+    "appIcon": "athena-gobuster",
+    "action": "shell-rocket -b gobuster",
+    "description": "Directory/file & DNS busting tool written in Go"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-legion": {
+    "label": "legion",
+    "kind": "app",
+    "appId": "athena-legion",
+    "appIcon": "athena-legion",
+    "action": "shell-rocket -b legion -r",
+    "description": "semi-automated network penetration testing tool"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-maltego": {
+    "label": "maltego",
+    "kind": "app",
+    "appId": "athena-maltego",
+    "appIcon": "athena-maltego",
+    "action": "shell-rocket -b maltego -g",
+    "description": "Open source intelligence and forensics application"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-maltego-installer": {
+    "label": "maltego (installer)",
+    "kind": "app",
+    "appId": "athena-maltego-installer",
+    "appIcon": "athena-maltego",
+    "action": "shell-rocket -b maltego -g",
+    "description": "Open source intelligence and forensics application"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-nmap": {
+    "label": "nmap",
+    "kind": "app",
+    "appId": "athena-nmap",
+    "appIcon": "athena-nmap",
+    "action": "shell-rocket -b nmap",
+    "description": "Network exploration tool and security / port scanner"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-photon": {
+    "label": "photon",
+    "kind": "app",
+    "appId": "athena-photon",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b photon",
+    "description": "Incredibly fast crawler designed for open source intelligence"
+  },
+  "blackarch.mitre-applications.reconnaissance.athena-recon-ng": {
+    "label": "recon-ng",
+    "kind": "app",
+    "appId": "athena-recon-ng",
+    "appIcon": "athena-recon-ng",
+    "action": "shell-rocket -b recon-ng",
+    "description": "Web Reconnaissance framework"
+  },
+  "blackarch.mitre-applications.resource-development": {
+    "label": "02 - Resource Development",
+    "icon": "󰵮"
+  },
+  "blackarch.mitre-applications.resource-development.athena-afl-fuzz": {
+    "label": "afl-fuzz",
+    "kind": "app",
+    "appId": "athena-afl-fuzz",
+    "appIcon": "athena-afl-fuzz",
+    "action": "shell-rocket -b afl-fuzz -p afl++",
+    "description": "instrumentation-driven fuzzer for binary formats"
+  },
+  "blackarch.mitre-applications.resource-development.athena-apktool": {
+    "label": "apktool",
+    "kind": "app",
+    "appId": "athena-apktool",
+    "appIcon": "athena-apktool",
+    "action": "shell-rocket -b apktool -p android-apktool",
+    "description": "Tool for reverse engineering Android apk files"
+  },
+  "blackarch.mitre-applications.resource-development.athena-bed": {
+    "label": "bed",
+    "kind": "app",
+    "appId": "athena-bed",
+    "appIcon": "athena-bed",
+    "action": "shell-rocket -b bed",
+    "description": "A network protocol fuzzer"
+  },
+  "blackarch.mitre-applications.resource-development.athena-bytecode-viewer": {
+    "label": "bytecode-viewer",
+    "kind": "app",
+    "appId": "athena-bytecode-viewer",
+    "appIcon": "athena-bytecode-viewer",
+    "action": "shell-rocket -b bytecode-viewer -g",
+    "description": "Java 8+ Jar & Android APK Reverse Engineering Suite"
+  },
+  "blackarch.mitre-applications.resource-development.athena-clang": {
+    "label": "clang",
+    "kind": "app",
+    "appId": "athena-clang",
+    "appIcon": "athena-clang",
+    "action": "shell-rocket -b clang -x '--help'",
+    "description": "The Clang C, C++, and Objective-C compiler"
+  },
+  "blackarch.mitre-applications.resource-development.athena-clang-2": {
+    "label": "clang++",
+    "kind": "app",
+    "appId": "athena-clang++",
+    "appIcon": "athena-clang++",
+    "action": "shell-rocket -b clang++ -p clang -x '--help'",
+    "description": "C, C++ and Objective-C compiler (LLVM based), clang binary"
+  },
+  "blackarch.mitre-applications.resource-development.athena-generic-chunked": {
+    "label": "generic_chunked",
+    "kind": "app",
+    "appId": "athena-generic_chunked",
+    "appIcon": "athena-generic_chunked",
+    "action": "shell-rocket -b spike-fuzzer-generic-chunked -p spike-fuzzer",
+    "description": "Network protocol fuzzer"
+  },
+  "blackarch.mitre-applications.resource-development.athena-generic-listen-tcp": {
+    "label": "generic_listen_tcp",
+    "kind": "app",
+    "appId": "athena-generic_listen_tcp",
+    "appIcon": "athena-generic_listen_tcp",
+    "action": "shell-rocket -b spike-fuzzer-generic-listen_tcp -p spike-fuzzer",
+    "description": "Network protocol fuzzer"
+  },
+  "blackarch.mitre-applications.resource-development.athena-generic-send-tcp": {
+    "label": "generic_send_tcp",
+    "kind": "app",
+    "appId": "athena-generic_send_tcp",
+    "appIcon": "athena-generic_send_tcp",
+    "action": "shell-rocket -b spike-fuzzer-generic-send_tcp -p spike-fuzzer",
+    "description": "Network protocol fuzzer"
+  },
+  "blackarch.mitre-applications.resource-development.athena-generic-send-udp": {
+    "label": "generic_send_udp",
+    "kind": "app",
+    "appId": "athena-generic_send_udp",
+    "appIcon": "athena-generic_send_udp",
+    "action": "shell-rocket -b spike-fuzzer-generic-send_udp -p spike-fuzzer",
+    "description": "Network protocol fuzzer"
+  },
+  "blackarch.mitre-applications.resource-development.athena-ghidra": {
+    "label": "ghidra",
+    "kind": "app",
+    "appId": "athena-ghidra",
+    "appIcon": "athena-ghidra",
+    "action": "shell-rocket -b ghidra -g",
+    "description": "Software Reverse Engineering Framework"
+  },
+  "blackarch.mitre-applications.resource-development.athena-jadx-gui": {
+    "label": "jadx-gui",
+    "kind": "app",
+    "appId": "athena-jadx-gui",
+    "appIcon": "athena-jadx-gui",
+    "action": "shell-rocket -b jadx-gui -p jadx -g",
+    "description": "Dex to Java decompiler"
+  },
+  "blackarch.mitre-applications.resource-development.athena-javasnoop": {
+    "label": "javasnoop",
+    "kind": "app",
+    "appId": "athena-javasnoop",
+    "appIcon": "athena-javasnoop",
+    "action": "shell-rocket -b javasnoop",
+    "description": "Intercept Java applications locally"
+  },
+  "blackarch.mitre-applications.resource-development.athena-jd-gui": {
+    "label": "jd-gui",
+    "kind": "app",
+    "appId": "athena-jd-gui",
+    "appIcon": "athena-jd-gui",
+    "action": "jd-gui",
+    "description": "GUI Java .class decompiler"
+  },
+  "blackarch.mitre-applications.resource-development.athena-msfvenom": {
+    "label": "msfvenom",
+    "kind": "app",
+    "appId": "athena-msfvenom",
+    "appIcon": "athena-msfvenom",
+    "action": "shell-rocket -b msfvenom -p metasploit",
+    "description": "Payload Generator and Encoder"
+  },
+  "blackarch.mitre-applications.resource-development.athena-ollydbg": {
+    "label": "ollydbg",
+    "kind": "app",
+    "appId": "athena-ollydbg",
+    "appIcon": "athena-ollydbg",
+    "action": "shell-rocket -b ollydbg -g",
+    "description": "32-bit assembler level analysing debugger"
+  },
+  "blackarch.mitre-applications.resource-development.athena-pompem": {
+    "label": "pompem",
+    "kind": "app",
+    "appId": "athena-pompem",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b pompem -x '-h'",
+    "description": "Exploit and Vulnerability Finder"
+  },
+  "blackarch.mitre-applications.resource-development.athena-radare2": {
+    "label": "radare2",
+    "kind": "app",
+    "appId": "athena-radare2",
+    "appIcon": "athena-radare2",
+    "action": "shell-rocket -b radare2 -x '-h'",
+    "description": "Advanced command-line hexadecimal editor, disassembler and debugger"
+  },
+  "blackarch.mitre-applications.resource-development.athena-rizin": {
+    "label": "rizin",
+    "kind": "app",
+    "appId": "athena-rizin",
+    "appIcon": "athena-rizin",
+    "action": "shell-rocket -b rizin -x '-h'",
+    "description": "Advanced commandline hexadecimal editor, disassembler and debugger"
+  },
+  "blackarch.mitre-applications.resource-development.athena-searchsploit": {
+    "label": "searchsploit",
+    "kind": "app",
+    "appId": "athena-searchsploit",
+    "appIcon": "athena-searchsploit",
+    "action": "shell-rocket -b searchsploit -p exploitdb",
+    "description": "Exploit Database Archive Search"
+  },
+  "blackarch.mitre-applications.resource-development.athena-sfuzz": {
+    "label": "sfuzz",
+    "kind": "app",
+    "appId": "athena-sfuzz",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sfuzz",
+    "description": "Black Box testing utilities"
+  },
+  "blackarch.mitre-applications.resource-development.athena-shellnoob": {
+    "label": "shellnoob",
+    "kind": "app",
+    "appId": "athena-shellnoob",
+    "appIcon": "athena-shellnoob",
+    "action": "shell-rocket -b shellnoob",
+    "description": "Shellcode writing toolkit"
+  },
+  "blackarch.mitre-applications.initial-access": {
+    "label": "03 - Initial Access",
+    "icon": "󰵮"
+  },
+  "blackarch.mitre-applications.initial-access.athena-commix": {
+    "label": "commix",
+    "kind": "app",
+    "appId": "athena-commix",
+    "appIcon": "athena-commix",
+    "action": "shell-rocket -b commix -x '--wizard'",
+    "description": "Automated All-in-One OS Command Injection and Exploitation Tool"
+  },
+  "blackarch.mitre-applications.initial-access.athena-dns-rebind": {
+    "label": "dns-rebind",
+    "kind": "app",
+    "appId": "athena-dns-rebind",
+    "appIcon": "athena-dns-rebind",
+    "action": "shell-rocket -b rebind_dns -p rebind",
+    "description": "DNS rebinding tool"
+  },
+  "blackarch.mitre-applications.initial-access.athena-gophish": {
+    "label": "gophish",
+    "kind": "app",
+    "appId": "athena-gophish",
+    "appIcon": "athena-gophish",
+    "action": "shell-rocket -b gophish -x '-h'",
+    "description": "Open-Source Phishing Toolkit"
+  },
+  "blackarch.mitre-applications.initial-access.athena-jboss-linux": {
+    "label": "jboss-linux",
+    "kind": "app",
+    "appId": "athena-jboss-linux",
+    "appIcon": "athena-jboss-linux",
+    "action": "shell-rocket -b unix-jboss-autopwn -p jboss-autopwn",
+    "description": "JBoss script for obtaining remote shell access"
+  },
+  "blackarch.mitre-applications.initial-access.athena-jboss-win": {
+    "label": "jboss-win",
+    "kind": "app",
+    "appId": "athena-jboss-win",
+    "appIcon": "athena-jboss-win",
+    "action": "shell-rocket -b win-jboss-autopwn -p jboss-autopwn",
+    "description": "JBoss script for obtaining remote shell access"
+  },
+  "blackarch.mitre-applications.initial-access.athena-jsql": {
+    "label": "jsql",
+    "kind": "app",
+    "appId": "athena-jsql",
+    "appIcon": "athena-jsql",
+    "action": "jsql",
+    "description": "Java tool for automatic database injection"
+  },
+  "blackarch.mitre-applications.initial-access.athena-metasploit-framework": {
+    "label": "metasploit-framework",
+    "kind": "app",
+    "appId": "athena-metasploit-framework",
+    "appIcon": "athena-metasploit-framework",
+    "action": "shell-rocket -b msfconsole -p metasploit",
+    "description": "Framework for exploit development and vulnerability research"
+  },
+  "blackarch.mitre-applications.initial-access.athena-setoolkit": {
+    "label": "setoolkit",
+    "kind": "app",
+    "appId": "athena-setoolkit",
+    "appIcon": "athena-setoolkit",
+    "action": "shell-rocket -b setoolkit -p set -r",
+    "description": "Social-Engineer Toolkit"
+  },
+  "blackarch.mitre-applications.initial-access.athena-sqlmap": {
+    "label": "sqlmap",
+    "kind": "app",
+    "appId": "athena-sqlmap",
+    "appIcon": "athena-sqlmap",
+    "action": "shell-rocket -b sqlmap -x '--wizard'",
+    "description": "Automatic SQL injection tool"
+  },
+  "blackarch.mitre-applications.initial-access.athena-sqlninja": {
+    "label": "sqlninja",
+    "kind": "app",
+    "appId": "athena-sqlninja",
+    "appIcon": "athena-sqlninja",
+    "action": "shell-rocket -b sqlninja",
+    "description": "SQL server injection and takeover tool"
+  },
+  "blackarch.mitre-applications.initial-access.athena-sqlsus": {
+    "label": "sqlsus",
+    "kind": "app",
+    "appId": "athena-sqlsus",
+    "appIcon": "athena-sqlsus",
+    "action": "shell-rocket -b sqlsus",
+    "description": "MySQL injection tool"
+  },
+  "blackarch.mitre-applications.execution": {
+    "label": "04 - Execution",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.execution.athena-beef-xss": {
+    "label": "beef-xss",
+    "kind": "app",
+    "appId": "athena-beef-xss",
+    "appIcon": "athena-beef-xss",
+    "action": "shell-rocket -b beef -r",
+    "description": "Browser Exploitation Framework (BeEF)"
+  },
+  "blackarch.mitre-applications.execution.athena-evilgrade": {
+    "label": "evilgrade",
+    "kind": "app",
+    "appId": "athena-evilgrade",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b evilgrade",
+    "description": "Evilgrade framework"
+  },
+  "blackarch.mitre-applications.execution.athena-metasploit-framework": {
+    "label": "metasploit-framework",
+    "kind": "app",
+    "appId": "athena-metasploit-framework",
+    "appIcon": "athena-metasploit-framework",
+    "action": "shell-rocket -b msfconsole -p metasploit",
+    "description": "Framework for exploit development and vulnerability research"
+  },
+  "blackarch.mitre-applications.execution.athena-nishang": {
+    "label": "nishang",
+    "kind": "app",
+    "appId": "athena-nishang",
+    "appIcon": "athena-nishang",
+    "action": "shell-rocket -b nishang -d /usr/share/windows/nishang",
+    "description": "Collection of PowerShell scripts and payloads"
+  },
+  "blackarch.mitre-applications.execution.athena-powersploit": {
+    "label": "powersploit",
+    "kind": "app",
+    "appId": "athena-powersploit",
+    "appIcon": "athena-powersploit",
+    "action": "shell-rocket -b powersploit -d /usr/share/windows/powersploit",
+    "description": "PowerShell Post-Exploitation Framework"
+  },
+  "blackarch.mitre-applications.persistence": {
+    "label": "05 - Persistence",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.persistence.athena-cymothoa": {
+    "label": "cymothoa",
+    "kind": "app",
+    "appId": "athena-cymothoa",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b cymothoa-udp_server -p cymothoa",
+    "description": "Stealth backdooring tool"
+  },
+  "blackarch.mitre-applications.persistence.athena-laudanum": {
+    "label": "laudanum",
+    "kind": "app",
+    "appId": "athena-laudanum",
+    "appIcon": "athena-laudanum",
+    "action": "shell-rocket -b laudanum -d /usr/share/laudanum",
+    "description": "Collection of injectable web files"
+  },
+  "blackarch.mitre-applications.persistence.athena-phpggc": {
+    "label": "phpggc",
+    "kind": "app",
+    "appId": "athena-phpggc",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b phpggc",
+    "description": "Generate payloads that exploit unsafe object deserialization"
+  },
+  "blackarch.mitre-applications.persistence.athena-webacoo": {
+    "label": "webacoo",
+    "kind": "app",
+    "appId": "athena-webacoo",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b webacoo -x '-h'",
+    "description": "Web backdoor cookie script kit"
+  },
+  "blackarch.mitre-applications.persistence.athena-webshells": {
+    "label": "webshells",
+    "kind": "app",
+    "appId": "athena-webshells",
+    "appIcon": "athena-webshells",
+    "action": "shell-rocket -b webshells -d /usr/share/webshells",
+    "description": "Collection of webshells"
+  },
+  "blackarch.mitre-applications.persistence.athena-weevely": {
+    "label": "weevely",
+    "kind": "app",
+    "appId": "athena-weevely",
+    "appIcon": "athena-weevely",
+    "action": "shell-rocket -b weevely -x 'terminal -h'",
+    "description": "Weaponized web shell"
+  },
+  "blackarch.mitre-applications.privilege-escalation": {
+    "label": "06 - Privilege Escalation",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.privilege-escalation.athena-linpeas": {
+    "label": "linpeas",
+    "kind": "app",
+    "appId": "athena-linpeas",
+    "appIcon": "athena-linpeas",
+    "action": "shell-rocket -b linpeas -p peass -r -x '-h'",
+    "description": "Privilege Escalation Awesome Scripts SUITE"
+  },
+  "blackarch.mitre-applications.privilege-escalation.athena-metasploit-framework": {
+    "label": "metasploit-framework",
+    "kind": "app",
+    "appId": "athena-metasploit-framework",
+    "appIcon": "athena-metasploit-framework",
+    "action": "shell-rocket -b msfconsole -p metasploit",
+    "description": "Framework for exploit development and vulnerability research"
+  },
+  "blackarch.mitre-applications.privilege-escalation.athena-unix-privesc-check": {
+    "label": "unix-privesc-check",
+    "kind": "app",
+    "appId": "athena-unix-privesc-check",
+    "appIcon": "athena-unix-privesc-check",
+    "action": "shell-rocket -b unix-privesc-check",
+    "description": "Script to check for simple privilege escalation vectors"
+  },
+  "blackarch.mitre-applications.privilege-escalation.athena-winpeas": {
+    "label": "winpeas",
+    "kind": "app",
+    "appId": "athena-winpeas",
+    "appIcon": "athena-winpeas",
+    "action": "shell-rocket -b peass -d /usr/share/windows/peass",
+    "description": "Privilege Escalation Awesome Scripts SUITE"
+  },
+  "blackarch.mitre-applications.defense-evasion": {
+    "label": "07 - Defense Evasion",
+    "icon": "󰀻"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-exe2hex": {
+    "label": "exe2hex",
+    "kind": "app",
+    "appId": "athena-exe2hex",
+    "appIcon": "athena-exe2hex",
+    "action": "shell-rocket -b exe2hex",
+    "description": "Convert EXE to bat"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-ftest": {
+    "label": "ftest",
+    "kind": "app",
+    "appId": "athena-ftest",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ftest -p ftester",
+    "description": "Tool for testing firewalls and Intrusion Detection System (IDS)"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-macchanger": {
+    "label": "macchanger",
+    "kind": "app",
+    "appId": "athena-macchanger",
+    "appIcon": "athena-macchanger",
+    "action": "shell-rocket -b macchanger -x '-h'",
+    "description": "MAC Changer"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-msfvenom": {
+    "label": "msfvenom",
+    "kind": "app",
+    "appId": "athena-msfvenom",
+    "appIcon": "athena-msfvenom",
+    "action": "shell-rocket -b msfvenom -p metasploit",
+    "description": "Payload Generator and Encoder"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-outguess": {
+    "label": "outguess",
+    "kind": "app",
+    "appId": "athena-outguess",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b outguess",
+    "description": "Universal steganographic tool"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-padbuster": {
+    "label": "padbuster",
+    "kind": "app",
+    "appId": "athena-padbuster",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b padbuster",
+    "description": "Script for performing Padding Oracle attacks"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-shellter": {
+    "label": "shellter",
+    "kind": "app",
+    "appId": "athena-shellter",
+    "appIcon": "athena-shellter",
+    "action": "shell-rocket -b shellter",
+    "description": "Dynamic shellcode injection tool and dynamic PE infector"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-sniffjoke": {
+    "label": "sniffjoke",
+    "kind": "app",
+    "appId": "athena-sniffjoke",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sniffjoke -x '-h'",
+    "description": "Transparent TCP connection scrambler"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-steghide": {
+    "label": "steghide",
+    "kind": "app",
+    "appId": "athena-steghide",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b steghide",
+    "description": "A steganography program"
+  },
+  "blackarch.mitre-applications.defense-evasion.athena-veil": {
+    "label": "veil",
+    "kind": "app",
+    "appId": "athena-veil",
+    "appIcon": "athena-veil",
+    "action": "shell-rocket -b veil",
+    "description": "Generates payloads to bypass anti-virus solutions"
+  },
+  "blackarch.mitre-applications.credential-access": {
+    "label": "08 - Credential Access",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.os-credential-dumping": {
+    "label": "• OS Credential Dumping",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.os-credential-dumping.athena-chntpw": {
+    "label": "chntpw",
+    "kind": "app",
+    "appId": "athena-chntpw",
+    "appIcon": "athena-chntpw",
+    "action": "shell-rocket -b chntpw",
+    "description": "Utility to overwrite passwords of Windows systems"
+  },
+  "blackarch.mitre-applications.credential-access.os-credential-dumping.athena-mimikatz": {
+    "label": "mimikatz",
+    "kind": "app",
+    "appId": "athena-mimikatz",
+    "appIcon": "athena-mimikatz",
+    "action": "shell-rocket -b mimikatz -d /usr/share/windows/mimikatz",
+    "description": "Uses admin rights on Windows to display passwords in plaintext"
+  },
+  "blackarch.mitre-applications.credential-access.os-credential-dumping.athena-samdump2": {
+    "label": "samdump2",
+    "kind": "app",
+    "appId": "athena-samdump2",
+    "appIcon": "athena-samdump2",
+    "action": "shell-rocket -b samdump2 -x '-h'",
+    "description": "Retrieves syskey and extract hashes from Windows 2k/NT/XP/Vista SAM."
+  },
+  "blackarch.mitre-applications.credential-access.hash-identification": {
+    "label": "• Hash Identification"
+  },
+  "blackarch.mitre-applications.credential-access.hash-identification.athena-hash-identifier": {
+    "label": "hash-identifier",
+    "kind": "app",
+    "appId": "athena-hash-identifier",
+    "appIcon": "athena-hash-identifier",
+    "action": "shell-rocket -b hash-identifier",
+    "description": "Tool to identify hash types"
+  },
+  "blackarch.mitre-applications.credential-access.hash-identification.athena-hashid": {
+    "label": "hashid",
+    "kind": "app",
+    "appId": "athena-hashid",
+    "appIcon": "athena-hashid",
+    "action": "shell-rocket -b hashid -p python-hashid -x '-h'",
+    "description": "Identify the different types of hashes used to encrypt data"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash": {
+    "label": "• Pass-the-Hash"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-evil-winrm": {
+    "label": "evil-winrm",
+    "kind": "app",
+    "appId": "athena-evil-winrm",
+    "appIcon": "athena-evil-winrm",
+    "action": "shell-rocket -b evil-winrm -x '-h'",
+    "description": "ultimate WinRM shell for hacking/pentesting"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-mimikatz": {
+    "label": "mimikatz",
+    "kind": "app",
+    "appId": "athena-mimikatz",
+    "appIcon": "athena-mimikatz",
+    "action": "shell-rocket -b mimikatz -d /usr/share/windows/mimikatz",
+    "description": "Uses admin rights on Windows to display passwords in plaintext"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-responder": {
+    "label": "responder",
+    "kind": "app",
+    "appId": "athena-responder",
+    "appIcon": "athena-responder",
+    "action": "shell-rocket -b responder -x '-h'",
+    "description": "LLMNR/NBT-NS/mDNS Poisoner"
+  },
+  "blackarch.mitre-applications.credential-access.pass-the-hash.athena-smbmap": {
+    "label": "smbmap",
+    "kind": "app",
+    "appId": "athena-smbmap",
+    "appIcon": "athena-smbmap",
+    "action": "shell-rocket -b smbmap -x '-h'",
+    "description": "SMB enumeration tool"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists": {
+    "label": "• Password Profiling & Wordlists",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-cewl": {
+    "label": "cewl",
+    "kind": "app",
+    "appId": "athena-cewl",
+    "appIcon": "athena-cewl",
+    "action": "shell-rocket -b cewl -x '--help'",
+    "description": "Custom word list generator"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-crunch": {
+    "label": "crunch",
+    "kind": "app",
+    "appId": "athena-crunch",
+    "appIcon": "athena-crunch",
+    "action": "shell-rocket -b crunch",
+    "description": "Generate wordlists from a character set"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-maskgen": {
+    "label": "maskgen",
+    "kind": "app",
+    "appId": "athena-maskgen",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b maskgen -p pack -x '-h'",
+    "description": "Password analysis and cracking kit"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-policygen": {
+    "label": "policygen",
+    "kind": "app",
+    "appId": "athena-policygen",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b policygen -p pack -x '-h'",
+    "description": "Password analysis and cracking kit"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-rsmangler": {
+    "label": "rsmangler",
+    "kind": "app",
+    "appId": "athena-rsmangler",
+    "appIcon": "athena-rsmangler",
+    "action": "shell-rocket -b rsmangler -x '-h'",
+    "description": "Wordlist mangling tool"
+  },
+  "blackarch.mitre-applications.credential-access.password-profiling-wordlists.athena-statsgen": {
+    "label": "statsgen",
+    "kind": "app",
+    "appId": "athena-statsgen",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b statsgen -p pack -x '-h'",
+    "description": "Password analysis and cracking kit"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force": {
+    "label": "• Brute Force"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-cat": {
+    "label": "CAT",
+    "kind": "app",
+    "appId": "athena-CAT",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b CAT -p cisco-auditing-tool",
+    "description": "Concatenate files and print on the standard output"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-crowbar": {
+    "label": "crowbar",
+    "kind": "app",
+    "appId": "athena-crowbar",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b crowbar -x '-h'",
+    "description": "Brute forcing tool"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-hydra": {
+    "label": "hydra",
+    "kind": "app",
+    "appId": "athena-hydra",
+    "appIcon": "athena-hydra",
+    "action": "shell-rocket -b hydra",
+    "description": "A very fast network logon cracker which supports many different services"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-medusa": {
+    "label": "medusa",
+    "kind": "app",
+    "appId": "athena-medusa",
+    "appIcon": "athena-medusa",
+    "action": "shell-rocket -b medusa -x '-h'",
+    "description": "Parallel Network Login Auditor"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-ncrack": {
+    "label": "ncrack",
+    "kind": "app",
+    "appId": "athena-ncrack",
+    "appIcon": "athena-ncrack",
+    "action": "shell-rocket -b ncrack -x '-h'",
+    "description": "Network authentication cracking tool"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-patator": {
+    "label": "patator",
+    "kind": "app",
+    "appId": "athena-patator",
+    "appIcon": "athena-patator",
+    "action": "shell-rocket -b patator -x '-h'",
+    "description": "Multi-purpose brute-forcer"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-sqldict": {
+    "label": "sqldict",
+    "kind": "app",
+    "appId": "athena-sqldict",
+    "appIcon": "athena-sqldict",
+    "action": "shell-rocket -b sqldict -d /usr/share/windows/sqldict",
+    "description": "Dictionary attack tool for SQL Server"
+  },
+  "blackarch.mitre-applications.credential-access.brute-force.athena-thc-pptp-bruter": {
+    "label": "thc-pptp-bruter",
+    "kind": "app",
+    "appId": "athena-thc-pptp-bruter",
+    "appIcon": "athena-thc-pptp-bruter",
+    "action": "shell-rocket -b thc-pptp-bruter",
+    "description": "THC PPTP Brute Force"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking": {
+    "label": "• Password Cracking",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-cmospwd": {
+    "label": "cmospwd",
+    "kind": "app",
+    "appId": "athena-cmospwd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b cmospwd -x '-h'",
+    "description": "A cmos/bios password recovery tool"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-crackle": {
+    "label": "crackle",
+    "kind": "app",
+    "appId": "athena-crackle",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b crackle",
+    "description": "Crack and decrypt BLE encryption"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-fcrackzip": {
+    "label": "fcrackzip",
+    "kind": "app",
+    "appId": "athena-fcrackzip",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b fcrackzip -x '--help'",
+    "description": "A Free/Fast Zip Password Cracker"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-hashcat": {
+    "label": "hashcat",
+    "kind": "app",
+    "appId": "athena-hashcat",
+    "appIcon": "athena-hashcat",
+    "action": "shell-rocket -b hashcat -x '-h'",
+    "description": "Advanced CPU-based password recovery utility"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-john": {
+    "label": "john",
+    "kind": "app",
+    "appId": "athena-john",
+    "appIcon": "athena-john",
+    "action": "shell-rocket -b john",
+    "description": "A tool to find weak passwords of your users"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-johnny": {
+    "label": "johnny",
+    "kind": "app",
+    "appId": "athena-johnny",
+    "appIcon": "athena-johnny",
+    "action": "johnny",
+    "description": "GUI for John the Ripper"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-rcrack": {
+    "label": "rcrack",
+    "kind": "app",
+    "appId": "athena-rcrack",
+    "appIcon": "athena-rcrack",
+    "action": "shell-rocket -b rcrack -p rainbowcrack",
+    "description": "Rainbow table password cracker"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-rcracki-mt": {
+    "label": "rcracki_mt",
+    "kind": "app",
+    "appId": "athena-rcracki_mt",
+    "appIcon": "athena-rcracki_mt",
+    "action": "shell-rocket -b rcracki_mt -p rcracki-mt",
+    "description": "Version of rcrack that supports hybrid and indexed tables"
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-sipcrack": {
+    "label": "sipcrack",
+    "kind": "app",
+    "appId": "athena-sipcrack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipcrack",
+    "description": "A suite of tools to sniff and crack the digest authentications within the SIP protocol."
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-sucrack": {
+    "label": "sucrack",
+    "kind": "app",
+    "appId": "athena-sucrack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sucrack",
+    "description": "Is a multithreaded Linux/UNIX tool for brute-force cracking of local user accounts via su."
+  },
+  "blackarch.mitre-applications.credential-access.password-cracking.athena-truecrack": {
+    "label": "truecrack",
+    "kind": "app",
+    "appId": "athena-truecrack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b truecrack -x '-h'",
+    "description": "Brute-force password cracker for TrueCrypt (Copyright) volumes."
+  },
+  "blackarch.mitre-applications.credential-access.unsecured-credentials": {
+    "label": "• Unsecured Credentials",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.unsecured-credentials.athena-trufflehog": {
+    "label": "trufflehog",
+    "kind": "app",
+    "appId": "athena-trufflehog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b trufflehog",
+    "description": "Searches through git repositories for secrets"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access": {
+    "label": "• WiFi",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-aircrack-ng": {
+    "label": "aircrack-ng",
+    "kind": "app",
+    "appId": "athena-aircrack-ng",
+    "appIcon": "athena-aircrack-ng",
+    "action": "shell-rocket -b aircrack-ng",
+    "description": "A 802.11 WEP / WPA-PSK key cracker"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-airgeddon": {
+    "label": "airgeddon",
+    "kind": "app",
+    "appId": "athena-airgeddon",
+    "appIcon": "athena-airgeddon",
+    "action": "shell-rocket -b airgeddon -r",
+    "description": "multi-use bash script for Linux systems to audit wireless networks"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-bully": {
+    "label": "bully",
+    "kind": "app",
+    "appId": "athena-bully",
+    "appIcon": "athena-bully",
+    "action": "shell-rocket -b bully",
+    "description": "Implementation of the WPS brute force attack, written in C"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-cowpatty": {
+    "label": "cowpatty",
+    "kind": "app",
+    "appId": "athena-cowpatty",
+    "appIcon": "athena-cowpatty",
+    "action": "shell-rocket -b cowpatty",
+    "description": "Brute-force dictionary attack against WPA-PSK"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-eapmd5pass": {
+    "label": "eapmd5pass",
+    "kind": "app",
+    "appId": "athena-eapmd5pass",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b eapmd5pass",
+    "description": "Tool for extracting and cracking EAP-MD5"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-fern-wifi-cracker": {
+    "label": "fern-wifi-cracker",
+    "kind": "app",
+    "appId": "athena-fern-wifi-cracker",
+    "appIcon": "athena-fern-wifi-cracker",
+    "action": "shell-rocket -b fern-wifi-cracker -g -r",
+    "description": "Automated Wi-Fi cracker"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-pixiewps": {
+    "label": "pixiewps",
+    "kind": "app",
+    "appId": "athena-pixiewps",
+    "appIcon": "athena-pixiewps",
+    "action": "shell-rocket -b pixiewps -x '-h'",
+    "description": "Offline Wi-Fi Protected Setup bruteforce tool"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-reaver": {
+    "label": "reaver",
+    "kind": "app",
+    "appId": "athena-reaver",
+    "appIcon": "athena-reaver",
+    "action": "shell-rocket -b reaver -x '-h'",
+    "description": "WPS Cracker"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-wifi-honey": {
+    "label": "wifi-honey",
+    "kind": "app",
+    "appId": "athena-wifi-honey",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b wifi-honey -x '-h'",
+    "description": "Wi-Fi honeypot"
+  },
+  "blackarch.mitre-applications.credential-access.wifi-credential-access.athena-wifite": {
+    "label": "wifite",
+    "kind": "app",
+    "appId": "athena-wifite",
+    "appIcon": "athena-wifite",
+    "action": "shell-rocket -b wifite -x '--help'",
+    "description": "Python script to automate wireless auditing using aircrack-ng tools"
+  },
+  "blackarch.mitre-applications.credential-access.keylogger": {
+    "label": "• Keylogger"
+  },
+  "blackarch.mitre-applications.credential-access.keylogger.athena-xspy": {
+    "label": "xspy",
+    "kind": "app",
+    "appId": "athena-xspy",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b xspy -g -x '-h'",
+    "description": "X server sniffer"
+  },
+  "blackarch.mitre-applications.credential-access.voip-credential-access": {
+    "label": "• VoIP",
+    "icon": "󰟵"
+  },
+  "blackarch.mitre-applications.credential-access.voip-credential-access.athena-enumiax": {
+    "label": "enumiax",
+    "kind": "app",
+    "appId": "athena-enumiax",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b enumiax",
+    "description": "IAX protocol username enumerator"
+  },
+  "blackarch.mitre-applications.credential-access.voip-credential-access.athena-svcrack": {
+    "label": "svcrack",
+    "kind": "app",
+    "appId": "athena-svcrack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipvicious-svcrack -p sipvicious -x '-h'",
+    "description": "Online password guessing tool for SIP devices"
+  },
+  "blackarch.mitre-applications.credential-access.nfc": {
+    "label": "• NFC"
+  },
+  "blackarch.mitre-applications.credential-access.nfc.athena-mfcuk": {
+    "label": "mfcuk",
+    "kind": "app",
+    "appId": "athena-mfcuk",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b mfcuk",
+    "description": "MiFare Classic Universal toolKit"
+  },
+  "blackarch.mitre-applications.credential-access.nfc.athena-mfoc": {
+    "label": "mfoc",
+    "kind": "app",
+    "appId": "athena-mfoc",
+    "appIcon": "athena-mfoc",
+    "action": "shell-rocket -b mfoc -x '-h'",
+    "description": "MIFARE Classic offline cracker"
+  },
+  "blackarch.mitre-applications.credential-access.nfc.athena-nfc-list": {
+    "label": "nfc-list",
+    "kind": "app",
+    "appId": "athena-nfc-list",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b nfc-list -p libnfc -x '-h'",
+    "description": "List NFC targets"
+  },
+  "blackarch.mitre-applications.credential-access.nfc.athena-nfc-mfclassic": {
+    "label": "nfc-mfclassic",
+    "kind": "app",
+    "appId": "athena-nfc-mfclassic",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b nfc-mfclassic -p libnfc",
+    "description": "MIFARE Classic command line tool"
+  },
+  "blackarch.mitre-applications.credential-access.athena-cewl": {
+    "label": "cewl",
+    "kind": "app",
+    "appId": "athena-cewl",
+    "appIcon": "athena-cewl",
+    "action": "shell-rocket -b cewl -x '--help'",
+    "description": "Custom word list generator"
+  },
+  "blackarch.mitre-applications.credential-access.athena-crunch": {
+    "label": "crunch",
+    "kind": "app",
+    "appId": "athena-crunch",
+    "appIcon": "athena-crunch",
+    "action": "shell-rocket -b crunch",
+    "description": "Generate wordlists from a character set"
+  },
+  "blackarch.mitre-applications.credential-access.athena-hashcat": {
+    "label": "hashcat",
+    "kind": "app",
+    "appId": "athena-hashcat",
+    "appIcon": "athena-hashcat",
+    "action": "shell-rocket -b hashcat -x '-h'",
+    "description": "Advanced CPU-based password recovery utility"
+  },
+  "blackarch.mitre-applications.credential-access.athena-hydra": {
+    "label": "hydra",
+    "kind": "app",
+    "appId": "athena-hydra",
+    "appIcon": "athena-hydra",
+    "action": "shell-rocket -b hydra",
+    "description": "A very fast network logon cracker which supports many different services"
+  },
+  "blackarch.mitre-applications.credential-access.athena-john": {
+    "label": "john",
+    "kind": "app",
+    "appId": "athena-john",
+    "appIcon": "athena-john",
+    "action": "shell-rocket -b john",
+    "description": "A tool to find weak passwords of your users"
+  },
+  "blackarch.mitre-applications.credential-access.athena-medusa": {
+    "label": "medusa",
+    "kind": "app",
+    "appId": "athena-medusa",
+    "appIcon": "athena-medusa",
+    "action": "shell-rocket -b medusa -x '-h'",
+    "description": "Parallel Network Login Auditor"
+  },
+  "blackarch.mitre-applications.credential-access.athena-ncrack": {
+    "label": "ncrack",
+    "kind": "app",
+    "appId": "athena-ncrack",
+    "appIcon": "athena-ncrack",
+    "action": "shell-rocket -b ncrack -x '-h'",
+    "description": "Network authentication cracking tool"
+  },
+  "blackarch.mitre-applications.credential-access.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.discovery": {
+    "label": "09 - Discovery",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery": {
+    "label": "• Network Service Discovery",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-amass": {
+    "label": "amass",
+    "kind": "app",
+    "appId": "athena-amass",
+    "appIcon": "athena-amass",
+    "action": "shell-rocket -b amass",
+    "description": "In-depth DNS Enumeration and Network Mapping"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-ike-scan": {
+    "label": "ike-scan",
+    "kind": "app",
+    "appId": "athena-ike-scan",
+    "appIcon": "athena-ike-scan",
+    "action": "shell-rocket -b ike-scan -x '-h'",
+    "description": "Discover and fingerprint IKE hosts (IPsec VPN servers)"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-masscan": {
+    "label": "masscan",
+    "kind": "app",
+    "appId": "athena-masscan",
+    "appIcon": "athena-masscan",
+    "action": "shell-rocket -b masscan -x '--help'",
+    "description": "Fast scan of the Internet"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-nmap": {
+    "label": "nmap",
+    "kind": "app",
+    "appId": "athena-nmap",
+    "appIcon": "athena-nmap",
+    "action": "shell-rocket -b nmap",
+    "description": "Network exploration tool and security / port scanner"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-sctpscan": {
+    "label": "sctpscan",
+    "kind": "app",
+    "appId": "athena-sctpscan",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sctpscan",
+    "description": "SCTP network scanner for discovery and security"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-sslscan": {
+    "label": "sslscan",
+    "kind": "app",
+    "appId": "athena-sslscan",
+    "appIcon": "athena-sslscan",
+    "action": "shell-rocket -b sslscan",
+    "description": "Fast SSL/TLS scanner"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-sslyze": {
+    "label": "sslyze",
+    "kind": "app",
+    "appId": "athena-sslyze",
+    "appIcon": "athena-sslyze",
+    "action": "shell-rocket -b sslyze -x '-h'",
+    "description": "Fast and full-featured SSL scanner"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-tlssled": {
+    "label": "tlssled",
+    "kind": "app",
+    "appId": "athena-tlssled",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b tlssled",
+    "description": "Evaluates the security of a target SSL/TLS (HTTPS) server"
+  },
+  "blackarch.mitre-applications.discovery.network-service-discovery.athena-unicornscan": {
+    "label": "unicornscan",
+    "kind": "app",
+    "appId": "athena-unicornscan",
+    "appIcon": "athena-unicornscan",
+    "action": "shell-rocket -b unicornscan -x '-h'",
+    "description": "Userland distributed TCP/IP stack"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing": {
+    "label": "• Network Sniffing",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-above": {
+    "label": "above",
+    "kind": "app",
+    "appId": "athena-above",
+    "appIcon": "athena-above",
+    "action": "shell-rocket -b above",
+    "description": "Invisible protocol sniffer for finding vulnerabilities in the network"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-arpspoof": {
+    "label": "arpspoof",
+    "kind": "app",
+    "appId": "athena-arpspoof",
+    "appIcon": "athena-arpspoof",
+    "action": "shell-rocket -b arpspoof -r -x '-h'",
+    "description": "Intercept packets on a switched LAN"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-darkstat": {
+    "label": "darkstat",
+    "kind": "app",
+    "appId": "athena-darkstat",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b darkstat",
+    "description": "Network statistics gatherer"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-dnschef": {
+    "label": "dnschef",
+    "kind": "app",
+    "appId": "athena-dnschef",
+    "appIcon": "athena-dnschef",
+    "action": "shell-rocket -b dnschef -x '-h'",
+    "description": "DNS proxy for penetration testers"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-dsniff": {
+    "label": "dsniff",
+    "kind": "app",
+    "appId": "athena-dsniff",
+    "appIcon": "athena-dsniff",
+    "action": "shell-rocket -b dsniff -x '-h'",
+    "description": "Password sniffer"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-hexinject": {
+    "label": "hexinject",
+    "kind": "app",
+    "appId": "athena-hexinject",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b hexinject",
+    "description": "Versatile packet injector and sniffer"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-netsniff-ng": {
+    "label": "netsniff-ng",
+    "kind": "app",
+    "appId": "athena-netsniff-ng",
+    "appIcon": "athena-netsniff-ng",
+    "action": "shell-rocket -b netsniff-ng -x '-h'",
+    "description": "The packet sniffing beast"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-scapy": {
+    "label": "scapy",
+    "kind": "app",
+    "appId": "athena-scapy",
+    "appIcon": "athena-scapy",
+    "action": "shell-rocket -b scapy",
+    "description": "Interactive packet manipulation tool"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-tcpdump": {
+    "label": "tcpdump",
+    "kind": "app",
+    "appId": "athena-tcpdump",
+    "appIcon": "athena-tcpdump",
+    "action": "shell-rocket -b tcpdump -x '-h'",
+    "description": "Dump traffic on a network"
+  },
+  "blackarch.mitre-applications.discovery.network-sniffing.athena-tcpflow": {
+    "label": "tcpflow",
+    "kind": "app",
+    "appId": "athena-tcpflow",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b tcpflow -x '-h'",
+    "description": "TCP flow recorder"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery": {
+    "label": "• Remote System Discovery",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-arping": {
+    "label": "arping",
+    "kind": "app",
+    "appId": "athena-arping",
+    "appIcon": "athena-arping",
+    "action": "shell-rocket -b arping -p iputils",
+    "description": "Sends arp and/or ip pings to a given host"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-arpwatch": {
+    "label": "arpwatch",
+    "kind": "app",
+    "appId": "athena-arpwatch",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b arpwatch -x '-h'",
+    "description": "Keep track of ethernet/ip address pairings"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-atk6-thcping6": {
+    "label": "atk6-thcping6",
+    "kind": "app",
+    "appId": "athena-atk6-thcping6",
+    "appIcon": "athena-atk6-thcping6",
+    "action": "shell-rocket -b thcping6 -p thc-ipv6",
+    "description": "The Hacker Choice's IPv6 Attack Toolkit"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-fierce": {
+    "label": "fierce",
+    "kind": "app",
+    "appId": "athena-fierce",
+    "appIcon": "athena-fierce",
+    "action": "shell-rocket -b fierce -x '-h'",
+    "description": "DNS scanner that helps locate non-contiguous IP space and hostnames against specified domains."
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-fping": {
+    "label": "fping",
+    "kind": "app",
+    "appId": "athena-fping",
+    "appIcon": "athena-fping",
+    "action": "shell-rocket -b fping -x '-h'",
+    "description": "Send ICMP ECHO_REQUEST packets to network hosts"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-hping3": {
+    "label": "hping3",
+    "kind": "app",
+    "appId": "athena-hping3",
+    "appIcon": "athena-hping3",
+    "action": "shell-rocket -b hping3 -p hping -x '-h'",
+    "description": "Send (almost) arbitrary TCP/IP packets to network hosts"
+  },
+  "blackarch.mitre-applications.discovery.remote-system-discovery.athena-p0f": {
+    "label": "p0f",
+    "kind": "app",
+    "appId": "athena-p0f",
+    "appIcon": "athena-p0f",
+    "action": "shell-rocket -b p0f -x '-h'",
+    "description": "Identify remote systems passively"
+  },
+  "blackarch.mitre-applications.discovery.account-discovery": {
+    "label": "• Account Discovery",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.discovery.account-discovery.athena-apache-users": {
+    "label": "apache-users",
+    "kind": "app",
+    "appId": "athena-apache-users",
+    "appIcon": "athena-apache-users",
+    "action": "shell-rocket -b apache-users",
+    "description": "Enumerate usernames on systems with Apache UserDir module"
+  },
+  "blackarch.mitre-applications.discovery.account-discovery.athena-smtp-user-enum": {
+    "label": "smtp-user-enum",
+    "kind": "app",
+    "appId": "athena-smtp-user-enum",
+    "appIcon": "athena-smtp-user-enum",
+    "action": "shell-rocket -b smtp-user-enum",
+    "description": "Username guessing tool for the SMTP service"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery": {
+    "label": "• Network Share Discovery",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-enum4linux": {
+    "label": "enum4linux",
+    "kind": "app",
+    "appId": "athena-enum4linux",
+    "appIcon": "athena-enum4linux",
+    "action": "shell-rocket -b enum4linux",
+    "description": "Enumerates info from Windows and Samba systems"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-enum4linux-ng": {
+    "label": "enum4linux-ng",
+    "kind": "app",
+    "appId": "athena-enum4linux-ng",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b enum4linux-ng",
+    "description": "Next generation version of enum4linux"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-nbtscan": {
+    "label": "nbtscan",
+    "kind": "app",
+    "appId": "athena-nbtscan",
+    "appIcon": "athena-nbtscan",
+    "action": "shell-rocket -b nbtscan -x '-h'",
+    "description": "Scan networks for NetBIOS name information"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-smbclient": {
+    "label": "smbclient",
+    "kind": "app",
+    "appId": "athena-smbclient",
+    "appIcon": "athena-smbclient",
+    "action": "shell-rocket -b smbclient",
+    "description": "Ftp-like client to access SMB/CIFS resources on servers"
+  },
+  "blackarch.mitre-applications.discovery.network-share-discovery.athena-smbmap": {
+    "label": "smbmap",
+    "kind": "app",
+    "appId": "athena-smbmap",
+    "appIcon": "athena-smbmap",
+    "action": "shell-rocket -b smbmap -x '-h'",
+    "description": "SMB enumeration tool"
+  },
+  "blackarch.mitre-applications.discovery.process-discovery": {
+    "label": "• Process Discovery",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.discovery.process-discovery.athena-pspy": {
+    "label": "pspy",
+    "kind": "app",
+    "appId": "athena-pspy",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b pspy -x '-h'",
+    "description": "Monitor Linux processes without root permissions"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery": {
+    "label": "• System Network Configuration Discovery",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-ass": {
+    "label": "ass",
+    "kind": "app",
+    "appId": "athena-ass",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b irpas-ass -p irpas",
+    "description": "Autonomous system scanner"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-cdp": {
+    "label": "cdp",
+    "kind": "app",
+    "appId": "athena-cdp",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b irpas-cdp -p irpas",
+    "description": "Cdp packet generator"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-intrace": {
+    "label": "intrace",
+    "kind": "app",
+    "appId": "athena-intrace",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b intrace",
+    "description": "Traceroute-like application piggybacking on existing TCP connections"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-netdiscover": {
+    "label": "netdiscover",
+    "kind": "app",
+    "appId": "athena-netdiscover",
+    "appIcon": "athena-netdiscover",
+    "action": "shell-rocket -b netdiscover -x '-h'",
+    "description": "Active/passive ARP reconnaissance tool"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-netmask": {
+    "label": "netmask",
+    "kind": "app",
+    "appId": "athena-netmask",
+    "appIcon": "athena-netmask",
+    "action": "shell-rocket -b netmask -x '-h'",
+    "description": "A netmask generation and conversion program"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-tcpreplay": {
+    "label": "tcpreplay",
+    "kind": "app",
+    "appId": "athena-tcpreplay",
+    "appIcon": "athena-tcpreplay",
+    "action": "shell-rocket -b tcpreplay -x '-h'",
+    "description": "Replay network traffic stored in pcap files"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-wafw00f": {
+    "label": "wafw00f",
+    "kind": "app",
+    "appId": "athena-wafw00f",
+    "appIcon": "athena-wafw00f",
+    "action": "shell-rocket -b wafw00f -x '-h'",
+    "description": "Identify and fingerprint Web Application Firewall products"
+  },
+  "blackarch.mitre-applications.discovery.system-network-configuration-discovery.athena-yersinia": {
+    "label": "yersinia",
+    "kind": "app",
+    "appId": "athena-yersinia",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b yersinia -x '-h'",
+    "description": "A Framework for layer 2 attacks"
+  },
+  "blackarch.mitre-applications.discovery.databases": {
+    "label": "• Databases",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-impacket-mssqlclient": {
+    "label": "impacket-mssqlclient",
+    "kind": "app",
+    "appId": "athena-impacket-mssqlclient",
+    "appIcon": "athena-impacket-mssqlclient",
+    "action": "shell-rocket -b mssqlclient.py -p impacket",
+    "description": "Python3 module to easily build and dissect network protocols"
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-mdb-sql": {
+    "label": "mdb-sql",
+    "kind": "app",
+    "appId": "athena-mdb-sql",
+    "appIcon": "athena-mdb-sql",
+    "action": "shell-rocket -b mdb-sql -p mdbtools -x '-h'",
+    "description": "SQL interface to MDB Tools"
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-mysql": {
+    "label": "mysql",
+    "kind": "app",
+    "appId": "athena-mysql",
+    "appIcon": "athena-mysql",
+    "action": "shell-rocket -b mysql -p mariadb-clients -x '--help'",
+    "description": "The MariaDB command-line tool (mysql is now a symlink to mariadb)"
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-oscanner": {
+    "label": "oscanner",
+    "kind": "app",
+    "appId": "athena-oscanner",
+    "appIcon": "athena-oscanner",
+    "action": "shell-rocket -b oscanner",
+    "description": "Oracle assessment framework"
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-sidguess": {
+    "label": "sidguess",
+    "kind": "app",
+    "appId": "athena-sidguess",
+    "appIcon": "athena-sidguess",
+    "action": "shell-rocket -b sidguess -p sidguesser",
+    "description": "Guesses sids against an Oracle database"
+  },
+  "blackarch.mitre-applications.discovery.databases.athena-tnscmd10g": {
+    "label": "tnscmd10g",
+    "kind": "app",
+    "appId": "athena-tnscmd10g",
+    "appIcon": "athena-tnscmd10g",
+    "action": "shell-rocket -b tnscmd10g -p tnscmd",
+    "description": "Tool to prod the oracle tnslsnr process"
+  },
+  "blackarch.mitre-applications.discovery.snmp": {
+    "label": "• SNMP"
+  },
+  "blackarch.mitre-applications.discovery.snmp.athena-braa": {
+    "label": "braa",
+    "kind": "app",
+    "appId": "athena-braa",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b braa",
+    "description": "Mass SNMP scanner"
+  },
+  "blackarch.mitre-applications.discovery.snmp.athena-onesixtyone": {
+    "label": "onesixtyone",
+    "kind": "app",
+    "appId": "athena-onesixtyone",
+    "appIcon": "athena-onesixtyone",
+    "action": "shell-rocket -b onesixtyone",
+    "description": "Fast and simple SNMP scanner"
+  },
+  "blackarch.mitre-applications.discovery.snmp.athena-snmp-check": {
+    "label": "snmp-check",
+    "kind": "app",
+    "appId": "athena-snmp-check",
+    "appIcon": "athena-snmp-check",
+    "action": "shell-rocket -b snmpcheck -x '-h'",
+    "description": "SNMP device enumerator"
+  },
+  "blackarch.mitre-applications.discovery.smtp": {
+    "label": "• SMTP"
+  },
+  "blackarch.mitre-applications.discovery.smtp.athena-smtp-user-enum": {
+    "label": "smtp-user-enum",
+    "kind": "app",
+    "appId": "athena-smtp-user-enum",
+    "appIcon": "athena-smtp-user-enum",
+    "action": "shell-rocket -b smtp-user-enum",
+    "description": "Username guessing tool for the SMTP service"
+  },
+  "blackarch.mitre-applications.discovery.smtp.athena-swaks": {
+    "label": "swaks",
+    "kind": "app",
+    "appId": "athena-swaks",
+    "appIcon": "athena-swaks",
+    "action": "shell-rocket -b swaks -x '--help'",
+    "description": "Swiss Army Knife SMTP, the all-purpose SMTP transaction tester"
+  },
+  "blackarch.mitre-applications.discovery.cisco-tools": {
+    "label": "• Cisco Tools"
+  },
+  "blackarch.mitre-applications.discovery.cisco-tools.athena-cge-pl": {
+    "label": "cisco-global-exploiter",
+    "kind": "app",
+    "appId": "athena-cge.pl",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b cisco-global-exploiter",
+    "description": "Simple and fast Cisco exploitation tool"
+  },
+  "blackarch.mitre-applications.discovery.cisco-tools.athena-cisco-ocs": {
+    "label": "cisco-ocs",
+    "kind": "app",
+    "appId": "athena-cisco-ocs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b cisco-ocs",
+    "description": "Mass Cisco scanner"
+  },
+  "blackarch.mitre-applications.discovery.cisco-tools.athena-cisco-torch": {
+    "label": "cisco-torch",
+    "kind": "app",
+    "appId": "athena-cisco-torch",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b cisco-torch",
+    "description": "Cisco device scanner"
+  },
+  "blackarch.mitre-applications.discovery.active-directory": {
+    "label": "• Active Directory"
+  },
+  "blackarch.mitre-applications.discovery.active-directory.athena-bloodhound": {
+    "label": "bloodhound",
+    "kind": "app",
+    "appId": "athena-bloodhound",
+    "appIcon": "athena-bloodhound",
+    "action": "shell-rocket -b bloodhound",
+    "description": "Six Degrees of Domain Admin"
+  },
+  "blackarch.mitre-applications.discovery.active-directory.athena-bloodhound-ce-python": {
+    "label": "bloodhound-ce-python",
+    "kind": "app",
+    "appId": "athena-bloodhound-ce-python",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b bloodhound-ce-python",
+    "description": "Python based ingestor for BloodHound CE"
+  },
+  "blackarch.mitre-applications.discovery.active-directory.athena-bloodhound-python": {
+    "label": "bloodhound-python",
+    "kind": "app",
+    "appId": "athena-bloodhound-python",
+    "appIcon": "athena-bloodhound-python",
+    "action": "shell-rocket -b bloodhound-python",
+    "description": "Ingestor for BloodHound, based on Impacket (Python 3)"
+  },
+  "blackarch.mitre-applications.discovery.voip": {
+    "label": "• VoIP"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-ohrwurm": {
+    "label": "ohrwurm",
+    "kind": "app",
+    "appId": "athena-ohrwurm",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ohrwurm -r",
+    "description": "RTP fuzzer"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-protos-sip": {
+    "label": "protos-sip",
+    "kind": "app",
+    "appId": "athena-protos-sip",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b protos-sip",
+    "description": "SIP test suite"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-rtpbreak": {
+    "label": "rtpbreak",
+    "kind": "app",
+    "appId": "athena-rtpbreak",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b rtpbreak -x '-h'",
+    "description": "Detects, reconstructs, and analyzes RTP sessions"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-siparmyknife": {
+    "label": "siparmyknife",
+    "kind": "app",
+    "appId": "athena-siparmyknife",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b siparmyknife",
+    "description": "SIP fuzzing tool"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-sipp": {
+    "label": "sipp",
+    "kind": "app",
+    "appId": "athena-sipp",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipp",
+    "description": "Traffic generator for the SIP protocol"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-sippts": {
+    "label": "sippts",
+    "kind": "app",
+    "appId": "athena-sippts",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sippts",
+    "description": "Set of tools to audit SIP based VoIP Systems"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-sipsak": {
+    "label": "sipsak",
+    "kind": "app",
+    "appId": "athena-sipsak",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipsak",
+    "description": "A utility for various tests on sip servers and user agents"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-svcrash": {
+    "label": "svcrash",
+    "kind": "app",
+    "appId": "athena-svcrash",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipvicious-svcrash -p sipvicious -x '-h'",
+    "description": "Stop unauthorized scans from svcrack/svwar tool"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-svmap": {
+    "label": "svmap",
+    "kind": "app",
+    "appId": "athena-svmap",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipvicious-svmap -p sipvicious -x '-h'",
+    "description": "Scanner that searches for SIP devices on a given network"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-svreport": {
+    "label": "svreport",
+    "kind": "app",
+    "appId": "athena-svreport",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipvicious-svreport -p sipvicious -x '-h'",
+    "description": "Report engine manage sessions from previous scans with SIPVicious"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-svwar": {
+    "label": "svwar",
+    "kind": "app",
+    "appId": "athena-svwar",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sipvicious-svwar -p sipvicious -x '-h'",
+    "description": "Extension line scanner"
+  },
+  "blackarch.mitre-applications.discovery.voip.athena-voiphopper": {
+    "label": "voiphopper",
+    "kind": "app",
+    "appId": "athena-voiphopper",
+    "appIcon": "athena-voiphopper",
+    "action": "shell-rocket -b voiphopper",
+    "description": "Runs a VLAN hop security test"
+  },
+  "blackarch.mitre-applications.discovery.athena-amass": {
+    "label": "amass",
+    "kind": "app",
+    "appId": "athena-amass",
+    "appIcon": "athena-amass",
+    "action": "shell-rocket -b amass",
+    "description": "In-depth DNS Enumeration and Network Mapping"
+  },
+  "blackarch.mitre-applications.discovery.athena-arping": {
+    "label": "arping",
+    "kind": "app",
+    "appId": "athena-arping",
+    "appIcon": "athena-arping",
+    "action": "shell-rocket -b arping -p iputils",
+    "description": "Sends arp and/or ip pings to a given host"
+  },
+  "blackarch.mitre-applications.discovery.athena-bloodhound": {
+    "label": "bloodhound",
+    "kind": "app",
+    "appId": "athena-bloodhound",
+    "appIcon": "athena-bloodhound",
+    "action": "shell-rocket -b bloodhound",
+    "description": "Six Degrees of Domain Admin"
+  },
+  "blackarch.mitre-applications.discovery.athena-enum4linux": {
+    "label": "enum4linux",
+    "kind": "app",
+    "appId": "athena-enum4linux",
+    "appIcon": "athena-enum4linux",
+    "action": "shell-rocket -b enum4linux",
+    "description": "Enumerates info from Windows and Samba systems"
+  },
+  "blackarch.mitre-applications.discovery.athena-fierce": {
+    "label": "fierce",
+    "kind": "app",
+    "appId": "athena-fierce",
+    "appIcon": "athena-fierce",
+    "action": "shell-rocket -b fierce -x '-h'",
+    "description": "DNS scanner that helps locate non-contiguous IP space and hostnames against specified domains."
+  },
+  "blackarch.mitre-applications.discovery.athena-hping3": {
+    "label": "hping3",
+    "kind": "app",
+    "appId": "athena-hping3",
+    "appIcon": "athena-hping3",
+    "action": "shell-rocket -b hping3 -p hping -x '-h'",
+    "description": "Send (almost) arbitrary TCP/IP packets to network hosts"
+  },
+  "blackarch.mitre-applications.discovery.athena-masscan": {
+    "label": "masscan",
+    "kind": "app",
+    "appId": "athena-masscan",
+    "appIcon": "athena-masscan",
+    "action": "shell-rocket -b masscan -x '--help'",
+    "description": "Fast scan of the Internet"
+  },
+  "blackarch.mitre-applications.discovery.athena-netdiscover": {
+    "label": "netdiscover",
+    "kind": "app",
+    "appId": "athena-netdiscover",
+    "appIcon": "athena-netdiscover",
+    "action": "shell-rocket -b netdiscover -x '-h'",
+    "description": "Active/passive ARP reconnaissance tool"
+  },
+  "blackarch.mitre-applications.discovery.athena-nmap": {
+    "label": "nmap",
+    "kind": "app",
+    "appId": "athena-nmap",
+    "appIcon": "athena-nmap",
+    "action": "shell-rocket -b nmap",
+    "description": "Network exploration tool and security / port scanner"
+  },
+  "blackarch.mitre-applications.discovery.athena-tcpdump": {
+    "label": "tcpdump",
+    "kind": "app",
+    "appId": "athena-tcpdump",
+    "appIcon": "athena-tcpdump",
+    "action": "shell-rocket -b tcpdump -x '-h'",
+    "description": "Dump traffic on a network"
+  },
+  "blackarch.mitre-applications.lateral-movement": {
+    "label": "10 - Lateral Movement",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash": {
+    "label": "• Pass-the-Hash"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-evil-winrm": {
+    "label": "evil-winrm",
+    "kind": "app",
+    "appId": "athena-evil-winrm",
+    "appIcon": "athena-evil-winrm",
+    "action": "shell-rocket -b evil-winrm -x '-h'",
+    "description": "ultimate WinRM shell for hacking/pentesting"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-mimikatz": {
+    "label": "mimikatz",
+    "kind": "app",
+    "appId": "athena-mimikatz",
+    "appIcon": "athena-mimikatz",
+    "action": "shell-rocket -b mimikatz -d /usr/share/windows/mimikatz",
+    "description": "Uses admin rights on Windows to display passwords in plaintext"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-responder": {
+    "label": "responder",
+    "kind": "app",
+    "appId": "athena-responder",
+    "appIcon": "athena-responder",
+    "action": "shell-rocket -b responder -x '-h'",
+    "description": "LLMNR/NBT-NS/mDNS Poisoner"
+  },
+  "blackarch.mitre-applications.lateral-movement.pass-the-hash.athena-smbmap": {
+    "label": "smbmap",
+    "kind": "app",
+    "appId": "athena-smbmap",
+    "appIcon": "athena-smbmap",
+    "action": "shell-rocket -b smbmap -x '-h'",
+    "description": "SMB enumeration tool"
+  },
+  "blackarch.mitre-applications.lateral-movement.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.lateral-movement.athena-evil-winrm": {
+    "label": "evil-winrm",
+    "kind": "app",
+    "appId": "athena-evil-winrm",
+    "appIcon": "athena-evil-winrm",
+    "action": "shell-rocket -b evil-winrm -x '-h'",
+    "description": "ultimate WinRM shell for hacking/pentesting"
+  },
+  "blackarch.mitre-applications.lateral-movement.athena-impacket-psexec": {
+    "label": "impacket-psexec",
+    "kind": "app",
+    "appId": "athena-impacket-psexec",
+    "appIcon": "athena-impacket-psexec",
+    "action": "shell-rocket -b psexec.py -p impacket",
+    "description": "Python3 module to easily build and dissect network protocols"
+  },
+  "blackarch.mitre-applications.lateral-movement.athena-impacket-smbexec": {
+    "label": "impacket-smbexec",
+    "kind": "app",
+    "appId": "athena-impacket-smbexec",
+    "appIcon": "athena-impacket-smbexec",
+    "action": "shell-rocket -b smbexec.py -p impacket",
+    "description": "Python3 module to easily build and dissect network protocols"
+  },
+  "blackarch.mitre-applications.lateral-movement.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.collection": {
+    "label": "11 - Collection",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.collection.athena-evilginx": {
+    "label": "evilginx",
+    "kind": "app",
+    "appId": "athena-evilginx",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b evilginx",
+    "description": "man-in-the-middle attack framework"
+  },
+  "blackarch.mitre-applications.collection.athena-httrack": {
+    "label": "httrack",
+    "kind": "app",
+    "appId": "athena-httrack",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b httrack -x '-h'",
+    "description": "Offline browser : copy websites to a local directory"
+  },
+  "blackarch.mitre-applications.collection.athena-mitm6": {
+    "label": "mitm6",
+    "kind": "app",
+    "appId": "athena-mitm6",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b mitm6 -x '-h'",
+    "description": "pwning IPv4 via IPv6"
+  },
+  "blackarch.mitre-applications.collection.athena-mitmproxy": {
+    "label": "mitmproxy",
+    "kind": "app",
+    "appId": "athena-mitmproxy",
+    "appIcon": "athena-mitmproxy",
+    "action": "shell-rocket -b mitmproxy -x '-h'",
+    "description": "SSL-capable man-in-the-middle HTTP proxy"
+  },
+  "blackarch.mitre-applications.collection.athena-ssldump": {
+    "label": "ssldump",
+    "kind": "app",
+    "appId": "athena-ssldump",
+    "appIcon": "athena-ssldump",
+    "action": "shell-rocket -b ssldump -x '-h'",
+    "description": "Dump SSL traffic on a network"
+  },
+  "blackarch.mitre-applications.collection.athena-sslsniff": {
+    "label": "sslsniff",
+    "kind": "app",
+    "appId": "athena-sslsniff",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sslsniff",
+    "description": "SSL/TLS man-in-the-middle attack tool"
+  },
+  "blackarch.mitre-applications.collection.athena-sslsplit": {
+    "label": "sslsplit",
+    "kind": "app",
+    "appId": "athena-sslsplit",
+    "appIcon": "athena-sslsplit",
+    "action": "shell-rocket -b sslsplit -x '-h'",
+    "description": "- transparent SSL/TLS interception"
+  },
+  "blackarch.mitre-applications.command-and-control": {
+    "label": "12 - Command and Control",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol": {
+    "label": "• Application Layer Protocol"
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol.athena-cadaver": {
+    "label": "cadaver",
+    "kind": "app",
+    "appId": "athena-cadaver",
+    "appIcon": "athena-cadaver",
+    "action": "shell-rocket -b cadaver -x '-h'",
+    "description": "A command-line WebDAV client for Unix."
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol.athena-crackmapexec": {
+    "label": "crackmapexec",
+    "kind": "app",
+    "appId": "athena-crackmapexec",
+    "appIcon": "athena-crackmapexec",
+    "action": "shell-rocket -b crackmapexec -r",
+    "description": "Swiss army knife for pentesting networks"
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol.athena-evil-winrm": {
+    "label": "evil-winrm",
+    "kind": "app",
+    "appId": "athena-evil-winrm",
+    "appIcon": "athena-evil-winrm",
+    "action": "shell-rocket -b evil-winrm -x '-h'",
+    "description": "ultimate WinRM shell for hacking/pentesting"
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol.athena-netexec": {
+    "label": "netexec",
+    "kind": "app",
+    "appId": "athena-netexec",
+    "appIcon": "athena-netexec",
+    "action": "shell-rocket -b netexec -x '-h'",
+    "description": "Network Execution Tool"
+  },
+  "blackarch.mitre-applications.command-and-control.application-layer-protocol.athena-smbclient": {
+    "label": "smbclient",
+    "kind": "app",
+    "appId": "athena-smbclient",
+    "appIcon": "athena-smbclient",
+    "action": "shell-rocket -b smbclient",
+    "description": "Ftp-like client to access SMB/CIFS resources on servers"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol": {
+    "label": "• Non-Application Layer Protocol"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-dbd": {
+    "label": "dbd",
+    "kind": "app",
+    "appId": "athena-dbd",
+    "appIcon": "athena-dbd",
+    "action": "shell-rocket -b dbd -x '-h'",
+    "description": "Netcat clone with encryption"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-ncat": {
+    "label": "ncat",
+    "kind": "app",
+    "appId": "athena-ncat",
+    "appIcon": "athena-ncat",
+    "action": "shell-rocket -b ncat -p nmap -x '-h'",
+    "description": "Concatenate and redirect sockets"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-netcat": {
+    "label": "netcat",
+    "kind": "app",
+    "appId": "athena-netcat",
+    "appIcon": "athena-netcat",
+    "action": "shell-rocket -b nc -p netcat -x '-h'",
+    "description": "TCP/IP swiss army knife"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-sbd": {
+    "label": "sbd",
+    "kind": "app",
+    "appId": "athena-sbd",
+    "appIcon": "athena-sbd",
+    "action": "shell-rocket -b sbd -x '-h'",
+    "description": "Secure backdoor for linux and windows"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-socat": {
+    "label": "socat",
+    "kind": "app",
+    "appId": "athena-socat",
+    "appIcon": "athena-socat",
+    "action": "shell-rocket -b socat -x '-h'",
+    "description": "Multipurpose relay (SOcket CAT)"
+  },
+  "blackarch.mitre-applications.command-and-control.non-application-layer-protocol.athena-termineter": {
+    "label": "termineter",
+    "kind": "app",
+    "appId": "athena-termineter",
+    "appIcon": "athena-termineter",
+    "action": "shell-rocket -b termineter -x '-h'",
+    "description": "Smart meter testing framework"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling": {
+    "label": "• Protocol Tunneling",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-chisel": {
+    "label": "chisel",
+    "kind": "app",
+    "appId": "athena-chisel",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b chisel",
+    "description": "fast TCP/UDP tunnel over HTTP (program)"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-dns2tcpc": {
+    "label": "dns2tcpc",
+    "kind": "app",
+    "appId": "athena-dns2tcpc",
+    "appIcon": "athena-dns2tcpc",
+    "action": "shell-rocket -b dns2tcpc -p dns2tcp",
+    "description": "A tunneling tool that encapsulate TCP traffic over DNS."
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-dns2tcpd": {
+    "label": "dns2tcpd",
+    "kind": "app",
+    "appId": "athena-dns2tcpd",
+    "appIcon": "athena-dns2tcpd",
+    "action": "shell-rocket -b dns2tcpd -p dns2tcp",
+    "description": "A tunneling tool that encapsulate TCP traffic over DNS."
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-iodine-client-start": {
+    "label": "iodine-client-start",
+    "kind": "app",
+    "appId": "athena-iodine-client-start",
+    "appIcon": "athena-iodine-client-start",
+    "action": "shell-rocket -b iodine",
+    "description": "Start an iodine IPv4-over-DNS tunnel"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-ligolo-agent": {
+    "label": "ligolo-agent",
+    "kind": "app",
+    "appId": "athena-ligolo-agent",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ligolo-ng-agent -x '-h'",
+    "description": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-ligolo-proxy": {
+    "label": "ligolo-proxy",
+    "kind": "app",
+    "appId": "athena-ligolo-proxy",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ligolo-ng-proxy -x '-h'",
+    "description": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-miredo": {
+    "label": "miredo",
+    "kind": "app",
+    "appId": "athena-miredo",
+    "appIcon": "athena-miredo",
+    "action": "shell-rocket -b miredo -x '-h'",
+    "description": "Teredo IPv6 tunneling for Unix"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-proxychains4": {
+    "label": "proxychains4",
+    "kind": "app",
+    "appId": "athena-proxychains4",
+    "appIcon": "athena-proxychains4",
+    "action": "shell-rocket -b proxychains4 -p proxychains-ng",
+    "description": "Redirect connections through proxy servers"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-proxytunnel": {
+    "label": "proxytunnel",
+    "kind": "app",
+    "appId": "athena-proxytunnel",
+    "appIcon": "athena-proxytunnel",
+    "action": "shell-rocket -b proxytunnel -x '-h'",
+    "description": "Program to tunnel a connection through a standard HTTPS proxy"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-ptunnel": {
+    "label": "ptunnel",
+    "kind": "app",
+    "appId": "athena-ptunnel",
+    "appIcon": "athena-ptunnel",
+    "action": "shell-rocket -b ptunnel -x '-h'",
+    "description": "Tunnel TCP connections over ICMP echo request/reply packets."
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-pwnat": {
+    "label": "pwnat",
+    "kind": "app",
+    "appId": "athena-pwnat",
+    "appIcon": "athena-pwnat",
+    "action": "shell-rocket -b pwnat -x '-h'",
+    "description": "NAT to NAT client-server communication"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-sslh": {
+    "label": "sslh",
+    "kind": "app",
+    "appId": "athena-sslh",
+    "appIcon": "athena-sslh",
+    "action": "shell-rocket -b sslh -x '-h'",
+    "description": "Protocol demultiplexer"
+  },
+  "blackarch.mitre-applications.command-and-control.protocol-tunneling.athena-udptunnel": {
+    "label": "udptunnel",
+    "kind": "app",
+    "appId": "athena-udptunnel",
+    "appIcon": "athena-udptunnel",
+    "action": "shell-rocket -b udptunnel -x '-h'",
+    "description": "Tunnel UDP packets over a TCP connection"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-armitage": {
+    "label": "armitage",
+    "kind": "app",
+    "appId": "athena-armitage",
+    "appIcon": "athena-armitage",
+    "action": "shell-rocket -b armitage -g",
+    "description": "Cyber attack management for Metasploit"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-havoc": {
+    "label": "havoc",
+    "kind": "app",
+    "appId": "athena-havoc",
+    "appIcon": "athena-havoc",
+    "action": "shell-rocket -b havoc-c2",
+    "description": "Modern and malleable post-exploitation C2 framework"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-koadic": {
+    "label": "koadic",
+    "kind": "app",
+    "appId": "athena-koadic",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b koadic",
+    "description": "Windows post-exploitation rootkit"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-metasploit-framework": {
+    "label": "metasploit-framework",
+    "kind": "app",
+    "appId": "athena-metasploit-framework",
+    "appIcon": "athena-metasploit-framework",
+    "action": "shell-rocket -b msfconsole -p metasploit",
+    "description": "Framework for exploit development and vulnerability research"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-powershell-empire": {
+    "label": "powershell-empire",
+    "kind": "app",
+    "appId": "athena-powershell-empire",
+    "appIcon": "athena-powershell-empire",
+    "action": "shell-rocket -b empire",
+    "description": "PowerShell and Python post-exploitation agent"
+  },
+  "blackarch.mitre-applications.command-and-control.athena-villain": {
+    "label": "villain",
+    "kind": "app",
+    "appId": "athena-villain",
+    "appIcon": "athena-villain",
+    "action": "shell-rocket -b villain",
+    "description": "High level C2 framework"
+  },
+  "blackarch.mitre-applications.exfiltration": {
+    "label": "13 - Exfiltration",
+    "icon": "󰛳"
+  },
+  "blackarch.mitre-applications.exfiltration.athena-goshs": {
+    "label": "goshs",
+    "kind": "app",
+    "appId": "athena-goshs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b goshs -x '-h'",
+    "description": "SimpleHTTPServer written in Go"
+  },
+  "blackarch.mitre-applications.exfiltration.athena-impacket-smbserver": {
+    "label": "impacket-smbserver",
+    "kind": "app",
+    "appId": "athena-impacket-smbserver",
+    "appIcon": "athena-impacket-smbserver",
+    "action": "shell-rocket -b smbserver.py -p impacket",
+    "description": "Python3 module to easily build and dissect network protocols"
+  },
+  "blackarch.mitre-applications.exfiltration.athena-netcat": {
+    "label": "netcat",
+    "kind": "app",
+    "appId": "athena-netcat",
+    "appIcon": "athena-netcat",
+    "action": "shell-rocket -b nc -p netcat -x '-h'",
+    "description": "TCP/IP swiss army knife"
+  },
+  "blackarch.mitre-applications.exfiltration.athena-raven": {
+    "label": "raven",
+    "kind": "app",
+    "appId": "athena-raven",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b raven",
+    "description": "Python tool that extends the capabilities of the http.server Python module"
+  },
+  "blackarch.mitre-applications.impact": {
+    "label": "14 - Impact",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.impact.athena-dhcpig": {
+    "label": "dhcpig",
+    "kind": "app",
+    "appId": "athena-dhcpig",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dhcpig",
+    "description": "DHCP exhaustion script using scapy network library"
+  },
+  "blackarch.mitre-applications.impact.athena-goldeneye": {
+    "label": "goldeneye",
+    "kind": "app",
+    "appId": "athena-goldeneye",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b goldeneye",
+    "description": "HTTP DoS test tool"
+  },
+  "blackarch.mitre-applications.impact.athena-iaxflood": {
+    "label": "iaxflood",
+    "kind": "app",
+    "appId": "athena-iaxflood",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b iaxflood",
+    "description": "VoIP flooder tool"
+  },
+  "blackarch.mitre-applications.impact.athena-inviteflood": {
+    "label": "inviteflood",
+    "kind": "app",
+    "appId": "athena-inviteflood",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b inviteflood -x '-h'",
+    "description": "SIP/SDP INVITE message flooding over UDP/IP"
+  },
+  "blackarch.mitre-applications.impact.athena-mdk3": {
+    "label": "mdk3",
+    "kind": "app",
+    "appId": "athena-mdk3",
+    "appIcon": "athena-mdk3",
+    "action": "shell-rocket -b mdk3 -r",
+    "description": "Wireless attack tool for IEEE 802.11 networks"
+  },
+  "blackarch.mitre-applications.impact.athena-rtpflood": {
+    "label": "rtpflood",
+    "kind": "app",
+    "appId": "athena-rtpflood",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b rtpflood -p rtp-flood",
+    "description": "Tool to flood any RTP device"
+  },
+  "blackarch.mitre-applications.impact.athena-scapy": {
+    "label": "scapy",
+    "kind": "app",
+    "appId": "athena-scapy",
+    "appIcon": "athena-scapy",
+    "action": "shell-rocket -b scapy",
+    "description": "Interactive packet manipulation tool"
+  },
+  "blackarch.mitre-applications.impact.athena-siege": {
+    "label": "siege",
+    "kind": "app",
+    "appId": "athena-siege",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b siege",
+    "description": "An HTTP/FTP load tester and benchmarking utility."
+  },
+  "blackarch.mitre-applications.impact.athena-slowhttptest": {
+    "label": "slowhttptest",
+    "kind": "app",
+    "appId": "athena-slowhttptest",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b slowhttptest -x '-h'",
+    "description": "Denial Of Service attacks simulator"
+  },
+  "blackarch.mitre-applications.impact.athena-t50": {
+    "label": "t50",
+    "kind": "app",
+    "appId": "athena-t50",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b t50 -x '-h'",
+    "description": "Network packet injector"
+  },
+  "blackarch.mitre-applications.impact.athena-thc-ssl-dos": {
+    "label": "thc-ssl-dos",
+    "kind": "app",
+    "appId": "athena-thc-ssl-dos",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b thc-ssl-dos -x '-h'",
+    "description": "Stress tester for the SSL handshake"
+  },
+  "blackarch.mitre-applications.forensics": {
+    "label": "15 - Forensics",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics": {
+    "label": "• Digital Forensics",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-dc3dd": {
+    "label": "dc3dd",
+    "kind": "app",
+    "appId": "athena-dc3dd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dc3dd -x '--help'",
+    "description": "Convert and copy a file"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-dcfldd": {
+    "label": "dcfldd",
+    "kind": "app",
+    "appId": "athena-dcfldd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dcfldd -x '--help'",
+    "description": "Enhanced version of dd for forensics and security"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-missidentify": {
+    "label": "missidentify",
+    "kind": "app",
+    "appId": "athena-missidentify",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b missidentify -x '-h'",
+    "description": "Find executable files without an executable extension"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-readpst": {
+    "label": "readpst",
+    "kind": "app",
+    "appId": "athena-readpst",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b readpst -p libpst -x '-h'",
+    "description": "Convert PST (MS Outlook Personal Folders) files to mbox and other formats"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-reglookup": {
+    "label": "reglookup",
+    "kind": "app",
+    "appId": "athena-reglookup",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b reglookup",
+    "description": "Windows NT+ registry reader/lookup tool"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-regripper": {
+    "label": "regripper",
+    "kind": "app",
+    "appId": "athena-regripper",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b regripper",
+    "description": "Forensic analysis of Registry hives"
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-undbx": {
+    "label": "undbx",
+    "kind": "app",
+    "appId": "athena-undbx",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b undbx -x '-h'",
+    "description": "A tool to extract e-mails from Outlook Express .dbx files."
+  },
+  "blackarch.mitre-applications.forensics.digital-forensics.athena-vinetto": {
+    "label": "vinetto",
+    "kind": "app",
+    "appId": "athena-vinetto",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b vinetto -x '-h'",
+    "description": "Extract thumbnails and associated metadata from Thumbs.db files"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools": {
+    "label": "• Forensic Carving Tools",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-ext3grep": {
+    "label": "ext3grep",
+    "kind": "app",
+    "appId": "athena-ext3grep",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ext3grep -x '-h'",
+    "description": "Ext3 file recovery tool"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-ext4magic": {
+    "label": "ext4magic",
+    "kind": "app",
+    "appId": "athena-ext4magic",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ext4magic -x '-h'",
+    "description": "Recover deleted files on ext3/4 filesystems"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-extundelete": {
+    "label": "extundelete",
+    "kind": "app",
+    "appId": "athena-extundelete",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b extundelete -x '--help'",
+    "description": "Utility to undelete files from an ext3 or ext4 partition."
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-foremost": {
+    "label": "foremost",
+    "kind": "app",
+    "appId": "athena-foremost",
+    "appIcon": "athena-foremost",
+    "action": "shell-rocket -b foremost -x '-h'",
+    "description": "Recover files using their headers, footers, and data structures"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-magicrescue": {
+    "label": "magicrescue",
+    "kind": "app",
+    "appId": "athena-magicrescue",
+    "appIcon": "athena-magicrescue",
+    "action": "shell-rocket -b magicrescue",
+    "description": "Scans a block device and extracts known file types by looking at magic bytes."
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-myrescue": {
+    "label": "myrescue",
+    "kind": "app",
+    "appId": "athena-myrescue",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b myrescue -x '-h'",
+    "description": "Harddisc Rescue"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-pasco": {
+    "label": "pasco",
+    "kind": "app",
+    "appId": "athena-pasco",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b pasco",
+    "description": "Tool to extract information from MS IE cache files"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-recoverdm": {
+    "label": "recoverdm",
+    "kind": "app",
+    "appId": "athena-recoverdm",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b recoverdm -x '-h'",
+    "description": "Recover files on disks with damaged sectors"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-recoverjpeg": {
+    "label": "recoverjpeg",
+    "kind": "app",
+    "appId": "athena-recoverjpeg",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b recoverjpeg -x '-h'",
+    "description": "Recover jpeg pictures from a filesystem image"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-rifiuti": {
+    "label": "rifiuti",
+    "kind": "app",
+    "appId": "athena-rifiuti",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b rifiuti -p rifiuti2",
+    "description": "Tool to extract information from MS recycle bins info2 files."
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-rifiuti2": {
+    "label": "rifiuti2",
+    "kind": "app",
+    "appId": "athena-rifiuti2",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b rifiuti -p rifiuti2",
+    "description": "MS Windows recycle bin analysis tool"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-safecopy": {
+    "label": "safecopy",
+    "kind": "app",
+    "appId": "athena-safecopy",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b safecopy -x '-h'",
+    "description": "Rescue data from a source that causes IO errors"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-scalpel": {
+    "label": "scalpel",
+    "kind": "app",
+    "appId": "athena-scalpel",
+    "appIcon": "athena-scalpel",
+    "action": "shell-rocket -b scalpel -x '-h'",
+    "description": "Recover files using a header/footer database"
+  },
+  "blackarch.mitre-applications.forensics.forensic-carving-tools.athena-scrounge-ntfs": {
+    "label": "scrounge-ntfs",
+    "kind": "app",
+    "appId": "athena-scrounge-ntfs",
+    "appIcon": "athena-scrounge-ntfs",
+    "action": "shell-rocket -b scrounge-ntfs -x '-h'",
+    "description": "Helps retrieve data from corrupted NTFS partitions"
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools": {
+    "label": "• Forensic Imaging Tools",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools.athena-affcat": {
+    "label": "affcat",
+    "kind": "app",
+    "appId": "athena-affcat",
+    "appIcon": "athena-affcat",
+    "action": "shell-rocket -b affcat -p afflib",
+    "description": "Output contents of an image file to stdout."
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools.athena-dc3dd": {
+    "label": "dc3dd",
+    "kind": "app",
+    "appId": "athena-dc3dd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dc3dd -x '--help'",
+    "description": "Convert and copy a file"
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools.athena-dcfldd": {
+    "label": "dcfldd",
+    "kind": "app",
+    "appId": "athena-dcfldd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dcfldd -x '--help'",
+    "description": "Enhanced version of dd for forensics and security"
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools.athena-dd-rescue": {
+    "label": "dd_rescue",
+    "kind": "app",
+    "appId": "athena-dd_rescue",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ddrescue -x '-h'",
+    "description": "Data recovery and protection tool"
+  },
+  "blackarch.mitre-applications.forensics.forensic-imaging-tools.athena-ewfacquire": {
+    "label": "ewfacquire",
+    "kind": "app",
+    "appId": "athena-ewfacquire",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ewfacquire -p libewf -x '-h'",
+    "description": "Acquires data in the EWF format"
+  },
+  "blackarch.mitre-applications.forensics.pdf-forensics-tools": {
+    "label": "• PDF Forensics Tools",
+    "icon": "󰧑"
+  },
+  "blackarch.mitre-applications.forensics.pdf-forensics-tools.athena-pdf-parser": {
+    "label": "pdf-parser",
+    "kind": "app",
+    "appId": "athena-pdf-parser",
+    "appIcon": "athena-pdf-parser",
+    "action": "shell-rocket -b pdf-parser -x '-h'",
+    "description": "Parses PDF files to identify fundamental elements"
+  },
+  "blackarch.mitre-applications.forensics.pdf-forensics-tools.athena-pdfid": {
+    "label": "pdfid",
+    "kind": "app",
+    "appId": "athena-pdfid",
+    "appIcon": "athena-pdfid",
+    "action": "shell-rocket -b pdfid -x '-h'",
+    "description": "Scans PDF files for certain PDF keywords"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite": {
+    "label": "• Sleuth Kit Suite"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-autopsy": {
+    "label": "autopsy",
+    "kind": "app",
+    "appId": "athena-autopsy",
+    "appIcon": "athena-autopsy",
+    "action": "shell-rocket -b autopsy '--nosplash' -g",
+    "description": "Autopsy Forensic Browser"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-blkcalc": {
+    "label": "blkcalc",
+    "kind": "app",
+    "appId": "athena-blkcalc",
+    "appIcon": "athena-blkcalc",
+    "action": "shell-rocket -b blkcalc -p sleuthkit",
+    "description": "Converts between unallocated disk unit numbers and regular disk unit numbers."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-blkcat": {
+    "label": "blkcat",
+    "kind": "app",
+    "appId": "athena-blkcat",
+    "appIcon": "athena-blkcat",
+    "action": "shell-rocket -b blkcat -p sleuthkit",
+    "description": "Display the contents of file system data unit in a disk image."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-blkls": {
+    "label": "blkls",
+    "kind": "app",
+    "appId": "athena-blkls",
+    "appIcon": "athena-blkls",
+    "action": "shell-rocket -b blkls -p sleuthkit",
+    "description": "List or output file system data units."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-blkstat": {
+    "label": "blkstat",
+    "kind": "app",
+    "appId": "athena-blkstat",
+    "appIcon": "athena-blkstat",
+    "action": "shell-rocket -b blkstat -p sleuthkit",
+    "description": "Display details of a file system data unit (i.e. block or sector)"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-ffind": {
+    "label": "ffind",
+    "kind": "app",
+    "appId": "athena-ffind",
+    "appIcon": "athena-ffind",
+    "action": "shell-rocket -b ffind -p sleuthkit",
+    "description": "Finds the name of the file or directory using a given inode"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-fls": {
+    "label": "fls",
+    "kind": "app",
+    "appId": "athena-fls",
+    "appIcon": "athena-fls",
+    "action": "shell-rocket -b fls -p sleuthkit",
+    "description": "List file and directory names in a disk image."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-fsstat": {
+    "label": "fsstat",
+    "kind": "app",
+    "appId": "athena-fsstat",
+    "appIcon": "athena-fsstat",
+    "action": "shell-rocket -b fsstat -p sleuthkit",
+    "description": "Display general details of a file system"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-grokevt-addlog": {
+    "label": "grokevt-addlog",
+    "kind": "app",
+    "appId": "athena-grokevt-addlog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-addlog -p grokevt -x '-h'",
+    "description": "A tool for adding a raw event log to an existing GrokEVT database."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-grokevt-builddb": {
+    "label": "grokevt-builddb",
+    "kind": "app",
+    "appId": "athena-grokevt-builddb",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-builddb -p grokevt -x '-h'",
+    "description": "Builds a database tree based on a single windows system for the purpose of event log conversion."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-grokevt-findlogs": {
+    "label": "grokevt-findlogs",
+    "kind": "app",
+    "appId": "athena-grokevt-findlogs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-findlogs -p grokevt -x '-h'",
+    "description": "Attempts to find log file fragments in raw binary files, such as memory dumps and disk images."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-grokevt-parselog": {
+    "label": "grokevt-parselog",
+    "kind": "app",
+    "appId": "athena-grokevt-parselog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-parselog -p grokevt -x '-h'",
+    "description": "Parse a windows event log and generate human-readable output based on message resources stored in a database."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-grokevt-ripdll": {
+    "label": "grokevt-ripdll",
+    "kind": "app",
+    "appId": "athena-grokevt-ripdll",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-ripdll -p grokevt -x '-h'",
+    "description": "A tool for extracting message resources from a PE-formatted file."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-hfind": {
+    "label": "hfind",
+    "kind": "app",
+    "appId": "athena-hfind",
+    "appIcon": "athena-hfind",
+    "action": "shell-rocket -b hfind -p sleuthkit",
+    "description": "Lookup a hash value in a hash database"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-icat": {
+    "label": "icat",
+    "kind": "app",
+    "appId": "athena-icat",
+    "appIcon": "athena-icat",
+    "action": "shell-rocket -b icat -p sleuthkit",
+    "description": "Output the contents of a file based on its inode number."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-ifind": {
+    "label": "ifind",
+    "kind": "app",
+    "appId": "athena-ifind",
+    "appIcon": "athena-ifind",
+    "action": "shell-rocket -b ifind -p sleuthkit",
+    "description": "Find the meta-data structure that has allocated a given disk unit or file name."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-ils": {
+    "label": "ils",
+    "kind": "app",
+    "appId": "athena-ils",
+    "appIcon": "athena-ils",
+    "action": "shell-rocket -b ils -p sleuthkit",
+    "description": "List inode information"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-img-cat": {
+    "label": "img_cat",
+    "kind": "app",
+    "appId": "athena-img_cat",
+    "appIcon": "athena-img_cat",
+    "action": "shell-rocket -b img_cat -p sleuthkit",
+    "description": "Output contents of an image file."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-img-stat": {
+    "label": "img_stat",
+    "kind": "app",
+    "appId": "athena-img_stat",
+    "appIcon": "athena-img_stat",
+    "action": "shell-rocket -b img_stat -p sleuthkit",
+    "description": "Display details of an image file"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-istat": {
+    "label": "istat",
+    "kind": "app",
+    "appId": "athena-istat",
+    "appIcon": "athena-istat",
+    "action": "shell-rocket -b istat -p sleuthkit",
+    "description": "Display details of a meta-data structure (i.e. inode)"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-jcat": {
+    "label": "jcat",
+    "kind": "app",
+    "appId": "athena-jcat",
+    "appIcon": "athena-jcat",
+    "action": "shell-rocket -b jcat -p sleuthkit",
+    "description": "Show the contents of a block in the file system journal."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-jls": {
+    "label": "jls",
+    "kind": "app",
+    "appId": "athena-jls",
+    "appIcon": "athena-jls",
+    "action": "shell-rocket -b jls -p sleuthkit",
+    "description": "List the contents of a file system journal"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-mactime": {
+    "label": "mactime",
+    "kind": "app",
+    "appId": "athena-mactime",
+    "appIcon": "athena-mactime",
+    "action": "shell-rocket -b mactime -p sleuthkit",
+    "description": "Create an ASCII time line of file activity"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-mmcat": {
+    "label": "mmcat",
+    "kind": "app",
+    "appId": "athena-mmcat",
+    "appIcon": "athena-mmcat",
+    "action": "shell-rocket -b mmcat -p sleuthkit",
+    "description": "Output the contents of a partition to stdout"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-mmls": {
+    "label": "mmls",
+    "kind": "app",
+    "appId": "athena-mmls",
+    "appIcon": "athena-mmls",
+    "action": "shell-rocket -b mmls -p sleuthkit",
+    "description": "Display the partition layout of a volume system (partition tables)"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-mmstat": {
+    "label": "mmstat",
+    "kind": "app",
+    "appId": "athena-mmstat",
+    "appIcon": "athena-mmstat",
+    "action": "shell-rocket -b mmstat -p sleuthkit",
+    "description": "Display details about the volume system (partition tables)"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-sigfind": {
+    "label": "sigfind",
+    "kind": "app",
+    "appId": "athena-sigfind",
+    "appIcon": "athena-sigfind",
+    "action": "shell-rocket -b sigfind -p sleuthkit",
+    "description": "Find a binary signature in a file"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-sorter": {
+    "label": "sorter",
+    "kind": "app",
+    "appId": "athena-sorter",
+    "appIcon": "athena-sorter",
+    "action": "shell-rocket -b sorter -p sleuthkit",
+    "description": "Sort files in an image into categories based on file type"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-srch-strings": {
+    "label": "srch_strings",
+    "kind": "app",
+    "appId": "athena-srch_strings",
+    "appIcon": "athena-srch_strings",
+    "action": "shell-rocket -b srch_strings -p sleuthkit -x '-h'",
+    "description": "Display printable strings in files"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-tsk-comparedir": {
+    "label": "tsk_comparedir",
+    "kind": "app",
+    "appId": "athena-tsk_comparedir",
+    "appIcon": "athena-tsk_comparedir",
+    "action": "shell-rocket -b tsk_comparedir -p sleuthkit",
+    "description": "Compare the contents of a directory with the contents of an image or local device."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-tsk-gettimes": {
+    "label": "tsk_gettimes",
+    "kind": "app",
+    "appId": "athena-tsk_gettimes",
+    "appIcon": "athena-tsk_gettimes",
+    "action": "shell-rocket -b tsk_gettimes -p sleuthkit -x '-h'",
+    "description": "Collect MAC times from a disk image into a body file."
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-tsk-loaddb": {
+    "label": "tsk_loaddb",
+    "kind": "app",
+    "appId": "athena-tsk_loaddb",
+    "appIcon": "athena-tsk_loaddb",
+    "action": "shell-rocket -b tsk_loaddb -p sleuthkit",
+    "description": "Populate a SQLite database with metadata from a disk image"
+  },
+  "blackarch.mitre-applications.forensics.sleuth-kit-suite.athena-tsk-recover": {
+    "label": "tsk_recover",
+    "kind": "app",
+    "appId": "athena-tsk_recover",
+    "appIcon": "athena-tsk_recover",
+    "action": "shell-rocket -b tsk_recover -p sleuthkit",
+    "description": "Export files from an image into a local directory"
+  },
+  "blackarch.mitre-applications.forensics.athena-autopsy": {
+    "label": "autopsy",
+    "kind": "app",
+    "appId": "athena-autopsy",
+    "appIcon": "athena-autopsy",
+    "action": "shell-rocket -b autopsy '--nosplash' -g",
+    "description": "Autopsy Forensic Browser"
+  },
+  "blackarch.mitre-applications.forensics.athena-binwalk": {
+    "label": "binwalk",
+    "kind": "app",
+    "appId": "athena-binwalk",
+    "appIcon": "athena-binwalk",
+    "action": "shell-rocket -b binwalk -x '-h'",
+    "description": "Tool for searching binary images for embedded files and executable code"
+  },
+  "blackarch.mitre-applications.forensics.athena-chkrootkit": {
+    "label": "chkrootkit",
+    "kind": "app",
+    "appId": "athena-chkrootkit",
+    "appIcon": "athena-chkrootkit",
+    "action": "shell-rocket -b chkrootkit -x '-h'",
+    "description": "Scan the system for signs of rootkits"
+  },
+  "blackarch.mitre-applications.forensics.athena-foremost": {
+    "label": "foremost",
+    "kind": "app",
+    "appId": "athena-foremost",
+    "appIcon": "athena-foremost",
+    "action": "shell-rocket -b foremost -x '-h'",
+    "description": "Recover files using their headers, footers, and data structures"
+  },
+  "blackarch.mitre-applications.forensics.athena-galleta": {
+    "label": "galleta",
+    "kind": "app",
+    "appId": "athena-galleta",
+    "appIcon": "athena-galleta",
+    "action": "shell-rocket -b galleta",
+    "description": "Tool to extract information from MSIE cookie files"
+  },
+  "blackarch.mitre-applications.forensics.athena-hashdeep": {
+    "label": "hashdeep",
+    "kind": "app",
+    "appId": "athena-hashdeep",
+    "appIcon": "athena-hashdeep",
+    "action": "shell-rocket -b hashdeep -x '-h'",
+    "description": "Compute, compare, or audit multiple message digests"
+  },
+  "blackarch.mitre-applications.forensics.athena-rkhunter": {
+    "label": "rkhunter",
+    "kind": "app",
+    "appId": "athena-rkhunter",
+    "appIcon": "athena-rkhunter",
+    "action": "shell-rocket -b rkhunter -z -x '-h'",
+    "description": "RootKit Hunter"
+  },
+  "blackarch.mitre-applications.forensics.athena-ssdeep": {
+    "label": "ssdeep",
+    "kind": "app",
+    "appId": "athena-ssdeep",
+    "appIcon": "athena-ssdeep",
+    "action": "shell-rocket -b ssdeep -x '-h'",
+    "description": "Computes context triggered piecewise hashes (fuzzy hashes)"
+  },
+  "blackarch.mitre-applications.forensics.athena-unhide": {
+    "label": "unhide",
+    "kind": "app",
+    "appId": "athena-unhide",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b unhide -r",
+    "description": "Forensic tool to find hidden processes"
+  },
+  "blackarch.mitre-applications.forensics.athena-yara": {
+    "label": "yara",
+    "kind": "app",
+    "appId": "athena-yara",
+    "appIcon": "athena-yara",
+    "action": "shell-rocket -b yara -x '-h'",
+    "description": "Find files matching patterns and rules written in a special-purpose language."
+  },
+  "blackarch.mitre-applications.services-and-other-tools": {
+    "label": "16 - Services and Other Tools",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools": {
+    "label": "• Reporting Tools",
+    "icon": ""
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-cutycapt": {
+    "label": "cutycapt",
+    "kind": "app",
+    "appId": "athena-cutycapt",
+    "appIcon": "athena-cutycapt",
+    "action": "shell-rocket -b cutycapt",
+    "description": "Utility to capture WebKit's rendering of a web page"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-eyewitness": {
+    "label": "eyewitness",
+    "kind": "app",
+    "appId": "athena-eyewitness",
+    "appIcon": "athena-eyewitness",
+    "action": "shell-rocket -b eyewitness",
+    "description": "Rapid web application triage tool"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-maltego": {
+    "label": "maltego",
+    "kind": "app",
+    "appId": "athena-maltego",
+    "appIcon": "athena-maltego",
+    "action": "shell-rocket -b maltego -g",
+    "description": "Open source intelligence and forensics application"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-maltego-installer": {
+    "label": "maltego (installer)",
+    "kind": "app",
+    "appId": "athena-maltego-installer",
+    "appIcon": "athena-maltego",
+    "action": "shell-rocket -b maltego -g",
+    "description": "Open source intelligence and forensics application"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-pipal": {
+    "label": "pipal",
+    "kind": "app",
+    "appId": "athena-pipal",
+    "appIcon": "athena-pipal",
+    "action": "shell-rocket -b pipal -x '-h'",
+    "description": "Statistical analysis on password dumps"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-recordmydesktop": {
+    "label": "recordmydesktop",
+    "kind": "app",
+    "appId": "athena-recordmydesktop",
+    "appIcon": "athena-recordmydesktop",
+    "action": "shell-rocket -b recordmydesktop -x '-h'",
+    "description": "Record desktop sessions to an Ogg Theora video file with Vorbis audio"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.reporting-tools.athena-witnessme": {
+    "label": "witnessme",
+    "kind": "app",
+    "appId": "athena-witnessme",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b witnessme -p python-witnessme -x '-h'",
+    "description": "Web Inventory tool"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.kali-offsec-links": {
+    "label": "• Athena OS Links"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.kali-offsec-links.athena-www": {
+    "label": "Athena OS",
+    "kind": "app",
+    "appId": "athena-www",
+    "appIcon": "athena-menu",
+    "action": "xdg-open https://athenaos.org/",
+    "description": "The official web site of Athena OS"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.kali-offsec-links.athena-bugs": {
+    "label": "Athena OS Bugs",
+    "kind": "app",
+    "appId": "athena-bugs",
+    "appIcon": "athena-bugs",
+    "action": "xdg-open https://github.com/Athena-OS/athena/issues",
+    "description": "Athena OS bug tracker"
+  },
+  "blackarch.mitre-applications.services-and-other-tools.kali-offsec-links.athena-docs": {
+    "label": "Athena OS Docs",
+    "kind": "app",
+    "appId": "athena-docs",
+    "appIcon": "athena-docs",
+    "action": "xdg-open https://athenaos.org/en/getting-started/manifesto/",
+    "description": "Official Athena OS documentation website"
+  }
+}

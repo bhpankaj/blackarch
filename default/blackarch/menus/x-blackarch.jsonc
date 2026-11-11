@@ -1,0 +1,51 @@
+{
+  "blackarch.x-blackarch": {
+    "label": "X BlackArch",
+    "icon": ""
+  },
+  "blackarch.x-blackarch.fuzzer": {
+    "label": "Fuzzer"
+  },
+  "blackarch.x-blackarch.fuzzer.burpsuite": {
+    "label": "Burp Suite community edition",
+    "kind": "app",
+    "appId": "burpsuite",
+    "appIcon": "burpsuite",
+    "action": "burpsuite",
+    "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  },
+  "blackarch.x-blackarch.proxy": {
+    "label": "Proxy"
+  },
+  "blackarch.x-blackarch.proxy.burpsuite": {
+    "label": "Burp Suite community edition",
+    "kind": "app",
+    "appId": "burpsuite",
+    "appIcon": "burpsuite",
+    "action": "burpsuite",
+    "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  },
+  "blackarch.x-blackarch.scanner": {
+    "label": "Scanner"
+  },
+  "blackarch.x-blackarch.scanner.burpsuite": {
+    "label": "Burp Suite community edition",
+    "kind": "app",
+    "appId": "burpsuite",
+    "appIcon": "burpsuite",
+    "action": "burpsuite",
+    "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  },
+  "blackarch.x-blackarch.webapp": {
+    "label": "Webapp",
+    "icon": ""
+  },
+  "blackarch.x-blackarch.webapp.burpsuite": {
+    "label": "Burp Suite community edition",
+    "kind": "app",
+    "appId": "burpsuite",
+    "appIcon": "burpsuite",
+    "action": "burpsuite",
+    "description": "Burp Suite is an integrated platform for attacking web applications (community edition)"
+  }
+}

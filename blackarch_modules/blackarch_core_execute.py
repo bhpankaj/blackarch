@@ -15,7 +15,7 @@ The layout mirrors the original one-for-one so the two stay comparable:
                keyboard, touch screen orientation
   smartthings  device listing, toggling, laptop charger
   update       pacman / AUR / orphan update flow
-  menu         quickshell menus, additional-menu.jsonc generation
+  menu         quickshell menus, per-source menu file generation
   main         the top-level argv[1] dispatcher
 
 Anything the original runs as root goes through sudo with the Wayland session
@@ -45,6 +45,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Sequence
 
+from blackarch_modules.blackarch_xdg_menu_generator import \
+    generate as generate_xdg_menu
 from blackarch_packages import *
 
 try:
@@ -74,6 +76,8 @@ TPM_PUBKEY = "/etc/systemd/tpm2-pcr-initrd-public-key.pem"
 DEFAULTS_DIR = os.getenv("BLACKARCH_PATH", "/opt/blackarch")
 CYBER_ROLE_DIR = "/usr/share/cyber-toolkit/roles"
 ADDITIONAL_MENU = f"{DEFAULTS_DIR}/default/blackarch/additional-menu.jsonc"
+# One JSONC file per generated menu source; the shell globs this directory.
+MENUS_DIR = f"{DEFAULTS_DIR}/default/blackarch/menus"
 SMARTTHINGS_TGZ = (
     "https://github.com/SmartThingsCommunity/smartthings-cli/releases/latest/"
     "download/smartthings-linux-x64.tgz"
@@ -2029,13 +2033,72 @@ def touch_screen_orientation() -> None:
         proc.terminate()
 
 
+def _hoist_single_submenu(group: dict[str, dict], root: str) -> dict[str, dict]:
+    """Promote a root's only submenu's children directly under the root.
+
+    X-BlackArch.menu wraps every category in one redundant "BlackArch" submenu,
+    producing X BlackArch -> BlackArch -> categories. Hoist the categories so
+    the tree is X BlackArch -> categories and drop the wrapper.
+    """
+    prefix = root + "."
+    depth = root.count(".") + 1
+    children = [k for k in group if k.startswith(prefix) and k.count(".") == depth]
+    if len(children) != 1:
+        return group
+    wrapper = children[0]
+    wrapper_prefix = wrapper + "."
+    if not any(k.startswith(wrapper_prefix) for k in group):
+        return group
+    hoisted: dict[str, dict] = {}
+    for key, value in group.items():
+        if key == wrapper:
+            continue
+        if key.startswith(wrapper_prefix):
+            hoisted[f"{prefix}{key[len(wrapper_prefix):]}"] = value
+        else:
+            hoisted[key] = value
+    return hoisted
+
+
 @log_all
 def generate_menu() -> None:
-    """Build additional-menu.jsonc from the cyber-toolkit role files."""
-    entries: dict[str, dict] = {}
+    """Build one JSONC file per menu source in default/blackarch/menus/.
+
+    The XDG menu definitions, the cyber-toolkit roles and SmartThings each get
+    their own file, so the shell loads them all by globbing the directory rather
+    than reading one hardcoded aggregate. The XDG menus are nested under the
+    `blackarch` root; SmartThings keeps its own top-level root because it is not
+    part of the XDG spec.
+    """
+    menus_dir = Path(MENUS_DIR)
+    menus_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        xdg = generate_xdg_menu()
+    except Exception as exc:  # a missing menu file must not lose the other entries
+        print(f"warning: XDG menu generation failed: {exc}")
+        xdg = {}
+
+    # Split the combined XDG map into one file per top-level menu, then nest
+    # each under `blackarch` so the generated trees live inside the Blackarch
+    # menu instead of sitting below the default entries.
+    groups: dict[str, dict[str, dict]] = {}
+    for key, value in xdg.items():
+        groups.setdefault(key.split(".", 1)[0], {})[key] = value
+    for top, group in sorted(groups.items()):
+        nested = {
+            f"blackarch.{key}": value
+            for key, value in _hoist_single_submenu(group, top).items()
+        }
+        write_text(
+            menus_dir / f"{top}.jsonc",
+            json.dumps(nested, indent=2, ensure_ascii=False) + "\n",
+        )
+
+    pentest: dict[str, dict] = {}
     for path in sorted(glob.glob(f"{CYBER_ROLE_DIR}/*.role")):
         team = Path(path).stem
-        entries[f"blackarch.pentest.{team}"] = {
+        pentest[f"blackarch.pentest.{team}"] = {
             "icon": ICON_PENTEST,
             "label": team.upper(),
             "aliases": ["app", "applications"],
@@ -2046,21 +2109,31 @@ def generate_menu() -> None:
             if not line or line.startswith("#") or "cuda" in line:
                 continue
             tool = line.split()[0]
-            entries[f"blackarch.pentest.{team}.{tool}"] = {
+            pentest[f"blackarch.pentest.{team}.{tool}"] = {
                 "icon": ICON_PENTEST,
                 "label": tool,
                 "when": f"blackarch-cmd-present {tool}",
                 "action": f"blackarch {tool}",
             }
+    write_text(
+        menus_dir / "pentest.jsonc",
+        json.dumps(pentest, indent=2, ensure_ascii=False) + "\n",
+    )
+
+    smartthings: dict[str, dict] = {}
     for device in get_device_status():
-        entries[f"smartthings.{device['id']}"] = {
+        smartthings[f"smartthings.{device['id']}"] = {
             "icon": ICON_DEVICE,
             "label": device["name"],
             "action": f"blackarch smartthings {device['id']}",
         }
     write_text(
-        ADDITIONAL_MENU, json.dumps(entries, indent=2, ensure_ascii=False) + "\n"
+        menus_dir / "smartthings.jsonc",
+        json.dumps(smartthings, indent=2, ensure_ascii=False) + "\n",
     )
+
+    # The single aggregate is gone: the shell globs the per-source files.
+    Path(ADDITIONAL_MENU).unlink(missing_ok=True)
 
 
 @log_all
@@ -2079,7 +2152,7 @@ def quickshell_dispatch(argv: Sequence[str]) -> int:
     }
     if sub == "generate":
         generate_menu()
-        print("menu generated successfully")
+        print(f"menu generated successfully: {MENUS_DIR}")
     elif sub in menus:
         run(
             [
@@ -2142,6 +2215,8 @@ def resolve_gui(argv: Sequence[str]) -> tuple[str, str]:
     joined = " ".join(argv)
     if "nvim" in joined:
         return "org.blackarch.nvim", f"kitty --app-id=org.blackarch.nvim -e {joined}"
+    if "freerdp" in joined:
+        return "freerdp", "blackarch windows vm connect"
     if "kitty" in joined:
         return "kitty", "kitty"
     if "obsidian" in joined:

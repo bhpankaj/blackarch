@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+# blackarch:summary=Stream the camera relay to an RTSP server for the Windows VM
+# blackarch:args=[options]
+"""CLI wrapper: the streamer lives in blackarch_modules.blackarch_camera_stream."""
+
+import os
+import sys
+
+sys.path.insert(0, os.environ.get("BLACKARCH_PATH", "/opt/blackarch"))
+
+try:
+    from blackarch_modules.blackarch_camera_stream import main
+except Exception as exc:  # pragma: no cover - dispatcher fallback hides this
+    print(f"blackarch-camera-stream: {exc}", file=sys.stderr)
+    sys.exit(1)
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

@@ -6,11 +6,10 @@ Blackarch's menu, in the Blackarch (Quickshell) bar.
 ## Device list
 
 The widget shows exactly the devices listed in
-`$BLACKARCH_PATH/default/blackarch/additional-menu.jsonc` — every
+`$BLACKARCH_PATH/default/blackarch/menus/smartthings.jsonc` — every
 `smartthings.<uuid>` key in that file. That is the same list
-`blackarch-launch-hackingTools` and `blackarch execute` maintain, so the bar
-widget and the Blackarch menu always agree on which devices exist and what
-they are called.
+`blackarch shell generate` writes, so the bar widget and the Blackarch menu
+always agree on which devices exist and what they are called.
 
 - Menu **labels** are used, not the hub's labels.
 - Menu **order** is preserved.

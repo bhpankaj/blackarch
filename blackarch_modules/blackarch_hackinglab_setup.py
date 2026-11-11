@@ -777,7 +777,7 @@ def install_launch_menu(ctx: Ctx) -> bool:
     if proc.returncode != 0:
         err("Menu generation failed")
         return False
-    dest = Path("/opt/blackarch/default/blackarch/additional-menu.jsonc")
+    dest = Path("/opt/blackarch/default/blackarch/menus/pentest.jsonc")
     info(f"Menu written to {dest}")
     return True
 
@@ -949,8 +949,7 @@ def tool_status(tool: Tool) -> tuple[bool, str]:
             return True, f"{installed} -> {remote} available"
         return True, f"{installed} (newer than upstream {remote})"
     if tool.key == "launch":
-        dest = Path("/opt/blackarch/default/blackarch/"
-                    "additional-menu.jsonc")
+        dest = Path("/opt/blackarch/default/blackarch/menus/pentest.jsonc")
         return dest.is_file(), str(dest)
     if tool.needs_vm and tool.vm_name:
         if vm_exists(tool.vm_name):

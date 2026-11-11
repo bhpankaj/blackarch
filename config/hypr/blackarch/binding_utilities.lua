@@ -2,10 +2,6 @@ local Binder = require("blackarch.blackarch_binder")
 local vars = require("blackarch.variables")
 require("blackarch.binding_submap")
 
--- Alt
-Binder.add(vars.mainMod .. " + ALT + W", { desc = "Kill wofi" }, hl.dsp.exec_cmd("pkill wofi"))
-
-
 -- ClipBoard
 Binder.add(vars.mainMod .. " + C", { desc = "Global Copy",  repeatable = false }, Binder.send_shortcut_once("CTRL", "Insert"))
 Binder.add(vars.mainMod .. " + V", { desc = "Global Paste",  repeatable = false }, Binder.send_shortcut_once("SHIFT", "Insert"))
@@ -94,7 +90,7 @@ Binder.add(vars.super .. " + ALT + BACKSLASH", { desc = "SUPER - Remove Windows"
 Binder.add(vars.mainMod .. " + CTRL + E", { desc = "Emojis"}, "blackarch-shell shell toggle blackarch.emojis")
 Binder.add(vars.mainMod .. " + slash",{desc = "HTB Academy"}, "blackarch webapp 'https://academy.hackthebox.com'" )
 Binder.add(vars.mainMod .. " + period",{desc = "HTB Labs"}, "blackarch webapp 'https://app.hackthebox.com'")
-Binder.add(vars.mainMod .. " + W",{desc = "Web Utilities"}, "blackarch toggle learn")
+-- Binder.add(vars.mainMod .. " + W",{desc = "Web Utilities"}, "blackarch toggle learn")
 
 
 -- Brightness
@@ -115,6 +111,7 @@ Binder.add(vars.super .. " + B", {desc = "My Favorite Hacking Tools"}, "blackarc
 Binder.add(vars.mainMod .. " + D", { desc = "Discord"}, "blackarch gui discord")
 
 Binder.add(vars.ralt .. " + F", { desc = "Firefox" }, "blackarch gui firefox" )
+Binder.add(vars.super .. " + F", { desc = "Windows using freerdp" }, "blackarch gui freerdp" )
 -- Binder.add(vars.mainMod .. " + SHIFT + F", { desc = "Swtich focus to any open windows" }, "blackarch focus" )
 
 Binder.add(vars.mainMod .. " + CTRL + I", { desc = "Toggle Idle" }, "blackarch-toggle-idle" )
@@ -145,7 +142,7 @@ Binder.add(vars.mainMod .. " + SHIFT + Y", { desc = "Cliamp my Music playlist fr
 Binder.add(vars.mainMod .. " + CTRL + W", { desc = "wiremix" }, "blackarch tui wiremix" )
 
 Binder.add("F1", { desc = "Power" }, "blackarch-shell shell toggle blackarch.power")
-Binder.add(vars.mainMod .. " + F1", { desc = "Agent" }, "blackarch tui hermes")
+Binder.add(vars.mainMod .. " + H", { desc = "Agent" }, "blackarch tui hermes")
 
 Binder.add(vars.mainMod .. " + F2", { desc = "Set reminder" }, "blackarch-menu toggle reminder-set")
 

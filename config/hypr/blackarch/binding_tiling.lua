@@ -4,10 +4,10 @@ local Blackarch = require("blackarch.blackarch")
 -- require("blackarch.binding_submap")
 
 local hjkl_binds = {
-	{ key = "H", direction = "left" },
+	{ key = "L", direction = "left" },
 	{ key = "J", direction = "down" },
 	{ key = "K", direction = "up" },
-	{ key = "L", direction = "right"},
+	{ key = "semicolon", direction = "right"},
 }
 
 for _, bind in ipairs(hjkl_binds) do
@@ -97,7 +97,7 @@ Binder.add(vars.mainMod .. " + CTRL + F5", { desc = "Touchscreen Rotation in tab
 
 	---- Window Management
 	-- DELETE
-Binder.add("ALT + F4", { desc = "Kill active window", repeatable = false }, hl.dsp.window.close())
+Binder.add(vars.mainMod .. " + W", { desc = "Kill active window", repeatable = false }, hl.dsp.window.close())
 Binder.add(vars.mainMod .. " + DELETE", { desc = "Kill other inactive windows" },hl.dsp.exec_cmd("blackarch-hyprland-window-close-all"))
 Binder.add(vars.mainMod .. " + SHIFT + DELETE", { desc = "Exit hyprland" }, hl.dsp.exit())
 Binder.add(vars.mainMod .. " + CTRL + DELETE", { desc = "Shutdown" }, hl.dsp.exec_cmd("blackarch-cmd-shutdown"))

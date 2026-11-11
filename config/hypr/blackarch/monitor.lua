@@ -17,7 +17,7 @@ if touchscreen_disabled then
 end
 local monitor_mode = "preferred"
 local monitor_position = "auto"
-local monitor_scale = 1.25
+local monitor_scale = 1
 local monitor_transform = 0
 -- Default Monitor configuration
 hl.monitor({

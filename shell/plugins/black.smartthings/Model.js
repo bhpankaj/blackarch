@@ -1,5 +1,5 @@
 // Parsing helpers for `smartthings devices --status -j` and for the curated
-// device list in Blackarch's `additional-menu.jsonc`.
+// device list in Blackarch's `menus/smartthings.jsonc`.
 //
 // The status response is one array entry per device; each device carries a
 // `components` array whose `main` component holds the capabilities. A device

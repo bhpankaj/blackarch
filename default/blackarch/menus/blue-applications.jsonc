@@ -1,0 +1,1466 @@
+{
+  "blackarch.blue-applications": {
+    "label": "Blue Applications",
+    "icon": "󰛳"
+  },
+  "blackarch.blue-applications.usual-applications": {
+    "label": "Usual Applications",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.accessories": {
+    "label": "Accessories",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.accessories.athena-tweak-tool": {
+    "label": "Athena Tweak Tool",
+    "kind": "app",
+    "appId": "athena-tweak-tool",
+    "appIcon": "athenaos",
+    "action": "/usr/bin/athena-tweak-tool",
+    "aliases": [
+      "Athena Tweak Tool",
+      "tweak tool tweaktool"
+    ],
+    "description": "Athena Tweak Tool - graphical tool to set Athena OS"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-bleachbit-bleachbit": {
+    "label": "BleachBit",
+    "kind": "app",
+    "appId": "org.bleachbit.BleachBit",
+    "appIcon": "bleachbit",
+    "action": "bleachbit",
+    "aliases": [
+      "Unnecessary file cleaner",
+      "cache clean free performance privacy"
+    ],
+    "description": "Free space and maintain privacy"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.camera-relay-systray": {
+    "label": "Camera Relay",
+    "kind": "app",
+    "appId": "camera-relay-systray",
+    "appIcon": "camera-video-symbolic",
+    "action": "/usr/local/share/camera-relay/camera-relay-systray.py",
+    "description": "Toggle the camera relay for apps without PipeWire support"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-chipass-chipass": {
+    "label": "ChiPass",
+    "kind": "app",
+    "appId": "org.chipass.ChiPass",
+    "appIcon": "org.chipass.ChiPass",
+    "action": "ChiPass",
+    "aliases": [
+      "Password Manager",
+      "security privacy password-manager yubikey password keepass"
+    ],
+    "description": "Password manager with desktop and browser integration"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.xfce4-clipman": {
+    "label": "Clipboard Manager",
+    "kind": "app",
+    "appId": "xfce4-clipman",
+    "appIcon": "xfce4-clipman-plugin",
+    "action": "xfce4-clipman",
+    "description": "Clipboard Manager Autostart File"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.com-github-hluk-copyq": {
+    "label": "CopyQ",
+    "kind": "app",
+    "appId": "com.github.hluk.copyq",
+    "appIcon": "copyq",
+    "action": "copyq --start-server show",
+    "aliases": [
+      "Clipboard Manager"
+    ],
+    "description": "A cut & paste history utility"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-gnome-nautilus": {
+    "label": "Files",
+    "kind": "app",
+    "appId": "org.gnome.Nautilus",
+    "appIcon": "org.gnome.Nautilus",
+    "action": "nautilus --new-window",
+    "aliases": [
+      "folder manager explore disk filesystem nautilus"
+    ],
+    "description": "Access and organize files"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.shell": {
+    "label": "Fish Shell",
+    "kind": "app",
+    "appId": "shell",
+    "appIcon": "shell",
+    "action": "kitty --class shell",
+    "description": "Fish Shell"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-gnome-font-viewer": {
+    "label": "Fonts",
+    "kind": "app",
+    "appId": "org.gnome.font-viewer",
+    "appIcon": "org.gnome.font-viewer",
+    "action": "gnome-font-viewer",
+    "aliases": [
+      "fonts fontface"
+    ],
+    "description": "View fonts on your system"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.io-github-cboxdoerfer-fsearch": {
+    "label": "FSearch",
+    "kind": "app",
+    "appId": "io.github.cboxdoerfer.FSearch",
+    "appIcon": "io.github.cboxdoerfer.FSearch",
+    "action": "fsearch",
+    "aliases": [
+      "File Search Utility",
+      "search fsearch files folders music video documents find tool everything"
+    ],
+    "description": "A file search application focusing on performance and advanced features"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.fuzzdb": {
+    "label": "FuzzDB",
+    "kind": "app",
+    "appId": "fuzzdb",
+    "appIcon": "athena-ike-scan",
+    "action": "shell-rocket -b fuzzdb -d /usr/share/fuzzdb",
+    "description": "FuzzDB"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.kbd-layout-viewer5": {
+    "label": "Keyboard layout viewer",
+    "kind": "app",
+    "appId": "kbd-layout-viewer5",
+    "appIcon": "input-keyboard",
+    "action": "kbd-layout-viewer5",
+    "description": "View keyboard layout"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.kvantummanager": {
+    "label": "Kvantum Manager",
+    "kind": "app",
+    "appId": "kvantummanager",
+    "appIcon": "kvantum",
+    "action": "kvantummanager",
+    "description": "A simple GUI for installing, selecting and manipulating Kvantum themes"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-xfce-mousepad": {
+    "label": "Mousepad",
+    "kind": "app",
+    "appId": "org.xfce.mousepad",
+    "appIcon": "org.xfce.mousepad",
+    "action": "mousepad",
+    "aliases": [
+      "Text Editor",
+      "Edit Text Simple XFCE Lightweight Fast"
+    ],
+    "description": "Simple Text Editor"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.nvim": {
+    "label": "Neovim",
+    "kind": "app",
+    "appId": "nvim",
+    "appIcon": "nvim",
+    "action": "nvim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.org-moson-pacseek": {
+    "label": "pacseek",
+    "kind": "app",
+    "appId": "org.moson.pacseek",
+    "appIcon": "pacseek",
+    "action": "pacseek",
+    "aliases": [
+      "terminal package"
+    ],
+    "description": "A terminal user interface for searching and installing Arch Linux packages"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.payloadsallthethings": {
+    "label": "PayloadsAllTheThings",
+    "kind": "app",
+    "appId": "payloadsallthethings",
+    "appIcon": "athena-commix",
+    "action": "shell-rocket -b payloadsallthethings -d /usr/share/payloadsallthethings",
+    "description": "PayloadsAllTheThings"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.powershell": {
+    "label": "PowerShell",
+    "kind": "app",
+    "appId": "powershell",
+    "appIcon": "powershell",
+    "action": "shell-rocket -b pwsh -p powershell",
+    "description": "PowerShell"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.xfce4-screenshooter": {
+    "label": "Screenshot",
+    "kind": "app",
+    "appId": "xfce4-screenshooter",
+    "appIcon": "org.xfce.screenshooter",
+    "action": "xfce4-screenshooter",
+    "description": "Take screenshots of the entire screen, of the active window or of a region"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.seclists": {
+    "label": "SecLists",
+    "kind": "app",
+    "appId": "seclists",
+    "appIcon": "athena-bettercap",
+    "action": "shell-rocket -b seclists -d /usr/share/seclists",
+    "description": "SecLists"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.uuctl": {
+    "label": "uuctl",
+    "kind": "app",
+    "appId": "uuctl",
+    "appIcon": "applications-system",
+    "action": "uuctl",
+    "aliases": [
+      "User unit manager",
+      "units services systemd session"
+    ],
+    "description": "Select and perform actions on user systemd units"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.vim": {
+    "label": "Vim",
+    "kind": "app",
+    "appId": "vim",
+    "appIcon": "gvim",
+    "action": "vim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.vscodium": {
+    "label": "VSCodium",
+    "kind": "app",
+    "appId": "vscodium",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.blue-applications.usual-applications.accessories.vscodium-wayland": {
+    "label": "VSCodium - Wayland",
+    "kind": "app",
+    "appId": "vscodium-wayland",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.blue-applications.usual-applications.accessories.wiremix": {
+    "label": "Wiremix",
+    "kind": "app",
+    "appId": "wiremix",
+    "appIcon": "",
+    "action": "wiremix",
+    "aliases": [
+      "Audio Mixer",
+      "pipewire sound audio"
+    ],
+    "description": "Configure audio device settings"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.xarchiver": {
+    "label": "Xarchiver",
+    "kind": "app",
+    "appId": "xarchiver",
+    "appIcon": "xarchiver",
+    "action": "xarchiver",
+    "aliases": [
+      "Archive manager",
+      "archive compress decompress extract pack uncompress unpack 7-zip 7z 7za 7zip 7zr 7zz aab apk AppImage ar arj bz bz2 bz3 bzip bzip1 bzip2 bzip3 cab cb7 cbr cbt cbz chm compress cpio deb docx epub exe fbz gtar gunzip gz gzip iso jar jsonlz4 lbzip2 lha lrz lrzip lsar lunzip lz lz4 lzh lzip lzma lzo lzop mksquashfs mozlz4 odt oxt pbzip2 pigz plzip rar rar4 rar5 rpm rzip sfs snap sqfs sqsh squashfs tar unar unarj unrar unsquashfs unzip xpi xz zip zpaq zst Zstandard zstd"
+    ],
+    "description": "Create, extract and modify archives"
+  },
+  "blackarch.blue-applications.usual-applications.accessories.zeit": {
+    "label": "Zeit",
+    "kind": "app",
+    "appId": "zeit",
+    "appIcon": "chronometer",
+    "action": "/usr/bin/zeit",
+    "description": "Qt GUI for crontab and at"
+  },
+  "blackarch.blue-applications.usual-applications.development": {
+    "label": "Development",
+    "icon": "󰵮"
+  },
+  "blackarch.blue-applications.usual-applications.development.cmake-gui": {
+    "label": "CMake",
+    "kind": "app",
+    "appId": "cmake-gui",
+    "appIcon": "CMakeSetup",
+    "action": "cmake-gui",
+    "description": "Cross-platform buildsystem"
+  },
+  "blackarch.blue-applications.usual-applications.development.code-oss": {
+    "label": "Code - OSS",
+    "kind": "app",
+    "appId": "code-oss",
+    "appIcon": "com.visualstudio.code.oss",
+    "action": "code-oss",
+    "aliases": [
+      "Text Editor",
+      "vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.blue-applications.usual-applications.development.gsharp": {
+    "label": "gsharp",
+    "kind": "app",
+    "appId": "gsharp",
+    "appIcon": "",
+    "action": "/usr/bin/gsharp",
+    "aliases": [
+      "Interactive C# Shell"
+    ],
+    "description": "Write C# in an interactive shell, and inject your code into running Mono processes"
+  },
+  "blackarch.blue-applications.usual-applications.development.nvim": {
+    "label": "Neovim",
+    "kind": "app",
+    "appId": "nvim",
+    "appIcon": "nvim",
+    "action": "nvim",
+    "aliases": [
+      "Text Editor",
+      "Text editor"
+    ],
+    "description": "Edit text files"
+  },
+  "blackarch.blue-applications.usual-applications.development.vscodium": {
+    "label": "VSCodium",
+    "kind": "app",
+    "appId": "vscodium",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.blue-applications.usual-applications.development.vscodium-wayland": {
+    "label": "VSCodium - Wayland",
+    "kind": "app",
+    "appId": "vscodium-wayland",
+    "appIcon": "vscodium",
+    "action": "/usr/bin/codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland",
+    "aliases": [
+      "Text Editor",
+      "vscodium codium vscode"
+    ],
+    "description": "Code Editing. Redefined."
+  },
+  "blackarch.blue-applications.usual-applications.education": {
+    "label": "Education",
+    "icon": "󰧑"
+  },
+  "blackarch.blue-applications.usual-applications.education.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.blue-applications.usual-applications.education.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.blue-applications.usual-applications.science": {
+    "label": "Science",
+    "icon": "󰧑"
+  },
+  "blackarch.blue-applications.usual-applications.science.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.blue-applications.usual-applications.science.qalculate-gtk": {
+    "label": "Qalculate!",
+    "kind": "app",
+    "appId": "qalculate-gtk",
+    "appIcon": "qalculate",
+    "action": "qalculate-gtk",
+    "aliases": [
+      "Calculator",
+      "calculation arithmetic scientific financial"
+    ],
+    "description": "Powerful and easy to use calculator"
+  },
+  "blackarch.blue-applications.usual-applications.graphics": {
+    "label": "Graphics",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.graphics.org-gnome-loupe": {
+    "label": "Image Viewer",
+    "kind": "app",
+    "appId": "org.gnome.Loupe",
+    "appIcon": "org.gnome.Loupe",
+    "action": "loupe",
+    "aliases": [
+      "Picture Graphics Loupe"
+    ],
+    "description": "View and edit images"
+  },
+  "blackarch.blue-applications.usual-applications.graphics.libreoffice-draw": {
+    "label": "LibreOffice Draw",
+    "kind": "app",
+    "appId": "libreoffice-draw",
+    "appIcon": "libreoffice-draw",
+    "action": "libreoffice --draw",
+    "aliases": [
+      "Drawing Program",
+      "Vector Schema Diagram Layout OpenDocument Graphics Microsoft Publisher Microsoft Visio Corel Draw cdr odg svg pdf vsd"
+    ],
+    "description": "Create and edit drawings, flow charts and logos."
+  },
+  "blackarch.blue-applications.usual-applications.graphics.omasnap": {
+    "label": "Omasnap",
+    "kind": "app",
+    "appId": "omasnap",
+    "appIcon": "camera-photo",
+    "action": "omasnap",
+    "description": "Capture and annotate a screenshot"
+  },
+  "blackarch.blue-applications.usual-applications.graphics.com-github-flxzt-rnote": {
+    "label": "Rnote",
+    "kind": "app",
+    "appId": "com.github.flxzt.rnote",
+    "appIcon": "com.github.flxzt.rnote",
+    "action": "rnote",
+    "aliases": [
+      "Gnome GTK Office Graphics Notes"
+    ],
+    "description": "Sketch and take handwritten notes"
+  },
+  "blackarch.blue-applications.usual-applications.internet": {
+    "label": "Internet",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.internet.athena-nexus": {
+    "label": "Athena Nexus",
+    "kind": "app",
+    "appId": "athena-nexus",
+    "appIcon": "athena-nexus",
+    "action": "athena-nexus",
+    "aliases": [
+      "Container Orchestrator",
+      "container docker podman security pentest siem forensics"
+    ],
+    "description": "Deploy and manage security tools as containers"
+  },
+  "blackarch.blue-applications.usual-applications.internet.blackarch-webapp": {
+    "label": "BlackArch WebApp Handler",
+    "kind": "app",
+    "appId": "blackarch-webapp",
+    "appIcon": "",
+    "action": "/opt/blackarch/bin/blackarch execute webapp",
+    "description": "Open URLs using BlackArch webapp execution script"
+  },
+  "blackarch.blue-applications.usual-applications.internet.chromium": {
+    "label": "Chromium",
+    "kind": "app",
+    "appId": "chromium",
+    "appIcon": "chromium",
+    "action": "chromium",
+    "aliases": [
+      "Web Browser"
+    ],
+    "description": "Access the Internet"
+  },
+  "blackarch.blue-applications.usual-applications.internet.discord": {
+    "label": "Discord",
+    "kind": "app",
+    "appId": "discord",
+    "appIcon": "discord",
+    "action": "/usr/bin/discord --url --",
+    "aliases": [
+      "Internet Messenger"
+    ],
+    "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone."
+  },
+  "blackarch.blue-applications.usual-applications.internet.firefox": {
+    "label": "Firefox",
+    "kind": "app",
+    "appId": "firefox",
+    "appIcon": "firefox",
+    "action": "/usr/lib/firefox/firefox",
+    "aliases": [
+      "Web Browser",
+      "Internet WWW Browser Web Explorer"
+    ],
+    "description": "Fast and private browser"
+  },
+  "blackarch.blue-applications.usual-applications.internet.teams-for-linux": {
+    "label": "Microsoft Teams for Linux",
+    "kind": "app",
+    "appId": "teams-for-linux",
+    "appIcon": "teams-for-linux",
+    "action": "teams-for-linux --gtk-version=3",
+    "aliases": [
+      "Teams"
+    ],
+    "description": "Unofficial Microsoft Teams client for Linux."
+  },
+  "blackarch.blue-applications.usual-applications.internet.com-ulaa-ulaa": {
+    "label": "Ulaa",
+    "kind": "app",
+    "appId": "com.ulaa.Ulaa",
+    "appIcon": "com.ulaa.Ulaa",
+    "action": "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=ulaa --file-forwarding com.ulaa.Ulaa @@u  @@",
+    "aliases": [
+      "Web Browser"
+    ],
+    "description": "Access the Internet"
+  },
+  "blackarch.blue-applications.usual-applications.internet.zaproxy": {
+    "label": "ZAP",
+    "kind": "app",
+    "appId": "zaproxy",
+    "appIcon": "zaproxy",
+    "action": "zaproxy",
+    "aliases": [
+      "network scan scanner web security zed attack proxy"
+    ],
+    "description": "ZAP is an open-source web application security scanner"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia": {
+    "label": "Multimedia",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.cliamp": {
+    "label": "cliamp",
+    "kind": "app",
+    "appId": "cliamp",
+    "appIcon": "cliamp",
+    "action": "cliamp",
+    "aliases": [
+      "Music Player",
+      "music audio player terminal tui winamp radio podcast"
+    ],
+    "description": "A retro terminal music player inspired by Winamp 2.x"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.com-github-wwmm-easyeffects": {
+    "label": "Easy Effects",
+    "kind": "app",
+    "appId": "com.github.wwmm.easyeffects",
+    "appIcon": "com.github.wwmm.easyeffects",
+    "action": "easyeffects",
+    "aliases": [
+      "Equalizer, Compressor and Other Audio Effects",
+      "limiter compressor reverberation equalizer autovolume"
+    ],
+    "description": "Simple audio effects"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.envy24control": {
+    "label": "Envy24 Control",
+    "kind": "app",
+    "appId": "envy24control",
+    "appIcon": "envy24control",
+    "action": "envy24control",
+    "aliases": [
+      "Envy24 Control Utility"
+    ],
+    "description": "Mixer and GUI control utility for Envy24-based sound cards"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.guvcview": {
+    "label": "guvcview",
+    "kind": "app",
+    "appId": "guvcview",
+    "appIcon": "guvcview",
+    "action": "guvcview",
+    "aliases": [
+      "GTK UVC video viewer"
+    ],
+    "description": "A video viewer and capturer for the linux uvc driver"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.hdajackretask": {
+    "label": "HDAJackRetask",
+    "kind": "app",
+    "appId": "hdajackretask",
+    "appIcon": "hdajackretask",
+    "action": "hdajackretask",
+    "description": "Retask the audio jacks for the HDA sound driver"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.hdspconf": {
+    "label": "HDSPConf",
+    "kind": "app",
+    "appId": "hdspconf",
+    "appIcon": "hdspconf",
+    "action": "hdspconf",
+    "description": "Hammerfall DSP control application"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.hdspmixer": {
+    "label": "HDSPMixer",
+    "kind": "app",
+    "appId": "hdspmixer",
+    "appIcon": "hdspmixer",
+    "action": "hdspmixer",
+    "description": "Hammerfall DSP matrix mixer control GUI"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.hwmixvolume": {
+    "label": "Hwmixvolume",
+    "kind": "app",
+    "appId": "hwmixvolume",
+    "appIcon": "hwmixvolume",
+    "action": "hwmixvolume",
+    "aliases": [
+      "Control the volume of individual streams on sound cards that use hardware mixing"
+    ]
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.me-timschneeberger-jdsp4linux": {
+    "label": "JamesDSP",
+    "kind": "app",
+    "appId": "me.timschneeberger.jdsp4linux",
+    "appIcon": "me.timschneeberger.jdsp4linux",
+    "action": "jamesdsp",
+    "description": "Audio effect processor for Pipewire"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.lsp-plugins": {
+    "label": "LSP Plugins",
+    "kind": "app",
+    "appId": "lsp-plugins",
+    "appIcon": "lsp-plugins",
+    "action": "lsp-plugins",
+    "aliases": [
+      "Audio processing",
+      "audio sound jackd lsp-plugins"
+    ],
+    "description": "Launcher application for standalone collection of open source audio processing plugins"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.mpv": {
+    "label": "mpv Media Player",
+    "kind": "app",
+    "appId": "mpv",
+    "appIcon": "mpv",
+    "action": "mpv --player-operation-mode=pseudo-gui --",
+    "aliases": [
+      "Multimedia player",
+      "mpv media player video audio tv"
+    ],
+    "description": "Play movies and songs"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.omacut": {
+    "label": "Omacut",
+    "kind": "app",
+    "appId": "omacut",
+    "appIcon": "omacut",
+    "action": "omacut",
+    "aliases": [
+      "Video Trimmer",
+      "video trim cut clip ffmpeg"
+    ],
+    "description": "Dead-simple video length trimmer"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.qv4l2": {
+    "label": "Qt V4L2 test Utility",
+    "kind": "app",
+    "appId": "qv4l2",
+    "appIcon": "qv4l2",
+    "action": "qv4l2",
+    "aliases": [
+      "video grabber V4L"
+    ],
+    "description": "Allow testing Video4Linux devices"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.qvidcap": {
+    "label": "Qt V4L2 video capture utility",
+    "kind": "app",
+    "appId": "qvidcap",
+    "appIcon": "qvidcap",
+    "action": "qvidcap",
+    "aliases": [
+      "video grabber V4L"
+    ],
+    "description": "Viewer for video capture"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.org-rncbc-qtractor": {
+    "label": "Qtractor",
+    "kind": "app",
+    "appId": "org.rncbc.qtractor",
+    "appIcon": "org.rncbc.qtractor",
+    "action": "qtractor -platform xcb",
+    "aliases": [
+      "Multi-track Sequencer",
+      "Audio MIDI Multitrack Sequencer DAW ALSA JACK LADSPA DSSI VST VST2 VST3 CLAP LV2 Qt"
+    ],
+    "description": "Qtractor is an Audio/MIDI multi-track sequencer application"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.soundwire": {
+    "label": "SoundWire Server",
+    "kind": "app",
+    "appId": "soundwire",
+    "appIcon": "soundwire",
+    "action": "SoundWireServer",
+    "description": "Server program for SoundWire Android app"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.org-pulseaudio-pavucontrol": {
+    "label": "Volume Control",
+    "kind": "app",
+    "appId": "org.pulseaudio.pavucontrol",
+    "appIcon": "org.pulseaudio.pavucontrol",
+    "action": "pavucontrol",
+    "aliases": [
+      "Volume Control",
+      "pavucontrol PulseAudio Microphone Volume Fade Balance Headset Speakers Headphones Audio Mixer Output Input Devices Playback Recording System Sounds Sound Card Settings Preferences"
+    ],
+    "description": "Adjust the volume level"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.com-zamaudio-zamgrains": {
+    "label": "zamgrains",
+    "kind": "app",
+    "appId": "com.zamaudio.zamgrains",
+    "appIcon": "com.zamaudio.zamgrains",
+    "action": "ZamGrains",
+    "aliases": [
+      "Granular Synthesizer"
+    ],
+    "description": "Granular Synthesizer"
+  },
+  "blackarch.blue-applications.usual-applications.multimedia.com-zamaudio-zamtube": {
+    "label": "zamtube",
+    "kind": "app",
+    "appId": "com.zamaudio.zamtube",
+    "appIcon": "com.zamaudio.zamtube",
+    "action": "ZamTube",
+    "aliases": [
+      "Tube Amplifier"
+    ],
+    "description": "Wave digital filter physical model of a triode tube amplifier stage, with modelled tone stacks from real guitar amplifiers"
+  },
+  "blackarch.blue-applications.usual-applications.office": {
+    "label": "Office",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-startcenter": {
+    "label": "LibreOffice",
+    "kind": "app",
+    "appId": "libreoffice-startcenter",
+    "appIcon": "libreoffice-startcenter",
+    "action": "libreoffice",
+    "aliases": [
+      "Office"
+    ],
+    "description": "Launch applications to create text documents, spreadsheets, presentations, drawings, formulas, and databases, or open recently used documents."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-base": {
+    "label": "LibreOffice Base",
+    "kind": "app",
+    "appId": "libreoffice-base",
+    "appIcon": "libreoffice-base",
+    "action": "libreoffice --base",
+    "aliases": [
+      "Database Development",
+      "Data SQL"
+    ],
+    "description": "Manage databases, create queries and reports to track and manage your information."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-calc": {
+    "label": "LibreOffice Calc",
+    "kind": "app",
+    "appId": "libreoffice-calc",
+    "appIcon": "libreoffice-calc",
+    "action": "libreoffice --calc",
+    "aliases": [
+      "Spreadsheet",
+      "Accounting Stats OpenDocument Spreadsheet Chart Microsoft Excel Microsoft Works OpenOffice Calc ods xls xlsx"
+    ],
+    "description": "Perform calculations, analyze information and manage lists in spreadsheets."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-draw": {
+    "label": "LibreOffice Draw",
+    "kind": "app",
+    "appId": "libreoffice-draw",
+    "appIcon": "libreoffice-draw",
+    "action": "libreoffice --draw",
+    "aliases": [
+      "Drawing Program",
+      "Vector Schema Diagram Layout OpenDocument Graphics Microsoft Publisher Microsoft Visio Corel Draw cdr odg svg pdf vsd"
+    ],
+    "description": "Create and edit drawings, flow charts and logos."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-impress": {
+    "label": "LibreOffice Impress",
+    "kind": "app",
+    "appId": "libreoffice-impress",
+    "appIcon": "libreoffice-impress",
+    "action": "libreoffice --impress",
+    "aliases": [
+      "Presentation",
+      "Slideshow Slides OpenDocument Presentation Microsoft PowerPoint Microsoft Works OpenOffice Impress odp ppt pptx"
+    ],
+    "description": "Create and edit presentations for slideshows, meetings and Web pages."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-math": {
+    "label": "LibreOffice Math",
+    "kind": "app",
+    "appId": "libreoffice-math",
+    "appIcon": "libreoffice-math",
+    "action": "libreoffice --math",
+    "aliases": [
+      "Formula Editor",
+      "Equation OpenDocument Formula Formula odf MathML"
+    ],
+    "description": "Create and edit scientific formulas and equations."
+  },
+  "blackarch.blue-applications.usual-applications.office.libreoffice-writer": {
+    "label": "LibreOffice Writer",
+    "kind": "app",
+    "appId": "libreoffice-writer",
+    "appIcon": "libreoffice-writer",
+    "action": "libreoffice --writer",
+    "aliases": [
+      "Word Processor",
+      "Text Letter Fax Document OpenDocument Text Microsoft Word Microsoft Works Lotus WordPro OpenOffice Writer CV odt doc docx rtf"
+    ],
+    "description": "Create and edit text and graphics in letters, reports, documents and Web pages."
+  },
+  "blackarch.blue-applications.usual-applications.office.obsidian": {
+    "label": "Obsidian",
+    "kind": "app",
+    "appId": "obsidian",
+    "appIcon": "obsidian",
+    "action": "/usr/bin/obsidian",
+    "description": "Obsidian"
+  },
+  "blackarch.blue-applications.usual-applications.office.omawrite": {
+    "label": "Omawrite",
+    "kind": "app",
+    "appId": "omawrite",
+    "appIcon": "omawrite",
+    "action": "omawrite",
+    "aliases": [
+      "Markdown Writer",
+      "markdown write notes text editor"
+    ],
+    "description": "Dead-simple Markdown writing app"
+  },
+  "blackarch.blue-applications.usual-applications.office.org-pwmt-zathura": {
+    "label": "Zathura",
+    "kind": "app",
+    "appId": "org.pwmt.zathura",
+    "appIcon": "org.pwmt.zathura",
+    "action": "zathura",
+    "aliases": [
+      "PDF PS PostScript DjVU document presentation viewer"
+    ],
+    "description": "Minimalistic document viewer"
+  },
+  "blackarch.blue-applications.usual-applications.system": {
+    "label": "System",
+    "icon": ""
+  },
+  "blackarch.blue-applications.usual-applications.system.athena-nexus": {
+    "label": "Athena Nexus",
+    "kind": "app",
+    "appId": "athena-nexus",
+    "appIcon": "athena-nexus",
+    "action": "athena-nexus",
+    "aliases": [
+      "Container Orchestrator",
+      "container docker podman security pentest siem forensics"
+    ],
+    "description": "Deploy and manage security tools as containers"
+  },
+  "blackarch.blue-applications.usual-applications.system.org-bleachbit-bleachbit": {
+    "label": "BleachBit",
+    "kind": "app",
+    "appId": "org.bleachbit.BleachBit",
+    "appIcon": "bleachbit",
+    "action": "bleachbit",
+    "aliases": [
+      "Unnecessary file cleaner",
+      "cache clean free performance privacy"
+    ],
+    "description": "Free space and maintain privacy"
+  },
+  "blackarch.blue-applications.usual-applications.system.btop": {
+    "label": "btop++",
+    "kind": "app",
+    "appId": "btop",
+    "appIcon": "btop",
+    "action": "btop",
+    "aliases": [
+      "System Monitor",
+      "system process task"
+    ],
+    "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes"
+  },
+  "blackarch.blue-applications.usual-applications.system.conky": {
+    "label": "conky",
+    "kind": "app",
+    "appId": "conky",
+    "appIcon": "conky-logomark-violet",
+    "action": "conky --daemonize --pause=1"
+  },
+  "blackarch.blue-applications.usual-applications.system.gnome-system-monitor-kde": {
+    "label": "GNOME System Monitor",
+    "kind": "app",
+    "appId": "gnome-system-monitor-kde",
+    "appIcon": "org.gnome.SystemMonitor",
+    "action": "gnome-system-monitor",
+    "aliases": [
+      "Monitor System Process CPU Memory Network History Usage"
+    ],
+    "description": "View current processes and monitor system state"
+  },
+  "blackarch.blue-applications.usual-applications.system.lstopo": {
+    "label": "Hardware Locality lstopo",
+    "kind": "app",
+    "appId": "lstopo",
+    "appIcon": "hwloc",
+    "action": "lstopo",
+    "aliases": [
+      "System Utility"
+    ],
+    "description": "Show hardware topology"
+  },
+  "blackarch.blue-applications.usual-applications.system.htop": {
+    "label": "Htop",
+    "kind": "app",
+    "appId": "htop",
+    "appIcon": "htop",
+    "action": "htop",
+    "aliases": [
+      "Process Viewer",
+      "system process task resources monitoring performance"
+    ],
+    "description": "Show System Processes"
+  },
+  "blackarch.blue-applications.usual-applications.system.kitty": {
+    "label": "kitty",
+    "kind": "app",
+    "appId": "kitty",
+    "appIcon": "kitty",
+    "action": "kitty",
+    "aliases": [
+      "Terminal emulator"
+    ],
+    "description": "Fast, feature-rich, GPU based terminal"
+  },
+  "blackarch.blue-applications.usual-applications.system.kodachi-dashboard": {
+    "label": "Kodachi Dashboard",
+    "kind": "app",
+    "appId": "kodachi-dashboard",
+    "appIcon": "/opt/kodachi/dashboard/hooks/icons/kodachi-dashboard.png",
+    "action": "/usr/local/bin/kodachi-dashboard-launcher",
+    "aliases": [
+      "Security Dashboard",
+      "kodachi dashboard security privacy tor vpn dns firewall"
+    ],
+    "description": "Kodachi Security Dashboard - control privacy, networking, and system hardening"
+  },
+  "blackarch.blue-applications.usual-applications.system.kodachi-rofi-actions": {
+    "label": "Kodachi Quick Actions",
+    "kind": "app",
+    "appId": "kodachi-rofi-actions",
+    "appIcon": "/opt/kodachi/dashboard/hooks/icons/kodachi-dashboard.png",
+    "action": "kodachi-rofi-actions",
+    "aliases": [
+      "Rofi Security Actions",
+      "kodachi rofi actions security privacy tor vpn dns"
+    ],
+    "description": "Launch approved Kodachi quick actions in rofi without changing your current rofi theme"
+  },
+  "blackarch.blue-applications.usual-applications.system.nvtop": {
+    "label": "nvtop",
+    "kind": "app",
+    "appId": "nvtop",
+    "appIcon": "nvtop",
+    "action": "nvtop",
+    "aliases": [
+      "GPU Process Monitor"
+    ]
+  },
+  "blackarch.blue-applications.usual-applications.system.jconsole-java-openjdk": {
+    "label": "OpenJDK Java 27 Console",
+    "kind": "app",
+    "appId": "jconsole-java-openjdk",
+    "appIcon": "java27-openjdk",
+    "action": "/usr/lib/jvm/java-27-openjdk/bin/jconsole",
+    "aliases": [
+      "java console monitoring"
+    ],
+    "description": "OpenJDK Java 27 Monitoring & Management Console"
+  },
+  "blackarch.blue-applications.usual-applications.system.jshell-java-openjdk": {
+    "label": "OpenJDK Java 27 Shell",
+    "kind": "app",
+    "appId": "jshell-java-openjdk",
+    "appIcon": "java27-openjdk",
+    "action": "/usr/lib/jvm/java-27-openjdk/bin/jshell",
+    "aliases": [
+      "java shell"
+    ],
+    "description": "OpenJDK Java 27 Shell"
+  },
+  "blackarch.blue-applications.usual-applications.system.org-gnome-systemmonitor": {
+    "label": "System Monitor",
+    "kind": "app",
+    "appId": "org.gnome.SystemMonitor",
+    "appIcon": "org.gnome.SystemMonitor",
+    "action": "gnome-system-monitor",
+    "aliases": [
+      "Monitor System Process CPU Memory Network History Usage Performance Task Manager Activity"
+    ],
+    "description": "View current processes and monitor system state"
+  },
+  "blackarch.blue-applications.usual-applications.system.uxterm": {
+    "label": "UXTerm",
+    "kind": "app",
+    "appId": "uxterm",
+    "appIcon": "xterm-color_48x48",
+    "action": "uxterm",
+    "aliases": [
+      "shell prompt command commandline cmd"
+    ],
+    "description": "xterm wrapper for Unicode environments"
+  },
+  "blackarch.blue-applications.usual-applications.system.windows-vm": {
+    "label": "Windows",
+    "kind": "app",
+    "appId": "windows-vm",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm launch",
+    "description": "Start Windows VM via Docker and connect with RDP"
+  },
+  "blackarch.blue-applications.usual-applications.system.windows-vm-app": {
+    "label": "Windows App",
+    "kind": "app",
+    "appId": "windows-vm-app",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app",
+    "description": "Open a Windows application in its own window"
+  },
+  "blackarch.blue-applications.usual-applications.system.windows-vm-connect": {
+    "label": "Windows Connect",
+    "kind": "app",
+    "appId": "windows-vm-connect",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm connect",
+    "description": "Connect to the running Windows VM with RDP"
+  },
+  "blackarch.blue-applications.usual-applications.system.windows-vm-edge": {
+    "label": "Windows Edge",
+    "kind": "app",
+    "appId": "windows-vm-edge",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app edge",
+    "description": "Open Microsoft Edge in its own window"
+  },
+  "blackarch.blue-applications.usual-applications.system.windows-vm-powershell": {
+    "label": "Windows PowerShell",
+    "kind": "app",
+    "appId": "windows-vm-powershell",
+    "appIcon": "windows",
+    "action": "uwsm app -- blackarch-windows-vm app powershell",
+    "description": "Open PowerShell in its own window"
+  },
+  "blackarch.blue-applications.usual-applications.system.xterm": {
+    "label": "XTerm",
+    "kind": "app",
+    "appId": "xterm",
+    "appIcon": "xterm-color_48x48",
+    "action": "xterm",
+    "aliases": [
+      "shell prompt command commandline cmd"
+    ],
+    "description": "standard terminal emulator for the X window system"
+  },
+  "blackarch.blue-applications.usual-applications.system.yazi": {
+    "label": "Yazi File Manager",
+    "kind": "app",
+    "appId": "yazi",
+    "appIcon": "yazi",
+    "action": "yazi",
+    "aliases": [
+      "File Manager Explorer Browser Launcher"
+    ],
+    "description": "Blazing fast terminal file manager written in Rust, based on async I/O"
+  },
+  "blackarch.blue-applications.usual-applications.system.zeit": {
+    "label": "Zeit",
+    "kind": "app",
+    "appId": "zeit",
+    "appIcon": "chronometer",
+    "action": "/usr/bin/zeit",
+    "description": "Qt GUI for crontab and at"
+  },
+  "blackarch.blue-applications.identify": {
+    "label": "Identify",
+    "icon": "󰧑"
+  },
+  "blackarch.blue-applications.identify.athena-amass": {
+    "label": "amass",
+    "kind": "app",
+    "appId": "athena-amass",
+    "appIcon": "athena-amass",
+    "action": "shell-rocket -b amass",
+    "description": "In-depth DNS Enumeration and Network Mapping"
+  },
+  "blackarch.blue-applications.identify.athena-assetfinder": {
+    "label": "assetfinder",
+    "kind": "app",
+    "appId": "athena-assetfinder",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b assetfinder -x '-h'",
+    "description": "Find domains and subdomains related to a given domain"
+  },
+  "blackarch.blue-applications.identify.athena-cisco-auditing-tool": {
+    "label": "cisco-auditing-tool",
+    "kind": "app",
+    "appId": "athena-cisco-auditing-tool",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b CAT -p cisco-auditing-tool"
+  },
+  "blackarch.blue-applications.identify.athena-hb-honeypot": {
+    "label": "hb-honeypot",
+    "kind": "app",
+    "appId": "athena-hb-honeypot",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b heartbleed-honeypot",
+    "description": "Heartbleed Honeypot Script"
+  },
+  "blackarch.blue-applications.identify.athena-maltego": {
+    "label": "maltego",
+    "kind": "app",
+    "appId": "athena-maltego",
+    "appIcon": "athena-maltego",
+    "action": "shell-rocket -b maltego -g",
+    "description": "Open source intelligence and forensics application"
+  },
+  "blackarch.blue-applications.identify.athena-maryam": {
+    "label": "maryam",
+    "kind": "app",
+    "appId": "athena-maryam",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b maryam -x '-h'",
+    "description": "OWASP Maryam is a modular/optional open source framework bas"
+  },
+  "blackarch.blue-applications.identify.athena-nipper": {
+    "label": "nipper",
+    "kind": "app",
+    "appId": "athena-nipper",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b nipper -x '--help'",
+    "description": "Network Infrastructure Parser. Produces reports based of network device configuration file settings."
+  },
+  "blackarch.blue-applications.identify.athena-searchsploit": {
+    "label": "searchsploit",
+    "kind": "app",
+    "appId": "athena-searchsploit",
+    "appIcon": "athena-searchsploit",
+    "action": "shell-rocket -b searchsploit -p exploitdb",
+    "description": "Exploit Database Archive Search"
+  },
+  "blackarch.blue-applications.identify.athena-spiderfoot": {
+    "label": "spiderfoot",
+    "kind": "app",
+    "appId": "athena-spiderfoot",
+    "appIcon": "athena-spiderfoot",
+    "action": "shell-rocket -b spiderfoot -x '--help'",
+    "description": "OSINT collection and reconnaissance tool"
+  },
+  "blackarch.blue-applications.identify.athena-spiderfoot-cli": {
+    "label": "spiderfoot-cli",
+    "kind": "app",
+    "appId": "athena-spiderfoot-cli",
+    "appIcon": "athena-spiderfoot-cli",
+    "action": "shell-rocket -b spiderfoot-cli -p spiderfoot -x '--help'",
+    "description": "OSINT collection and reconnaissance tool"
+  },
+  "blackarch.blue-applications.identify.athena-wapiti": {
+    "label": "wapiti",
+    "kind": "app",
+    "appId": "athena-wapiti",
+    "appIcon": "athena-wapiti",
+    "action": "shell-rocket -b wapiti -x '-h'",
+    "description": "A web application vulnerability scanner in Python"
+  },
+  "blackarch.blue-applications.identify.athena-witnessme": {
+    "label": "witnessme",
+    "kind": "app",
+    "appId": "athena-witnessme",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b witnessme -p python-witnessme -x '-h'",
+    "description": "Web Inventory tool"
+  },
+  "blackarch.blue-applications.identify.athena-zaproxy": {
+    "label": "zaproxy",
+    "kind": "app",
+    "appId": "athena-zaproxy",
+    "appIcon": "athena-zaproxy",
+    "action": "shell-rocket -b zaproxy -g",
+    "description": "Testing tool for finding vulnerabilities in web applications"
+  },
+  "blackarch.blue-applications.protect": {
+    "label": "Protect",
+    "icon": "󰟵"
+  },
+  "blackarch.blue-applications.protect.athena-cryptsetup": {
+    "label": "cryptsetup",
+    "kind": "app",
+    "appId": "athena-cryptsetup",
+    "appIcon": "athena-cryptsetup",
+    "action": "shell-rocket -b cryptsetup -x '--help'",
+    "description": "Manage plain dm-crypt, LUKS, and other encrypted volumes"
+  },
+  "blackarch.blue-applications.detect": {
+    "label": "Detect",
+    "icon": "󰀻"
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-addlog": {
+    "label": "grokevt-addlog",
+    "kind": "app",
+    "appId": "athena-grokevt-addlog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-addlog -p grokevt -x '-h'",
+    "description": "A tool for adding a raw event log to an existing GrokEVT database."
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-builddb": {
+    "label": "grokevt-builddb",
+    "kind": "app",
+    "appId": "athena-grokevt-builddb",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-builddb -p grokevt -x '-h'",
+    "description": "Builds a database tree based on a single windows system for the purpose of event log conversion."
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-dumpmsgs": {
+    "label": "grokevt-dumpmsgs",
+    "kind": "app",
+    "appId": "athena-grokevt-dumpmsgs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-dumpmsgs -p grokevt -x '-h'"
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-findlogs": {
+    "label": "grokevt-findlogs",
+    "kind": "app",
+    "appId": "athena-grokevt-findlogs",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-findlogs -p grokevt -x '-h'",
+    "description": "Attempts to find log file fragments in raw binary files, such as memory dumps and disk images."
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-parselog": {
+    "label": "grokevt-parselog",
+    "kind": "app",
+    "appId": "athena-grokevt-parselog",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-parselog -p grokevt -x '-h'",
+    "description": "Parse a windows event log and generate human-readable output based on message resources stored in a database."
+  },
+  "blackarch.blue-applications.detect.athena-grokevt-ripdll": {
+    "label": "grokevt-ripdll",
+    "kind": "app",
+    "appId": "athena-grokevt-ripdll",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b grokevt-ripdll -p grokevt -x '-h'",
+    "description": "A tool for extracting message resources from a PE-formatted file."
+  },
+  "blackarch.blue-applications.detect.athena-sentrypeer": {
+    "label": "sentrypeer",
+    "kind": "app",
+    "appId": "athena-sentrypeer",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b sentrypeer -x '-h'",
+    "description": "A distributed list of bad IP addresses and phone numbers collected via a SIP Honeypot"
+  },
+  "blackarch.blue-applications.respond": {
+    "label": "Respond",
+    "icon": ""
+  },
+  "blackarch.blue-applications.respond.athena-dc3dd": {
+    "label": "dc3dd",
+    "kind": "app",
+    "appId": "athena-dc3dd",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b dc3dd -x '--help'",
+    "description": "Convert and copy a file"
+  },
+  "blackarch.blue-applications.respond.athena-ewfacquire": {
+    "label": "ewfacquire",
+    "kind": "app",
+    "appId": "athena-ewfacquire",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ewfacquire -p libewf -x '-h'",
+    "description": "Acquires data in the EWF format"
+  },
+  "blackarch.blue-applications.respond.athena-foremost": {
+    "label": "foremost",
+    "kind": "app",
+    "appId": "athena-foremost",
+    "appIcon": "athena-foremost",
+    "action": "shell-rocket -b foremost -x '-h'",
+    "description": "Recover files using their headers, footers, and data structures"
+  },
+  "blackarch.blue-applications.respond.athena-galleta": {
+    "label": "galleta",
+    "kind": "app",
+    "appId": "athena-galleta",
+    "appIcon": "athena-galleta",
+    "action": "shell-rocket -b galleta",
+    "description": "Tool to extract information from MSIE cookie files"
+  },
+  "blackarch.blue-applications.respond.athena-ghidra": {
+    "label": "ghidra",
+    "kind": "app",
+    "appId": "athena-ghidra",
+    "appIcon": "athena-ghidra",
+    "action": "shell-rocket -b ghidra -g",
+    "description": "Software Reverse Engineering Framework"
+  },
+  "blackarch.blue-applications.respond.athena-hashrat": {
+    "label": "hashrat",
+    "kind": "app",
+    "appId": "athena-hashrat",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b hashrat -x '--help'",
+    "description": "Hashing tool supporting several hashes and recursivity"
+  },
+  "blackarch.blue-applications.respond.athena-mac-robber": {
+    "label": "mac-robber",
+    "kind": "app",
+    "appId": "athena-mac-robber",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b mac-robber",
+    "description": "Collects data about allocated files in mounted filesystems"
+  },
+  "blackarch.blue-applications.respond.athena-ollydbg": {
+    "label": "ollydbg",
+    "kind": "app",
+    "appId": "athena-ollydbg",
+    "appIcon": "athena-ollydbg",
+    "action": "shell-rocket -b ollydbg -g",
+    "description": "32-bit assembler level analysing debugger"
+  },
+  "blackarch.blue-applications.respond.athena-rkhunter": {
+    "label": "rkhunter",
+    "kind": "app",
+    "appId": "athena-rkhunter",
+    "appIcon": "athena-rkhunter",
+    "action": "shell-rocket -b rkhunter -z -x '-h'",
+    "description": "RootKit Hunter"
+  },
+  "blackarch.blue-applications.respond.athena-unhide": {
+    "label": "unhide",
+    "kind": "app",
+    "appId": "athena-unhide",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b unhide -r",
+    "description": "Forensic tool to find hidden processes"
+  },
+  "blackarch.blue-applications.respond.athena-yara": {
+    "label": "yara",
+    "kind": "app",
+    "appId": "athena-yara",
+    "appIcon": "athena-yara",
+    "action": "shell-rocket -b yara -x '-h'",
+    "description": "Find files matching patterns and rules written in a special-purpose language."
+  },
+  "blackarch.blue-applications.recover": {
+    "label": "Recover",
+    "icon": "󰑓"
+  },
+  "blackarch.blue-applications.recover.athena-ext3grep": {
+    "label": "ext3grep",
+    "kind": "app",
+    "appId": "athena-ext3grep",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ext3grep -x '-h'",
+    "description": "Ext3 file recovery tool"
+  },
+  "blackarch.blue-applications.recover.athena-ext4magic": {
+    "label": "ext4magic",
+    "kind": "app",
+    "appId": "athena-ext4magic",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b ext4magic -x '-h'",
+    "description": "Recover deleted files on ext3/4 filesystems"
+  },
+  "blackarch.blue-applications.recover.athena-extundelete": {
+    "label": "extundelete",
+    "kind": "app",
+    "appId": "athena-extundelete",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b extundelete -x '--help'",
+    "description": "Utility to undelete files from an ext3 or ext4 partition."
+  },
+  "blackarch.blue-applications.recover.athena-myrescue": {
+    "label": "myrescue",
+    "kind": "app",
+    "appId": "athena-myrescue",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b myrescue -x '-h'",
+    "description": "Harddisc Rescue"
+  },
+  "blackarch.blue-applications.recover.athena-recoverdm": {
+    "label": "recoverdm",
+    "kind": "app",
+    "appId": "athena-recoverdm",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b recoverdm -x '-h'",
+    "description": "Recover files on disks with damaged sectors"
+  },
+  "blackarch.blue-applications.recover.athena-recoverjpeg": {
+    "label": "recoverjpeg",
+    "kind": "app",
+    "appId": "athena-recoverjpeg",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b recoverjpeg -x '-h'",
+    "description": "Recover jpeg pictures from a filesystem image"
+  },
+  "blackarch.blue-applications.recover.athena-scrounge-ntfs": {
+    "label": "scrounge-ntfs",
+    "kind": "app",
+    "appId": "athena-scrounge-ntfs",
+    "appIcon": "athena-scrounge-ntfs",
+    "action": "shell-rocket -b scrounge-ntfs -x '-h'",
+    "description": "Helps retrieve data from corrupted NTFS partitions"
+  },
+  "blackarch.blue-applications.recover.athena-undbx": {
+    "label": "undbx",
+    "kind": "app",
+    "appId": "athena-undbx",
+    "appIcon": "athena-menu",
+    "action": "shell-rocket -b undbx -x '-h'",
+    "description": "A tool to extract e-mails from Outlook Express .dbx files."
+  }
+}

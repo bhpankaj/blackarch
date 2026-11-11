@@ -42,6 +42,7 @@ Deeper instructions for common areas live next to this file. Read the
 matching guide before starting:
 
 - [`hyprland.md`](hyprland.md) - keybindings, monitors, window rules, and other Hyprland config
+- [`references/windows-vm.md`](references/windows-vm.md) - install/launch/stop the Windows VM, and running its interactive installer in a floating kitty window
 - [`references/kodachi-dashboard-structure.md`](references/kodachi-dashboard-structure.md) - verified layout and gaps for `/opt/blackarch/dashboard/` (v9.0.1 binary suite, bookmark file misplacement, empty profiles/backups/signkeys)
 - [`references/kodachi-called-binaries.md`](references/kodachi-called-binaries.md) - full inventory of binaries and scripts Kodachi calls (launcher, AI/service/system binaries, update scripts, deps, log-evidenced runtime calls)
 - [`plugins.md`](plugins.md) - the Blackarch shell: bar layout, widgets, plugins, idle behavior
@@ -94,6 +95,12 @@ Use `pkexec` only when the caller cannot interact with a terminal or cannot
 enter a password there, such as a command launched by an agent or a graphical
 background process. Do not replace `sudo` with `pkexec` merely because a
 command changes system state.
+
+A command that is itself interactive (prompts, menus, `gum choose`) needs a TTY
+and exits when stdin is not one; launch it in a visible terminal window rather
+than piping or wrapping it in `pkexec`. See
+[`references/windows-vm.md`](references/windows-vm.md) for the floating-kitty
+pattern.
 
 ## System Architecture
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# blackarch:summary=Install, launch, stop, inspect, or remove the Windows VM
-# blackarch:args=<install|remove|launch|stop|status> [options]
+# blackarch:summary=Install, launch, connect, stop, inspect, or remove the Windows VM
+# blackarch:args=<install|remove|launch|connect|stop|status> [options]
 # blackarch:requires-sudo=true
 
 # The Windows VM runs a privileged container (KVM, /dev/net/tun, NET_ADMIN), so
@@ -26,6 +26,9 @@ LEGACY_COMPOSE_FILE="$HOME/.config/windows/docker-compose.yml"
 # docker group), but RDP needs it as the user. Keep a private copy here, 0600 in
 # the user's own config, so the plaintext password is never world-readable.
 CREDENTIALS_FILE="$HOME/.config/windows/credentials"
+# Windows programs that can be opened as individual windows on the Linux desktop
+# (RDP RemoteApp). Each line is "name|windows-path|args"; args is optional.
+APPS_FILE="$HOME/.config/windows/apps"
 IMAGE="dockurr/windows"
 CONTAINER="blackarch-windows"
 VM_LOCK_DIR=/run/lock/blackarch-windows-vm
@@ -62,7 +65,7 @@ docker_needs_sudo() { blackarch-sudo-docker; }
 # prompt the user grants for the trusted helper could run an attacker's binary
 # as root. Fails closed (empty output) when no trustworthy target is found.
 priv_target() {
-  local candidate=/opt/blackarch/bin/blackarch-windows-vm canonical probe owner mode
+  local candidate=/usr/local/sbin/blackarch-windows-vm canonical probe owner mode
   [[ -f $candidate && ! -L $candidate && -x $candidate ]] || return 1
   canonical=$(realpath -e -- "$candidate" 2>/dev/null) || return 1
   [[ $canonical == "$candidate" ]] || return 1
@@ -1077,7 +1080,10 @@ read_credential() {
   local want="$1" key value
   [[ -f $CREDENTIALS_FILE ]] || return 1
   while IFS='=' read -r key value; do
-    [[ $key == "$want" ]] && {
+    # An empty value is not a credential: the writer only ever stores fields
+    # that passed valid_username/valid_password, so treat a blank line as
+    # missing rather than authenticating with an empty string.
+    [[ $key == "$want" && -n $value ]] && {
       printf '%s' "$value"
       return 0
     }
@@ -1088,6 +1094,33 @@ read_credential() {
 read_compose_value() {
   local key="$1" file="$2"
   sed -n "s/.*${key}: \"\(.*\)\"/\1/p" "$file" | head -n1
+}
+
+# RDP target of the VM: the guest publishes the session on the loopback binding
+# of the compose (127.0.0.1:3389). Resolve the published port from the compose
+# so a configuration with a different host binding still connects, and return
+# "<host>:<port>" on stdout. Nothing here starts or stops anything.
+rdp_target() {
+  local host=127.0.0.1 port compose
+  [[ -f $COMPOSE_FILE ]] || {
+    echo "blackarch-windows-vm: Windows VM is not configured: $COMPOSE_FILE is missing" >&2
+    return 1
+  }
+  compose=$(cat -- "$COMPOSE_FILE" 2>/dev/null) || {
+    echo "blackarch-windows-vm: cannot read $COMPOSE_FILE" >&2
+    return 1
+  }
+  # A published binding is "HOST:PORT:GUEST/tcp"; keep the first one, since the
+  # compose may list tcp and udp for the same port.
+  port=$(sed -n 's|^[[:space:]]*-[[:space:]]*[^:]*:\([0-9][0-9]*\):3389/tcp$|\1|p' <<<"$compose" | head -n1)
+  [[ $port =~ ^[0-9]{1,5}$ ]] || {
+    port=$(sed -n 's|^[[:space:]]*-[[:space:]]*[^:]*:\([0-9][0-9]*\):3389/udp$|\1|p' <<<"$compose" | head -n1)
+  }
+  [[ $port =~ ^[0-9]{1,5}$ ]] || {
+    echo "blackarch-windows-vm: no RDP port binding for the guest port 3389 in $COMPOSE_FILE" >&2
+    return 1
+  }
+  printf '%s:%s\n' "$host" "$port"
 }
 
 # Older installs kept the compose under ~/.config/windows. Carry those settings
@@ -1156,6 +1189,22 @@ check_prerequisites() {
 
 # --- commands ----------------------------------------------------------------
 
+# Write one desktop entry for a Windows entry point. Shared by install so the
+# generated XDG app menus pick up every option without hand-editing JSONC.
+write_windows_desktop() {
+  local id="$1" name="$2" comment="$3" exec_line="$4"
+  cat <<EOF | tee "$HOME/.local/share/applications/${id}.desktop" >/dev/null
+[Desktop Entry]
+Name=${name}
+Comment=${comment}
+Exec=${exec_line}
+Icon=windows
+Terminal=false
+Type=Application
+Categories=System;Virtualization;
+EOF
+}
+
 install_windows() {
   # Set up trap to handle Ctrl+C
   trap "echo ''; echo 'Installation cancelled by user'; exit 1" INT
@@ -1167,16 +1216,24 @@ install_windows() {
 
   mkdir -p "$HOME/.local/share/applications"
 
-  cat <<EOF | tee "$HOME/.local/share/applications/windows-vm.desktop" >/dev/null
-[Desktop Entry]
-Name=Windows
-Comment=Start Windows VM via Docker and connect with RDP
-Exec=uwsm app -- blackarch-windows-vm launch
-Icon=windows
-Terminal=false
-Type=Application
-Categories=System;Virtualization;
-EOF
+  # One desktop entry per Windows entry point. The generated XDG app menus are
+  # built from these files, so a row added by hand to menus/*.jsonc would be
+  # wiped by the next `blackarch shell generate`.
+  write_windows_desktop "windows-vm" "Windows" \
+    "Start Windows VM via Docker and connect with RDP" \
+    "uwsm app -- blackarch-windows-vm launch"
+  write_windows_desktop "windows-vm-connect" "Windows Connect" \
+    "Connect to the running Windows VM with RDP" \
+    "uwsm app -- blackarch-windows-vm connect"
+  write_windows_desktop "windows-vm-edge" "Windows Edge" \
+    "Open Microsoft Edge in its own window" \
+    "uwsm app -- blackarch-windows-vm app edge"
+  write_windows_desktop "windows-vm-powershell" "Windows PowerShell" \
+    "Open PowerShell in its own window" \
+    "uwsm app -- blackarch-windows-vm app powershell"
+  write_windows_desktop "windows-vm-app" "Windows App" \
+    "Open a Windows application in its own window" \
+    "uwsm app -- blackarch-windows-vm app"
 
   # Get system resources
   TOTAL_RAM=$(free -h | awk 'NR==2 {print $2}')
@@ -1477,6 +1534,217 @@ To stop: blackarch-windows-vm stop"
   fi
 }
 
+# Resolve the RDP target, credentials, and NTLM-friendly krb5 config shared by
+# connect and app launching. Sets RDP_TARGET, RDP_USER, RDP_PASS, RDP_SCALE.
+prepare_rdp_session() {
+  migrate_legacy_compose 2>/dev/null || true
+
+  RDP_TARGET=$(rdp_target) || {
+    echo "Windows VM not configured. Run: blackarch-windows-vm install" >&2
+    return 1
+  }
+
+  # RDP credentials come from the private per-user file. Fall back to the compose
+  # only when it is readable, reversing the writer's escaping.
+  RDP_USER=$(read_credential USERNAME) || RDP_USER=""
+  RDP_PASS=$(read_credential PASSWORD) || RDP_PASS=""
+  if [[ -z $RDP_USER || -z $RDP_PASS ]] && [[ -r $COMPOSE_FILE ]]; then
+    [[ -z $RDP_USER ]] && RDP_USER=$(unescape "$(read_compose_value USERNAME "$COMPOSE_FILE")")
+    [[ -z $RDP_PASS ]] && RDP_PASS=$(unescape "$(read_compose_value PASSWORD "$COMPOSE_FILE")")
+  fi
+  if [[ -z $RDP_USER || -z $RDP_PASS ]]; then
+    echo "blackarch-windows-vm: no stored RDP credentials in $CREDENTIALS_FILE" >&2
+    echo "Run: blackarch-windows-vm install" >&2
+    return 1
+  fi
+
+  # FreeRDP 3 tries Kerberos before NTLM for NLA, and krb5 ships /etc/krb5.conf
+  # as the MIT sample with default_realm = ATHENA.MIT.EDU. Every connect then
+  # goes looking for MIT's KDC. The VM authenticates against a local Windows
+  # account, so point FreeRDP at a realm-less config and let it use NTLM.
+  local krb5_conf="$HOME/.config/windows/krb5.conf"
+  mkdir -p "$(dirname "$krb5_conf")"
+  if [[ ! -f $krb5_conf ]]; then
+    printf '[libdefaults]\n  dns_lookup_kdc = false\n  dns_lookup_realm = false\n' >"$krb5_conf"
+  fi
+  export KRB5_CONFIG="$krb5_conf"
+
+  # Match the session to the focused monitor's scale, as launch does.
+  RDP_SCALE=""
+  local hypr_scale scale_percent
+  hypr_scale=$(hyprctl monitors -j 2>/dev/null | jq -r '.[] | select (.focused == true) | .scale' 2>/dev/null)
+  if [[ $hypr_scale =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+    scale_percent=$(awk -v s="$hypr_scale" 'BEGIN { printf "%d", s * 100 }')
+    if ((scale_percent >= 170)); then
+      RDP_SCALE="/scale:180"
+    elif ((scale_percent >= 130)); then
+      RDP_SCALE="/scale:140"
+    fi
+  fi
+}
+
+connect_windows() {
+  # Connect-only: this never starts, stops, or recreates the VM. It reads the
+  # saved RDP credentials and opens the session against the port the compose
+  # publishes, so it is safe to offer as a menu entry next to "Windows".
+  prepare_rdp_session || exit 1
+
+  xfreerdp3 /u:"$RDP_USER" /p:"$RDP_PASS" /v:"$RDP_TARGET" -grab-keyboard /sound /microphone /clipboard /cert:ignore /title:"Windows VM - Blackarch" /dynamic-resolution /gfx:AVC444 /floatbar:sticky:off,default:visible,show:fullscreen $RDP_SCALE
+}
+
+# --- Windows applications (RemoteApp) ----------------------------------------
+
+# Built-in apps, used only when the registry has no entry of the same name, so a
+# user can override a default by giving their own entry the same name.
+default_apps() {
+  printf '%s\n' \
+    'edge|C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe|' \
+    'powershell|C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe|'
+}
+
+# Print "name|path|args" lines: registry entries first, then built-ins whose
+# name the registry did not override.
+list_apps() {
+  local name path args seen=""
+  if [[ -f $APPS_FILE ]]; then
+    while IFS='|' read -r name path args; do
+      [[ -n $name && -n $path ]] || continue
+      printf '%s\n' "$name|$path|$args"
+      seen+="$name"$'\n'
+    done <"$APPS_FILE"
+  fi
+  while IFS='|' read -r name path args; do
+    [[ -n $name ]] || continue
+    grep -qxF "$name" <<<"$seen" && continue
+    printf '%s\n' "$name|$path|$args"
+  done < <(default_apps)
+}
+
+# Set APP_NAME/APP_PATH/APP_ARGS for a registered name, or fail.
+resolve_app() {
+  local want="$1" name path args
+  while IFS='|' read -r name path args; do
+    [[ $name == "$want" ]] || continue
+    APP_NAME=$name
+    APP_PATH=$path
+    APP_ARGS=$args
+    return 0
+  done < <(list_apps)
+  return 1
+}
+
+# Basename of a Windows path, for default window titles.
+win_basename() {
+  local path="$1"
+  path=${path##*\\}
+  path=${path##*/}
+  printf '%s' "$path"
+}
+
+# Open one Windows program as its own window on the Linux desktop. The program
+# runs inside the VM; only its window is shown here (RDP RemoteApp / RAIL).
+launch_app() {
+  local name="$1" path="${2-}" args="${3-}"
+  if [[ -z $path ]]; then
+    resolve_app "$name" || {
+      echo "blackarch-windows-vm: unknown Windows app: $name" >&2
+      echo "Known apps:" >&2
+      list_apps | cut -d'|' -f1 | sed 's/^/  /' >&2
+      return 1
+    }
+    name=$APP_NAME
+    path=$APP_PATH
+    args=$APP_ARGS
+  fi
+
+  prepare_rdp_session || exit 1
+
+  # /app: takes one comma-separated spec; a path with spaces is fine because the
+  # whole value is a single argument. name: sets the local window title. args
+  # must not contain a comma, which would split the spec.
+  local spec="program:$path,name:$name"
+  [[ -n $args ]] && spec="$spec,cmd:$args"
+
+  xfreerdp3 /app:"$spec" /u:"$RDP_USER" /p:"$RDP_PASS" /v:"$RDP_TARGET" \
+    -grab-keyboard /sound /microphone /clipboard /cert:ignore \
+    /dynamic-resolution /gfx:AVC444 $RDP_SCALE
+}
+
+app_windows() {
+  local name="${1-}"
+
+  case "$name" in
+  list)
+    list_apps | while IFS='|' read -r n p a; do
+      [[ -n $n ]] || continue
+      printf '  %s\t%s%s\n' "$n" "$p" "${a:+ $a}"
+    done
+    return 0
+    ;;
+  add)
+    local new_name="${2-}" new_path="${3-}" new_args="${4-}" n p a tmp
+    if [[ -z $new_name || -z $new_path ]]; then
+      echo "Usage: blackarch-windows-vm app add <name> <windows-path> [args]" >&2
+      return 1
+    fi
+    mkdir -p "$(dirname "$APPS_FILE")"
+    tmp=$(mktemp "$APPS_FILE.XXXXXX") || return 1
+    if [[ -f $APPS_FILE ]]; then
+      while IFS='|' read -r n p a; do
+        [[ $n == "$new_name" ]] && continue
+        printf '%s|%s|%s\n' "$n" "$p" "$a"
+      done <"$APPS_FILE" >"$tmp"
+    fi
+    printf '%s|%s|%s\n' "$new_name" "$new_path" "$new_args" >>"$tmp"
+    mv -fT -- "$tmp" "$APPS_FILE" || { rm -f -- "$tmp"; return 1; }
+    echo "Added Windows app: $new_name"
+    return 0
+    ;;
+  remove)
+    local old_name="${2-}" n p a tmp
+    [[ -n $old_name ]] || {
+      echo "Usage: blackarch-windows-vm app remove <name>" >&2
+      return 1
+    }
+    [[ -f $APPS_FILE ]] || return 0
+    tmp=$(mktemp "$APPS_FILE.XXXXXX") || return 1
+    while IFS='|' read -r n p a; do
+      [[ $n == "$old_name" ]] && continue
+      printf '%s|%s|%s\n' "$n" "$p" "$a"
+    done <"$APPS_FILE" >"$tmp"
+    mv -fT -- "$tmp" "$APPS_FILE" || { rm -f -- "$tmp"; return 1; }
+    echo "Removed Windows app: $old_name"
+    return 0
+    ;;
+  "")
+    # No name given: offer the registered apps, plus a manual path entry.
+    local choice path
+    local rows=""
+    while IFS='|' read -r n p a; do
+      [[ -n $n ]] || continue
+      rows+="$n"$'\t'"$p"$'\n'
+    done < <(list_apps)
+    rows+=$'Other…\tEnter a Windows path manually'
+
+    choice=$(printf '%s' "$rows" | blackarch-menu-select "Windows app") || return 0
+    [[ -n $choice ]] || return 0
+
+    name=${choice%%$'\t'*}
+    if [[ $name == "Other…" ]]; then
+      path=$(blackarch-menu-input "Windows executable path" --width 520) || return 0
+      [[ -n $path ]] || return 0
+      launch_app "$(win_basename "$path")" "$path" ""
+      return
+    fi
+    launch_app "$name"
+    return
+    ;;
+  *)
+    launch_app "$name"
+    ;;
+  esac
+}
+
 stop_windows() {
   migrate_legacy_compose 2>/dev/null || true
   if [[ ! -f $COMPOSE_FILE ]]; then
@@ -1538,6 +1806,11 @@ show_usage() {
   echo "  launch [options]     Start Windows VM (if needed) and connect via RDP"
   echo "                       Options:"
   echo "                         --keep-alive, -k   Keep VM running after RDP closes"
+  echo "  connect               Connect to the running VM via RDP (no start/stop)"
+  echo "  app [name]            Open a Windows app in its own window (RemoteApp)"
+  echo "                       Built-in apps: edge, powershell"
+  echo "                       Without a name, pick from the registry."
+  echo "                         app list | app add <name> <path> [args] | app remove <name>"
   echo "  stop                 Stop the running Windows VM"
   echo "  status               Show current VM status"
   echo "  help                 Show this help message"
@@ -1546,6 +1819,10 @@ show_usage() {
   echo "  blackarch-windows-vm install           # Set up Windows VM for first time"
   echo "  blackarch-windows-vm launch            # Connect to VM (auto-stop on exit)"
   echo "  blackarch-windows-vm launch -k         # Connect to VM (keep running)"
+  echo "  blackarch-windows-vm connect           # Connect only (VM must be running)"
+  echo "  blackarch-windows-vm app edge          # Edge in its own window"
+  echo "  blackarch-windows-vm app powershell    # PowerShell in its own window"
+  echo "  blackarch-windows-vm app               # Pick any registered Windows app"
   echo "  blackarch-windows-vm stop              # Shut down the VM"
 }
 
@@ -1572,6 +1849,13 @@ remove)
   ;;
 launch | start)
   launch_windows "$2"
+  ;;
+connect | rdp)
+  connect_windows
+  ;;
+app)
+  shift
+  app_windows "$@"
   ;;
 stop | down)
   stop_windows

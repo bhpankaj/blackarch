@@ -196,24 +196,45 @@ def process_display(pid: int) -> str | None:
     return protocol_display(env.get("WAYLAND_DISPLAY"), env.get("DISPLAY"))
 
 
+def process_alive(pid: int) -> bool:
+    """True when pid names a running process we may signal."""
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    return True
+
+
 def select_socket(shell_qml: Path, display: str) -> Path | None:
     """Pick the instance socket matching the current display, or None.
 
     qs filters instances by display; when the instance's display cannot be
-    determined we keep the candidate rather than refusing to talk to it.
+    determined we keep the candidate rather than refusing to talk to it, but
+    only after the live matches. A killed shell leaves its socket directory
+    behind, so without the liveness check the first stale entry wins and every
+    menu command fails with "blackarch-shell is not running" until the dead
+    directories are removed by hand.
     """
     pids = instance_pids()
-    matching: list[Path] = []
+    live: list[Path] = []
+    unknown: list[Path] = []
 
     for sock in instance_sockets(shell_qml):
         instance_id = sock.parent.name
-        instance_display = (
-            process_display(pids[instance_id]) if instance_id in pids else None
-        )
-        if instance_display is None or instance_display == display:
-            matching.append(sock)
+        pid = pids.get(instance_id)
+        if pid is None or not process_alive(pid):
+            continue
+        instance_display = process_display(pid)
+        if instance_display is None:
+            unknown.append(sock)
+        elif instance_display == display:
+            live.append(sock)
 
-    return matching[0] if matching else None
+    if live:
+        return live[0]
+    if unknown:
+        return unknown[0]
+    return None
 
 
 def recover_wayland_display() -> None:

@@ -59,15 +59,16 @@ def main(argv):
                 continue
             except Exception:
                 break
-    # Fallback to bash scripts for unported commands
-    import subprocess
-    bash_name = "blackarch-" + "-".join(argv).replace("_","-")
-    # try exact
-    candidate = os.path.join("/opt/blackarch/bin", bash_name)
-    if os.path.isfile(candidate):
-        rc = subprocess.call(["bash", candidate, *argv[1:]])
-        print(f"[done] {bash_name}")
-        return rc
+    # Fallback for unported commands: resolve the longest bin/blackarch-* prefix
+    # and exec it directly so its own shebang picks the interpreter. Joining the
+    # whole argv into the filename only worked for bare commands (any flag made
+    # the name miss), and forcing `bash` mis-executed Python scripts.
+    for count in range(len(argv), 0, -1):
+        candidate = os.path.join(
+            "/opt/blackarch/bin", "blackarch-" + "-".join(argv[:count])
+        )
+        if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+            os.execv(candidate, [candidate, *argv[count:]])
     return _core_main(argv)
 
 if __name__ == "__main__":
